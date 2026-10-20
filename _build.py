@@ -4,7 +4,7 @@ import json, _data as D
 
 course = {
     "title": "Soma Smart",
-    "tagline": "Elimu ya kompyuta na intaneti — kwa kila mtu. Free digital-literacy for everyone.",
+    "tagline": "Free computer and internet literacy for everyone.",
     "passMark": 4,
     "questionsPerQuiz": 5,
     "retryCooldownSec": 20,

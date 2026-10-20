@@ -7,7 +7,7 @@
  */
 window.COURSE = {
  "title": "Soma Smart",
- "tagline": "Elimu ya kompyuta na intaneti — kwa kila mtu. Free digital-literacy for everyone.",
+ "tagline": "Free computer and internet literacy for everyone.",
  "passMark": 4,
  "questionsPerQuiz": 5,
  "retryCooldownSec": 20,
@@ -20,7 +20,7 @@ window.COURSE = {
    "id": "primary",
    "name": "Digital Foundations",
    "level": "Grade 4–6 · ages ~8–10",
-   "blurb": "Start here. Jua kompyuta ni nini, how to use it, and how to stay safe online."
+   "blurb": "Start here. Learn what a computer is, how to use it, and how to stay safe online."
   },
   {
    "id": "junior",

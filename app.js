@@ -1,8 +1,7 @@
-/* Soma Smart — front-end.
- * Aligned with CBC/CBE digital literacy for Kenyan learners.
- * Self-service accounts, offline guest mode, PWA support, mastery certificates,
- * and anonymous aggregate curriculum analytics.
- * No support desk or admin account recovery.
+/* Soma Smart — front-end application.
+ * Aligned with the Kenya Institute of Curriculum Development (KICD) CBC/CBE curriculum.
+ * Self-service accounts, guest mode, PWA offline caching, printable certificates,
+ * and anonymous curriculum insights. No support desk or manual recovery.
  */
 (() => {
 "use strict";
@@ -90,7 +89,7 @@ function toast(msg){
 
 /* ---------- modal layer ---------- */
 function openModal(contentHtml){
-  $modal.innerHTML = `<div class="modal-card"><button class="modal-close" id="modal-x" aria-label="Funga">&times;</button>${contentHtml}</div>`;
+  $modal.innerHTML = `<div class="modal-card"><button class="modal-close" id="modal-x" aria-label="Close">&times;</button>${contentHtml}</div>`;
   $modal.classList.add("show");
   document.getElementById("modal-x").onclick = closeModal;
   $modal.onclick = e => { if (e.target === $modal) closeModal(); };
@@ -115,23 +114,23 @@ function hud(){
   const total = MODS.length, done = MODS.filter(m => ms(m.id).done).length;
   const isGuest = !!USER.isGuest;
   const syncLabels = {
-    saved: ["ok", "● Imehifadhiwa"],
-    saving: ["ok", "Inahifadhi..."],
-    offline: ["err", "▲ Nje ya mtandao"],
-    guest: ["ok", "💾 Kwenye kifaa hiki"]
+    saved: ["ok", "● Saved"],
+    saving: ["ok", "Saving..."],
+    offline: ["err", "▲ Offline"],
+    guest: ["ok", "💾 Saved to Browser"]
   };
   const sync = syncLabels[syncState] || ["ok", ""];
 
   $hud.innerHTML = `
     <span class="who">
       ${esc(USER.display)}
-      ${isGuest ? `<span class="badge-guest" title="Hali ya mgeni: maendeleo yanahifadhiwa kwenye browser hii">Mgeni</span>` : ""}
+      ${isGuest ? `<span class="badge-guest" title="Guest mode: progress is saved in this browser">Guest</span>` : ""}
     </span>
     <span class="prog">${done}/${total} done</span>
     <span class="sync ${sync[0]}">${sync[1]}</span>
-    ${isGuest ? `<button class="btn gold small" id="upgrade-guest" title="Tengeneza akaunti ili usipoteze maendeleo yako">Hifadhi Mtandaoni</button>` : ""}
-    <button class="btn ghost small" id="hud-report" title="Tazama ripoti ya maendeleo">Ripoti</button>
-    <button class="btn ghost small" id="logout">${isGuest ? "Ondoka" : "Toka"}</button>
+    ${isGuest ? `<button class="btn gold small" id="upgrade-guest" title="Create an account to save your progress online">Save Online</button>` : ""}
+    <button class="btn ghost small" id="hud-report" title="View your learning progress report">Report</button>
+    <button class="btn ghost small" id="logout">${isGuest ? "Exit Guest" : "Log Out"}</button>
   `;
 
   document.getElementById("logout").onclick = logout;
@@ -180,13 +179,13 @@ function logout(){
 
 function startGuestMode(){
   const guestProg = JSON.parse(localStorage.getItem(LS_GUEST_PROG) || "{}");
-  USER = { id: "guest", username: "guest", display: "Mgeni", ageBand: "p", isGuest: true };
+  USER = { id: "guest", username: "guest", display: "Guest Learner", ageBand: "p", isGuest: true };
   TOKEN = "";
   PROG = guestProg;
   localStorage.setItem(LS_USER, JSON.stringify(USER));
   hudSync("guest");
   go({ name: "home" });
-  toast("Karibu kwenye Soma Smart kama Mgeni! 🎉");
+  toast("Welcome to Soma Smart! Learning as Guest.");
 }
 
 function renderAuth(mode){
@@ -198,15 +197,9 @@ function renderAuth(mode){
     <h1>Soma <em>Smart</em></h1>
     <p class="sub">${esc(C.tagline)}</p>
 
-    <!-- Explicit No-Support Notice -->
-    <div class="no-support-banner" style="background:#fff8e6;border:2px solid var(--gold);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:14px;color:#5a3f05;line-height:1.45">
-      <b>⚠️ Muhimu: Hakuna msaada wa kurejesha akaunti / No account-recovery support:</b><br/>
-      Soma Smart ni ya bure na ya kujiendesha mwenyewe. Weka recovery code ukijisajili. Ukisahau password na huna recovery code, fungua akaunti mpya au soma kama mgeni. Hatuna dawati wala email ya kurejesha password.
-    </div>
-
     <div class="tabs">
-      <button class="btn ${mode==='login'?'':'ghost'} small" data-m="login">Ingia (Log in)</button>
-      <button class="btn ${isNew?'':'ghost'} small" data-m="signup">Jisajili (Sign up)</button>
+      <button class="btn ${mode==='login'?'':'ghost'} small" data-m="login">Log in</button>
+      <button class="btn ${isNew?'':'ghost'} small" data-m="signup">Sign up</button>
     </div>
 
     <form class="panel" id="f" autocomplete="off">
@@ -214,30 +207,30 @@ function renderAuth(mode){
       <input class="field" id="un" maxlength="20" placeholder="e.g. zuri_ke" required />
 
       ${isNew ? `
-        <label class="q" for="dn">Jina lako / Display name <span class="hint">(jina litakalotokea kwenye cheti)</span></label>
+        <label class="q" for="dn">Display Name <span class="hint">(the name shown on your certificate)</span></label>
         <input class="field" id="dn" maxlength="30" placeholder="e.g. Zuri Wanjiku" required />
       ` : ""}
 
       <label class="q" for="pw">Password</label>
       <div class="row">
         <input class="field" id="pw" type="password" maxlength="60" required />
-        <button type="button" class="btn ghost small" id="eye">Onyesha</button>
+        <button type="button" class="btn ghost small" id="eye">Show</button>
       </div>
 
       ${isNew ? `
-        <label class="q" for="tb">Mtaala wangu / Grade <span class="hint">(chagua darasa lako)</span></label>
+        <label class="q" for="tb">Select Grade <span class="hint">(optional)</span></label>
         <select class="field" id="tb">
           <option value="p">Grade 4–6 (Digital Foundations)</option>
           <option value="j">Grade 7–9 (Computers & Networks)</option>
         </select>
-        <label class="q" for="rc">Recovery code <span class="hint">(neno la siri litakalokusaidia ukisahau nenosiri — liandike mahali salama!)</span></label>
+        <label class="q" for="rc">Recovery Code <span class="hint">(optional secret word to reset your password if forgotten)</span></label>
         <input class="field" id="rc" maxlength="40" placeholder="e.g. simba2026" />
       ` : ""}
 
       ${isReset ? `
-        <label class="q" for="rc">Recovery code</label>
-        <input class="field" id="rc" maxlength="40" required placeholder="Neno lako la siri uliloweka wakati wa kujisajili" />
-        <label class="q" for="np">New password</label>
+        <label class="q" for="rc">Recovery Code</label>
+        <input class="field" id="rc" maxlength="40" required placeholder="The secret code you set when signing up" />
+        <label class="q" for="np">New Password</label>
         <input class="field" id="np" type="password" maxlength="60" required />
       ` : ""}
 
@@ -246,26 +239,30 @@ function renderAuth(mode){
       <div class="stepFoot">
         <span class="hint">
           ${isNew
-            ? "Hakuna email inayohitajika. Andika username na password yako mahali salama."
-            : "Umesahau login? <a href='#' id='toreset'>Tumia recovery code</a>, au fungua akaunti mpya."}
+            ? "No email is used. Keep your username, password and recovery code in a safe place."
+            : "Forgot password? <a href='#' id='toreset'>Use a recovery code</a>."}
         </span>
-        <button class="btn" id="go" type="submit">${isNew ? "Anza Kujifunza" : isReset ? "Badilisha Nenosiri" : "Ingia"}</button>
+        <button class="btn" id="go" type="submit">${isNew ? "Start Learning" : isReset ? "Reset Password" : "Log In"}</button>
       </div>
     </form>
 
-    <div class="guest-divider"><span>AU / OR</span></div>
+    <div class="guest-divider"><span>OR</span></div>
 
     <div class="panel" style="text-align:center;background:#f9fcf9">
-      <h3 style="margin:0 0 6px;font-family:Nunito,sans-serif">Jifunze Kama Mgeni (Offline / Guest)</h3>
-      <p class="hint" style="margin:0 0 14px">Hakuna nenosiri linalohitajika. Unaweza kuanza kusoma papo hapo hata bila mtandao.</p>
-      <button class="btn ghost" id="btn-guest">▶ Endelea Kama Mgeni</button>
-      ${hasGuestProg ? `<p class="hint" style="margin-top:8px;color:var(--green)">✓ Kuna masomo yaliyohifadhiwa kwenye kifaa hiki.</p>` : ""}
+      <h3 style="margin:0 0 6px;font-family:Nunito,sans-serif">Continue as Guest</h3>
+      <p class="hint" style="margin:0 0 14px">Start learning immediately without creating an account. Your progress is saved in this browser.</p>
+      <button class="btn ghost" id="btn-guest">▶ Continue as Guest</button>
+      ${hasGuestProg ? `<p class="hint" style="margin-top:8px;color:var(--green)">✓ Found previously saved guest lessons on this device.</p>` : ""}
     </div>
+
+    <p class="disclaim">
+      <b>Account recovery notice:</b> Soma Smart has no support desk or email recovery. Please write down your recovery code when signing up, or create a new account if you forget your password.
+    </p>
   </section>`;
 
   $app.querySelectorAll("[data-m]").forEach(b => b.onclick = () => renderAuth(b.dataset.m));
   const er = document.getElementById("er"), pw = document.getElementById("pw"), eye = document.getElementById("eye");
-  if (eye) eye.onclick = () => { const sh = pw.type === "password"; pw.type = sh ? "text" : "password"; eye.textContent = sh ? "Ficha" : "Onyesha"; };
+  if (eye) eye.onclick = () => { const sh = pw.type === "password"; pw.type = sh ? "text" : "password"; eye.textContent = sh ? "Hide" : "Show"; };
   const tr = document.getElementById("toreset"); if (tr) tr.onclick = e => { e.preventDefault(); renderAuth("reset"); };
   document.getElementById("btn-guest").onclick = startGuestMode;
 
@@ -276,7 +273,7 @@ function renderAuth(mode){
     e.preventDefault();
     const username = document.getElementById("un").value.trim();
     const password = pw.value;
-    er.textContent = "Inafanya kazi…";
+    er.textContent = "Please wait…";
 
     try {
       let res;
@@ -309,10 +306,10 @@ function renderAuth(mode){
         PROG = guestProg;
         await pushProgress();
         localStorage.removeItem(LS_GUEST_PROG);
-        toast(`Karibu, ${USER.display}! Maendeleo yako ya awali yamehifadhiwa.`);
+        toast(`Welcome, ${USER.display}! Your guest progress has been saved to your account.`);
       } else {
         await loadProgress();
-        toast(`Karibu, ${USER.display}!`);
+        toast(`Welcome, ${USER.display}!`);
       }
 
       go({ name: "home" });
@@ -326,8 +323,8 @@ function renderAuth(mode){
 function renderHome(){
   $app.innerHTML = `
     <section class="hero">
-      <h1>Karibu, <em>${esc(USER.display)}</em>.</h1>
-      <p>Chagua track uanze. Pick a track to begin learning about computers and the internet.</p>
+      <h1>Welcome, <em>${esc(USER.display)}</em>.</h1>
+      <p>Choose a track to begin learning about computers and the internet.</p>
     </section>
     <div class="grid">
       ${TRACKS.map(t => {
@@ -340,7 +337,7 @@ function renderHome(){
           <div class="card-s">${esc(t.level)}</div>
           <p class="card-b">${esc(t.blurb)}</p>
           <div class="card-m">
-            <span>${done}/${list.length} modules done</span>
+            <span>${done}/${list.length} modules completed</span>
             <span>${pct}%</span>
           </div>
           <div class="meter"><div class="meter-fill" style="width:${pct}%"></div></div>
@@ -353,10 +350,10 @@ function renderHome(){
 
 /* ---------- track: list modules ---------- */
 const MASTERY_BADGE = {
-  locked: "🔒",
-  learning: "📘 Inajifunza",
-  practised: "✅ Amefaulu (4/5)",
-  mastered: "🏆 Ustadi Kamili (5/5)"
+  locked: "🔒 Locked",
+  learning: "📘 Learning",
+  practised: "✅ Practised",
+  mastered: "🏆 Mastered"
 };
 
 function renderTrack(){
@@ -367,12 +364,12 @@ function renderTrack(){
   const next = list.find(m => !ms(m.id).done);
 
   $app.innerHTML = `
-    <button class="back" id="bk">← Tracks</button>
+    <button class="back" id="bk">← All Tracks</button>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:10px">
       <div>
         <h2 class="h2" style="margin:0">${esc(t.name)} <span class="muted">${esc(t.level)}</span></h2>
       </div>
-      <div style="font-weight:800;color:var(--green)">${doneCount}/${list.length} modules (${Math.round(doneCount/list.length*100)}%)</div>
+      <div style="font-weight:800;color:var(--green)">${doneCount}/${list.length} modules completed (${Math.round(doneCount/list.length*100)}%)</div>
     </div>
     <div class="meter" style="margin-bottom:20px"><div class="meter-fill" style="width:${(doneCount/list.length)*100}%"></div></div>
 
@@ -392,13 +389,13 @@ function renderTrack(){
 
     ${allDone ? `
       <div class="track-done-card">
-        <h3>Hongera Sana! Umemaliza Track Hii! 🎉</h3>
-        <p>Umefanya vizuri sana kwenye masomo yote ya <b>${esc(t.name)}</b>. Unaweza kutazama au kuchapisha cheti chako cha ustadi sasa!</p>
-        <button class="btn gold" id="btn-cert">🎓 Tazama Cheti cha Ustadi (Certificate)</button>
+        <h3>Congratulations! You finished this track! 🎉</h3>
+        <p>You have completed all modules in <b>${esc(t.name)}</b>. View or print your certificate of achievement.</p>
+        <button class="btn gold" id="btn-cert">🎓 View Certificate</button>
       </div>
     ` : next ? `
       <div class="continue">
-        <div><b>Endelea: ${esc(next.name)}</b><span>${next.code} · Hatua inayofuata</span></div>
+        <div><b>Next: ${esc(next.name)}</b><span>${next.code} · Next lesson</span></div>
         <button class="btn teal" id="cont">▶ Continue</button>
       </div>
     ` : ""}
@@ -412,7 +409,7 @@ function renderTrack(){
 
   $app.querySelectorAll("[data-id]").forEach(b => b.onclick = () => {
     const m = MODS.find(x => x.id === b.dataset.id);
-    if (!unlocked(m)) return toast("Maliza module iliyotangulia kwanza. Finish the previous one first.");
+    if (!unlocked(m)) return toast("Please complete the previous module first.");
     openModule(m.id);
   });
 }
@@ -473,7 +470,7 @@ function stepRead(m, s, el){
       <div class="stepFoot">
         <div class="dots">${m.read.map((_, i) => `<i class="${i <= idx ? "on" : ""}"></i>`).join("")}</div>
         <div class="row">
-          <button class="btn ghost small" id="say">🔊 Nisomee</button>
+          <button class="btn ghost small" id="say">🔊 Read to me</button>
           ${idx > 0 ? `<button class="btn ghost small" id="prev">←</button>` : ""}
           <button class="btn" id="nx">${idx < m.read.length - 1 ? "Next" : "Done"}</button>
         </div>
@@ -552,12 +549,12 @@ function stepListen(m, s, el){
     el.innerHTML = `
       <div class="listen">
         <div class="byte ${playing ? "talk" : ""}">🔊</div>
-        <div class="subtitle">${esc(sub || "Bonyeza play usikize. Press play to listen.")}</div>
+        <div class="subtitle">${esc(sub || "Press play to listen to the lesson.")}</div>
         <div class="bars">${lines.map((_, i) => `<i class="${i < pos ? "on" : ""}"></i>`).join("")}</div>
         <div class="row" style="justify-content:center"><button class="btn teal" id="pl">${playing ? "⏸ Pause" : "▶ Play"}</button></div>
       </div>
       <div class="stepFoot">
-        <span class="hint">Sikiza yote to continue.</span>
+        <span class="hint">Listen to the full audio to continue.</span>
         <button class="btn" id="nx" ${s.reached > 1 ? "" : "disabled"}>Next</button>
       </div>
     `;
@@ -570,7 +567,7 @@ function stepListen(m, s, el){
   const toggle = () => {
     if (!("speechSynthesis" in window)) {
       s.reached = Math.max(s.reached, 2);
-      toast("Speech haipatikani kwenye browser hii. Unaendelea mbele!");
+      toast("Speech narration is not supported in this browser. Advancing!");
       return advance(m, s, "listen");
     }
     if (playing) { stop(); draw(); return; }
@@ -585,7 +582,7 @@ function stepListen(m, s, el){
       pos = lines.length;
       s.reached = Math.max(s.reached, 2);
       queueSave();
-      draw("Imekamilika! Bonyeza Next.");
+      draw("Narration complete! Click Next.");
     });
   };
 
@@ -602,8 +599,8 @@ function stepWatch(m, s, el){
     el.innerHTML = `
       <div class="novideo">
         <div class="byte">🎬</div>
-        <h3>Hakuna video kwa sasa</h3>
-        <p class="hint">No video for this module. Endelea to the mission.</p>
+        <h3>No video for this module</h3>
+        <p class="hint">Proceed directly to the hands-on mission.</p>
       </div>
       <div class="stepFoot"><span></span><button class="btn" id="nx">Next</button></div>
     `;
@@ -613,7 +610,7 @@ function stepWatch(m, s, el){
   el.innerHTML = `
     <div class="vwrap"><iframe id="yt" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}?rel=0" allowfullscreen loading="lazy"></iframe></div>
     <div class="vmeta">${esc(v.title)} · ${esc(v.channel)}</div>
-    <div class="stepFoot"><span class="hint">Tazama video, then continue.</span><button class="btn" id="nx">Next</button></div>
+    <div class="stepFoot"><span class="hint">Watch the video, then continue.</span><button class="btn" id="nx">Next</button></div>
   `;
   document.getElementById("nx").onclick = () => advance(m, s, "watch");
 }
@@ -633,10 +630,10 @@ function stepMission(m, s, el){
         </button>
       `).join("")}
       <label class="q" for="ans">${esc(mi.question)}</label>
-      <input class="field" id="ans" maxlength="240" value="${esc(st.answer)}" placeholder="Andika jibu lako / type your answer" />
+      <input class="field" id="ans" maxlength="240" value="${esc(st.answer)}" placeholder="Type your answer here" />
     </div>
     <div class="stepFoot">
-      <span class="hint">Weka alama kila hatua na ujibu swali.</span>
+      <span class="hint">Tick each step and type your answer.</span>
       <button class="btn" id="nx">Mission Done</button>
     </div>
   `;
@@ -674,8 +671,8 @@ function stepQuiz(m, s, el){
   if (wait > 0) {
     el.innerHTML = `
       <div class="result">
-        <h3>Pumzika kidogo…</h3>
-        <p class="hint">Jaribu tena in <b id="cd">${wait}</b>s. Rudia READ/WATCH as you wait.</p>
+        <h3>Take a short break…</h3>
+        <p class="hint">Try again in <b id="cd">${wait}</b>s. Review the READ or LISTEN steps while waiting.</p>
       </div>
     `;
     const iv = setInterval(() => {
@@ -700,8 +697,8 @@ function stepQuiz(m, s, el){
     const x = qs[k];
     el.innerHTML = `
       <div class="qhead">
-        <span>SWALI ${k + 1}/${N}</span>
-        <span>${right} sahihi · unahitaji ${pass} kufaulu</span>
+        <span>QUESTION ${k + 1}/${N}</span>
+        <span>${right} correct · need ${pass} to pass</span>
       </div>
       <p class="qq">${esc(x.q)}</p>
       <div class="opts">
@@ -709,7 +706,7 @@ function stepQuiz(m, s, el){
       </div>
       <div class="why" id="why"></div>
       <div class="stepFoot">
-        <span class="hint">Bonyeza chaguo sahihi.</span>
+        <span class="hint">Click or press 1–4 to answer.</span>
         <button class="btn" id="nx" disabled>${k < N - 1 ? "Next" : "See Result"}</button>
       </div>
     `;
@@ -727,7 +724,7 @@ function stepQuiz(m, s, el){
       const selected = el.querySelector(`.opt[data-i="${i}"]`);
       if (selected && !good) selected.classList.add("wrong");
 
-      document.getElementById("why").innerHTML = (good ? "✅ <b>Sahihi!</b> " : "❌ <b>Si sawa.</b> ") + esc(x.why);
+      document.getElementById("why").innerHTML = (good ? "✅ <b>Correct!</b> " : "❌ <b>Incorrect.</b> ") + esc(x.why);
       document.getElementById("nx").disabled = false;
       document.getElementById("nx").focus();
       track(m, good);
@@ -771,19 +768,19 @@ function stepQuiz(m, s, el){
       <div class="result">
         <div class="score">${right}<small>/${N}</small></div>
         ${passed ? `
-          <h3>Umefaulu! 🎉</h3>
+          <h3>Passed! 🎉</h3>
           <div class="badge ${lvl}">${MASTERY_BADGE[lvl]}</div>
-          <p class="hint">${lvl === "mastered" ? "Ustadi kamili! Umepata maswali yote sawa." : "Vizuri sana! Pata alama 5/5 mara ijayo ili ufikie Ustadi Kamili (Mastered)."}</p>
+          <p class="hint">${lvl === "mastered" ? "Perfect score — fully mastered!" : "Well done! Score 5/5 next time for Mastered."}</p>
         ` : `
-          <h3>Jaribu Tena! 💪</h3>
-          <p class="hint">Unahitaji alama ${pass}/${N} ili ufaulu. Pitia tena READ & SIKIZA, kisha jaribu tena baada ya sekunde ${C.retryCooldownSec}.</p>
+          <h3>Try Again! 💪</h3>
+          <p class="hint">You need ${pass}/${N} to pass. Review the lesson steps, then retry in ${C.retryCooldownSec}s.</p>
         `}
         <div class="row" style="justify-content:center;margin-top:22px;flex-wrap:wrap">
           ${passed ? `
-            <button class="btn" id="mp">Rudi Kwenye Track</button>
+            <button class="btn" id="mp">Back to Track</button>
           ` : `
-            <button class="btn ghost" id="rv">Soma Tena (Review READ)</button>
-            <button class="btn" id="mp">Rudi Kwenye Track</button>
+            <button class="btn ghost" id="rv">Review Lesson</button>
+            <button class="btn" id="mp">Back to Track</button>
           `}
         </div>
       </div>
@@ -803,7 +800,7 @@ function showCertificate(trackId){
   const list = modsForTrack(t.id);
   const masteredCount = list.filter(m => masteryOf(m.id) === "mastered").length;
   const isAllMastered = masteredCount === list.length;
-  const today = new Date().toLocaleDateString("sw-KE", { day: "numeric", month: "long", year: "numeric" });
+  const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   const certId = "SM-" + t.id.slice(0, 1).toUpperCase() + "-" + Math.abs(hashCode(USER.username + t.id)).toString().slice(0, 6);
 
   openModal(`
@@ -812,34 +809,34 @@ function showCertificate(trackId){
         <div class="cert-emblem">🇰🇪</div>
         <div>
           <h2 class="cert-title">Cheti Cha Ustadi Wa Kidiitali</h2>
-          <div class="cert-sub">Soma Smart · Mtaala wa CBC / CBE</div>
+          <div class="cert-sub">Certificate of Digital Literacy · Aligned with KICD Curriculum</div>
         </div>
       </div>
-      <div class="cert-to">Cheti hiki kimetolewa kwa</div>
+      <div class="cert-to">This certificate is awarded to</div>
       <div class="cert-name">${esc(USER.display)}</div>
       <div class="cert-reason">
-        Kwa kukamilisha kwa mafanikio mtaala wa dijitali wa:
+        For successfully completing the digital literacy curriculum:
       </div>
       <div class="cert-track">${esc(t.name)} (${esc(t.level)})</div>
       <div class="cert-badge-row">
         <span class="badge ${isAllMastered ? "mastered" : "practised"}">
-          ${isAllMastered ? "🏆 Ustadi Kamili (All Modules Mastered)" : "✅ Ufaulu wa Juu (Course Completed)"}
+          ${isAllMastered ? "🏆 Mastered (All Modules Mastered)" : "✅ Course Completed"}
         </span>
       </div>
       <div class="cert-footer">
         <div>
-          <div><b>Tarehe:</b> ${today}</div>
-          <div style="font-size:11px;color:var(--muted)">Hati Na: ${certId}</div>
+          <div><b>Date:</b> ${today}</div>
+          <div style="font-size:11px;color:var(--muted)">Certificate ID: ${certId}</div>
         </div>
         <div style="text-align:center">
           <div class="cert-seal">🏅</div>
-          <div style="font-weight:800;color:var(--green-d)">SOMA SMART</div>
+          <div style="font-weight:800;color:var(--green-d)">SOMA SMART · KICD ALIGNED</div>
         </div>
       </div>
     </div>
     <div class="modal-actions" style="display:flex;justify-content:center;gap:12px;margin-top:20px">
-      <button class="btn gold" id="btn-print-cert">🖨️ Chapisha / Hifadhi kama PDF</button>
-      <button class="btn ghost" id="btn-close-cert">Funga</button>
+      <button class="btn gold" id="btn-print-cert">🖨️ Print / Save as PDF</button>
+      <button class="btn ghost" id="btn-close-cert">Close</button>
     </div>
   `);
 
@@ -863,21 +860,21 @@ function showLearnerReport(){
   const mastered = MODS.filter(m => masteryOf(m.id) === "mastered").length;
 
   openModal(`
-    <h2 style="margin:0 0 4px;font-family:Nunito,sans-serif">Ripoti ya Mwanafunzi</h2>
-    <p class="hint" style="margin:0 0 18px">Muhtasari wa maendeleo ya <b>${esc(USER.display)}</b> (${esc(USER.username)})</p>
+    <h2 style="margin:0 0 4px;font-family:Nunito,sans-serif">Learner Progress Report</h2>
+    <p class="hint" style="margin:0 0 18px">Learning summary for <b>${esc(USER.display)}</b> (${esc(USER.username)})</p>
 
     <div class="stat-grid" style="margin-bottom:18px">
       <div class="stat-card">
         <div class="stat-val">${done}/${total}</div>
-        <div class="stat-lbl">Masomo Yaliyokamilika</div>
+        <div class="stat-lbl">Completed Modules</div>
       </div>
       <div class="stat-card">
         <div class="stat-val" style="color:var(--gold-d)">${mastered}</div>
-        <div class="stat-lbl">Ustadi Kamili (5/5)</div>
+        <div class="stat-lbl">Mastered (5/5)</div>
       </div>
       <div class="stat-card">
         <div class="stat-val" style="color:var(--teal)">${Math.round((done / total) * 100)}%</div>
-        <div class="stat-lbl">Asilimia ya Kozi</div>
+        <div class="stat-lbl">Course Progress</div>
       </div>
     </div>
 
@@ -885,10 +882,10 @@ function showLearnerReport(){
       <table class="admin-table">
         <thead>
           <tr>
-            <th>Msimbo</th>
-            <th>Somo</th>
-            <th>Alama Bora</th>
-            <th>Hali</th>
+            <th>Code</th>
+            <th>Module Name</th>
+            <th>Best Score</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -906,10 +903,10 @@ function showLearnerReport(){
     </div>
 
     <div class="modal-actions" style="display:flex;justify-content:space-between;align-items:center;margin-top:20px;flex-wrap:wrap;gap:10px">
-      <button class="btn ghost small" id="copy-summary">📋 Nakili Muhtasari (WhatsApp)</button>
+      <button class="btn ghost small" id="copy-summary">📋 Copy WhatsApp Summary</button>
       <div class="row">
-        <button class="btn small" id="print-report">🖨️ Chapisha Ripoti</button>
-        <button class="btn ghost small" id="close-rep">Funga</button>
+        <button class="btn small" id="print-report">🖨️ Print Report</button>
+        <button class="btn ghost small" id="close-rep">Close</button>
       </div>
     </div>
   `);
@@ -917,8 +914,8 @@ function showLearnerReport(){
   document.getElementById("close-rep").onclick = closeModal;
   document.getElementById("print-report").onclick = () => window.print();
   document.getElementById("copy-summary").onclick = () => {
-    const text = `Soma Smart · Ripoti ya ${USER.display}\nMasomo Yaliyokamilika: ${done}/${total}\nUstadi Kamili: ${mastered}\nAsilimia: ${Math.round((done/total)*100)}%\nJifunze pia kwenye Soma Smart!`;
-    navigator.clipboard.writeText(text).then(() => toast("Muhtasari umenakiliwa!"));
+    const text = `Soma Smart · Progress Report for ${USER.display}\nCompleted Modules: ${done}/${total}\nMastered (5/5): ${mastered}\nCourse Progress: ${Math.round((done/total)*100)}%\nAligned with KICD CBC/CBE curriculum.`;
+    navigator.clipboard.writeText(text).then(() => toast("Report summary copied to clipboard!"));
   };
 }
 
@@ -928,16 +925,16 @@ async function renderAdmin(){
   if (!adminKey) {
     $app.innerHTML = `
       <section class="auth">
-        <button class="back" id="bk-home">← Rudi kwenye Masomo</button>
-        <h1>Takwimu za <em>Mtaala</em></h1>
-        <p class="sub">Weka ADMIN_KEY ili kutazama takwimu za mtaala na masomo (Anonymous insights only).</p>
+        <button class="back" id="bk-home">← Back to Lessons</button>
+        <h1>Curriculum <em>Insights</em></h1>
+        <p class="sub">Enter ADMIN_KEY to view anonymous curriculum analytics and student performance metrics.</p>
         <form class="panel" id="f-admin">
           <label class="q" for="ak">ADMIN_KEY</label>
-          <input class="field" type="password" id="ak" required placeholder="Weka secret key ya msimamizi" />
+          <input class="field" type="password" id="ak" required placeholder="Enter administrator secret key" />
           <div class="err" id="admin-err"></div>
           <div class="stepFoot">
             <span></span>
-            <button class="btn" type="submit">Fungua Takwimu</button>
+            <button class="btn" type="submit">Open Insights</button>
           </div>
         </form>
       </section>
@@ -947,13 +944,13 @@ async function renderAdmin(){
       e.preventDefault();
       const key = document.getElementById("ak").value.trim();
       const errEl = document.getElementById("admin-err");
-      errEl.textContent = "Inathibitisha...";
+      errEl.textContent = "Verifying key...";
       try {
         await api(`insights?key=${encodeURIComponent(key)}`);
         sessionStorage.setItem(SS_ADMIN, key);
         renderAdminDashboard(key);
       } catch (err) {
-        errEl.textContent = "Key sio sahihi au mtandao umekatika.";
+        errEl.textContent = "Invalid ADMIN_KEY or connection error.";
       }
     };
     return;
@@ -965,16 +962,16 @@ async function renderAdminDashboard(key){
   $app.innerHTML = `
     <div class="admin-header">
       <div>
-        <button class="back" id="adm-back">← Rudi kwenye Masomo</button>
-        <h2 style="margin:0;font-family:Nunito,sans-serif">Takwimu za Mtaala (Curriculum Insights)</h2>
-        <p class="hint" style="margin:4px 0 0">Muhtasari wa jumla wa masomo na ufaulu wa wanafunzi (Hakuna data ya siri wala majina ya wanafunzi).</p>
+        <button class="back" id="adm-back">← Back to Lessons</button>
+        <h2 style="margin:0;font-family:Nunito,sans-serif">Curriculum Insights</h2>
+        <p class="hint" style="margin:4px 0 0">Anonymous curriculum analytics and difficulty metrics aligned with KICD strands.</p>
       </div>
       <div class="row">
-        <button class="btn ghost small" id="adm-logout">Toka</button>
+        <button class="btn ghost small" id="adm-logout">Exit Insights</button>
       </div>
     </div>
 
-    <div id="admin-view">Inapakia takwimu…</div>
+    <div id="admin-view">Loading insights…</div>
   `;
 
   document.getElementById("adm-back").onclick = () => go({ name: USER ? "home" : "auth" });
@@ -995,7 +992,7 @@ async function renderAdminDashboard(key){
       <div class="stat-grid">
         <div class="stat-card">
           <div class="stat-val">${o.totalUsers || 0}</div>
-          <div class="stat-lbl">Jumla ya Akaunti (Learners)</div>
+          <div class="stat-lbl">Total Registered Accounts</div>
         </div>
         <div class="stat-card">
           <div class="stat-val" style="color:var(--teal)">${o.primaryUsers || 0}</div>
@@ -1007,21 +1004,21 @@ async function renderAdminDashboard(key){
         </div>
         <div class="stat-card">
           <div class="stat-val" style="color:var(--gold-d)">${o.totalCompletions || 0}</div>
-          <div class="stat-lbl">Modules Zilizokamilika</div>
+          <div class="stat-lbl">Completed Modules</div>
         </div>
         <div class="stat-card">
           <div class="stat-val" style="color:#d4af37">🏆 ${o.totalMasteries || 0}</div>
-          <div class="stat-lbl">Ustadi Kamili (5/5)</div>
+          <div class="stat-lbl">Masteries (5/5)</div>
         </div>
       </div>
 
       <div style="margin-top:24px">
-        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">🎯 Masomo Magumu Zaidi (Teaching Focus)</h3>
-        <p class="hint" style="margin:0 0 12px">Masomo yenye ufaulu wa chini zaidi — yanayohitaji maelezo ya ziada darasani.</p>
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">🎯 Hardest Modules (Teaching Focus)</h3>
+        <p class="hint" style="margin:0 0 12px">Modules with the lowest question accuracy — topics needing classroom reinforcement.</p>
         <div class="table-wrap" style="margin-bottom:28px">
           <table class="admin-table">
             <thead>
-              <tr><th>Somo (Module)</th><th>Track</th><th>Majaribio</th><th>Majibu Sahihi</th><th>Ufaulu (%)</th></tr>
+              <tr><th>Module</th><th>Track</th><th>Attempts</th><th>Correct</th><th>Pass Rate (%)</th></tr>
             </thead>
             <tbody>
               ${hard.length ? hard.map(r => {
@@ -1036,17 +1033,17 @@ async function renderAdminDashboard(key){
                   <td>${r.c}</td>
                   <td><b style="color:${rate < 60 ? "var(--red)" : "inherit"}">${rate}%</b></td>
                 </tr>`;
-              }).join("") : `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">Hakuna data ya kutosha ya masomo magumu bado.</td></tr>`}
+              }).join("") : `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">No difficulty trends recorded yet.</td></tr>`}
             </tbody>
           </table>
         </div>
 
-        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">📈 Masomo Yanayojaribiwa Zaidi (Popular Modules)</h3>
-        <p class="hint" style="margin:0 0 12px">Masomo yenye idadi kubwa zaidi ya majaribio.</p>
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">📈 Most Attempted Modules</h3>
+        <p class="hint" style="margin:0 0 12px">Modules with the highest learner engagement.</p>
         <div class="table-wrap" style="margin-bottom:28px">
           <table class="admin-table">
             <thead>
-              <tr><th>Somo (Module)</th><th>Track</th><th>Majaribio (Attempts)</th><th>Majibu Sahihi</th><th>Ufaulu (%)</th></tr>
+              <tr><th>Module</th><th>Track</th><th>Total Attempts</th><th>Correct Answers</th><th>Accuracy (%)</th></tr>
             </thead>
             <tbody>
               ${top.length ? top.map(r => {
@@ -1061,27 +1058,27 @@ async function renderAdminDashboard(key){
                   <td>${r.c}</td>
                   <td><b>${rate}%</b></td>
                 </tr>`;
-              }).join("") : `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">Hakuna data bado.</td></tr>`}
+              }).join("") : `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">No module data recorded yet.</td></tr>`}
             </tbody>
           </table>
         </div>
 
-        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">📅 Shughuli za Kila Siku (Daily Attempts)</h3>
-        <p class="hint" style="margin:0 0 12px">Idadi ya majaribio ya maswali kwa siku katika siku 30 zilizopita.</p>
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">📅 Daily Question Attempts (Last 30 Days)</h3>
+        <p class="hint" style="margin:0 0 12px">Number of questions attempted per day across the platform.</p>
         <div class="table-wrap">
           <table class="admin-table">
             <thead>
-              <tr><th>Tarehe (Day)</th><th>Majaribio ya Maswali (Quiz Attempts)</th></tr>
+              <tr><th>Date</th><th>Question Attempts</th></tr>
             </thead>
             <tbody>
-              ${daily.length ? daily.map(d => `<tr><td>${esc(d.day)}</td><td><b>${d.a}</b></td></tr>`).join("") : `<tr><td colspan="2" style="text-align:center;color:var(--muted);padding:18px">Hakuna shughuli zilizorekodiwa bado.</td></tr>`}
+              ${daily.length ? daily.map(d => `<tr><td>${esc(d.day)}</td><td><b>${d.a}</b></td></tr>`).join("") : `<tr><td colspan="2" style="text-align:center;color:var(--muted);padding:18px">No daily activity recorded yet.</td></tr>`}
             </tbody>
           </table>
         </div>
       </div>
     `;
   } catch (err) {
-    el.innerHTML = `<div class="err">Hitilafu: ${esc(err.message)}</div>`;
+    el.innerHTML = `<div class="err">Error loading insights: ${esc(err.message)}</div>`;
   }
 }
 

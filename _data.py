@@ -13,7 +13,7 @@ def M(track, mid, code, name, part, read, listen, mission, quiz, video=None):
 
 TRACKS = [
     {"id": "primary", "name": "Digital Foundations", "level": "Grade 4–6 · ages ~8–10",
-     "blurb": "Start here. Jua kompyuta ni nini, how to use it, and how to stay safe online."},
+     "blurb": "Start here. Learn what a computer is, how to use it, and how to stay safe online."},
     {"id": "junior", "name": "Computers & Networks", "level": "Grade 7–9 · ages ~12–15",
      "blurb": "Go deeper: inside the computer, how it runs fast, and how the whole internet connects."},
 ]
