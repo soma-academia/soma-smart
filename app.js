@@ -1,7 +1,8 @@
 /* Soma Smart — front-end application.
  * Aligned with the Kenya Institute of Curriculum Development (KICD) CBE curriculum.
- * Self-service accounts, guest mode, PWA offline caching, celebration screen,
- * and anonymous curriculum insights. No support desk or manual recovery.
+ * Local-first: progress lives on this device (backup/restore as a JSON file). Accounts are an
+ * optional "sync across devices" extra. PWA offline caching, celebration screen, and anonymous
+ * curriculum insights. No support desk or manual recovery.
  */
 (() => {
 "use strict";
@@ -10,11 +11,13 @@ const STEPS = ["read", "listen", "watch", "mission", "quiz"];
 const STEP_LABEL = { read: "SOMA", listen: "SIKIZA", watch: "TAZAMA", mission: "FANYA", quiz: "JARIBU" };
 const $app = document.getElementById("app"), $hud = document.getElementById("hud"), $modal = document.getElementById("modal-layer");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_GUEST_PROG = "somasmart.guest_prog", SS_ADMIN = "somasmart.admin_key";
+const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_PROG = "somasmart.progress",
+      LS_NAME = "somasmart.local_name", SS_ADMIN = "somasmart.admin_key";
+const LS_OLD_GUEST_PROG = "somasmart.guest_prog"; // pre-local-first guest store, migrated on boot
 
 /* ---------- state ---------- */
 let TOKEN = localStorage.getItem(LS_TOKEN) || "";
-let USER = null;       // {id, username, display, ageBand, isGuest}
+let USER = null;       // {id, username, display, ageBand, isLocal} — isLocal: no account, this device only
 let PROG = {};         // { moduleId: {reached,best,attempts,mastery,done} }
 let view = { name: "home" };
 let saveTimer = null;
@@ -24,49 +27,127 @@ const modsForTrack = tid => MODS.filter(m => m.track === tid);
 const modIndexInTrack = (tid, id) => modsForTrack(tid).findIndex(m => m.id === id);
 function ms(id){ return PROG[id] || (PROG[id] = { reached: 0, best: 0, attempts: 0, mastery: "locked", done: false }); }
 function unlocked(m){ const list = modsForTrack(m.track); const i = list.findIndex(x => x.id === m.id); return i <= 0 || ms(list[i - 1].id).done; }
-function masteryOf(id){ const s = ms(id); if (s.done) { if (s.best >= C.mastery.mastered) return "mastered"; if (s.best >= C.mastery.practised) return "practised"; return "learning"; } return s.reached > 0 ? "learning" : "locked"; }
+function masteryOf(id){ return levelOf(ms(id)); }
+function levelOf(s){ if (s.done) { if (s.best >= C.mastery.mastered) return "mastered"; if (s.best >= C.mastery.practised) return "practised"; return "learning"; } return s.reached > 0 ? "learning" : "locked"; }
 
 /* ---------- API ---------- */
 async function api(path, method, body, extraHeaders){
   const headers = { "Content-Type": "application/json", ...(extraHeaders || {}) };
   if (TOKEN) headers["Authorization"] = "Bearer " + TOKEN;
-  const r = await fetch("api/" + path, { method: method || "GET", headers, body: body ? JSON.stringify(body) : undefined });
+  // Never let a slow or dropped connection hang the app
+  const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 10000);
+  const offlineMsg = "Can't reach Soma Smart's server right now. You can keep learning without an account. Your progress is saved on this device.";
+  let r;
+  try {
+    r = await fetch("api/" + path, { method: method || "GET", headers, body: body ? JSON.stringify(body) : undefined, signal: ctl.signal });
+  } catch { throw new Error(offlineMsg); }
+  finally { clearTimeout(timer); }
   let data = null; try { data = await r.json(); } catch {}
-  if (!r.ok) throw new Error((data && data.error) || ("Error " + r.status));
+  if (!r.ok) throw new Error((data && data.error) || (r.status >= 500 || r.status === 404 ? offlineMsg : "Error " + r.status));
   return data;
 }
 
-async function loadProgress(){
-  if (USER && USER.isGuest) {
-    try { PROG = JSON.parse(localStorage.getItem(LS_GUEST_PROG) || "{}"); } catch { PROG = {}; }
-    return;
+/* ---------- progress: this device is the source of truth; the server is only an optional sync ---------- */
+const progKey = () => USER && !USER.isLocal ? LS_PROG + ".u" + USER.id : LS_PROG;
+function readLocal(key){
+  try { const p = JSON.parse(localStorage.getItem(key) || "{}"); return p && typeof p === "object" && !Array.isArray(p) ? p : {}; }
+  catch { return {}; }
+}
+function saveLocal(){
+  try { localStorage.setItem(progKey(), JSON.stringify(PROG)); return true; } catch { return false; }
+}
+
+// Keep only known modules and sane numbers (used for backups and server data)
+function cleanProgress(raw){
+  const out = {};
+  if (!raw || typeof raw !== "object") return out;
+  const n = (v, max) => Math.min(max, Math.max(0, Math.floor(+v) || 0));
+  for (const m of MODS) {
+    const s = raw[m.id];
+    if (!s || typeof s !== "object") continue;
+    out[m.id] = { reached: n(s.reached, STEPS.length), best: n(s.best, C.questionsPerQuiz), attempts: n(s.attempts, 1e6), done: !!s.done };
   }
+  return out;
+}
+
+// Combine two progress maps without ever losing work: furthest step, best score, done if done anywhere
+function mergeProgress(a, b){
+  const out = { ...a };
+  for (const [id, s] of Object.entries(cleanProgress(b))) {
+    const t = out[id];
+    out[id] = !t ? s : {
+      ...t,
+      reached: Math.max(t.reached || 0, s.reached),
+      best: Math.max(t.best || 0, s.best),
+      attempts: Math.max(t.attempts || 0, s.attempts),
+      done: !!(t.done || s.done)
+    };
+    out[id].mastery = levelOf(out[id]);
+  }
+  return out;
+}
+
+// Signed-in only: pull the account's progress, merge with this device, push the result back
+async function syncFromServer(){
+  if (!USER || USER.isLocal || !TOKEN) return;
   try {
     const d = await api("progress");
-    PROG = d.mods || {};
+    PROG = mergeProgress(PROG, d.mods || {});
+    saveLocal();
+    await api("progress", "PUT", { mods: PROG });
+    hudSync("saved");
   } catch {
-    PROG = {};
+    hudSync("offline");
   }
 }
 
 function queueSave(){
+  saveLocal();
+  if (!USER || USER.isLocal) { hudSync("local"); return; }
   clearTimeout(saveTimer);
   saveTimer = setTimeout(pushProgress, 700);
 }
 
 async function pushProgress(){
-  if (!USER) return;
-  if (USER.isGuest) {
-    try { localStorage.setItem(LS_GUEST_PROG, JSON.stringify(PROG)); hudSync("guest"); } catch {}
-    return;
-  }
-  if (!TOKEN) return;
+  if (!USER || USER.isLocal || !TOKEN) return;
+  if (!navigator.onLine) { hudSync("offline"); return; }
   try {
     await api("progress", "PUT", { mods: PROG });
     hudSync("saved");
   } catch {
     hudSync("offline");
   }
+}
+window.addEventListener("online", () => pushProgress());
+
+/* ---------- backup & restore (the zero-backend recovery story) ---------- */
+function exportBackup(){
+  const data = { app: "soma-smart", version: 1, exportedAt: new Date().toISOString(), name: USER.display, mods: cleanProgress(PROG) };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 1)], { type: "application/json" }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `soma-smart-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+async function importBackup(file){
+  const bad = new Error("That file is not a Soma Smart backup.");
+  if (!file || file.size > 1024 * 1024) throw bad;
+  let data;
+  try { data = JSON.parse(await file.text()); } catch { throw bad; }
+  if (!data || data.app !== "soma-smart" || !data.mods || typeof data.mods !== "object") throw bad;
+  const doneBefore = MODS.filter(m => ms(m.id).done).length;
+  PROG = mergeProgress(PROG, data.mods);
+  if (USER.isLocal && typeof data.name === "string" && data.name.trim() && !localStorage.getItem(LS_NAME)) setLocalName(data.name);
+  queueSave();
+  return MODS.filter(m => ms(m.id).done).length - doneBefore;
+}
+
+function setLocalName(name){
+  name = String(name || "").trim().slice(0, 30);
+  try { name ? localStorage.setItem(LS_NAME, name) : localStorage.removeItem(LS_NAME); } catch {}
+  if (USER && USER.isLocal) USER.display = name || "Learner";
 }
 
 function track(m, correct){
@@ -100,7 +181,7 @@ function closeModal(){
 }
 
 /* ---------- HUD ---------- */
-let syncState = "saved";
+let syncState = "local";
 function hudSync(s){ syncState = s; hud(); }
 function hud(){
   const linkReport = document.getElementById("link-report");
@@ -112,31 +193,30 @@ function hud(){
   if (linkReport) linkReport.style.display = "inline";
 
   const total = MODS.length, done = MODS.filter(m => ms(m.id).done).length;
-  const isGuest = !!USER.isGuest;
+  const isLocal = !!USER.isLocal;
   const syncLabels = {
-    saved: ["ok", "● Saved"],
-    saving: ["ok", "Saving..."],
-    offline: ["err", "▲ Offline"],
-    guest: ["ok", "💾 Saved to Browser"]
+    local: ["ok", "💾 Saved on this device"],
+    saved: ["ok", "● Saved & synced"],
+    saving: ["ok", "Syncing…"],
+    offline: ["ok", "💾 Saved on device · will sync later"]
   };
   const sync = syncLabels[syncState] || ["ok", ""];
 
   $hud.innerHTML = `
     <span class="who">
       ${esc(USER.display)}
-      ${isGuest ? `<span class="badge-guest" title="Guest mode: progress is saved in this browser">Guest</span>` : ""}
     </span>
     <span class="prog">${done}/${total} done</span>
     <span class="sync ${sync[0]}">${sync[1]}</span>
-    ${isGuest ? `<button class="btn gold small" id="upgrade-guest" title="Create an account to save your progress online">Save Online</button>` : ""}
+    <button class="btn gold small" id="hud-backup" title="Download or restore a backup of your progress">Backup</button>
     <button class="btn ghost small" id="hud-report" title="View your learning progress report">Report</button>
-    <button class="btn ghost small" id="logout">${isGuest ? "Exit Guest" : "Log Out"}</button>
+    ${isLocal ? "" : `<button class="btn ghost small" id="logout">Log Out</button>`}
   `;
 
-  document.getElementById("logout").onclick = logout;
+  const lo = document.getElementById("logout");
+  if (lo) lo.onclick = logout;
   document.getElementById("hud-report").onclick = showLearnerReport;
-  const up = document.getElementById("upgrade-guest");
-  if (up) up.onclick = () => renderAuth("signup");
+  document.getElementById("hud-backup").onclick = showBackup;
 }
 
 /* ---------- router ---------- */
@@ -153,7 +233,7 @@ function go(v){
 function render(){
   hud();
   if (view.name === "admin") return renderAdmin();
-  if (!USER) return renderAuth();
+  if (view.name === "auth") return renderAuth(view.mode);
   if (view.name === "home") return renderHome();
   if (view.name === "track") return renderTrack();
   if (view.name === "mod") return renderModule();
@@ -161,7 +241,7 @@ function render(){
 }
 
 document.getElementById("brand").onclick = () => {
-  if (view.name === "admin") { go({ name: USER ? "home" : "auth" }); return; }
+  if (view.name === "admin") { go({ name: "home" }); return; }
   USER && go({ name: "home" });
 };
 const lr = document.getElementById("link-report");
@@ -170,32 +250,95 @@ const la = document.getElementById("link-admin");
 if (la) la.onclick = e => { e.preventDefault(); go({ name: "admin" }); };
 
 /* ---------- auth screens & guest mode ---------- */
-function logout(){
-  TOKEN = ""; USER = null; PROG = {};
+async function logout(){
+  clearTimeout(saveTimer);
+  await pushProgress();
+  // Drop this account's copy from a shared device only once the server has it
+  if (syncState === "saved") { try { localStorage.removeItem(progKey()); } catch {} }
   localStorage.removeItem(LS_TOKEN);
   localStorage.removeItem(LS_USER);
+  startLocalMode();
   go({ name: "home" });
+  toast("Logged out. You can keep learning on this device.");
 }
 
-function startGuestMode(){
-  const guestProg = JSON.parse(localStorage.getItem(LS_GUEST_PROG) || "{}");
-  USER = { id: "guest", username: "guest", display: "Guest Learner", ageBand: "p", isGuest: true };
+// The default: learn straight away, no account, progress kept on this device
+function startLocalMode(){
   TOKEN = "";
-  PROG = guestProg;
-  localStorage.setItem(LS_USER, JSON.stringify(USER));
-  hudSync("guest");
-  go({ name: "home" });
-  toast("Welcome to Soma Smart! Learning as Guest.");
+  USER = { id: "local", username: "", display: localStorage.getItem(LS_NAME) || "Learner", isLocal: true };
+  PROG = readLocal(LS_PROG);
+  hudSync("local");
+}
+
+// One-time move of the old guest store into the local-first store
+function migrateOldGuestData(){
+  try {
+    const old = readLocal(LS_OLD_GUEST_PROG);
+    if (Object.keys(old).length) localStorage.setItem(LS_PROG, JSON.stringify(mergeProgress(readLocal(LS_PROG), old)));
+    localStorage.removeItem(LS_OLD_GUEST_PROG);
+    const u = JSON.parse(localStorage.getItem(LS_USER) || "null");
+    if (u && u.isGuest) localStorage.removeItem(LS_USER);
+  } catch {}
+}
+
+function showBackup(){
+  const isLocal = !!USER.isLocal;
+  openModal(`
+    <h2 style="margin:0 0 4px;font-family:Nunito,sans-serif">Back up your progress</h2>
+    <p class="hint" style="margin:0 0 18px">Your progress is saved on this device. Download a backup file to keep it safe, or to carry it to another phone or computer.</p>
+
+    ${isLocal ? `
+      <form id="f-name" style="margin-bottom:18px">
+        <label class="q" for="ln">Your name <span class="hint">(shown on your report and celebration)</span></label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <input class="field" id="ln" maxlength="30" placeholder="e.g. Zuri Wanjiku" value="${esc(localStorage.getItem(LS_NAME) || "")}" style="flex:1;min-width:0" />
+          <button class="btn ghost small" type="submit">Save</button>
+        </div>
+      </form>` : ""}
+
+    <div class="row" style="gap:10px;flex-wrap:wrap">
+      <button class="btn" id="bk-export">⬇ Download backup</button>
+      <button class="btn ghost" id="bk-import">⬆ Restore from backup</button>
+      <input type="file" id="bk-file" accept="application/json,.json" hidden />
+    </div>
+    <p class="hint" style="margin:8px 0 0">Restoring adds the backup's progress to this device. Nothing you have already done is lost.</p>
+    <div class="err" id="bk-msg" style="margin-top:8px"></div>
+
+    <div class="disclaim" style="margin-top:20px">
+      ${isLocal
+        ? `<b>Sync across devices (optional).</b> You never need an account to learn. If you want progress to follow you between devices automatically, you can <a href="#" id="bk-auth">create a free account or log in</a>.`
+        : `<b>Signed in as ${esc(USER.username)}.</b> Progress is saved on this device first and syncs to your account whenever you are online.`}
+    </div>
+  `);
+
+  const msg = document.getElementById("bk-msg"), file = document.getElementById("bk-file");
+  document.getElementById("bk-export").onclick = () => { exportBackup(); toast("Backup downloaded."); };
+  document.getElementById("bk-import").onclick = () => file.click();
+  file.onchange = async () => {
+    try {
+      const gained = await importBackup(file.files[0]);
+      closeModal();
+      render();
+      toast(gained > 0 ? `Backup restored: ${gained} more module${gained === 1 ? "" : "s"} completed.` : "Backup restored. You were already up to date.");
+    } catch (err) {
+      msg.textContent = err.message;
+    }
+    file.value = "";
+  };
+  const fn = document.getElementById("f-name");
+  if (fn) fn.onsubmit = e => { e.preventDefault(); setLocalName(document.getElementById("ln").value); hud(); render(); toast("Name saved."); };
+  const ba = document.getElementById("bk-auth");
+  if (ba) ba.onclick = e => { e.preventDefault(); closeModal(); go({ name: "auth", mode: "signup" }); };
 }
 
 function renderAuth(mode){
   mode = mode || "login";
   const isNew = mode === "signup", isReset = mode === "reset";
-  const hasGuestProg = Object.keys(JSON.parse(localStorage.getItem(LS_GUEST_PROG) || "{}")).length > 0;
+  const hasLocalProg = MODS.some(m => (readLocal(LS_PROG)[m.id] || {}).reached > 0);
 
   $app.innerHTML = `<section class="auth">
     <h1>Soma <em>Smart</em></h1>
-    <p class="sub">${esc(C.tagline)}</p>
+    <p class="sub">Accounts are optional. They only sync your progress across devices.</p>
 
     <div class="tabs">
       <button class="btn ${mode==='login'?'':'ghost'} small" data-m="login">Log in</button>
@@ -249,10 +392,10 @@ function renderAuth(mode){
     <div class="guest-divider"><span>OR</span></div>
 
     <div class="panel" style="text-align:center;background:#f9fcf9">
-      <h3 style="margin:0 0 6px;font-family:Nunito,sans-serif">Continue as Guest</h3>
-      <p class="hint" style="margin:0 0 14px">Start learning immediately without creating an account. Your progress is saved in this browser.</p>
-      <button class="btn ghost" id="btn-guest">▶ Continue as Guest</button>
-      ${hasGuestProg ? `<p class="hint" style="margin-top:8px;color:var(--green)">✓ Found previously saved guest lessons on this device.</p>` : ""}
+      <h3 style="margin:0 0 6px;font-family:Nunito,sans-serif">No account needed</h3>
+      <p class="hint" style="margin:0 0 14px">You can learn everything without an account. Progress is saved on this device. Use <b>Backup</b> to keep a copy.</p>
+      <button class="btn ghost" id="btn-local">← Keep learning without an account</button>
+      ${hasLocalProg && isNew ? `<p class="hint" style="margin-top:8px;color:var(--green)">✓ Your progress on this device will be added to your new account.</p>` : ""}
     </div>
 
     <p class="disclaim">
@@ -264,7 +407,7 @@ function renderAuth(mode){
   const er = document.getElementById("er"), pw = document.getElementById("pw"), eye = document.getElementById("eye");
   if (eye) eye.onclick = () => { const sh = pw.type === "password"; pw.type = sh ? "text" : "password"; eye.textContent = sh ? "Hide" : "Show"; };
   const tr = document.getElementById("toreset"); if (tr) tr.onclick = e => { e.preventDefault(); renderAuth("reset"); };
-  document.getElementById("btn-guest").onclick = startGuestMode;
+  document.getElementById("btn-local").onclick = () => go({ name: "home" });
 
   const unInput = document.getElementById("un");
   if (unInput) unInput.focus();
@@ -300,17 +443,12 @@ function renderAuth(mode){
       localStorage.setItem(LS_TOKEN, TOKEN);
       localStorage.setItem(LS_USER, JSON.stringify(USER));
 
-      // If guest had local progress, migrate it to the new account
-      const guestProg = JSON.parse(localStorage.getItem(LS_GUEST_PROG) || "{}");
-      if (isNew && Object.keys(guestProg).length > 0) {
-        PROG = guestProg;
-        await pushProgress();
-        localStorage.removeItem(LS_GUEST_PROG);
-        toast(`Welcome, ${USER.display}! Your guest progress has been saved to your account.`);
-      } else {
-        await loadProgress();
-        toast(`Welcome, ${USER.display}!`);
-      }
+      // Start from this account's copy on the device; a new account also takes this device's progress
+      PROG = readLocal(progKey());
+      if (isNew) PROG = mergeProgress(PROG, readLocal(LS_PROG));
+      saveLocal();
+      await syncFromServer();
+      toast(isNew && hasLocalProg ? `Welcome, ${USER.display}! Your progress on this device is now in your account.` : `Welcome, ${USER.display}!`);
 
       go({ name: "home" });
     } catch (err) {
@@ -897,7 +1035,7 @@ function showLearnerReport(){
 
   openModal(`
     <h2 style="margin:0 0 4px;font-family:Nunito,sans-serif">Learner Progress Report</h2>
-    <p class="hint" style="margin:0 0 18px">Learning summary for <b>${esc(USER.display)}</b> (${esc(USER.username)})</p>
+    <p class="hint" style="margin:0 0 18px">Learning summary for <b>${esc(USER.display)}</b>${USER.username ? ` (${esc(USER.username)})` : ""}</p>
 
     <div class="stat-grid" style="margin-bottom:18px">
       <div class="stat-card">
@@ -975,7 +1113,7 @@ async function renderAdmin(){
         </form>
       </section>
     `;
-    document.getElementById("bk-home").onclick = () => go({ name: USER ? "home" : "auth" });
+    document.getElementById("bk-home").onclick = () => go({ name: "home" });
     document.getElementById("f-admin").onsubmit = async e => {
       e.preventDefault();
       const key = document.getElementById("ak").value.trim();
@@ -1010,10 +1148,10 @@ async function renderAdminDashboard(key){
     <div id="admin-view">Loading insights…</div>
   `;
 
-  document.getElementById("adm-back").onclick = () => go({ name: USER ? "home" : "auth" });
+  document.getElementById("adm-back").onclick = () => go({ name: "home" });
   document.getElementById("adm-logout").onclick = () => {
     sessionStorage.removeItem(SS_ADMIN);
-    go({ name: USER ? "home" : "auth" });
+    go({ name: "home" });
   };
 
   const el = document.getElementById("admin-view");
@@ -1122,26 +1260,22 @@ async function renderAdminDashboard(key){
 (async function boot(){
   getAvailableVoices();
 
-  const savedUser = JSON.parse(localStorage.getItem(LS_USER) || "null");
-  if (savedUser && savedUser.isGuest) {
+  migrateOldGuestData();
+  let savedUser = null;
+  try { savedUser = JSON.parse(localStorage.getItem(LS_USER) || "null"); } catch {}
+
+  if (TOKEN && savedUser) {
+    // Show this device's copy immediately; sync in the background without blocking learning
     USER = savedUser;
-    TOKEN = "";
-    try { PROG = JSON.parse(localStorage.getItem(LS_GUEST_PROG) || "{}"); } catch { PROG = {}; }
-    hudSync("guest");
+    PROG = readLocal(progKey());
+    hudSync(navigator.onLine ? "saving" : "offline");
     render();
+    await syncFromServer();
+    if (view.name === "home" || view.name === "track") render();
     return;
   }
 
-  if (TOKEN && savedUser) {
-    USER = savedUser;
-    try {
-      await loadProgress();
-      hudSync("saved");
-    } catch {
-      hudSync("offline");
-    }
-  }
-
+  startLocalMode();
   render();
 })();
 
