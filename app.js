@@ -27,8 +27,8 @@ function unlocked(m){ const list = modsForTrack(m.track); const i = list.findInd
 function masteryOf(id){ const s = ms(id); if (s.done) { if (s.best >= C.mastery.mastered) return "mastered"; if (s.best >= C.mastery.practised) return "practised"; return "learning"; } return s.reached > 0 ? "learning" : "locked"; }
 
 /* ---------- API ---------- */
-async function api(path, method, body){
-  const headers = { "Content-Type": "application/json" };
+async function api(path, method, body, extraHeaders){
+  const headers = { "Content-Type": "application/json", ...(extraHeaders || {}) };
   if (TOKEN) headers["Authorization"] = "Bearer " + TOKEN;
   const r = await fetch("api/" + path, { method: method || "GET", headers, body: body ? JSON.stringify(body) : undefined });
   let data = null; try { data = await r.json(); } catch {}
@@ -982,7 +982,7 @@ async function renderAdmin(){
       const errEl = document.getElementById("admin-err");
       errEl.textContent = "Verifying key...";
       try {
-        await api(`insights?key=${encodeURIComponent(key)}`);
+        await api("insights", "GET", null, { "X-Admin-Key": key });
         sessionStorage.setItem(SS_ADMIN, key);
         renderAdminDashboard(key);
       } catch (err) {
@@ -1018,7 +1018,7 @@ async function renderAdminDashboard(key){
 
   const el = document.getElementById("admin-view");
   try {
-    const res = await api(`insights?key=${encodeURIComponent(key)}`);
+    const res = await api("insights", "GET", null, { "X-Admin-Key": key });
     const o = res.overview || {};
     const top = res.topModules || [];
     const hard = res.hardest || [];

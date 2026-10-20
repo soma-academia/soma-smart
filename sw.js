@@ -1,5 +1,5 @@
 /* Soma Smart — Service Worker for offline CBE learning */
-const CACHE_NAME = "soma-smart-v1";
+const CACHE_NAME = "soma-smart-v2";
 const STATIC_ASSETS = [
   "./",
   "index.html",
@@ -36,7 +36,26 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Handle static assets
+  // App shell (own origin): network first so a new deploy shows on the next load,
+  // falling back to the cached copy when offline or on a dropped connection.
+  if (url.origin === location.origin) {
+    event.respondWith(
+      fetch(event.request).then(networkResponse => {
+        if (networkResponse && networkResponse.status === 200) {
+          const respClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, respClone));
+        }
+        return networkResponse;
+      }).catch(() =>
+        caches.match(event.request).then(cached =>
+          cached || (event.request.mode === "navigate" ? caches.match("index.html") : undefined)
+        )
+      )
+    );
+    return;
+  }
+
+  // Third-party assets (fonts): cache first, refresh in background
   event.respondWith(
     caches.match(event.request).then(cachedResponse => {
       if (cachedResponse) {

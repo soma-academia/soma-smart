@@ -4,7 +4,8 @@
  *
  * Required Cloudflare Pages Bindings:
  *   D1 database binding: DB        (database: soma-smart, schema in worker/schema.sql)
- *   Environment variable: ADMIN_KEY (required long secret for /api/insights; fails closed if unset)
+ *   Environment variable: TOKEN_SECRET (required long secret that signs login tokens; fails closed if unset)
+ *   Environment variable: ADMIN_KEY    (required long secret for /api/insights; must differ from TOKEN_SECRET)
  *
  * Endpoints:
  *   GET  /api/health                                                      -> {ok:true, d1:bool, now:number}
@@ -14,7 +15,7 @@
  *   GET  /api/progress            (Authorization: Bearer <token>)         -> {mods:{...}}
  *   PUT  /api/progress  {mods}    (Authorization: Bearer <token>)         -> {ok:true}
  *   POST /api/event    {track, module, correct}                          -> {ok:true}  (anonymous)
- *   GET  /api/insights?key=ADMIN_KEY                                      -> {overview, topModules, hardest, daily}
+ *   GET  /api/insights            (X-Admin-Key: <ADMIN_KEY>)              -> {overview, topModules, hardest, daily}
  * Everything else -> static assets.
  */
 
@@ -36,7 +37,7 @@ function getCorsHeaders(request) {
   };
   if (isAllowed) {
     h["Access-Control-Allow-Origin"] = origin;
-    h["Access-Control-Allow-Headers"] = "Content-Type, Authorization";
+    h["Access-Control-Allow-Headers"] = "Content-Type, Authorization, X-Admin-Key";
     h["Access-Control-Allow-Methods"] = "GET, POST, PUT, OPTIONS";
     h["Vary"] = "Origin";
   }
@@ -66,17 +67,18 @@ const BLOCKED_USERNAMES = new Set([
   "staff", "security", "null", "undefined", "anonymous", "guest", "test"
 ]);
 
-// Fail-closed token signing: relies strictly on env.ADMIN_KEY
+// Fail-closed token signing: relies strictly on env.TOKEN_SECRET (kept separate from ADMIN_KEY,
+// so knowing the insights key never lets anyone forge a learner's session)
 async function makeToken(env, user) {
-  if (!env.ADMIN_KEY) throw new Error("ADMIN_KEY_MISSING");
+  if (!env.TOKEN_SECRET) throw new Error("TOKEN_SECRET_MISSING");
   const t = now();
-  const sig = await sha256(user.id + "." + t + "." + user.pass_hash + "." + env.ADMIN_KEY);
+  const sig = await sha256(user.id + "." + t + "." + user.pass_hash + "." + env.TOKEN_SECRET);
   return btoa(user.id + "." + t + "." + sig);
 }
 
 // Validates token signature and 30-day expiration window
 async function userFromToken(env, token) {
-  if (!env.ADMIN_KEY) return null;
+  if (!env.TOKEN_SECRET) return null;
   try {
     const raw = atob(token);
     const parts = raw.split(".");
@@ -86,7 +88,7 @@ async function userFromToken(env, token) {
     if (now() - (+t) > 30 * 86400 * 1000) return null;
     const u = await env.DB.prepare("SELECT * FROM users WHERE id=?1").bind(+id).first();
     if (!u) return null;
-    const expect = await sha256(u.id + "." + t + "." + u.pass_hash + "." + env.ADMIN_KEY);
+    const expect = await sha256(u.id + "." + t + "." + u.pass_hash + "." + env.TOKEN_SECRET);
     return expect === sig ? u : null;
   } catch {
     return null;
@@ -144,6 +146,7 @@ export default {
         service: "soma-smart",
         d1: !!env.DB,
         adminKeyConfigured: !!env.ADMIN_KEY,
+        tokenSecretConfigured: !!env.TOKEN_SECRET,
         now: now()
       }, 200, request);
     }
@@ -153,9 +156,12 @@ export default {
       return json({ error: "D1 database binding 'DB' is missing in Cloudflare settings" }, 501, request);
     }
 
-    // Fail closed: ADMIN_KEY must be configured
-    if (!env.ADMIN_KEY) {
-      return json({ error: "Server configuration error: ADMIN_KEY environment variable is missing" }, 500, request);
+    // Fail closed: both secrets must be configured, and must not be the same value
+    if (!env.ADMIN_KEY || !env.TOKEN_SECRET) {
+      return json({ error: "Server configuration error: ADMIN_KEY and TOKEN_SECRET environment variables are required" }, 500, request);
+    }
+    if (env.ADMIN_KEY === env.TOKEN_SECRET) {
+      return json({ error: "Server configuration error: ADMIN_KEY and TOKEN_SECRET must be different" }, 500, request);
     }
 
     const clientIP = request.headers.get("CF-Connecting-IP") || "ip_anon";
@@ -297,8 +303,9 @@ export default {
 
       // ---------- anonymous curriculum insights (NO PII, NO password reset) ----------
       if (p === "/api/insights" && request.method === "GET") {
-        const key = url.searchParams.get("key");
-        if (!key || key !== env.ADMIN_KEY) {
+        // Key travels in a header, never the URL, so it stays out of history and access logs
+        const key = request.headers.get("X-Admin-Key");
+        if (!key || (await sha256(key)) !== (await sha256(env.ADMIN_KEY))) {
           return json({ error: "unauthorized" }, 401, request);
         }
 
