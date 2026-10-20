@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="sw-KE">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Soma Smart · Free Digital Literacy (CBC/CBE)</title>
+<meta name="description" content="Soma Smart — masomo ya bure ya kompyuta na intaneti kwa wanafunzi wa Kenya (Grade 4–9 CBC/CBE). Jifunze, fanya majaribio, na pata cheti cha ustadi." />
+<meta name="robots" content="index, follow" />
+<meta name="theme-color" content="#2e7d4f" />
+<meta property="og:title" content="Soma Smart · Free Digital Literacy" />
+<meta property="og:description" content="Learn computers and the internet, free. For Kenyan learners, Grade 4–9. Practical, curriculum-aligned lessons." />
+<meta property="og:type" content="website" />
+<link rel="icon" type="image/svg+xml" href="icon.svg" />
+<link rel="apple-touch-icon" href="icon.svg" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&family=Roboto:wght@400;500;700&display=swap" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header id="top">
+  <button class="brand" id="brand" title="Mwanzo / Home">Soma<span>Smart</span></button>
+  <div class="hud" id="hud"></div>
+</header>
+<main id="app"><noscript><p style="padding:24px">Soma Smart inahitaji JavaScript. Tafadhali iwezeshe kwenye browser yako.</p></noscript></main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Bure &amp; wazi · Free &amp; open · Digital literacy for everyone</span>
+    <span class="foot-links">
+      <a href="#" id="link-report" style="display:none">📊 Ripoti ya Mwanafunzi</a>
+      <a href="#" id="link-admin">🔑 Mwalimu / Msimamizi</a>
+    </span>
+  </div>
+  <span class="muted">Independent learning project aligned to CBC/CBE. Practical Kenyan tech literacy.</span>
+</footer>
+<div id="toast" role="status"></div>
+<div id="modal-layer"></div>
+<script src="content.js"></script>
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

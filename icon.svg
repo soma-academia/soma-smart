@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d5a37"/>
+      <stop offset="100%" stop-color="#2e7d4f"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="100%" stop-color="#e8a21c"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
+  <!-- Monitor frame -->
+  <rect x="76" y="90" width="360" height="250" rx="28" fill="#ffffff" opacity="0.96"/>
+  <rect x="96" y="110" width="320" height="190" rx="16" fill="#14241c"/>
+  <!-- Stand -->
+  <path d="M226 340 L286 340 L300 400 L212 400 Z" fill="#ffffff" opacity="0.9"/>
+  <rect x="186" y="400" width="140" height="22" rx="11" fill="url(#gold)"/>
+  <!-- Screen content: Book + Light / Sprout -->
+  <path d="M256 160 C230 145 190 148 150 162 L150 256 C190 242 230 240 256 256 C282 240 322 242 362 256 L362 162 C322 148 282 145 256 160 Z" fill="none" stroke="#2e7d4f" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="256" y1="160" x2="256" y2="256" stroke="#2e7d4f" stroke-width="10"/>
+  <!-- Star / Spark of Knowledge -->
+  <circle cx="256" cy="138" r="16" fill="url(#gold)"/>
+  <circle cx="200" cy="188" r="6" fill="#e8a21c"/>
+  <circle cx="312" cy="188" r="6" fill="#e8a21c"/>
+</svg>

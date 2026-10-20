@@ -1,0 +1,8 @@
+# Build helpers + Python cache (content.js IS committed; it's generated from these)
+__pycache__/
+*.pyc
+# OS cruft
+.DS_Store
+# Local Wrangler state
+.wrangler/
+node_modules/
