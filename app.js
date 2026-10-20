@@ -1,6 +1,8 @@
 /* Soma Smart — front-end.
- * Supports Cloudflare D1 accounts, offline guest mode, PWA, mastery certificates,
- * and teacher/admin analytics. Aligned with CBC/CBE digital literacy.
+ * Aligned with CBC/CBE digital literacy for Kenyan learners.
+ * Self-service accounts, offline guest mode, PWA support, mastery certificates,
+ * and anonymous aggregate curriculum analytics.
+ * No support desk or admin account recovery.
  */
 (() => {
 "use strict";
@@ -196,6 +198,12 @@ function renderAuth(mode){
     <h1>Soma <em>Smart</em></h1>
     <p class="sub">${esc(C.tagline)}</p>
 
+    <!-- Explicit No-Support Notice -->
+    <div class="no-support-banner" style="background:#fff8e6;border:2px solid var(--gold);border-radius:12px;padding:12px 16px;margin-bottom:16px;font-size:14px;color:#5a3f05;line-height:1.45">
+      <b>⚠️ Muhimu: Hakuna msaada wa kurejesha akaunti / No account-recovery support:</b><br/>
+      Soma Smart ni ya bure na ya kujiendesha mwenyewe. Weka recovery code ukijisajili. Ukisahau password na huna recovery code, fungua akaunti mpya au soma kama mgeni. Hatuna dawati wala email ya kurejesha password.
+    </div>
+
     <div class="tabs">
       <button class="btn ${mode==='login'?'':'ghost'} small" data-m="login">Ingia (Log in)</button>
       <button class="btn ${isNew?'':'ghost'} small" data-m="signup">Jisajili (Sign up)</button>
@@ -222,13 +230,13 @@ function renderAuth(mode){
           <option value="p">Grade 4–6 (Digital Foundations)</option>
           <option value="j">Grade 7–9 (Computers & Networks)</option>
         </select>
-        <label class="q" for="rc">Recovery code <span class="hint">(neno la siri litakalokusaidia ukisahau nenosiri)</span></label>
+        <label class="q" for="rc">Recovery code <span class="hint">(neno la siri litakalokusaidia ukisahau nenosiri — liandike mahali salama!)</span></label>
         <input class="field" id="rc" maxlength="40" placeholder="e.g. simba2026" />
       ` : ""}
 
       ${isReset ? `
         <label class="q" for="rc">Recovery code</label>
-        <input class="field" id="rc" maxlength="40" required />
+        <input class="field" id="rc" maxlength="40" required placeholder="Neno lako la siri uliloweka wakati wa kujisajili" />
         <label class="q" for="np">New password</label>
         <input class="field" id="np" type="password" maxlength="60" required />
       ` : ""}
@@ -239,7 +247,7 @@ function renderAuth(mode){
         <span class="hint">
           ${isNew
             ? "Hakuna email inayohitajika. Andika username na password yako mahali salama."
-            : "Umesahau login? <a href='#' id='toreset'>Tumia recovery code</a>."}
+            : "Umesahau login? <a href='#' id='toreset'>Tumia recovery code</a>, au fungua akaunti mpya."}
         </span>
         <button class="btn" id="go" type="submit">${isNew ? "Anza Kujifunza" : isReset ? "Badilisha Nenosiri" : "Ingia"}</button>
       </div>
@@ -253,8 +261,6 @@ function renderAuth(mode){
       <button class="btn ghost" id="btn-guest">▶ Endelea Kama Mgeni</button>
       ${hasGuestProg ? `<p class="hint" style="margin-top:8px;color:var(--green)">✓ Kuna masomo yaliyohifadhiwa kwenye kifaa hiki.</p>` : ""}
     </div>
-
-    <p class="disclaim">Soma Smart haitumii email. Ukisahau login na huna recovery code, fungua akaunti mpya au jifunze kama mgeni.</p>
   </section>`;
 
   $app.querySelectorAll("[data-m]").forEach(b => b.onclick = () => renderAuth(b.dataset.m));
@@ -297,7 +303,7 @@ function renderAuth(mode){
       localStorage.setItem(LS_TOKEN, TOKEN);
       localStorage.setItem(LS_USER, JSON.stringify(USER));
 
-      // If guest had local progress, migrate it to the new account!
+      // If guest had local progress, migrate it to the new account
       const guestProg = JSON.parse(localStorage.getItem(LS_GUEST_PROG) || "{}");
       if (isNew && Object.keys(guestProg).length > 0) {
         PROG = guestProg;
@@ -916,24 +922,22 @@ function showLearnerReport(){
   };
 }
 
-/* ---------- ADMIN / MWALIMU DASHBOARD ---------- */
-let adminData = { users: [], insights: null };
-
+/* ---------- CURRICULUM INSIGHTS (ANONYMOUS AGGREGATE ONLY) ---------- */
 async function renderAdmin(){
   let adminKey = sessionStorage.getItem(SS_ADMIN) || "";
   if (!adminKey) {
     $app.innerHTML = `
       <section class="auth">
-        <button class="back" id="bk-home">← Rudi kwenye Tovuti</button>
-        <h1>Mwalimu <em>/ Admin</em></h1>
-        <p class="sub">Weka ADMIN_KEY ili kutazama takwimu za wanafunzi na kozi.</p>
+        <button class="back" id="bk-home">← Rudi kwenye Masomo</button>
+        <h1>Takwimu za <em>Mtaala</em></h1>
+        <p class="sub">Weka ADMIN_KEY ili kutazama takwimu za mtaala na masomo (Anonymous insights only).</p>
         <form class="panel" id="f-admin">
           <label class="q" for="ak">ADMIN_KEY</label>
           <input class="field" type="password" id="ak" required placeholder="Weka secret key ya msimamizi" />
           <div class="err" id="admin-err"></div>
           <div class="stepFoot">
             <span></span>
-            <button class="btn" type="submit">Fungua Dashibodi</button>
+            <button class="btn" type="submit">Fungua Takwimu</button>
           </div>
         </form>
       </section>
@@ -945,9 +949,8 @@ async function renderAdmin(){
       const errEl = document.getElementById("admin-err");
       errEl.textContent = "Inathibitisha...";
       try {
-        const u = await api(`admin/users?key=${encodeURIComponent(key)}`);
+        await api(`insights?key=${encodeURIComponent(key)}`);
         sessionStorage.setItem(SS_ADMIN, key);
-        adminData.users = u.users || [];
         renderAdminDashboard(key);
       } catch (err) {
         errEl.textContent = "Key sio sahihi au mtandao umekatika.";
@@ -963,16 +966,12 @@ async function renderAdminDashboard(key){
     <div class="admin-header">
       <div>
         <button class="back" id="adm-back">← Rudi kwenye Masomo</button>
-        <h2 style="margin:0;font-family:Nunito,sans-serif">Dashibodi ya Mwalimu & Msimamizi</h2>
+        <h2 style="margin:0;font-family:Nunito,sans-serif">Takwimu za Mtaala (Curriculum Insights)</h2>
+        <p class="hint" style="margin:4px 0 0">Muhtasari wa jumla wa masomo na ufaulu wa wanafunzi (Hakuna data ya siri wala majina ya wanafunzi).</p>
       </div>
       <div class="row">
-        <button class="btn ghost small" id="adm-logout">Funga Admin</button>
+        <button class="btn ghost small" id="adm-logout">Toka</button>
       </div>
-    </div>
-
-    <div class="admin-tabs">
-      <button class="btn small" id="tab-learners">Wanafunzi (Learners)</button>
-      <button class="btn ghost small" id="tab-insights">Takwimu za Masomo (Insights)</button>
     </div>
 
     <div id="admin-view">Inapakia takwimu…</div>
@@ -984,243 +983,105 @@ async function renderAdminDashboard(key){
     go({ name: USER ? "home" : "auth" });
   };
 
-  const tLearners = document.getElementById("tab-learners");
-  const tInsights = document.getElementById("tab-insights");
-
-  tLearners.onclick = () => {
-    tLearners.classList.remove("ghost");
-    tInsights.classList.add("ghost");
-    drawLearnersTab(key);
-  };
-  tInsights.onclick = () => {
-    tInsights.classList.remove("ghost");
-    tLearners.classList.add("ghost");
-    drawInsightsTab(key);
-  };
-
-  drawLearnersTab(key);
-}
-
-async function drawLearnersTab(key){
   const el = document.getElementById("admin-view");
-  if (!el) return;
-  el.innerHTML = "Inapakia wanafunzi…";
-
-  try {
-    const res = await api(`admin/users?key=${encodeURIComponent(key)}`);
-    const users = res.users || [];
-    adminData.users = users;
-
-    const totalUsers = users.length;
-    const totalDone = users.reduce((acc, u) => acc + (u.done || 0), 0);
-    const avgDone = totalUsers ? (totalDone / totalUsers).toFixed(1) : 0;
-
-    el.innerHTML = `
-      <div class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-val">${totalUsers}</div>
-          <div class="stat-lbl">Jumla ya Wanafunzi</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val" style="color:var(--teal)">${avgDone}</div>
-          <div class="stat-lbl">Wastani wa Masomo / Mwanafunzi</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val" style="color:var(--gold-d)">${users.filter(u => u.done >= 5).length}</div>
-          <div class="stat-lbl">Wanafunzi Wenye 5+ Modules</div>
-        </div>
-      </div>
-
-      <div class="row" style="margin-bottom:14px;justify-content:space-between;flex-wrap:wrap">
-        <input class="field" id="u-search" placeholder="Tafuta jina au username…" style="max-width:320px;padding:9px 12px;font-size:15px" />
-        <button class="btn ghost small" id="export-csv">📥 Pakua CSV</button>
-      </div>
-
-      <div class="table-wrap">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Username</th>
-              <th>Jina</th>
-              <th>Track</th>
-              <th>Modules</th>
-              <th>Kazi ya Mwisho</th>
-              <th>Vitendo</th>
-            </tr>
-          </thead>
-          <tbody id="user-rows"></tbody>
-        </table>
-      </div>
-    `;
-
-    const tbody = document.getElementById("user-rows");
-    const renderRows = filterText => {
-      const q = (filterText || "").toLowerCase();
-      const list = users.filter(u => u.username.toLowerCase().includes(q) || (u.display_name || "").toLowerCase().includes(q));
-      if (!list.length) {
-        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:24px;color:var(--muted)">Hakuna mwanafunzi aliyepatikana.</td></tr>`;
-        return;
-      }
-      tbody.innerHTML = list.map(u => {
-        const date = new Date(u.updated_at).toLocaleDateString("sw-KE");
-        const trackLbl = u.age_band === "j" ? "Junior (Gr 7-9)" : "Primary (Gr 4-6)";
-        return `
-          <tr>
-            <td>#${u.id}</td>
-            <td><b>${esc(u.username)}</b></td>
-            <td>${esc(u.display_name)}</td>
-            <td><span class="hint">${trackLbl}</span></td>
-            <td><b>${u.done || 0}</b> / 15</td>
-            <td>${date}</td>
-            <td>
-              <div class="row" style="gap:6px">
-                <button class="btn ghost small" style="padding:4px 8px;font-size:13px" data-view-id="${u.id}" data-view-name="${esc(u.display_name)}">Maendeleo</button>
-                <button class="btn ghost small" style="padding:4px 8px;font-size:13px" data-reset-un="${esc(u.username)}">Reset PW</button>
-              </div>
-            </td>
-          </tr>
-        `;
-      }).join("");
-
-      tbody.querySelectorAll("[data-view-id]").forEach(b => {
-        b.onclick = () => viewStudentProgress(key, b.dataset.viewId, b.dataset.viewName);
-      });
-      tbody.querySelectorAll("[data-reset-un]").forEach(b => {
-        b.onclick = () => promptResetPassword(key, b.dataset.resetUn);
-      });
-    };
-
-    renderRows("");
-    document.getElementById("u-search").oninput = e => renderRows(e.target.value);
-    document.getElementById("export-csv").onclick = () => exportUsersCsv(users);
-  } catch (err) {
-    el.innerHTML = `<div class="err">Imeshindwa kupakia wanafunzi: ${esc(err.message)}</div>`;
-  }
-}
-
-async function viewStudentProgress(key, userId, userName){
-  openModal(`
-    <h3 style="margin:0 0 4px;font-family:Nunito,sans-serif">Maendeleo ya ${esc(userName)}</h3>
-    <p class="hint">Inapakia rekodi kutoka D1…</p>
-    <div id="student-prog-body"></div>
-  `);
-  try {
-    const res = await api(`admin/progress?key=${encodeURIComponent(key)}&userId=${userId}`);
-    const mods = res.mods || {};
-    const body = document.getElementById("student-prog-body");
-    if (!body) return;
-
-    body.innerHTML = `
-      <div class="table-wrap" style="max-height:360px;overflow-y:auto;margin-top:12px">
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Msimbo</th>
-              <th>Somo</th>
-              <th>Alama Bora</th>
-              <th>Majaribio</th>
-              <th>Hali</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${MODS.map(m => {
-              const s = mods[m.id] || { reached: 0, best: 0, attempts: 0, done: false };
-              const lvl = s.done ? (s.best >= 5 ? "mastered" : (s.best >= 4 ? "practised" : "learning")) : (s.reached > 0 ? "learning" : "locked");
-              return `<tr>
-                <td><b>${m.code}</b></td>
-                <td>${esc(m.name)}</td>
-                <td>${s.best ? `${s.best}/5` : "-"}</td>
-                <td>${s.attempts || 0}</td>
-                <td><span class="ri-badge ${lvl}">${MASTERY_BADGE[lvl]}</span></td>
-              </tr>`;
-            }).join("")}
-          </tbody>
-        </table>
-      </div>
-    `;
-  } catch (err) {
-    const body = document.getElementById("student-prog-body");
-    if (body) body.innerHTML = `<div class="err">Hitilafu: ${esc(err.message)}</div>`;
-  }
-}
-
-function promptResetPassword(key, username){
-  const newPass = prompt(`Weka nenosiri jipya kwa ${username}:`, "soma2026");
-  if (!newPass) return;
-  api("admin/reset", "POST", { key, username, newPassword: newPass })
-    .then(() => toast(`Nenosiri la ${username} limebadilishwa kuwa: ${newPass}`))
-    .catch(err => toast("Hitilafu: " + err.message));
-}
-
-function exportUsersCsv(users){
-  const headers = ["ID", "Username", "Display Name", "Age Band", "Modules Done", "Last Active"];
-  const rows = users.map(u => [
-    u.id,
-    `"${u.username.replace(/"/g, '""')}"`,
-    `"${(u.display_name || "").replace(/"/g, '""')}"`,
-    u.age_band || "p",
-    u.done || 0,
-    `"${new Date(u.updated_at).toISOString()}"`
-  ]);
-  const csv = [headers.join(","), ...rows.map(r => r.join(","))].join("\n");
-  const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `soma-smart-wanafunzi-${new Date().toISOString().slice(0, 10)}.csv`;
-  a.click();
-}
-
-async function drawInsightsTab(key){
-  const el = document.getElementById("admin-view");
-  if (!el) return;
-  el.innerHTML = "Inapakia takwimu za mtaala…";
-
   try {
     const res = await api(`insights?key=${encodeURIComponent(key)}`);
+    const o = res.overview || {};
     const top = res.topModules || [];
     const hard = res.hardest || [];
     const daily = res.daily || [];
 
     el.innerHTML = `
-      <h3 style="font-family:Nunito,sans-serif;margin:0 0 12px">Masomo Yanayojaribiwa Zaidi (Popular Modules)</h3>
-      <div class="table-wrap" style="margin-bottom:24px">
-        <table class="admin-table">
-          <thead>
-            <tr><th>Somo</th><th>Majaribio (Attempts)</th><th>Majibu Sahihi</th><th>Ufaulu (%)</th></tr>
-          </thead>
-          <tbody>
-            ${top.length ? top.map(r => {
-              const m = MODS.find(x => x.id === r.module_id);
-              const name = m ? `${m.code} · ${m.name}` : r.module_id;
-              const rate = r.a ? Math.round((r.c / r.a) * 100) : 0;
-              return `<tr><td><b>${esc(name)}</b></td><td>${r.a}</td><td>${r.c}</td><td><b>${rate}%</b></td></tr>`;
-            }).join("") : `<tr><td colspan="4" style="text-align:center;color:var(--muted)">Hakuna data ya kutosha bado.</td></tr>`}
-          </tbody>
-        </table>
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-val">${o.totalUsers || 0}</div>
+          <div class="stat-lbl">Jumla ya Akaunti (Learners)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:var(--teal)">${o.primaryUsers || 0}</div>
+          <div class="stat-lbl">Primary (Grade 4–6)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:var(--green)">${o.juniorUsers || 0}</div>
+          <div class="stat-lbl">Junior (Grade 7–9)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:var(--gold-d)">${o.totalCompletions || 0}</div>
+          <div class="stat-lbl">Modules Zilizokamilika</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:#d4af37">🏆 ${o.totalMasteries || 0}</div>
+          <div class="stat-lbl">Ustadi Kamili (5/5)</div>
+        </div>
       </div>
 
-      <h3 style="font-family:Nunito,sans-serif;margin:0 0 12px">Masomo Magumu Zaidi (Needs Teaching Focus)</h3>
-      <p class="hint" style="margin-top:-6px;margin-bottom:12px">Masomo yenye ufaulu wa chini zaidi — yanayohitaji marudio darasani.</p>
-      <div class="table-wrap">
-        <table class="admin-table">
-          <thead>
-            <tr><th>Somo</th><th>Majaribio</th><th>Majibu Sahihi</th><th>Ufaulu (%)</th></tr>
-          </thead>
-          <tbody>
-            ${hard.length ? hard.map(r => {
-              const m = MODS.find(x => x.id === r.module_id);
-              const name = m ? `${m.code} · ${m.name}` : r.module_id;
-              const rate = r.a ? Math.round((r.c / r.a) * 100) : 0;
-              return `<tr><td><b>${esc(name)}</b></td><td>${r.a}</td><td>${r.c}</td><td style="color:var(--red)"><b>${rate}%</b></td></tr>`;
-            }).join("") : `<tr><td colspan="4" style="text-align:center;color:var(--muted)">Hakuna data ya kutosha.</td></tr>`}
-          </tbody>
-        </table>
+      <div style="margin-top:24px">
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">🎯 Masomo Magumu Zaidi (Teaching Focus)</h3>
+        <p class="hint" style="margin:0 0 12px">Masomo yenye ufaulu wa chini zaidi — yanayohitaji maelezo ya ziada darasani.</p>
+        <div class="table-wrap" style="margin-bottom:28px">
+          <table class="admin-table">
+            <thead>
+              <tr><th>Somo (Module)</th><th>Track</th><th>Majaribio</th><th>Majibu Sahihi</th><th>Ufaulu (%)</th></tr>
+            </thead>
+            <tbody>
+              ${hard.length ? hard.map(r => {
+                const m = MODS.find(x => x.id === r.module_id);
+                const name = m ? `${m.code} · ${m.name}` : r.module_id;
+                const trackName = m ? (m.track === "primary" ? "Primary" : "Junior") : "";
+                const rate = r.a ? Math.round((r.c / r.a) * 100) : 0;
+                return `<tr>
+                  <td><b>${esc(name)}</b></td>
+                  <td><span class="hint">${trackName}</span></td>
+                  <td>${r.a}</td>
+                  <td>${r.c}</td>
+                  <td><b style="color:${rate < 60 ? "var(--red)" : "inherit"}">${rate}%</b></td>
+                </tr>`;
+              }).join("") : `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">Hakuna data ya kutosha ya masomo magumu bado.</td></tr>`}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">📈 Masomo Yanayojaribiwa Zaidi (Popular Modules)</h3>
+        <p class="hint" style="margin:0 0 12px">Masomo yenye idadi kubwa zaidi ya majaribio.</p>
+        <div class="table-wrap" style="margin-bottom:28px">
+          <table class="admin-table">
+            <thead>
+              <tr><th>Somo (Module)</th><th>Track</th><th>Majaribio (Attempts)</th><th>Majibu Sahihi</th><th>Ufaulu (%)</th></tr>
+            </thead>
+            <tbody>
+              ${top.length ? top.map(r => {
+                const m = MODS.find(x => x.id === r.module_id);
+                const name = m ? `${m.code} · ${m.name}` : r.module_id;
+                const trackName = m ? (m.track === "primary" ? "Primary" : "Junior") : "";
+                const rate = r.a ? Math.round((r.c / r.a) * 100) : 0;
+                return `<tr>
+                  <td><b>${esc(name)}</b></td>
+                  <td><span class="hint">${trackName}</span></td>
+                  <td>${r.a}</td>
+                  <td>${r.c}</td>
+                  <td><b>${rate}%</b></td>
+                </tr>`;
+              }).join("") : `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">Hakuna data bado.</td></tr>`}
+            </tbody>
+          </table>
+        </div>
+
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">📅 Shughuli za Kila Siku (Daily Attempts)</h3>
+        <p class="hint" style="margin:0 0 12px">Idadi ya majaribio ya maswali kwa siku katika siku 30 zilizopita.</p>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr><th>Tarehe (Day)</th><th>Majaribio ya Maswali (Quiz Attempts)</th></tr>
+            </thead>
+            <tbody>
+              ${daily.length ? daily.map(d => `<tr><td>${esc(d.day)}</td><td><b>${d.a}</b></td></tr>`).join("") : `<tr><td colspan="2" style="text-align:center;color:var(--muted);padding:18px">Hakuna shughuli zilizorekodiwa bado.</td></tr>`}
+            </tbody>
+          </table>
+        </div>
       </div>
     `;
   } catch (err) {
-    el.innerHTML = `<div class="err">Hitilafu katika kupakia takwimu: ${esc(err.message)}</div>`;
+    el.innerHTML = `<div class="err">Hitilafu: ${esc(err.message)}</div>`;
   }
 }
 

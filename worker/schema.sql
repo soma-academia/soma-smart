@@ -38,4 +38,11 @@ CREATE TABLE IF NOT EXISTS events (
   PRIMARY KEY (day, module_id)
 );
 
+-- Simple IP rate limiting to mitigate automated abuse.
+CREATE TABLE IF NOT EXISTS rate_limits (
+  key       TEXT PRIMARY KEY,
+  count     INTEGER NOT NULL DEFAULT 1,
+  reset_at  INTEGER NOT NULL
+);
+
 CREATE INDEX IF NOT EXISTS idx_progress_user ON progress(user_id);

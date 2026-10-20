@@ -163,6 +163,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Hardware is the physical parts."
+    },
+    {
+     "q": "Which of these is a computer?",
+     "options": [
+      "A smartphone",
+      "A wooden chair",
+      "A glass cup",
+      "A textbook"
+     ],
+     "a": 0,
+     "why": "A smartphone has a processor and memory."
+    },
+    {
+     "q": "When the computer saves files even after you switch it off, it uses...",
+     "options": [
+      "Storage (hard disk or flash)",
+      "RAM only",
+      "The keyboard",
+      "The speakers"
+     ],
+     "a": 0,
+     "why": "Storage keeps files permanently."
+    },
+    {
+     "q": "What are the three main steps a computer performs?",
+     "options": [
+      "Input, process, output",
+      "Sleep, eat, run",
+      "Download, copy, delete",
+      "Turn on, heat up, switch off"
+     ],
+     "a": 0,
+     "why": "Ingiza, fanya kazi, toa."
     }
    ]
   },
@@ -299,6 +332,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Press-and-hold is like a right-click."
+    },
+    {
+     "q": "The longest key on the keyboard is the...",
+     "options": [
+      "Spacebar",
+      "Enter key",
+      "Shift key",
+      "Escape key"
+     ],
+     "a": 0,
+     "why": "The Spacebar separates words with spaces."
+    },
+    {
+     "q": "Which keyboard shortcut UNDOES a mistake?",
+     "options": [
+      "Ctrl + Z",
+      "Ctrl + C",
+      "Ctrl + V",
+      "Ctrl + S"
+     ],
+     "a": 0,
+     "why": "Ctrl + Z undoes the last action."
+    },
+    {
+     "q": "Holding the mouse button while moving it across the screen is called...",
+     "options": [
+      "Dragging",
+      "Clicking",
+      "Typing",
+      "Scrolling"
+     ],
+     "a": 0,
+     "why": "Dragging moves items on screen."
     }
    ]
   },
@@ -435,6 +501,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "The type tells you what kind of file it is."
+    },
+    {
+     "q": "Why do we put files into folders?",
+     "options": [
+      "To organize and find them easily",
+      "To delete them faster",
+      "To make them smaller",
+      "To play music"
+     ],
+     "a": 0,
+     "why": "Folders keep your work tidy and organized."
+    },
+    {
+     "q": "If you want to keep your original file and make an edited version, you use...",
+     "options": [
+      "Save As",
+      "Delete",
+      "Print",
+      "Close without saving"
+     ],
+     "a": 0,
+     "why": "Save As creates a new copy under a new name."
+    },
+    {
+     "q": "Which of these is a safe place for a backup copy?",
+     "options": [
+      "A flash disk or cloud storage",
+      "The recycling bin",
+      "Nowhere",
+      "A sticker"
+     ],
+     "a": 0,
+     "why": "Flash disks and cloud storage keep extra copies safe."
     }
    ]
   },
@@ -571,6 +670,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "You are the boss."
+    },
+    {
+     "q": "Which of these is safe to share with strangers online?",
+     "options": [
+      "A game nickname",
+      "Your home address",
+      "Your school name",
+      "Your parent's phone number"
+     ],
+     "a": 0,
+     "why": "Keep real-life identity private; use a nickname."
+    },
+    {
+     "q": "What should you do if an online message makes you uncomfortable or scared?",
+     "options": [
+      "Stop, don't reply, and tell a trusted grown-up",
+      "Reply angrily",
+      "Share your secrets",
+      "Delete your computer"
+     ],
+     "a": 0,
+     "why": "Always tell a trusted parent or teacher."
+    },
+    {
+     "q": "Sharing a password with a friend at school is...",
+     "options": [
+      "Unsafe — keep it secret",
+      "A great idea",
+      "Required by the computer",
+      "Safe if they promise"
+     ],
+     "a": 0,
+     "why": "Passwords should remain secret to you."
     }
    ]
   },
@@ -707,6 +839,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Safety first."
+    },
+    {
+     "q": "Can you connect to the internet with wireless Wi-Fi without cables plugged into your phone?",
+     "options": [
+      "Yes, Wi-Fi sends signals through the air",
+      "No, phones always need cables",
+      "Only when connected to a TV",
+      "Only in the morning"
+     ],
+     "a": 0,
+     "why": "Wi-Fi uses radio waves."
+    },
+    {
+     "q": "A network of computers connected together allows them to...",
+     "options": [
+      "Share files, messages and resources",
+      "Turn into printers",
+      "Change into laptops",
+      "Work without electricity"
+     ],
+     "a": 0,
+     "why": "Networks share information."
+    },
+    {
+     "q": "When a packet gets lost or delayed on the internet, network protocols...",
+     "options": [
+      "Resend the missing packet",
+      "Shut down the whole internet",
+      "Break the screen",
+      "Delete your account"
+     ],
+     "a": 0,
+     "why": "Protocols detect and retransmit missing packets."
     }
    ]
   },
@@ -838,6 +1003,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Drivers keep devices working well."
+    },
+    {
+     "q": "What happens during the BIOS/UEFI POST (Power-On Self-Test)?",
+     "options": [
+      "It tests essential hardware like RAM and CPU before loading the OS",
+      "It plays a video",
+      "It downloads games",
+      "It changes screen brightness"
+     ],
+     "a": 0,
+     "why": "Checks that hardware is working properly."
+    },
+    {
+     "q": "The long expansion slot where a graphics card sits on the motherboard is usually...",
+     "options": [
+      "PCIe x16",
+      "USB-A",
+      "Audio jack",
+      "HDMI"
+     ],
+     "a": 0,
+     "why": "PCI Express provides high bandwidth for GPUs."
+    },
+    {
+     "q": "Why does RAM lose its contents when the computer is turned off?",
+     "options": [
+      "RAM is volatile memory",
+      "RAM is a magnetic disk",
+      "RAM has a battery",
+      "RAM only stores pictures"
+     ],
+     "a": 0,
+     "why": "Volatile memory needs continuous power to retain data."
     }
    ]
   },
@@ -864,7 +1062,7 @@ window.COURSE = {
      "text": "A newer CPU can beat an older one at the same GHz because it does more useful work on each beat (better design). Speed numbers alone don't tell the whole story."
     },
     {
-     "icon": "👯",
+     "icon": "👥",
      "title": "Cores and threads",
      "text": "A core is a worker inside the CPU. Many CPUs have several cores, so they can do several jobs at once. Some apps use many cores; others lean on one fast core."
     },
@@ -974,6 +1172,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Cache is closer and quicker."
+    },
+    {
+     "q": "A multi-core processor has multiple...",
+     "options": [
+      "Independent processing units on one chip",
+      "Power supplies",
+      "Screens",
+      "Hard drives"
+     ],
+     "a": 0,
+     "why": "Each core can execute instructions in parallel."
+    },
+    {
+     "q": "Why is CPU cache divided into levels like L1, L2, and L3?",
+     "options": [
+      "L1 is smallest and fastest; L3 is larger but slightly slower",
+      "L3 is faster than L1",
+      "Only L1 connects to power",
+      "To store music"
+     ],
+     "a": 0,
+     "why": "Hierarchy balances extreme speed with capacity."
+    },
+    {
+     "q": "What does IPC stand for in processor performance?",
+     "options": [
+      "Instructions Per Clock",
+      "Internet Protocol Core",
+      "Input Processing Cache",
+      "Internal Power Control"
+     ],
+     "a": 0,
+     "why": "IPC measures how many instructions a CPU completes each clock beat."
     }
    ]
   },
@@ -1110,6 +1341,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Parallel power is useful widely."
+    },
+    {
+     "q": "Why are GPUs much better than CPUs at training AI models and processing 3D graphics?",
+     "options": [
+      "They have thousands of cores designed for parallel math",
+      "They have fewer cores",
+      "They don't use electricity",
+      "They only process text"
+     ],
+     "a": 0,
+     "why": "Massive parallelism excels at matrix operations."
+    },
+    {
+     "q": "The dedicated high-speed memory on a graphics card is called...",
+     "options": [
+      "VRAM",
+      "SSD",
+      "BIOS",
+      "ROM"
+     ],
+     "a": 0,
+     "why": "Video RAM holds textures, frames and geometry."
+    },
+    {
+     "q": "Ray tracing simulates graphics by...",
+     "options": [
+      "Calculating the physical path and reflection of light rays",
+      "Stretching pixels",
+      "Drawing 2D lines only",
+      "Using lower resolutions"
+     ],
+     "a": 0,
+     "why": "Realistic lighting based on physics."
     }
    ]
   },
@@ -1246,6 +1510,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "NVMe is very fast."
+    },
+    {
+     "q": "An SSD is much faster than an old mechanical HDD because...",
+     "options": [
+      "It uses flash memory chips with no moving parts",
+      "It has a spinning metal disk",
+      "It uses water cooling",
+      "It is larger in physical size"
+     ],
+     "a": 0,
+     "why": "Solid State Drives have no mechanical delay."
+    },
+    {
+     "q": "What happens when your PC runs out of physical RAM while many apps are open?",
+     "options": [
+      "It swaps pages to disk (virtual memory), causing slowdown",
+      "It burns the processor",
+      "It deletes your files",
+      "It speeds up"
+     ],
+     "a": 0,
+     "why": "Swapping to disk is thousands of times slower than RAM."
+    },
+    {
+     "q": "Which type of storage retains data even when unplugged?",
+     "options": [
+      "Non-volatile storage (SSD, HDD, flash disk)",
+      "RAM",
+      "CPU cache",
+      "CPU registers"
+     ],
+     "a": 0,
+     "why": "Non-volatile storage preserves data without power."
     }
    ]
   },
@@ -1257,7 +1554,7 @@ window.COURSE = {
    "part": "Smooth vs Slow",
    "read": [
     {
-     "icon": "📒",
+     "icon": "📓",
      "title": "Frames per second",
      "text": "Video and games are many still pictures shown quickly — like a flip-book. FPS means frames per second. More frames look smoother; 30 is okay, 60 is smooth."
     },
@@ -1382,6 +1679,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Name the real cause first."
+    },
+    {
+     "q": "If your monitor is 144 Hz, what is the maximum number of frames per second it can physically display?",
+     "options": [
+      "144 FPS",
+      "60 FPS",
+      "240 FPS",
+      "1000 FPS"
+     ],
+     "a": 0,
+     "why": "144 Hz refreshes 144 times each second."
+    },
+    {
+     "q": "Jitter in network connections refers to...",
+     "options": [
+      "Variation in ping / latency over time",
+      "A broken cable",
+      "A dirty fan",
+      "High monitor brightness"
+     ],
+     "a": 0,
+     "why": "Inconsistent latency causes stutter in calls and games."
+    },
+    {
+     "q": "If your game has low FPS even with fast 100 Mbps fiber internet, the root issue is...",
+     "options": [
+      "Your computer's GPU or CPU hardware",
+      "The fiber cable",
+      "The router password",
+      "The weather"
+     ],
+     "a": 0,
+     "why": "FPS depends on local hardware, not your internet bandwidth."
     }
    ]
   },
@@ -1518,6 +1848,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Set your own limits."
+    },
+    {
+     "q": "Why should you avoid using the same password on different websites?",
+     "options": [
+      "If one site is breached, attackers can access your other accounts",
+      "It makes your computer run hot",
+      "It slows down internet speed",
+      "Websites forbid the letter E"
+     ],
+     "a": 0,
+     "why": "Credential stuffing exploits reused passwords."
+    },
+    {
+     "q": "What is an authenticator app (TOTP) compared to SMS for 2FA?",
+     "options": [
+      "More secure because SMS codes can be intercepted via SIM swap",
+      "Less secure than email",
+      "Only works on desktop computers",
+      "Requires paid airtime"
+     ],
+     "a": 0,
+     "why": "App-based codes resist SIM swapping attacks."
+    },
+    {
+     "q": "A stranger sends a link promising free money or leaked papers. The safest action is...",
+     "options": [
+      "Do not click the link, block sender, and verify independently",
+      "Click to see if it's real",
+      "Forward it to 10 friends",
+      "Type your phone number"
+     ],
+     "a": 0,
+     "why": "Malicious links often download malware or steal credentials."
     }
    ]
   },
@@ -1544,7 +1907,7 @@ window.COURSE = {
      "text": "When the CPU and GPU work hard they get hot. If they get too hot they slow themselves down (thermal throttling) to stay safe — so good cooling keeps performance up."
     },
     {
-     "icon": "🧈",
+     "icon": "🧊",
      "title": "Thermal paste & coolers",
      "text": "A thin layer of thermal paste between a chip and its cooler helps heat flow into the metal fins, which fans or liquid then carry away."
     },
@@ -1654,6 +2017,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "It powers the whole computer."
+    },
+    {
+     "q": "What happens when dust clogs a laptop's heatsink fins and fan?",
+     "options": [
+      "Heat is trapped, causing thermal throttling and loud fan noise",
+      "The laptop becomes lighter",
+      "Battery life increases",
+      "The screen becomes dimmer"
+     ],
+     "a": 0,
+     "why": "Blocked airflow prevents cooling."
+    },
+    {
+     "q": "Why should you never cheap out on a generic, unbranded Power Supply (PSU)?",
+     "options": [
+      "A failing cheap PSU can send voltage spikes and destroy other components",
+      "It weighs too much",
+      "It has too many cables",
+      "It changes the CPU clock"
+     ],
+     "a": 0,
+     "why": "A quality PSU provides clean, regulated power and protections."
+    },
+    {
+     "q": "Thermal throttling is a feature that...",
+     "options": [
+      "Protects the chip from permanent heat damage by lowering speed",
+      "Speeds up the computer when hot",
+      "Turns off the fans",
+      "Deletes temporary files"
+     ],
+     "a": 0,
+     "why": "Lowers clock frequency to prevent hardware damage."
     }
    ]
   },
@@ -1790,6 +2186,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "16 ÷ 8 = 2 MB/s."
+    },
+    {
+     "q": "How many different values can a single byte (8 bits) represent?",
+     "options": [
+      "256 values (from 0 to 255)",
+      "8 values",
+      "100 values",
+      "1000 values"
+     ],
+     "a": 0,
+     "why": "2 raised to the 8th power equals 256."
+    },
+    {
+     "q": "If your internet connection downloads at 80 Mbps, the file download speed is roughly...",
+     "options": [
+      "10 MB/s",
+      "80 MB/s",
+      "800 MB/s",
+      "1 MB/s"
+     ],
+     "a": 0,
+     "why": "80 divided by 8 bits per byte = 10 MB/s."
+    },
+    {
+     "q": "In binary, what number does the bit pattern '00000101' represent?",
+     "options": [
+      "5",
+      "3",
+      "7",
+      "10"
+     ],
+     "a": 0,
+     "why": "4 + 1 = 5 in base 2."
     }
    ]
   },
@@ -1926,6 +2355,39 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "Packets travel further."
+    },
+    {
+     "q": "What is the primary role of a router in a home or school network?",
+     "options": [
+      "To direct traffic and forward packets between different networks",
+      "To draw 3D graphics",
+      "To generate electricity",
+      "To store photos permanently"
+     ],
+     "a": 0,
+     "why": "Routers route packets between your LAN and the WAN / internet."
+    },
+    {
+     "q": "Which protocol ensures reliable packet delivery by acknowledging received packets?",
+     "options": [
+      "TCP (Transmission Control Protocol)",
+      "UDP",
+      "HTML",
+      "GPU"
+     ],
+     "a": 0,
+     "why": "TCP checks for lost packets and retransmits them."
+    },
+    {
+     "q": "Subsea fiber-optic cables landing in Mombasa (like SEACOM and TEAMS) carry...",
+     "options": [
+      "Over 95% of international internet data entering Kenya",
+      "Only voice phone calls",
+      "Electricity for coastal towns",
+      "Drinking water"
+     ],
+     "a": 0,
+     "why": "Undersea fiber cables form the backbone of Kenya's global connectivity."
     }
    ]
   },
@@ -2078,6 +2540,28 @@ window.COURSE = {
      ],
      "a": 0,
      "why": "No encryption = unsafe."
+    },
+    {
+     "q": "In the URL 'https://soma-smart.pages.dev', which part is the Top-Level Domain (TLD)?",
+     "options": [
+      ".dev",
+      "https",
+      "soma-smart",
+      "pages"
+     ],
+     "a": 0,
+     "why": ".dev is the TLD at the end of the domain hierarchy."
+    },
+    {
+     "q": "When a DNS cache stores an address lookup locally, it...",
+     "options": [
+      "Speeds up future requests by avoiding a repeat query across the internet",
+      "Changes the website password",
+      "Slows down your browser",
+      "Deletes your history"
+     ],
+     "a": 0,
+     "why": "DNS caching saves time and network bandwidth."
     }
    ]
   }
