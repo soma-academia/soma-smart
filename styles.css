@@ -76,8 +76,7 @@ label.q:first-child{margin-top:0}
 /* module list rows */
 .list{display:flex;flex-direction:column;gap:10px}
 .rowitem{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-align:left;width:100%}
-.rowitem:hover:not(.locked){border-color:var(--green)}
-.rowitem.locked{opacity:.6;cursor:not-allowed}
+.rowitem:hover{border-color:var(--green)}
 .ri-num{font-family:Nunito,system-ui,sans-serif;font-weight:900;color:#fff;background:var(--green);border-radius:10px;min-width:44px;height:44px;display:grid;place-items:center;font-size:18px}
 .ri-main{flex:1}
 .ri-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px}
@@ -88,7 +87,8 @@ label.q:first-child{margin-top:0}
 .strand-ref{color:var(--muted);font-weight:500;font-size:12px}
 .ri-s{color:var(--muted);font-size:14px}
 .ri-badge{font-size:13px;font-weight:800;white-space:nowrap}
-.ri-badge.mastered{color:var(--gold-d)} .ri-badge.practised{color:var(--green)} .ri-badge.learning{color:var(--teal)} .ri-badge.locked{color:var(--muted)}
+.ri-badge.mastered{color:var(--gold-d)} .ri-badge.practised{color:var(--green)} .ri-badge.learning{color:var(--teal)} .ri-badge.new{color:var(--muted)}
+.quiz-gate-hint{font-size:13px;color:var(--muted);margin-top:4px}
 
 .track-group{margin-bottom:28px}
 .track-group-header{margin-bottom:12px;border-bottom:2px solid var(--line);padding-bottom:6px}

@@ -25,10 +25,12 @@ let currentKeyHandler = null;
 
 const modsForTrack = tid => MODS.filter(m => m.track === tid);
 const modIndexInTrack = (tid, id) => modsForTrack(tid).findIndex(m => m.id === id);
-function ms(id){ return PROG[id] || (PROG[id] = { reached: 0, best: 0, attempts: 0, mastery: "locked", done: false }); }
-function unlocked(m){ const list = modsForTrack(m.track); const i = list.findIndex(x => x.id === m.id); return i <= 0 || ms(list[i - 1].id).done; }
+function ms(id){ return PROG[id] || (PROG[id] = { reached: 0, best: 0, attempts: 0, mastery: "new", done: false }); }
+// Gentle unlock: every module can be opened and studied; only its quiz waits for the previous module
+function prevMod(m){ const list = modsForTrack(m.track); const i = list.findIndex(x => x.id === m.id); return i > 0 ? list[i - 1] : null; }
+function quizOpen(m){ const p = prevMod(m); return !p || ms(p.id).done || ms(m.id).done; }
 function masteryOf(id){ return levelOf(ms(id)); }
-function levelOf(s){ if (s.done) { if (s.best >= C.mastery.mastered) return "mastered"; if (s.best >= C.mastery.practised) return "practised"; return "learning"; } return s.reached > 0 ? "learning" : "locked"; }
+function levelOf(s){ if (s.done) { if (s.best >= C.mastery.mastered) return "mastered"; if (s.best >= C.mastery.practised) return "practised"; return "learning"; } return s.reached > 0 ? "learning" : "new"; }
 
 /* ---------- API ---------- */
 async function api(path, method, body, extraHeaders){
@@ -488,7 +490,7 @@ function renderHome(){
 
 /* ---------- track: list modules ---------- */
 const MASTERY_BADGE = {
-  locked: "🔒 Locked",
+  new: "○ Not started",
   learning: "📘 Learning",
   practised: "✅ Practised",
   mastered: "🏆 Mastered"
@@ -505,13 +507,13 @@ function renderTrack(){
   const enrichList = list.filter(m => m.cbe === "nice");
 
   const renderModRow = (m) => {
-    const open = unlocked(m), lvl = masteryOf(m.id);
+    const lvl = masteryOf(m.id), gated = !quizOpen(m), prev = prevMod(m);
     const cbeBadge = m.cbe === "strand"
       ? `<span class="tag-badge tag-cbe">📘 CBE</span>`
       : `<span class="tag-badge tag-nice">✨ Going further</span>`;
     const strandHint = (m.cbe === "strand" && m.strandRef)
       ? `<div class="strand-ref">${esc(m.strandRef)}</div>` : "";
-    return `<button class="rowitem ${open ? "" : "locked"}" data-id="${m.id}" ${open ? "" : "disabled"}>
+    return `<button class="rowitem" data-id="${m.id}">
       <div class="ri-num">${m.code}</div>
       <div class="ri-main">
         <div class="ri-title-row">
@@ -520,8 +522,9 @@ function renderTrack(){
         </div>
         <div class="ri-s">${esc(m.part)}</div>
         ${strandHint}
+        ${gated ? `<div class="quiz-gate-hint">Open to read and explore · quiz unlocks after ${esc(prev.code)}</div>` : ""}
       </div>
-      <div class="ri-badge ${lvl}">${open ? (MASTERY_BADGE[lvl] || "") : "🔒 Locked"}</div>
+      <div class="ri-badge ${lvl}">${MASTERY_BADGE[lvl] || ""}</div>
     </button>`;
   };
 
@@ -570,9 +573,7 @@ function renderTrack(){
   if (celebBtn) celebBtn.onclick = () => showCelebration(t.id);
 
   $app.querySelectorAll("[data-id]").forEach(b => b.onclick = () => {
-    const m = MODS.find(x => x.id === b.dataset.id);
-    if (!unlocked(m)) return toast("Please complete the previous module first.");
-    openModule(m.id);
+    openModule(b.dataset.id);
   });
 }
 
@@ -592,7 +593,8 @@ function renderModule(){
   const trackObj = TRACKS.find(t => t.id === m.track);
   const rail = STEPS.map((st, i) => {
     const cls = st === view.step ? "now" : (i < s.reached || s.done) ? "done" : "";
-    return `<button class="chip ${cls}" data-st="${st}" ${cls ? "" : "disabled"}>${STEP_LABEL[st]}</button>`;
+    const lock = st === "quiz" && !quizOpen(m) ? "🔒 " : "";
+    return `<button class="chip ${cls}" data-st="${st}" ${cls ? "" : "disabled"}>${lock}${STEP_LABEL[st]}</button>`;
   }).join("");
 
   $app.innerHTML = `
@@ -1037,6 +1039,22 @@ function showReview(m, list, el, gated, onDone){
 
 function stepQuiz(m, s, el){
   const N = Math.min(C.questionsPerQuiz, m.quiz.length), pass = Math.min(C.passMark, N);
+
+  if (!quizOpen(m)) {
+    const p = prevMod(m);
+    el.innerHTML = `
+      <div class="result">
+        <h3>🔒 Quiz opens after ${esc(p.code)}</h3>
+        <p class="hint">You can read, listen and do the mission here any time. To take this quiz, first pass the quiz for <b>${esc(p.code)} · ${esc(p.name)}</b>. That way each quiz builds on the one before.</p>
+        <div class="row" style="justify-content:center;margin-top:22px;flex-wrap:wrap">
+          <button class="btn" id="gp">Go to ${esc(p.code)}</button>
+          <button class="btn ghost" id="gt">Back to Track</button>
+        </div>
+      </div>`;
+    document.getElementById("gp").onclick = () => openModule(p.id);
+    document.getElementById("gt").onclick = () => go({ name: "track", t: m.track });
+    return;
+  }
 
   // After a failed attempt, the mistakes must be reviewed before retrying (even after leaving and coming back)
   if (Array.isArray(s.review) && s.review.length) {
