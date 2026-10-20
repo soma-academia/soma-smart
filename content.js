@@ -84,7 +84,78 @@ window.COURSE = {
      "Name one piece of hardware and one piece of software you can see.",
      "Ask a grown-up or teacher: what is this device's storage size (in GB)?"
     ],
-    "question": "One hardware part, one software program, and the storage size you found."
+    "question": "One hardware part, one software program, and the storage size you found.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "What device did you explore?",
+        "options": [
+         "Desktop computer",
+         "Laptop",
+         "Smartphone",
+         "Tablet"
+        ],
+        "answer": null,
+        "why": ""
+       },
+       {
+        "q": "What is its storage size? Ask a grown-up, or look in Settings › Storage (or About).",
+        "options": [
+         "16 GB",
+         "32 GB",
+         "64 GB",
+         "128 GB",
+         "256 GB",
+         "512 GB",
+         "1 TB or more"
+        ],
+        "answer": null,
+        "why": ""
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Sort each one: is it hardware (a part you can touch) or software (a program)?",
+      "buckets": [
+       "Hardware",
+       "Software"
+      ],
+      "items": [
+       {
+        "t": "Keyboard",
+        "b": 0
+       },
+       {
+        "t": "Calculator app",
+        "b": 1
+       },
+       {
+        "t": "Screen",
+        "b": 0
+       },
+       {
+        "t": "Web browser",
+        "b": 1
+       },
+       {
+        "t": "CPU (processor)",
+        "b": 0
+       },
+       {
+        "t": "Drawing app",
+        "b": 1
+       },
+       {
+        "t": "Mouse",
+        "b": 0
+       }
+      ]
+     }
+    ]
    },
    "quiz": [
     {
@@ -255,7 +326,41 @@ window.COURSE = {
      "Type a short sentence, then use Backspace to fix one letter.",
      "Copy your sentence (Ctrl+C) and paste it (Ctrl+V) on a new line."
     ],
-    "question": "The sentence you typed, and which shortcut you liked most."
+    "question": "The sentence you typed, and which shortcut you liked most.",
+    "tasks": [
+     {
+      "type": "typing",
+      "label": "Use Shift for the capital letters. Type exactly:",
+      "target": "Soma Smart Kenya"
+     },
+     {
+      "type": "typing",
+      "label": "Now type this sentence. Made a mistake? Fix it with Backspace.",
+      "target": "Habari yako? I can type!"
+     },
+     {
+      "type": "paste",
+      "label": "Copy the sentence (select it, then Ctrl+C) and paste it here with Ctrl+V. On a phone: press and hold, tap Copy, then Paste.",
+      "target": "Habari yako? I can type!"
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which keyboard shortcut pastes?",
+        "options": [
+         "Ctrl+C",
+         "Ctrl+V",
+         "Ctrl+X",
+         "Shift"
+        ],
+        "answer": 1,
+        "why": "Ctrl+V pastes. Ctrl+C copies and Ctrl+X cuts."
+       }
+      ]
+     }
+    ]
    },
    "quiz": [
     {
@@ -426,7 +531,86 @@ window.COURSE = {
      "Create or move two files into it.",
      "With a grown-up, copy one important file to a flash disk or cloud as a backup."
     ],
-    "question": "The folder name you chose and what you backed up."
+    "question": "The folder name you chose and what you backed up.",
+    "tasks": [
+     {
+      "type": "text",
+      "label": "What did you name your new folder?",
+      "min": 3,
+      "reject": [
+       "new folder",
+       "folder",
+       "untitled",
+       "untitled folder",
+       "aaa",
+       "abc"
+      ],
+      "hint": "Choose a clear name that says what is inside, like School Work 2026."
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which is the clearest name for your science homework?",
+        "options": [
+         "doc1.docx",
+         "final FINAL (2).docx",
+         "Science-Homework-Plants-2026.docx",
+         "aaaa.docx"
+        ],
+        "answer": 2,
+        "why": "A clear name says what it is and when, so you can find it later."
+       },
+       {
+        "q": "Where did you back up your important file?",
+        "options": [
+         "A flash disk",
+         "Cloud storage (like Google Drive)",
+         "An external hard drive",
+         "Another computer"
+        ],
+        "answer": null,
+        "why": ""
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Put each file into the right folder.",
+      "buckets": [
+       "School",
+       "Photos",
+       "Music"
+      ],
+      "items": [
+       {
+        "t": "Maths-Fractions-Notes.docx",
+        "b": 0
+       },
+       {
+        "t": "Family-Trip-Naivasha.jpg",
+        "b": 1
+       },
+       {
+        "t": "Benga-Song.mp3",
+        "b": 2
+       },
+       {
+        "t": "English-Composition.docx",
+        "b": 0
+       },
+       {
+        "t": "Birthday-Cake.png",
+        "b": 1
+       },
+       {
+        "t": "Choir-Practice.mp3",
+        "b": 2
+       }
+      ]
+     }
+    ]
    },
    "quiz": [
     {
@@ -1789,7 +1973,72 @@ window.COURSE = {
      "Turn on two-step verification (2FA) if the service offers it.",
      "Find one example of a phishing message and explain two clues that give it away."
     ],
-    "question": "Which account you secured, and two phishing clues you spotted."
+    "question": "Which account you secured, and two phishing clues you spotted.",
+    "tasks": [
+     {
+      "type": "flags",
+      "label": "This email is a scam. Tap every red flag you can find. There are 4.",
+      "header": "Email · Inbox",
+      "segments": [
+       {
+        "t": "From: PesaFast Support <pesafast.support2026@gmail.com>",
+        "flag": "A real company emails from its own domain, not a free Gmail address."
+       },
+       {
+        "t": "Subject: URGENT!! Your wallet will be BLOCKED in 2 hours",
+        "flag": "Scammers create panic so you act before you think."
+       },
+       {
+        "t": "Dear customer,",
+        "flag": null
+       },
+       {
+        "t": "We noticed unusual activity on your PesaFast wallet.",
+        "flag": null
+       },
+       {
+        "t": "To keep your KSh 12,450 safe, reply with your PIN and ID number, or confirm them here:",
+        "flag": "No real service ever asks for your PIN. Never share it with anyone."
+       },
+       {
+        "t": "http://pesafast-verify.co.ke.secure-login.xyz/confirm",
+        "flag": "Read the domain from the right: it really ends in secure-login.xyz, not a PesaFast site. And it is http, not https."
+       },
+       {
+        "t": "Thank you, PesaFast Team",
+        "flag": null
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which passphrase is the strongest?",
+        "options": [
+         "Password123",
+         "Zuri2010",
+         "maize-Lamp-river-47!",
+         "qwerty"
+        ],
+        "answer": 2,
+        "why": "Long, random words with numbers and symbols are hard to guess but easy to remember."
+       },
+       {
+        "q": "A message asks for the 6-digit code that 2FA just sent you. What do you do?",
+        "options": [
+         "Send it quickly",
+         "Never share it. Only type it into the real site yourself",
+         "Share it with friends",
+         "Post it online"
+        ],
+        "answer": 1,
+        "why": "That code is the second lock on your account. Anyone asking for it is trying to break in."
+       }
+      ]
+     }
+    ]
    },
    "quiz": [
     {
@@ -2302,7 +2551,63 @@ window.COURSE = {
      "With a grown-up, find who your ISP is.",
      "Run 'tracert google.com' (Windows) or 'traceroute google.com' and count the hops."
     ],
-    "question": "Your private IP, your ISP, and roughly how many hops to google.com."
+    "question": "Your private IP, your ISP, and roughly how many hops to google.com.",
+    "tasks": [
+     {
+      "type": "order",
+      "label": "Build the path: tap each stop in order, from your device to a website's server.",
+      "items": [
+       {
+        "t": "Your phone or laptop",
+        "note": "Your device splits the request into small packets."
+       },
+       {
+        "t": "Home Wi-Fi router",
+        "note": "The router runs your local network (LAN) and gives your device a private IP like 192.168.x.x. On mobile data, a cell tower plays this part."
+       },
+       {
+        "t": "Your ISP (e.g. Safaricom, Airtel, Zuku)",
+        "note": "Your Internet Service Provider connects your home or phone to the wider internet."
+       },
+       {
+        "t": "Internet backbone (undersea cables at Mombasa)",
+        "note": "Big fibre links carry traffic between countries. Kenya's undersea cables land at Mombasa."
+       },
+       {
+        "t": "The website's server",
+        "note": "The server gets your packets and sends the page back along a path like this one."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which of these is a private (home network) IP address?",
+        "options": [
+         "8.8.8.8",
+         "192.168.1.24",
+         "41.90.64.10",
+         "102.68.1.5"
+        ],
+        "answer": 1,
+        "why": "192.168.x.x is kept for private networks. Your router shares one public IP for the whole home."
+       },
+       {
+        "q": "Your traceroute shows 12 hops. What is a hop?",
+        "options": [
+         "A router your packets passed through",
+         "A lost packet",
+         "A website",
+         "A Wi-Fi password"
+        ],
+        "answer": 0,
+        "why": "Each hop is one router passing your packets along. More hops usually means more delay."
+       }
+      ]
+     }
+    ]
    },
    "quiz": [
     {
@@ -2478,7 +2783,74 @@ window.COURSE = {
      "With a grown-up, open Command Prompt/Terminal and run: nslookup safaricom.co.ke  — note the IP address it returns.",
      "Compare two site addresses and explain which looks genuine and which could be a look-alike phishing name."
     ],
-    "question": "An IP address DNS returned, and one tip for spotting a fake look-alike address."
+    "question": "An IP address DNS returned, and one tip for spotting a fake look-alike address.",
+    "tasks": [
+     {
+      "type": "order",
+      "label": "What happens when you open a website? Tap the steps in order.",
+      "items": [
+       {
+        "t": "You type www.ecitizen.go.ke and press Enter",
+        "note": "Names are easy for people to remember. Computers need numbers."
+       },
+       {
+        "t": "Your device asks a DNS server: what is the IP for this name?",
+        "note": "DNS is the internet's address book."
+       },
+       {
+        "t": "DNS replies with the site's IP address",
+        "note": "Now your device knows which server to talk to."
+       },
+       {
+        "t": "Your browser connects to that IP and sets up HTTPS",
+        "note": "HTTPS encrypts the connection. That's the padlock."
+       },
+       {
+        "t": "The server sends the page back and your browser shows it",
+        "note": "Request, then response. That is how every page loads."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which address is most likely the REAL KRA iTax site?",
+        "options": [
+         "itax-kra.go.ke.login-help.com",
+         "itax.kra.go.ke",
+         "kra-itax.co",
+         "itax.kra.go.ke.verify.xyz"
+        ],
+        "answer": 1,
+        "why": "Read the domain from the right: .go.ke is for the Kenyan government. The others really end in login-help.com, .co or verify.xyz."
+       },
+       {
+        "q": "Which address is a FAKE look-alike?",
+        "options": [
+         "www.google.com",
+         "mail.google.com",
+         "www.g00gle.com",
+         "www.google.co.ke"
+        ],
+        "answer": 2,
+        "why": "Zeros swapped in for the letter o is a classic trick. google.co.ke is Google's real Kenya site."
+       },
+       {
+        "q": "What does the padlock (HTTPS) prove?",
+        "options": [
+         "The connection to the named site is encrypted",
+         "The site is honest and safe",
+         "The site is run by the government",
+         "The site has no viruses"
+        ],
+        "answer": 0,
+        "why": "HTTPS protects your data on the way. Scam sites can have a padlock too, so always check the domain."
+       }
+      ]
+     }
+    ]
    },
    "quiz": [
     {

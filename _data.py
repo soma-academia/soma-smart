@@ -7,6 +7,25 @@ def R(icon, title, text): return {"icon": icon, "title": title, "text": text}
 def Q(q, options, a, why): return {"q": q, "options": options, "a": a, "why": why}
 def NOVID(): return {"id": "", "title": "", "channel": ""}
 
+# ---- Interactive mission tasks (K2). A mission with "tasks" can only be completed by doing them;
+# its checklist "steps" then become an optional "try it for real" list. The app renders each type.
+def PICK(label, rounds):             # rounds: [(question, options, answer index or None, why)]
+    return {"type": "pick", "label": label,
+            "rounds": [{"q": q, "options": o, "answer": a, "why": w} for q, o, a, w in rounds]}
+def SORT(label, buckets, items):     # items: [(text, correct bucket index)]
+    return {"type": "sort", "label": label, "buckets": buckets, "items": [{"t": t, "b": b} for t, b in items]}
+def TEXT(label, min_len=3, reject=(), hint=""):  # short self-report; reject = lazy answers (case-insensitive)
+    return {"type": "text", "label": label, "min": min_len, "reject": list(reject), "hint": hint}
+def TYPING(label, target):           # must type the target exactly (paste is blocked)
+    return {"type": "typing", "label": label, "target": target}
+def PASTE(label, target):            # must paste the target (proves copy + paste)
+    return {"type": "paste", "label": label, "target": target}
+def FLAGS(label, header, segments):  # segments: [(text, why-it-is-a-red-flag or None)]
+    return {"type": "flags", "label": label, "header": header,
+            "segments": [{"t": t, "flag": f} for t, f in segments]}
+def ORDER(label, items):             # items in the correct order: [(text, note shown once placed)]
+    return {"type": "order", "label": label, "items": [{"t": t, "note": n} for t, n in items]}
+
 # CBE Curriculum mapping: "strand" (official CBE learning strand) vs "nice" (Going further / enrichment)
 # Mapped to KICD Competency-Based Education curriculum designs (pending teacher confirmation).
 CBE_MAP = {
@@ -79,7 +98,18 @@ MODULES.append(M("primary", "p-meet", "D1", "Meet the Computer", "What's inside 
     "Find a computer or phone. Point to the screen (output) and the keyboard or touch screen (input).",
     "Name one piece of hardware and one piece of software you can see.",
     "Ask a grown-up or teacher: what is this device's storage size (in GB)?"
-  ], "question": "One hardware part, one software program, and the storage size you found."},
+  ], "question": "One hardware part, one software program, and the storage size you found.",
+  "tasks": [
+    PICK("", [
+      ("What device did you explore?", ["Desktop computer", "Laptop", "Smartphone", "Tablet"], None, ""),
+      ("What is its storage size? Ask a grown-up, or look in Settings › Storage (or About).",
+       ["16 GB", "32 GB", "64 GB", "128 GB", "256 GB", "512 GB", "1 TB or more"], None, ""),
+    ]),
+    SORT("Sort each one: is it hardware (a part you can touch) or software (a program)?", ["Hardware", "Software"], [
+      ("Keyboard", 0), ("Calculator app", 1), ("Screen", 0), ("Web browser", 1),
+      ("CPU (processor)", 0), ("Drawing app", 1), ("Mouse", 0),
+    ]),
+  ]},
  [
   Q("A computer is a machine that...", ["Follows instructions to do work", "Thinks on its own like a person", "Only plays music", "Is always a desktop"], 0, "It follows the instructions you give it."),
   Q("The 'brain' of the computer is the...", ["CPU (processor)", "Screen", "Keyboard", "Cable"], 0, "The CPU does the thinking."),
@@ -114,7 +144,17 @@ MODULES.append(M("primary", "p-mouse", "D2", "Mouse & Keyboard", "Control the co
     "Open any writing app. Type your name, then make it CAPITAL using Shift.",
     "Type a short sentence, then use Backspace to fix one letter.",
     "Copy your sentence (Ctrl+C) and paste it (Ctrl+V) on a new line."
-  ], "question": "The sentence you typed, and which shortcut you liked most."},
+  ], "question": "The sentence you typed, and which shortcut you liked most.",
+  "tasks": [
+    TYPING("Use Shift for the capital letters. Type exactly:", "Soma Smart Kenya"),
+    TYPING("Now type this sentence. Made a mistake? Fix it with Backspace.", "Habari yako? I can type!"),
+    PASTE("Copy the sentence (select it, then Ctrl+C) and paste it here with Ctrl+V. On a phone: press and hold, tap Copy, then Paste.",
+          "Habari yako? I can type!"),
+    PICK("", [
+      ("Which keyboard shortcut pastes?", ["Ctrl+C", "Ctrl+V", "Ctrl+X", "Shift"], 1,
+       "Ctrl+V pastes. Ctrl+C copies and Ctrl+X cuts."),
+    ]),
+  ]},
  [
   Q("To OPEN a file with the mouse you usually...", ["Double-click it", "Right-click once", "Shake the mouse", "Press Enter twice"], 0, "A double-click opens things."),
   Q("Right-click is used to...", ["Show a menu of extra choices", "Delete the computer", "Turn off the screen", "Type a capital letter"], 0, "Right-click opens a context menu."),
@@ -149,7 +189,22 @@ MODULES.append(M("primary", "p-files", "D3", "Files & Folders", "Keep your work 
     "Make a new folder and give it a clear name.",
     "Create or move two files into it.",
     "With a grown-up, copy one important file to a flash disk or cloud as a backup."
-  ], "question": "The folder name you chose and what you backed up."},
+  ], "question": "The folder name you chose and what you backed up.",
+  "tasks": [
+    TEXT("What did you name your new folder?", 3, ["new folder", "folder", "untitled", "untitled folder", "aaa", "abc"],
+         "Choose a clear name that says what is inside, like School Work 2026."),
+    PICK("", [
+      ("Which is the clearest name for your science homework?",
+       ["doc1.docx", "final FINAL (2).docx", "Science-Homework-Plants-2026.docx", "aaaa.docx"], 2,
+       "A clear name says what it is and when, so you can find it later."),
+      ("Where did you back up your important file?",
+       ["A flash disk", "Cloud storage (like Google Drive)", "An external hard drive", "Another computer"], None, ""),
+    ]),
+    SORT("Put each file into the right folder.", ["School", "Photos", "Music"], [
+      ("Maths-Fractions-Notes.docx", 0), ("Family-Trip-Naivasha.jpg", 1), ("Benga-Song.mp3", 2),
+      ("English-Composition.docx", 0), ("Birthday-Cake.png", 1), ("Choir-Practice.mp3", 2),
+    ]),
+  ]},
  [
   Q("A file is...", ["One saved thing, like a photo or document", "A kind of folder", "A type of mouse", "The internet"], 0, "A file is a single saved item."),
   Q("A folder is used to...", ["Hold related files together", "Delete files", "Type letters", "Charge the phone"], 0, "Folders group related files."),
@@ -432,7 +487,30 @@ MODULES.append(M("junior", "j-safe", "C6", "Stay Safe & Smart Online", "Security
     "Pick one important account and set a strong, unique passphrase.",
     "Turn on two-step verification (2FA) if the service offers it.",
     "Find one example of a phishing message and explain two clues that give it away."
-  ], "question": "Which account you secured, and two phishing clues you spotted."},
+  ], "question": "Which account you secured, and two phishing clues you spotted.",
+  "tasks": [
+    FLAGS("This email is a scam. Tap every red flag you can find. There are 4.",
+      "Email · Inbox", [
+      ("From: PesaFast Support <pesafast.support2026@gmail.com>",
+       "A real company emails from its own domain, not a free Gmail address."),
+      ("Subject: URGENT!! Your wallet will be BLOCKED in 2 hours",
+       "Scammers create panic so you act before you think."),
+      ("Dear customer,", None),
+      ("We noticed unusual activity on your PesaFast wallet.", None),
+      ("To keep your KSh 12,450 safe, reply with your PIN and ID number, or confirm them here:",
+       "No real service ever asks for your PIN. Never share it with anyone."),
+      ("http://pesafast-verify.co.ke.secure-login.xyz/confirm",
+       "Read the domain from the right: it really ends in secure-login.xyz, not a PesaFast site. And it is http, not https."),
+      ("Thank you, PesaFast Team", None),
+    ]),
+    PICK("", [
+      ("Which passphrase is the strongest?", ["Password123", "Zuri2010", "maize-Lamp-river-47!", "qwerty"], 2,
+       "Long, random words with numbers and symbols are hard to guess but easy to remember."),
+      ("A message asks for the 6-digit code that 2FA just sent you. What do you do?",
+       ["Send it quickly", "Never share it. Only type it into the real site yourself", "Share it with friends", "Post it online"], 1,
+       "That code is the second lock on your account. Anyone asking for it is trying to break in."),
+    ]),
+  ]},
  [
   Q("A strong password is...", ["Long and unique per account", "The same everywhere", "Your name", "1234"], 0, "Long + unique is safest."),
   Q("Two-step verification (2FA) adds...", ["A code on top of your password", "A second password you share", "A new screen", "More RAM"], 0, "Two locks on one door."),
@@ -537,7 +615,23 @@ MODULES.append(M("junior", "j-network", "C9", "The Network", "From Device to Ser
     "Find your device's IP address (phone: Settings > Wi-Fi > the network; PC: 'ipconfig' or 'ifconfig'). Is it a private 192.168.x.x?",
     "With a grown-up, find who your ISP is.",
     "Run 'tracert google.com' (Windows) or 'traceroute google.com' and count the hops."
-  ], "question": "Your private IP, your ISP, and roughly how many hops to google.com."},
+  ], "question": "Your private IP, your ISP, and roughly how many hops to google.com.",
+  "tasks": [
+    ORDER("Build the path: tap each stop in order, from your device to a website's server.", [
+      ("Your phone or laptop", "Your device splits the request into small packets."),
+      ("Home Wi-Fi router", "The router runs your local network (LAN) and gives your device a private IP like 192.168.x.x. On mobile data, a cell tower plays this part."),
+      ("Your ISP (e.g. Safaricom, Airtel, Zuku)", "Your Internet Service Provider connects your home or phone to the wider internet."),
+      ("Internet backbone (undersea cables at Mombasa)", "Big fibre links carry traffic between countries. Kenya's undersea cables land at Mombasa."),
+      ("The website's server", "The server gets your packets and sends the page back along a path like this one."),
+    ]),
+    PICK("", [
+      ("Which of these is a private (home network) IP address?", ["8.8.8.8", "192.168.1.24", "41.90.64.10", "102.68.1.5"], 1,
+       "192.168.x.x is kept for private networks. Your router shares one public IP for the whole home."),
+      ("Your traceroute shows 12 hops. What is a hop?",
+       ["A router your packets passed through", "A lost packet", "A website", "A Wi-Fi password"], 0,
+       "Each hop is one router passing your packets along. More hops usually means more delay."),
+    ]),
+  ]},
  [
   Q("Devices on your home network connect through a...", ["Router", "Monitor", "Printer", "Speaker"], 0, "The router runs your LAN."),
   Q("A home/school network is called a...", ["LAN (Local Area Network)", "CPU", "GPU", "URL"], 0, "Local Area Network."),
@@ -573,7 +667,26 @@ MODULES.append(M("junior", "j-web", "C10", "How the Web Works", "Domains, DNS & 
     "Open a website and click the padlock — view the certificate and see who it was issued to.",
     "With a grown-up, open Command Prompt/Terminal and run: nslookup safaricom.co.ke  — note the IP address it returns.",
     "Compare two site addresses and explain which looks genuine and which could be a look-alike phishing name."
-  ], "question": "An IP address DNS returned, and one tip for spotting a fake look-alike address."},
+  ], "question": "An IP address DNS returned, and one tip for spotting a fake look-alike address.",
+  "tasks": [
+    ORDER("What happens when you open a website? Tap the steps in order.", [
+      ("You type www.ecitizen.go.ke and press Enter", "Names are easy for people to remember. Computers need numbers."),
+      ("Your device asks a DNS server: what is the IP for this name?", "DNS is the internet's address book."),
+      ("DNS replies with the site's IP address", "Now your device knows which server to talk to."),
+      ("Your browser connects to that IP and sets up HTTPS", "HTTPS encrypts the connection. That's the padlock."),
+      ("The server sends the page back and your browser shows it", "Request, then response. That is how every page loads."),
+    ]),
+    PICK("", [
+      ("Which address is most likely the REAL KRA iTax site?",
+       ["itax-kra.go.ke.login-help.com", "itax.kra.go.ke", "kra-itax.co", "itax.kra.go.ke.verify.xyz"], 1,
+       "Read the domain from the right: .go.ke is for the Kenyan government. The others really end in login-help.com, .co or verify.xyz."),
+      ("Which address is a FAKE look-alike?", ["www.google.com", "mail.google.com", "www.g00gle.com", "www.google.co.ke"], 2,
+       "Zeros swapped in for the letter o is a classic trick. google.co.ke is Google's real Kenya site."),
+      ("What does the padlock (HTTPS) prove?",
+       ["The connection to the named site is encrypted", "The site is honest and safe", "The site is run by the government", "The site has no viruses"], 0,
+       "HTTPS protects your data on the way. Scam sites can have a padlock too, so always check the domain."),
+    ]),
+  ]},
  [
   Q("The World Wide Web is...", ["The pages/sites you view in a browser", "The same as the whole internet", "A type of cable", "A password"], 0, "The web rides on top of the internet."),
   Q("A domain name (like safaricom.co.ke) is...", ["A friendly label for a website", "A password", "An IP number", "A file type"], 0, "Easier to remember than numbers."),

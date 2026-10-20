@@ -140,6 +140,38 @@ label.q:first-child{margin-top:0}
 .mstep{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:12px;background:#f1f5f1;margin-bottom:10px;border:2px solid transparent;font-size:17px;width:100%;text-align:left}
 .mstep .box{flex:none;width:28px;height:28px;border-radius:8px;border:3px solid var(--muted);display:grid;place-items:center;font-weight:900;color:#fff}
 .mstep.on{border-color:var(--green)} .mstep.on .box{background:var(--green);border-color:var(--green)}
+/* Interactive mission tasks */
+.task{display:flex;gap:14px;padding:18px;border:2px solid var(--line);border-radius:14px;margin-bottom:14px;background:#fff}
+.task.done{border-color:var(--green);background:#f6fbf7}
+.task-n{flex:none;width:32px;height:32px;border-radius:50%;background:#eef3ee;color:var(--muted);display:grid;place-items:center;font-weight:900}
+.task.done .task-n{background:var(--green);color:#fff}
+.task-body{flex:1;min-width:0}
+.task-body .q:first-child{margin-top:0}
+.task .round + .round{margin-top:16px}
+.task .rq{font-weight:700;margin:0 0 10px}
+.task .opt.small{padding:8px 12px;font-size:15px}
+.opts.one{grid-template-columns:1fr}
+.fb{margin:10px 0 0;font-size:15px;font-weight:700;min-height:0}
+.fb:empty{display:none}
+.fb.ok{color:var(--green-d)} .fb.no{color:var(--red)}
+.target{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:19px;background:#eef3ee;border-radius:10px;padding:10px 14px;margin:0 0 10px;user-select:all}
+.sortlist{display:grid;gap:8px}
+.sortrow{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:8px 10px;border-radius:10px;background:#f6f8f6;border:2px solid transparent}
+.sortrow.right{border-color:var(--green)} .sortrow.wrong{border-color:var(--red)}
+.sortitem{font-weight:700}
+.sortbtns{display:flex;gap:6px;flex-wrap:wrap}
+.msgcard{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.msghead{background:#eef3ee;color:var(--muted);font-size:13px;font-weight:800;padding:8px 12px;text-transform:uppercase;letter-spacing:.04em}
+.seg{display:block;width:100%;text-align:left;background:none;border:0;border-left:4px solid transparent;padding:8px 12px;font-size:16px;overflow-wrap:anywhere}
+.seg:hover{background:#f6f8f6}
+.seg.flag{background:#fbeceb;border-left-color:var(--red)}
+.seg.clean{background:#f1f5f1;border-left-color:var(--muted)}
+.flaglist{margin:10px 0 0;padding-left:4px;list-style:none;font-size:15px}
+.flaglist li{margin:6px 0}
+.path{margin:0 0 12px;padding-left:22px}
+.path li{margin:0 0 8px}
+.path li .hint{display:block}
+.try-real{font-family:Nunito,system-ui,sans-serif;font-size:18px;margin:22px 0 10px}
 
 /* quiz */
 .qhead{display:flex;justify-content:space-between;color:var(--muted);font-weight:800;font-family:Nunito,system-ui,sans-serif;margin-bottom:10px}
@@ -213,4 +245,6 @@ label.q:first-child{margin-top:0}
   .celeb-summary{grid-template-columns:1fr 1fr}
   .celeb-title{font-size:24px}
   .foot-row{flex-direction:column;align-items:flex-start}
+  .task{flex-direction:column;gap:8px;padding:14px 12px}
+  .task-n{width:26px;height:26px;font-size:14px}
 }

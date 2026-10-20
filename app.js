@@ -778,30 +778,45 @@ function stepWatch(m, s, el){
 }
 
 /* ---------- MISSION ---------- */
+// A mission is either the classic checklist + short answer, or (when it has `tasks`) a set of
+// interactive tasks that can only be finished by engaging with them. The checklist then becomes
+// an optional "try it for real" list.
 function stepMission(m, s, el){
-  const mi = m.mission;
+  const mi = m.mission, tasks = mi.tasks || [];
   const st = (s.mission = s.mission || { ticks: [], answer: "" });
+  if (tasks.length && !Array.isArray(st.tasks)) st.tasks = tasks.map(() => ({}));
 
   el.innerHTML = `
     <div class="mission">
       <h3>🛠️ ${esc(mi.title)}</h3>
+      ${tasks.map((t, i) => `<div class="task" data-t="${i}"><div class="task-n">${i + 1}</div><div class="task-body"></div></div>`).join("")}
+      ${tasks.length ? `<h4 class="try-real">Try it for real <span class="hint">(optional · ask a grown-up if you need help)</span></h4>` : ""}
       ${mi.steps.map((t, i) => `
         <button class="mstep ${st.ticks.includes(i) ? "on" : ""}" data-i="${i}">
           <span class="box">${st.ticks.includes(i) ? "✓" : ""}</span>
           <span>${esc(t)}</span>
         </button>
       `).join("")}
-      <label class="q" for="ans">${esc(mi.question)}</label>
-      <input class="field" id="ans" maxlength="240" value="${esc(st.answer)}" placeholder="Type your answer here" />
+      ${tasks.length ? "" : `
+        <label class="q" for="ans">${esc(mi.question)}</label>
+        <input class="field" id="ans" maxlength="240" value="${esc(st.answer)}" placeholder="Type your answer here" />`}
     </div>
     <div class="stepFoot">
-      <span class="hint">Tick each step and type your answer.</span>
+      <span class="hint" id="mhint">Tick each step and type your answer.</span>
       <button class="btn" id="nx">Mission Done</button>
     </div>
   `;
 
-  const nx = document.getElementById("nx"), ans = document.getElementById("ans");
-  const ok = () => { nx.disabled = !(st.ticks.length === mi.steps.length && ans.value.trim().length >= 1); };
+  const nx = document.getElementById("nx"), ans = document.getElementById("ans"), mhint = document.getElementById("mhint");
+  const ok = () => {
+    if (tasks.length) {
+      const left = tasks.filter((t, i) => !taskDone(t, st.tasks[i])).length;
+      nx.disabled = left > 0;
+      mhint.textContent = left ? `${left} task${left === 1 ? "" : "s"} left to finish.` : "All tasks done. Kazi nzuri!";
+    } else {
+      nx.disabled = !(st.ticks.length === mi.steps.length && ans.value.trim().length >= 1);
+    }
+  };
 
   el.querySelectorAll(".mstep").forEach(b => b.onclick = () => {
     const i = +b.dataset.i;
@@ -811,9 +826,164 @@ function stepMission(m, s, el){
     ok();
   });
 
-  ans.oninput = () => { st.answer = ans.value; ok(); };
+  el.querySelectorAll(".task").forEach(box => {
+    const i = +box.dataset.t, t = tasks[i];
+    const mark = () => box.classList.toggle("done", taskDone(t, st.tasks[i]));
+    renderTask(t, st.tasks[i], box.querySelector(".task-body"), () => { mark(); ok(); queueSave(); });
+    mark();
+  });
+
+  if (ans) ans.oninput = () => { st.answer = ans.value; ok(); };
   nx.onclick = () => advance(m, s, "mission");
   ok();
+}
+
+/* ---------- mission tasks ---------- */
+const cleanText = v => String(v || "").trim();
+
+function taskDone(t, v){
+  v = v || {};
+  switch (t.type) {
+    case "pick":   return t.rounds.every((r, k) => (v.r || [])[k] != null && (r.answer == null || v.r[k] === r.answer));
+    case "sort":   return t.items.every((it, k) => (v.a || {})[k] === it.b);
+    case "text":   return textProblem(t, v.v) === "";
+    case "typing": return v.v === t.target;
+    case "paste":  return !!v.pasted && cleanText(v.v) === t.target;
+    case "flags":  return t.segments.every((sg, k) => !sg.flag || (v.found || []).includes(k));
+    case "order":  return (v.n || 0) >= t.items.length;
+  }
+  return true;
+}
+
+function textProblem(t, val){
+  const x = cleanText(val);
+  if (x.length < (t.min || 1)) return x ? "A little longer, please." : "";
+  if ((t.reject || []).includes(x.toLowerCase())) return t.hint || "Try a clearer answer.";
+  return "";
+}
+
+// Stable shuffle, stored in the task state so the layout doesn't jump when the learner returns
+function taskPerm(v, n){
+  if (!Array.isArray(v.p) || v.p.length !== n) v.p = shuffle([...Array(n).keys()]);
+  return v.p;
+}
+
+function renderTask(t, v, box, changed){
+  const label = t.label ? `<p class="q">${esc(t.label)}</p>` : "";
+
+  if (t.type === "pick") {
+    v.r = v.r || [];
+    const draw = () => {
+      box.innerHTML = label + t.rounds.map((r, ri) => {
+        const c = v.r[ri], has = c != null, right = has && (r.answer == null || c === r.answer), graded = r.answer != null;
+        return `<div class="round">
+          <p class="rq">${esc(r.q)}</p>
+          <div class="opts">${r.options.map((o, k) => `
+            <button class="opt ${c === k ? (right ? "right" : "wrong") : ""}" data-r="${ri}" data-k="${k}" ${graded && right ? "disabled" : ""}>${esc(o)}</button>`).join("")}
+          </div>
+          ${has && graded ? `<p class="fb ${right ? "ok" : "no"}">${right ? "✓ " + esc(r.why || "Correct!") : "Not quite. Look again and try another."}</p>` : ""}
+        </div>`;
+      }).join("");
+      box.querySelectorAll(".opt").forEach(b => b.onclick = () => { v.r[+b.dataset.r] = +b.dataset.k; draw(); changed(); });
+    };
+    return draw();
+  }
+
+  if (t.type === "sort") {
+    v.a = v.a || {};
+    const perm = taskPerm(v, t.items.length);
+    const draw = () => {
+      const wrong = perm.some(k => v.a[k] != null && v.a[k] !== t.items[k].b);
+      box.innerHTML = label + `<div class="sortlist">${perm.map(k => {
+        const a = v.a[k], it = t.items[k], cls = a == null ? "" : a === it.b ? "right" : "wrong";
+        return `<div class="sortrow ${cls}">
+          <span class="sortitem">${esc(it.t)}</span>
+          <span class="sortbtns">${t.buckets.map((b, bi) => `<button class="opt small ${a === bi ? cls : ""}" data-k="${k}" data-b="${bi}" ${cls === "right" ? "disabled" : ""}>${esc(b)}</button>`).join("")}</span>
+        </div>`;
+      }).join("")}</div>
+      ${wrong ? `<p class="fb no">The red ones are in the wrong place. Try the other choice.</p>` : taskDone(t, v) ? `<p class="fb ok">✓ All sorted!</p>` : ""}`;
+      box.querySelectorAll(".opt").forEach(b => b.onclick = () => { v.a[+b.dataset.k] = +b.dataset.b; draw(); changed(); });
+    };
+    return draw();
+  }
+
+  if (t.type === "text" || t.type === "typing" || t.type === "paste") {
+    const target = t.type === "text" ? "" : `<div class="target">${esc(t.target)}</div>`;
+    box.innerHTML = label + target + `
+      <input class="field" maxlength="120" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${t.type === "paste" ? "Paste here" : "Type here"}" />
+      <p class="fb"></p>`;
+    const inp = box.querySelector("input"), fb = box.querySelector(".fb");
+    inp.value = v.v || "";
+    const feedback = () => {
+      let msg = "", good = taskDone(t, v);
+      if (t.type === "text") msg = good ? "✓ Saved." : textProblem(t, v.v);
+      else if (t.type === "typing") {
+        const x = v.v || "";
+        if (good) msg = "✓ Perfect!";
+        else if (x && t.target.startsWith(x)) msg = "Looking good. Keep going…";
+        else if (x) {
+          let i = 0; while (i < x.length && x[i] === t.target[i]) i++;
+          msg = i >= t.target.length ? "Too long. Remove the extra letters with Backspace."
+            : `Check letter ${i + 1}: it should be “${t.target[i] === " " ? "space" : t.target[i]}”.`;
+        }
+      } else {
+        if (good) msg = "✓ Pasted!";
+        else if (v.v && !v.pasted) msg = "Use paste for this one: Ctrl+V, or press and hold, then Paste.";
+        else if (v.v) msg = "That's not quite the sentence. Copy it again and paste.";
+      }
+      fb.textContent = msg;
+      fb.className = "fb " + (good ? "ok" : msg ? "no" : "");
+    };
+    if (t.type === "typing") inp.onpaste = e => { e.preventDefault(); fb.textContent = "Type it yourself. That's the practice!"; fb.className = "fb no"; };
+    if (t.type === "paste") inp.onpaste = () => { v.pasted = true; };
+    inp.oninput = () => {
+      if (t.type === "paste" && !cleanText(inp.value)) v.pasted = false;
+      v.v = inp.value; feedback(); changed();
+    };
+    return feedback();
+  }
+
+  if (t.type === "flags") {
+    v.found = v.found || [];
+    const total = t.segments.filter(sg => sg.flag).length;
+    const draw = () => {
+      box.innerHTML = label + `
+        <div class="msgcard">
+          <div class="msghead">${esc(t.header)}</div>
+          ${t.segments.map((sg, k) => `<button class="seg ${v.found.includes(k) ? "flag" : v.miss === k ? "clean" : ""}" data-k="${k}">${esc(sg.t)}</button>`).join("")}
+        </div>
+        <p class="fb ${v.found.length === total ? "ok" : v.miss != null ? "no" : ""}">${
+          v.found.length === total ? `✓ You found all ${total} red flags!`
+          : v.miss != null ? `That part looks normal on its own. Keep looking. (${v.found.length} of ${total} found)`
+          : `${v.found.length} of ${total} red flags found.`}</p>
+        ${v.found.length ? `<ul class="flaglist">${t.segments.map((sg, k) => v.found.includes(k) ? `<li>🚩 ${esc(sg.flag)}</li>` : "").join("")}</ul>` : ""}`;
+      box.querySelectorAll(".seg").forEach(b => b.onclick = () => {
+        const k = +b.dataset.k;
+        if (t.segments[k].flag) { if (!v.found.includes(k)) v.found.push(k); v.miss = null; }
+        else v.miss = k;
+        draw(); changed();
+      });
+    };
+    return draw();
+  }
+
+  if (t.type === "order") {
+    const perm = taskPerm(v, t.items.length);
+    const draw = () => {
+      const n = v.n || 0, done = n >= t.items.length;
+      box.innerHTML = label + `
+        ${n ? `<ol class="path">${t.items.slice(0, n).map(it => `<li><b>${esc(it.t)}</b><span class="hint">${esc(it.note)}</span></li>`).join("")}</ol>` : ""}
+        ${done ? `<p class="fb ok">✓ Complete!</p>` : `
+          <p class="hint">Tap step ${n + 1} of ${t.items.length}:</p>
+          <div class="opts one">${perm.filter(k => k >= n).map(k => `<button class="opt" data-k="${k}">${esc(t.items[k].t)}</button>`).join("")}</div>
+          ${v.wrong ? `<p class="fb no">Not that one yet. Think about what has to happen next.</p>` : ""}`}`;
+      box.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+        if (+b.dataset.k === (v.n || 0)) { v.n = (v.n || 0) + 1; v.wrong = false; } else v.wrong = true;
+        draw(); changed();
+      });
+    };
+    return draw();
+  }
 }
 
 /* ---------- QUIZ (sets mastery level) ---------- */
