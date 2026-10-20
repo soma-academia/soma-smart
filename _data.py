@@ -7,9 +7,44 @@ def R(icon, title, text): return {"icon": icon, "title": title, "text": text}
 def Q(q, options, a, why): return {"q": q, "options": options, "a": a, "why": why}
 def NOVID(): return {"id": "", "title": "", "channel": ""}
 
+# CBE Curriculum mapping: "strand" (official CBE learning strand) vs "nice" (Going further / enrichment)
+# Mapped to KICD Competency-Based Education curriculum designs (pending teacher confirmation).
+CBE_MAP = {
+    # Primary (Grade 4–6)
+    "p-meet": ("strand", "Grade 4–6 · Digital devices & their parts"),
+    "p-mouse": ("strand", "Grade 4–6 · Basic operations: mouse & keyboard"),
+    "p-files": ("strand", "Grade 4–6 · File handling / basic operations"),
+    "p-safe": ("strand", "Grade 4–6 · Digital safety & responsible use"),
+    "p-internet": ("nice", None),
+    # Junior (Grade 7–9)
+    "j-bootup": ("strand", "Grade 7–9 · Hardware basics: the motherboard & boot"),
+    "j-cpu": ("nice", None),
+    "j-gpu": ("nice", None),
+    "j-ram": ("strand", "Grade 7–9 · Memory & storage basics"),
+    "j-speed": ("nice", None),
+    "j-safe": ("strand", "Grade 7–9 · Digital safety & security"),
+    "j-power": ("nice", None),
+    "j-bits": ("nice", None),
+    "j-network": ("strand", "Grade 7–9 · Networks: device to server"),
+    "j-web": ("strand", "Grade 7–9 · How the web works: domains, DNS & HTTPS"),
+}
+
 def M(track, mid, code, name, part, read, listen, mission, quiz, video=None):
-    return {"track": track, "id": mid, "code": code, "name": name, "part": part,
-            "read": read, "listen": listen, "video": video or NOVID(), "mission": mission, "quiz": quiz}
+    cbe_tag, strand_ref = CBE_MAP.get(mid, ("strand", None))
+    return {
+        "track": track,
+        "id": mid,
+        "code": code,
+        "name": name,
+        "part": part,
+        "read": read,
+        "listen": listen,
+        "video": video or NOVID(),
+        "mission": mission,
+        "quiz": quiz,
+        "cbe": cbe_tag,
+        "strandRef": strand_ref
+    }
 
 TRACKS = [
     {"id": "primary", "name": "Digital Foundations", "level": "Grade 4–6 · ages ~8–10",

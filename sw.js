@@ -1,4 +1,4 @@
-/* Soma Smart — Service Worker for offline CBC/CBE learning */
+/* Soma Smart — Service Worker for offline CBE learning */
 const CACHE_NAME = "soma-smart-v1";
 const STATIC_ASSETS = [
   "./",

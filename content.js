@@ -1,4 +1,4 @@
-/* Soma Smart — free CBC/CBE digital-literacy course content.
+/* Soma Smart — free CBE digital-literacy course content.
  * Two tracks: 'primary' (Grade 4–6, ages ~8–10) and 'junior' (Grade 7–9, ages ~12–15).
  * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.
  * Mastery levels (not prizes): locked → learning → practised → mastered.
@@ -197,7 +197,9 @@ window.COURSE = {
      "a": 0,
      "why": "Ingiza, fanya kazi, toa."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 4–6 · Digital devices & their parts"
   },
   {
    "track": "primary",
@@ -366,7 +368,9 @@ window.COURSE = {
      "a": 0,
      "why": "Dragging moves items on screen."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 4–6 · Basic operations: mouse & keyboard"
   },
   {
    "track": "primary",
@@ -535,7 +539,9 @@ window.COURSE = {
      "a": 0,
      "why": "Flash disks and cloud storage keep extra copies safe."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 4–6 · File handling / basic operations"
   },
   {
    "track": "primary",
@@ -704,7 +710,9 @@ window.COURSE = {
      "a": 0,
      "why": "Passwords should remain secret to you."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 4–6 · Digital safety & responsible use"
   },
   {
    "track": "primary",
@@ -873,7 +881,9 @@ window.COURSE = {
      "a": 0,
      "why": "Protocols detect and retransmit missing packets."
     }
-   ]
+   ],
+   "cbe": "nice",
+   "strandRef": null
   },
   {
    "track": "junior",
@@ -1037,7 +1047,9 @@ window.COURSE = {
      "a": 0,
      "why": "Volatile memory needs continuous power to retain data."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 7–9 · Hardware basics: the motherboard & boot"
   },
   {
    "track": "junior",
@@ -1206,7 +1218,9 @@ window.COURSE = {
      "a": 0,
      "why": "IPC measures how many instructions a CPU completes each clock beat."
     }
-   ]
+   ],
+   "cbe": "nice",
+   "strandRef": null
   },
   {
    "track": "junior",
@@ -1375,7 +1389,9 @@ window.COURSE = {
      "a": 0,
      "why": "Realistic lighting based on physics."
     }
-   ]
+   ],
+   "cbe": "nice",
+   "strandRef": null
   },
   {
    "track": "junior",
@@ -1544,7 +1560,9 @@ window.COURSE = {
      "a": 0,
      "why": "Non-volatile storage preserves data without power."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 7–9 · Memory & storage basics"
   },
   {
    "track": "junior",
@@ -1713,7 +1731,9 @@ window.COURSE = {
      "a": 0,
      "why": "FPS depends on local hardware, not your internet bandwidth."
     }
-   ]
+   ],
+   "cbe": "nice",
+   "strandRef": null
   },
   {
    "track": "junior",
@@ -1882,7 +1902,9 @@ window.COURSE = {
      "a": 0,
      "why": "Malicious links often download malware or steal credentials."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 7–9 · Digital safety & security"
   },
   {
    "track": "junior",
@@ -2051,7 +2073,9 @@ window.COURSE = {
      "a": 0,
      "why": "Lowers clock frequency to prevent hardware damage."
     }
-   ]
+   ],
+   "cbe": "nice",
+   "strandRef": null
   },
   {
    "track": "junior",
@@ -2220,7 +2244,9 @@ window.COURSE = {
      "a": 0,
      "why": "4 + 1 = 5 in base 2."
     }
-   ]
+   ],
+   "cbe": "nice",
+   "strandRef": null
   },
   {
    "track": "junior",
@@ -2389,7 +2415,9 @@ window.COURSE = {
      "a": 0,
      "why": "Undersea fiber cables form the backbone of Kenya's global connectivity."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 7–9 · Networks: device to server"
   },
   {
    "track": "junior",
@@ -2563,7 +2591,9 @@ window.COURSE = {
      "a": 0,
      "why": "DNS caching saves time and network bandwidth."
     }
-   ]
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 7–9 · How the web works: domains, DNS & HTTPS"
   }
  ]
 };

@@ -1,7 +1,7 @@
 {
   "name": "Soma Smart · Elimu ya Dijitali",
   "short_name": "Soma Smart",
-  "description": "Free digital-literacy lessons for Kenyan learners (Grade 4–9) aligned with CBC/CBE.",
+  "description": "Free digital-literacy lessons for Kenyan learners (Grade 4–9) aligned with CBE.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

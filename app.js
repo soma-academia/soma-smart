@@ -1,6 +1,6 @@
 /* Soma Smart — front-end application.
- * Aligned with the Kenya Institute of Curriculum Development (KICD) CBC/CBE curriculum.
- * Self-service accounts, guest mode, PWA offline caching, printable certificates,
+ * Aligned with the Kenya Institute of Curriculum Development (KICD) CBE curriculum.
+ * Self-service accounts, guest mode, PWA offline caching, celebration screen,
  * and anonymous curriculum insights. No support desk or manual recovery.
  */
 (() => {
@@ -207,7 +207,7 @@ function renderAuth(mode){
       <input class="field" id="un" maxlength="20" placeholder="e.g. zuri_ke" required />
 
       ${isNew ? `
-        <label class="q" for="dn">Display Name <span class="hint">(the name shown on your certificate)</span></label>
+        <label class="q" for="dn">Display Name <span class="hint">(the name shown on your celebration summary)</span></label>
         <input class="field" id="dn" maxlength="30" placeholder="e.g. Zuri Wanjiku" required />
       ` : ""}
 
@@ -363,6 +363,39 @@ function renderTrack(){
   const allDone = doneCount === list.length;
   const next = list.find(m => !ms(m.id).done);
 
+  const coreList = list.filter(m => m.cbe === "strand");
+  const enrichList = list.filter(m => m.cbe === "nice");
+
+  const renderModRow = (m) => {
+    const open = unlocked(m), lvl = masteryOf(m.id);
+    const cbeBadge = m.cbe === "strand"
+      ? `<span class="tag-badge tag-cbe">📘 CBE</span>`
+      : `<span class="tag-badge tag-nice">✨ Going further</span>`;
+    const strandHint = (m.cbe === "strand" && m.strandRef)
+      ? `<div class="strand-ref">${esc(m.strandRef)}</div>` : "";
+    return `<button class="rowitem ${open ? "" : "locked"}" data-id="${m.id}" ${open ? "" : "disabled"}>
+      <div class="ri-num">${m.code}</div>
+      <div class="ri-main">
+        <div class="ri-title-row">
+          <span class="ri-t">${esc(m.name)}</span>
+          ${cbeBadge}
+        </div>
+        <div class="ri-s">${esc(m.part)}</div>
+        ${strandHint}
+      </div>
+      <div class="ri-badge ${lvl}">${open ? (MASTERY_BADGE[lvl] || "") : "🔒 Locked"}</div>
+    </button>`;
+  };
+
+  const renderGroup = (groupList, title, desc) => groupList.length === 0 ? "" : `
+    <div class="track-group">
+      <div class="track-group-header">
+        <div class="track-group-title">${title}</div>
+        ${desc ? `<div class="track-group-desc">${desc}</div>` : ""}
+      </div>
+      <div class="list">${groupList.map(renderModRow).join("")}</div>
+    </div>`;
+
   $app.innerHTML = `
     <button class="back" id="bk">← All Tracks</button>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:10px">
@@ -373,25 +406,16 @@ function renderTrack(){
     </div>
     <div class="meter" style="margin-bottom:20px"><div class="meter-fill" style="width:${(doneCount/list.length)*100}%"></div></div>
 
-    <div class="list">
-      ${list.map((m, i) => {
-        const open = unlocked(m), lvl = masteryOf(m.id);
-        return `<button class="rowitem ${open ? "" : "locked"}" data-id="${m.id}" ${open ? "" : "disabled"}>
-          <div class="ri-num">${m.code}</div>
-          <div class="ri-main">
-            <div class="ri-t">${esc(m.name)}</div>
-            <div class="ri-s">${esc(m.part)}</div>
-          </div>
-          <div class="ri-badge ${lvl}">${open ? (MASTERY_BADGE[lvl] || "") : "🔒 Locked"}</div>
-        </button>`;
-      }).join("")}
-    </div>
+    ${renderGroup(coreList, "📘 Core (CBE)", "These modules map to official CBE digital-literacy strands.")}
+    ${renderGroup(enrichList, "✨ Going further", "Enrichment modules — not required by CBE, but great to know.")}
+
+    <div class="cbe-disclaimer">ℹ️ CBE tags are our best-effort mapping to the KICD curriculum and are pending teacher confirmation.</div>
 
     ${allDone ? `
       <div class="track-done-card">
         <h3>Congratulations! You finished this track! 🎉</h3>
-        <p>You have completed all modules in <b>${esc(t.name)}</b>. View or print your certificate of achievement.</p>
-        <button class="btn gold" id="btn-cert">🎓 View Certificate</button>
+        <p>You have completed all modules in <b>${esc(t.name)}</b>. See your mastery summary and share your progress!</p>
+        <button class="btn gold" id="btn-cert">🎉 See Your Achievement</button>
       </div>
     ` : next ? `
       <div class="continue">
@@ -404,8 +428,8 @@ function renderTrack(){
   document.getElementById("bk").onclick = () => go({ name: "home" });
   const c = document.getElementById("cont");
   if (c && next) c.onclick = () => openModule(next.id);
-  const certBtn = document.getElementById("btn-cert");
-  if (certBtn) certBtn.onclick = () => showCertificate(t.id);
+  const celebBtn = document.getElementById("btn-cert");
+  if (celebBtn) celebBtn.onclick = () => showCelebration(t.id);
 
   $app.querySelectorAll("[data-id]").forEach(b => b.onclick = () => {
     const m = MODS.find(x => x.id === b.dataset.id);
@@ -794,54 +818,66 @@ function stepQuiz(m, s, el){
   ask();
 }
 
-/* ---------- CERTIFICATE ---------- */
-function showCertificate(trackId){
+/* ---------- CELEBRATION (replaces certificate — not accredited) ---------- */
+function showCelebration(trackId){
   const t = TRACKS.find(x => x.id === trackId) || TRACKS[0];
   const list = modsForTrack(t.id);
   const masteredCount = list.filter(m => masteryOf(m.id) === "mastered").length;
-  const isAllMastered = masteredCount === list.length;
-  const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
-  const certId = "SM-" + t.id.slice(0, 1).toUpperCase() + "-" + Math.abs(hashCode(USER.username + t.id)).toString().slice(0, 6);
+  const practisedCount = list.filter(m => masteryOf(m.id) === "practised").length;
+  const completedCount = list.filter(m => ms(m.id).done).length;
+  const allMastered = masteredCount === list.length;
+  const name = esc(USER.display || USER.username);
+  const trackName = esc(t.name);
+
+  const masteryEmoji = allMastered ? "🏆" : masteredCount > 0 ? "⭐" : "✅";
+  const masteryMsg = allMastered
+    ? `You mastered every single module — that is excellent work!`
+    : masteredCount > 0
+      ? `You mastered ${masteredCount} of ${list.length} modules. Keep going!`
+      : `You completed all ${list.length} modules. Well done!`;
+
+  const shareText = encodeURIComponent(
+    `I just finished ${t.name} on Soma Smart! 🎉
+` +
+    `Modules completed: ${completedCount}/${list.length}
+` +
+    `Mastered (5/5): ${masteredCount}
+` +
+    `Free digital-literacy learning for Kenya 📱 — soma.smart`
+  );
+  const waLink = `https://wa.me/?text=${shareText}`;
 
   openModal(`
-    <div class="cert-container">
-      <div class="cert-header">
-        <div class="cert-emblem">🇰🇪</div>
-        <div>
-          <h2 class="cert-title">Cheti Cha Ustadi Wa Kidiitali</h2>
-          <div class="cert-sub">Certificate of Digital Literacy · Aligned with KICD Curriculum</div>
+    <div class="celebration-card" style="text-align:center;padding:8px 0">
+      <div class="celeb-confetti" aria-hidden="true">🎉 🎊 🎈 🌟 🎉</div>
+      <h2 class="celeb-title">Congratulations, ${name}!</h2>
+      <p class="celeb-track">You finished <b>${trackName}</b></p>
+      <div class="celeb-summary">
+        <div class="celeb-stat">
+          <div class="celeb-stat-val">${completedCount}/${list.length}</div>
+          <div class="celeb-stat-lbl">Modules done</div>
+        </div>
+        <div class="celeb-stat">
+          <div class="celeb-stat-val" style="color:var(--gold-d)">${masteryEmoji} ${masteredCount}</div>
+          <div class="celeb-stat-lbl">Mastered (5/5)</div>
+        </div>
+        <div class="celeb-stat">
+          <div class="celeb-stat-val" style="color:var(--teal)">${practisedCount}</div>
+          <div class="celeb-stat-lbl">Practised (4/5)</div>
         </div>
       </div>
-      <div class="cert-to">This certificate is awarded to</div>
-      <div class="cert-name">${esc(USER.display)}</div>
-      <div class="cert-reason">
-        For successfully completing the digital literacy curriculum:
+      <p class="celeb-msg">${masteryMsg}</p>
+      <div class="celeb-actions">
+        <a class="btn gold" href="${waLink}" target="_blank" rel="noopener">📱 Share on WhatsApp</a>
+        <button class="btn small" id="celeb-report">📋 View Progress Report</button>
+        <button class="btn ghost small" id="celeb-close">Close</button>
       </div>
-      <div class="cert-track">${esc(t.name)} (${esc(t.level)})</div>
-      <div class="cert-badge-row">
-        <span class="badge ${isAllMastered ? "mastered" : "practised"}">
-          ${isAllMastered ? "🏆 Mastered (All Modules Mastered)" : "✅ Course Completed"}
-        </span>
-      </div>
-      <div class="cert-footer">
-        <div>
-          <div><b>Date:</b> ${today}</div>
-          <div style="font-size:11px;color:var(--muted)">Certificate ID: ${certId}</div>
-        </div>
-        <div style="text-align:center">
-          <div class="cert-seal">🏅</div>
-          <div style="font-weight:800;color:var(--green-d)">SOMA SMART · KICD ALIGNED</div>
-        </div>
-      </div>
-    </div>
-    <div class="modal-actions" style="display:flex;justify-content:center;gap:12px;margin-top:20px">
-      <button class="btn gold" id="btn-print-cert">🖨️ Print / Save as PDF</button>
-      <button class="btn ghost" id="btn-close-cert">Close</button>
+      <p class="celeb-note">Soma Smart is an independent learning tool, not affiliated with KICD or the government.</p>
     </div>
   `);
 
-  document.getElementById("btn-print-cert").onclick = () => window.print();
-  document.getElementById("btn-close-cert").onclick = closeModal;
+  document.getElementById("celeb-close").onclick = closeModal;
+  document.getElementById("celeb-report").onclick = () => { closeModal(); showLearnerReport(); };
 }
 
 function hashCode(str) {
@@ -914,7 +950,7 @@ function showLearnerReport(){
   document.getElementById("close-rep").onclick = closeModal;
   document.getElementById("print-report").onclick = () => window.print();
   document.getElementById("copy-summary").onclick = () => {
-    const text = `Soma Smart · Progress Report for ${USER.display}\nCompleted Modules: ${done}/${total}\nMastered (5/5): ${mastered}\nCourse Progress: ${Math.round((done/total)*100)}%\nAligned with KICD CBC/CBE curriculum.`;
+    const text = `Soma Smart · Progress Report for ${USER.display}\nCompleted Modules: ${done}/${total}\nMastered (5/5): ${mastered}\nCourse Progress: ${Math.round((done/total)*100)}%\nAligned with KICD CBE curriculum.`;
     navigator.clipboard.writeText(text).then(() => toast("Report summary copied to clipboard!"));
   };
 }

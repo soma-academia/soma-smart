@@ -80,10 +80,22 @@ label.q:first-child{margin-top:0}
 .rowitem.locked{opacity:.6;cursor:not-allowed}
 .ri-num{font-family:Nunito,system-ui,sans-serif;font-weight:900;color:#fff;background:var(--green);border-radius:10px;min-width:44px;height:44px;display:grid;place-items:center;font-size:18px}
 .ri-main{flex:1}
+.ri-title-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px}
 .ri-t{font-family:Nunito,system-ui,sans-serif;font-weight:800;font-size:18px}
+.tag-badge{font-size:11px;font-weight:700;padding:2px 8px;border-radius:12px;line-height:1.3;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+.tag-cbe{background:#e8f5e9;color:#1e6a32;border:1px solid #b7dfbf}
+.tag-nice{background:#f3effc;color:#6b3ba7;border:1px solid #ddd1f6}
+.strand-ref{color:var(--muted);font-weight:500;font-size:12px}
 .ri-s{color:var(--muted);font-size:14px}
 .ri-badge{font-size:13px;font-weight:800;white-space:nowrap}
 .ri-badge.mastered{color:var(--gold-d)} .ri-badge.practised{color:var(--green)} .ri-badge.learning{color:var(--teal)} .ri-badge.locked{color:var(--muted)}
+
+.track-group{margin-bottom:28px}
+.track-group-header{margin-bottom:12px;border-bottom:2px solid var(--line);padding-bottom:6px}
+.track-group-title{font-family:Nunito,system-ui,sans-serif;font-size:18px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px}
+.track-group-desc{font-size:13px;color:var(--muted);margin-top:2px}
+.cbe-disclaimer{background:#f7fbf8;border:1px solid #cce3d2;border-radius:10px;padding:10px 14px;font-size:12px;color:var(--ink2);margin-top:20px;text-align:center}
+
 .continue{display:flex;align-items:center;justify-content:space-between;gap:16px;background:#eef3ee;border-radius:14px;padding:16px 20px;margin-top:20px;flex-wrap:wrap}
 .continue b{font-family:Nunito,system-ui,sans-serif;font-size:19px;display:block}
 .continue span{color:var(--muted)}
@@ -155,19 +167,19 @@ label.q:first-child{margin-top:0}
 .modal-close{position:absolute;top:16px;right:18px;background:none;border:0;font-size:26px;color:var(--muted);font-weight:700;line-height:1;padding:4px 8px;border-radius:8px}
 .modal-close:hover{color:var(--ink);background:#f1f5f1}
 
-/* Certificate */
-.cert-container{border:10px double var(--green-d);padding:36px 32px;background:#fffdf9;text-align:center;border-radius:12px;position:relative;box-shadow:inset 0 0 0 2px #d4af37}
-.cert-header{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:12px}
-.cert-emblem{font-size:42px}
-.cert-title{font-family:Nunito,system-ui,sans-serif;font-size:24px;font-weight:900;letter-spacing:2px;color:var(--green-d);text-transform:uppercase;margin:0}
-.cert-sub{font-size:13px;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-top:4px}
-.cert-to{font-size:14px;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-top:24px}
-.cert-name{font-family:Nunito,system-ui,sans-serif;font-size:38px;font-weight:900;color:var(--ink);margin:8px 0;border-bottom:2px solid var(--gold);display:inline-block;padding:0 30px}
-.cert-reason{font-size:16px;color:var(--ink2);max-width:580px;margin:16px auto}
-.cert-track{font-family:Nunito,system-ui,sans-serif;font-size:22px;font-weight:900;color:var(--green);margin:6px 0}
-.cert-badge-row{margin:18px 0}
-.cert-footer{display:flex;justify-content:space-between;align-items:flex-end;margin-top:36px;padding-top:18px;border-top:1px solid #e2ebd8;font-size:13px;color:var(--muted);text-align:left}
-.cert-seal{width:64px;height:64px;border:3px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-size:26px;margin:0 auto 6px;background:#fff9e6}
+/* Celebration card (replaces certificate — Soma Smart is not an accredited body) */
+.celebration-card{padding:8px 0}
+.celeb-confetti{font-size:28px;letter-spacing:6px;margin-bottom:12px;display:block}
+.celeb-title{font-family:Nunito,system-ui,sans-serif;font-size:30px;font-weight:900;color:var(--green-d);margin:0 0 6px}
+.celeb-track{font-size:17px;color:var(--ink2);margin:0 0 20px}
+.celeb-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 16px}
+.celeb-stat{background:#f7fbf8;border:1px solid #cce3d2;border-radius:12px;padding:14px 8px}
+.celeb-stat-val{font-family:Nunito,system-ui,sans-serif;font-size:26px;font-weight:900;color:var(--green)}
+.celeb-stat-lbl{font-size:12px;color:var(--muted);font-weight:700;margin-top:4px}
+.celeb-msg{font-size:15px;color:var(--ink2);margin:0 0 20px}
+.celeb-actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:16px}
+.celeb-actions a.btn{text-decoration:none}
+.celeb-note{font-size:12px;color:var(--muted);margin:0}
 
 /* Admin Shell */
 .admin-header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px;flex-wrap:wrap}
@@ -182,15 +194,14 @@ label.q:first-child{margin-top:0}
 .admin-table th{background:#f8faf8;font-weight:800;color:var(--muted)}
 .admin-table tr:hover td{background:#f4fbf5}
 
-/* Print styles for Certificate */
+/* Print styles — celebration card is not designed for print, just hide modal chrome */
 @media print{
   body *{visibility:hidden}
   #modal-layer, #modal-layer *{visibility:visible}
   #modal-layer{position:absolute;left:0;top:0;width:100%;height:100%;background:#fff;padding:0;display:block}
   .modal-card{max-width:100%;width:100%;padding:0;box-shadow:none;border-radius:0}
-  .modal-close, .modal-actions{display:none !important}
-  .cert-container{border-width:6px;padding:24px;margin:0 auto}
-  @page{size:landscape;margin:1cm}
+  .modal-close, .modal-actions, .celeb-actions{display:none !important}
+  @page{size:portrait;margin:1cm}
 }
 
 @media (max-width:620px){
@@ -199,7 +210,7 @@ label.q:first-child{margin-top:0}
   .qq{font-size:20px}
   .card2{grid-template-columns:1fr;text-align:center}
   main{padding:20px 14px 50px}
-  .cert-name{font-size:28px;padding:0 12px}
-  .cert-title{font-size:20px}
+  .celeb-summary{grid-template-columns:1fr 1fr}
+  .celeb-title{font-size:24px}
   .foot-row{flex-direction:column;align-items:flex-start}
 }

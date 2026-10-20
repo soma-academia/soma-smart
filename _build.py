@@ -15,7 +15,7 @@ course = {
 }
 
 header = (
- "/* Soma Smart \u2014 free CBC/CBE digital-literacy course content.\n"
+ "/* Soma Smart \u2014 free CBE digital-literacy course content.\n"
  " * Two tracks: 'primary' (Grade 4\u20136, ages ~8\u201310) and 'junior' (Grade 7\u20139, ages ~12\u201315).\n"
  " * Each module: read cards \u2192 listen (narrated) \u2192 watch (optional video) \u2192 mission \u2192 quiz.\n"
  " * Mastery levels (not prizes): locked \u2192 learning \u2192 practised \u2192 mastered.\n"
