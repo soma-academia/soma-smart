@@ -10,7 +10,6 @@ window.COURSE = {
  "tagline": "Free computer and internet literacy for everyone.",
  "passMark": 4,
  "questionsPerQuiz": 5,
- "retryCooldownSec": 20,
  "mastery": {
   "practised": 4,
   "mastered": 5

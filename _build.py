@@ -7,7 +7,6 @@ course = {
     "tagline": "Free computer and internet literacy for everyone.",
     "passMark": 4,
     "questionsPerQuiz": 5,
-    "retryCooldownSec": 20,
     # Mastery thresholds (best quiz score out of questionsPerQuiz)
     "mastery": {"practised": 4, "mastered": 5},
     "tracks": D.TRACKS,

@@ -182,6 +182,9 @@ label.q:first-child{margin-top:0}
 .opt.right{border-color:var(--green);background:#e8f4ec}
 .opt.wrong{border-color:var(--red);background:#fbeceb}
 .why{margin-top:16px;font-size:16px;color:var(--ink2)}.why:empty{display:none}
+.why.big{font-size:19px;line-height:1.5;background:#fff8e6;border-left:4px solid var(--gold);border-radius:10px;padding:14px 16px}
+.review .opt{cursor:default}
+.review .opt.dim{opacity:.55}
 .result{text-align:center;padding:20px 0}
 .score{font-family:Nunito,system-ui,sans-serif;font-weight:900;font-size:84px;line-height:1;color:var(--green)}
 .score small{font-size:38px;color:var(--muted)}

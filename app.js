@@ -996,30 +996,58 @@ const shuffle = a => {
   return a;
 };
 
+// Questions missed before are more likely to come back (spaced repetition, per module)
+function pickQuestions(m, s, n){
+  const miss = s.miss || {};
+  const pool = m.quiz.map((_, qi) => ({ qi, w: 1 + 3 * Math.min(miss[qi] || 0, 3) }));
+  const out = [];
+  while (out.length < n && pool.length) {
+    let r = Math.random() * pool.reduce((t, x) => t + x.w, 0), j = 0;
+    while (j < pool.length - 1 && (r -= pool[j].w) >= 0) j++;
+    out.push(pool.splice(j, 1)[0].qi);
+  }
+  return out;
+}
+
+// One card per mistake: the right answer, what was picked, and why. When `gated`, each card
+// must be acknowledged (after a short read) before moving on; `onDone` runs after the last one.
+function showReview(m, list, el, gated, onDone){
+  let k = 0;
+  const card = () => {
+    const { qi, p } = list[k], x = m.quiz[qi];
+    el.innerHTML = `
+      <div class="review">
+        <div class="qhead"><span>MISTAKE ${k + 1}/${list.length}</span><span>${gated ? "Read each one before you retry" : "Optional review"}</span></div>
+        <p class="qq">${esc(x.q)}</p>
+        <div class="opts">
+          ${x.options.map((o, i) => `<div class="opt ${i === x.a ? "right" : i === p ? "wrong" : "dim"}">${i === x.a ? "✓ " : i === p ? "✗ " : ""}${esc(o)}${i === p ? ` <span class="hint">(your answer)</span>` : ""}</div>`).join("")}
+        </div>
+        <div class="why big">💡 ${esc(x.why)}</div>
+        <div class="stepFoot">
+          <span class="hint">${k < list.length - 1 ? "" : gated ? "Last one. Then you can try the quiz again." : ""}</span>
+          <button class="btn" id="got" ${gated ? "disabled" : ""}>${k < list.length - 1 ? "Got it, next" : gated ? "Got it, retry quiz" : "Done"}</button>
+        </div>
+      </div>`;
+    const got = document.getElementById("got");
+    if (gated) { const t = setTimeout(() => { got.disabled = false; got.focus(); }, 2000); cleanup.push(() => clearTimeout(t)); }
+    got.onclick = () => { k++; k < list.length ? card() : onDone(); };
+  };
+  card();
+}
+
 function stepQuiz(m, s, el){
   const N = Math.min(C.questionsPerQuiz, m.quiz.length), pass = Math.min(C.passMark, N);
-  const wait = Math.ceil(((s.lastFail || 0) + C.retryCooldownSec * 1000 - Date.now()) / 1000);
 
-  if (wait > 0) {
-    el.innerHTML = `
-      <div class="result">
-        <h3>Take a short break…</h3>
-        <p class="hint">Try again in <b id="cd">${wait}</b>s. Review the READ or LISTEN steps while waiting.</p>
-      </div>
-    `;
-    const iv = setInterval(() => {
-      const w = Math.ceil(((s.lastFail || 0) + C.retryCooldownSec * 1000 - Date.now()) / 1000);
-      if (w <= 0) { clearInterval(iv); render(); }
-      else { const cd = document.getElementById("cd"); if (cd) cd.textContent = w; }
-    }, 500);
-    cleanup.push(() => clearInterval(iv));
-    return;
+  // After a failed attempt, the mistakes must be reviewed before retrying (even after leaving and coming back)
+  if (Array.isArray(s.review) && s.review.length) {
+    return showReview(m, s.review, el, true, () => { s.review = null; queueSave(); render(); });
   }
 
-  const qs = shuffle(m.quiz).slice(0, N).map(x => {
-    const order = shuffle(x.options.map((_, i) => i));
-    return { q: x.q, why: x.why, options: order.map(i => x.options[i]), a: order.indexOf(x.a) };
+  const qs = pickQuestions(m, s, N).map(qi => {
+    const x = m.quiz[qi], order = shuffle(x.options.map((_, i) => i));
+    return { qi, q: x.q, why: x.why, options: order.map(i => x.options[i]), a: order.indexOf(x.a), order };
   });
+  const mistakes = [];
 
   let k = 0, right = 0;
   let answeredCurrent = false;
@@ -1048,6 +1076,9 @@ function stepQuiz(m, s, el){
       answeredCurrent = true;
       const good = i === x.a;
       if (good) right++;
+      else mistakes.push({ qi: x.qi, p: x.order[i] });
+      s.miss = s.miss || {};
+      s.miss[x.qi] = Math.max(0, (s.miss[x.qi] || 0) + (good ? -1 : 1));
 
       el.querySelectorAll(".opt").forEach(o => {
         o.disabled = true;
@@ -1090,7 +1121,7 @@ function stepQuiz(m, s, el){
       s.reached = 5;
       if (!s.done) s.done = true;
     } else {
-      s.lastFail = Date.now();
+      s.review = mistakes;
     }
     s.mastery = masteryOf(m.id);
     queueSave();
@@ -1102,25 +1133,31 @@ function stepQuiz(m, s, el){
         ${passed ? `
           <h3>Passed! 🎉</h3>
           <div class="badge ${lvl}">${MASTERY_BADGE[lvl]}</div>
-          <p class="hint">${lvl === "mastered" ? "Perfect score — fully mastered!" : "Well done! Score 5/5 next time for Mastered."}</p>
+          <p class="hint">${right === N ? "Perfect score — fully mastered!" : lvl === "mastered" ? "Well done! You mastered this module before, so it stays Mastered." : `Well done! Score ${N}/${N} next time for Mastered.`}</p>
         ` : `
-          <h3>Try Again! 💪</h3>
-          <p class="hint">You need ${pass}/${N} to pass. Review the lesson steps, then retry in ${C.retryCooldownSec}s.</p>
+          <h3>Almost there! 💪</h3>
+          <p class="hint">You need ${pass}/${N} to pass. First, let's look at the ${mistakes.length} question${mistakes.length === 1 ? "" : "s"} you missed. Then you can try again.</p>
         `}
         <div class="row" style="justify-content:center;margin-top:22px;flex-wrap:wrap">
           ${passed ? `
+            ${mistakes.length ? `<button class="btn ghost" id="rvm">Review my mistakes</button>` : ""}
             <button class="btn" id="mp">Back to Track</button>
           ` : `
-            <button class="btn ghost" id="rv">Review Lesson</button>
-            <button class="btn" id="mp">Back to Track</button>
+            <button class="btn" id="rvm">Review my mistakes</button>
+            <button class="btn ghost" id="rv">Re-read the lesson</button>
           `}
         </div>
       </div>
     `;
 
-    document.getElementById("mp").onclick = () => go({ name: "track", t: m.track });
+    const mp = document.getElementById("mp");
+    if (mp) mp.onclick = () => go({ name: "track", t: m.track });
     const rv = document.getElementById("rv");
     if (rv) rv.onclick = () => go({ name: "mod", id: m.id, step: "read" });
+    const rvm = document.getElementById("rvm");
+    if (rvm) rvm.onclick = passed
+      ? () => showReview(m, mistakes, el, false, () => go({ name: "track", t: m.track }))
+      : () => render();
   };
 
   ask();
