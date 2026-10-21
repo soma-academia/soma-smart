@@ -6,9 +6,9 @@ CREATE TABLE IF NOT EXISTS users (
   id            INTEGER PRIMARY KEY AUTOINCREMENT,
   username      TEXT NOT NULL UNIQUE,         -- lowercased handle
   display_name  TEXT NOT NULL,                -- as typed
-  pass_salt     TEXT NOT NULL,
-  pass_hash     TEXT NOT NULL,                -- sha256(salt + password)
-  recovery_hash TEXT,                         -- optional self-set recovery code (sha256)
+  pass_salt     TEXT NOT NULL,                -- legacy column; salt now lives inside pass_hash
+  pass_hash     TEXT NOT NULL,                -- "pbkdf2$<iterations>$<salt>$<hash>" (PBKDF2-SHA256)
+  recovery_hash TEXT,                         -- optional self-set recovery code, same PBKDF2 format
   age_band      TEXT,                         -- 'p' (Grade 4-6) or 'j' (Grade 7-9), optional
   created_at    INTEGER NOT NULL,
   updated_at    INTEGER NOT NULL
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS progress (
   reached    INTEGER NOT NULL DEFAULT 0,      -- furthest step index reached (0..5)
   best_score INTEGER NOT NULL DEFAULT 0,      -- best quiz score
   attempts   INTEGER NOT NULL DEFAULT 0,
-  mastery    TEXT NOT NULL DEFAULT 'locked',  -- locked | learning | practised | mastered
+  mastery    TEXT NOT NULL DEFAULT 'new',     -- new | learning | practised | mastered
   done       INTEGER NOT NULL DEFAULT 0,      -- 0/1
   updated_at INTEGER NOT NULL,
   PRIMARY KEY (user_id, module_id),

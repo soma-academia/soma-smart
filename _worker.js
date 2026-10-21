@@ -6,6 +6,8 @@
  *   D1 database binding: DB        (database: soma-smart, schema in worker/schema.sql)
  *   Environment variable: TOKEN_SECRET (required long secret that signs login tokens; fails closed if unset)
  *   Environment variable: ADMIN_KEY    (required long secret for /api/insights; must differ from TOKEN_SECRET)
+ *   Environment variable: PBKDF2_ITERATIONS (optional, default 20000, max 100000). Keep it low enough for
+ *     the free plan's ~10 ms CPU per request; raise it on Workers Paid. Older hashes upgrade on next login.
  *
  * Endpoints:
  *   GET  /api/health                                                      -> {ok:true, d1:bool, now:number}
@@ -24,12 +26,11 @@ const now = () => Date.now();
 function getCorsHeaders(request) {
   const origin = request.headers.get("Origin");
   const url = new URL(request.url);
-  const isAllowed = origin && (
+  // The app and API share one origin, so only that origin (plus local development) may call the API.
+  // Any other *.pages.dev site is someone else's and must not be trusted.
+  const isAllowed = !!origin && (
     origin === url.origin ||
-    origin.endsWith(".pages.dev") ||
-    origin.includes("somasmart") ||
-    origin.startsWith("http://localhost:") ||
-    origin.startsWith("http://127.0.0.1:")
+    /^http:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
   );
   const h = {
     "Content-Type": "application/json",
@@ -58,6 +59,39 @@ function randHex(n = 16) {
   const a = new Uint8Array(n); crypto.getRandomValues(a);
   return [...a].map(b => b.toString(16).padStart(2, "0")).join("");
 }
+
+// ---------- password & recovery-code hashing: salted PBKDF2-SHA256 ----------
+// Stored as "pbkdf2$<iterations>$<saltHex>$<hashHex>" so the cost can be raised later without breaking accounts.
+const DEFAULT_ITERATIONS = 20000;
+const iterationsFor = env => Math.min(100000, Math.max(10000, parseInt(env.PBKDF2_ITERATIONS, 10) || DEFAULT_ITERATIONS));
+
+async function pbkdf2Hex(secret, saltHex, iterations) {
+  const key = await crypto.subtle.importKey("raw", new TextEncoder().encode(secret), "PBKDF2", false, ["deriveBits"]);
+  const salt = new Uint8Array(saltHex.match(/../g).map(h => parseInt(h, 16)));
+  const bits = await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt, iterations }, key, 256);
+  return [...new Uint8Array(bits)].map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function hashSecret(env, secret) {
+  const iterations = iterationsFor(env), salt = randHex(16);
+  return `pbkdf2$${iterations}$${salt}$${await pbkdf2Hex(String(secret), salt, iterations)}`;
+}
+
+// Constant-time string comparison (both are hex digests of equal length when valid)
+function sameText(a, b) {
+  a = String(a); b = String(b);
+  let diff = a.length ^ b.length;
+  for (let i = 0; i < Math.max(a.length, b.length); i++) diff |= (a.charCodeAt(i) | 0) ^ (b.charCodeAt(i) | 0);
+  return diff === 0;
+}
+
+async function verifySecret(stored, secret) {
+  const [scheme, it, salt, hash] = String(stored || "").split("$");
+  if (scheme !== "pbkdf2" || !salt || !hash || !(+it > 0)) return false;
+  return sameText(await pbkdf2Hex(String(secret), salt, +it), hash);
+}
+
+const needsRehash = (env, stored) => +String(stored).split("$")[1] < iterationsFor(env);
 
 const normUser = u => String(u || "").trim().toLowerCase();
 
@@ -193,14 +227,14 @@ export default {
           return json({ error: "That username is taken. Try another." }, 409, request);
         }
 
-        const salt = randHex(8);
-        const pass_hash = await sha256(salt + b.password);
-        const recovery_hash = b.recovery ? await sha256("rec:" + b.recovery) : null;
+        const pass_hash = await hashSecret(env, b.password);
+        const recovery_hash = b.recovery ? await hashSecret(env, b.recovery) : null;
         const t = now();
 
+        // pass_salt is kept for schema compatibility; the salt now lives inside pass_hash
         const res = await env.DB.prepare(
           "INSERT INTO users (username, display_name, pass_salt, pass_hash, recovery_hash, age_band, created_at, updated_at) VALUES (?1,?2,?3,?4,?5,?6,?7,?7)"
-        ).bind(username, display, salt, pass_hash, recovery_hash, b.ageBand || null, t).run();
+        ).bind(username, display, "pbkdf2", pass_hash, recovery_hash, b.ageBand || null, t).run();
 
         const u = await env.DB.prepare("SELECT * FROM users WHERE id=?1").bind(res.meta.last_row_id).first();
         return json({ token: await makeToken(env, u), user: publicUser(u) }, 200, request);
@@ -219,12 +253,18 @@ export default {
           return json({ error: "No such username. Check spelling or create a new account." }, 404, request);
         }
 
-        const hash = await sha256(u.pass_salt + String(b.password || ""));
-        if (hash !== u.pass_hash) {
+        if (!(await verifySecret(u.pass_hash, b.password || ""))) {
           return json({ error: "Wrong password." }, 401, request);
         }
 
-        return json({ token: await makeToken(env, u), user: publicUser(u) }, 200, request);
+        // Quietly upgrade hashes made with fewer iterations than the current setting
+        let user = u;
+        if (needsRehash(env, u.pass_hash)) {
+          await env.DB.prepare("UPDATE users SET pass_hash=?1, updated_at=?2 WHERE id=?3").bind(await hashSecret(env, b.password), now(), u.id).run();
+          user = await env.DB.prepare("SELECT * FROM users WHERE id=?1").bind(u.id).first();
+        }
+
+        return json({ token: await makeToken(env, user), user: publicUser(user) }, 200, request);
       }
 
       // ---------- self-service reset via recovery code ----------
@@ -241,8 +281,7 @@ export default {
           return json({ error: "Hakuna recovery code iliyowekwa kwa akaunti hii. Hakuna msaada wa kurejesha akaunti — tafadhali fungua akaunti mpya." }, 400, request);
         }
 
-        const enteredRecHash = await sha256("rec:" + String(b.recovery || ""));
-        if (enteredRecHash !== u.recovery_hash) {
+        if (!(await verifySecret(u.recovery_hash, b.recovery || ""))) {
           return json({ error: "Recovery code is wrong." }, 401, request);
         }
 
@@ -250,8 +289,8 @@ export default {
           return json({ error: "New password needs at least 4 characters." }, 400, request);
         }
 
-        const salt = randHex(8), pass_hash = await sha256(salt + b.newPassword);
-        await env.DB.prepare("UPDATE users SET pass_salt=?1, pass_hash=?2, updated_at=?3 WHERE id=?4").bind(salt, pass_hash, now(), u.id).run();
+        const pass_hash = await hashSecret(env, b.newPassword);
+        await env.DB.prepare("UPDATE users SET pass_hash=?1, updated_at=?2 WHERE id=?3").bind(pass_hash, now(), u.id).run();
         const u2 = await env.DB.prepare("SELECT * FROM users WHERE id=?1").bind(u.id).first();
         return json({ token: await makeToken(env, u2), user: publicUser(u2) }, 200, request);
       }
