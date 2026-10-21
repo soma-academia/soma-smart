@@ -52,7 +52,16 @@ jobs:
           if [ ${#CLOUDFLARE_API_TOKEN} -lt 30 ]; then echo "::error::CLOUDFLARE_API_TOKEN is only ${#CLOUDFLARE_API_TOKEN} characters; a Cloudflare API token is about 40. It may be the token's name or ID instead of the token."; exit 1; fi
           echo "Token looks right (${#CLOUDFLARE_API_TOKEN} characters)."
           export CLOUDFLARE_API_TOKEN
-          npx --yes wrangler@4.151.2 pages deploy . --project-name soma-smart --branch main --commit-hash "$GITHUB_SHA" --commit-message "$GITHUB_SHA"
+          if npx --yes wrangler@4.151.2 pages deploy . --project-name soma-smart --branch main --commit-hash "$GITHUB_SHA" --commit-message "$GITHUB_SHA"; then exit 0; fi
+          # Deploy failed: ask Cloudflare what it thinks of the token (prints status only, never the token)
+          echo "::group::Token diagnostics"
+          api() { curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4$1"; }
+          echo "As a user token:    $(api /user/tokens/verify | jq -c '{success, status: .result.status, errors: [.errors[]?.message]}')"
+          echo "As an account token: $(api /accounts/$CLOUDFLARE_ACCOUNT_ID/tokens/verify | jq -c '{success, status: .result.status, errors: [.errors[]?.message]}')"
+          echo "Accounts it can see: $(api /accounts | jq -c '[.result[]?.name]')"
+          echo "List Pages projects: $(api /accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects | jq -c '{success, projects: [.result[]?.name], errors: [.errors[]?.message]}')"
+          echo "::endgroup::"
+          exit 1
 
       - name: Check the live API
         run: |
