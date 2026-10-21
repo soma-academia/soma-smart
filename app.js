@@ -225,19 +225,35 @@ function hud(){
 }
 
 /* ---------- router ---------- */
-function go(v){
+// Info pages and the (unlinked) insights page have their own addresses; everything else lives at "/"
+const PAGE_PATHS = { about: "/about", privacy: "/privacy", licences: "/licences" };
+const pathFor = v => v.name === "page" ? PAGE_PATHS[v.page] : v.name === "admin" ? "/insights" : "/";
+function viewFromPath(path){
+  path = path.replace(/\/+$/, "") || "/";
+  if (path === "/insights") return { name: "admin" };
+  if (path === "/licenses") return { name: "page", page: "licences" };
+  const page = Object.keys(PAGE_PATHS).find(k => PAGE_PATHS[k] === path);
+  return page ? { name: "page", page } : { name: "home" };
+}
+
+function go(v, fromHistory){
   if (currentKeyHandler) {
     window.removeEventListener("keydown", currentKeyHandler);
     currentKeyHandler = null;
   }
   view = v;
+  const path = pathFor(v);
+  if (!fromHistory && location.pathname !== path) history.pushState(null, "", path);
   render();
   window.scrollTo(0, 0);
 }
+window.addEventListener("popstate", () => go(viewFromPath(location.pathname), true));
 
 function render(){
   hud();
+  if (view.name !== "page") document.title = "Soma Smart · Free Digital Literacy for Kenya";
   if (view.name === "admin") return renderAdmin();
+  if (view.name === "page") return renderPage(view.page);
   if (view.name === "auth") return renderAuth(view.mode);
   if (view.name === "home") return renderHome();
   if (view.name === "track") return renderTrack();
@@ -251,8 +267,108 @@ document.getElementById("brand").onclick = () => {
 };
 const lr = document.getElementById("link-report");
 if (lr) lr.onclick = e => { e.preventDefault(); if (USER) showLearnerReport(); };
-const la = document.getElementById("link-admin");
-if (la) la.onclick = e => { e.preventDefault(); go({ name: "admin" }); };
+// Footer links are real addresses (they work without JavaScript too); open them in-app
+document.querySelectorAll("a[data-page]").forEach(a => a.onclick = e => { e.preventDefault(); go({ name: "page", page: a.dataset.page }); });
+
+/* ---------- info pages: About & disclaimer, Privacy, Licences ---------- */
+const SUPPORT_EMAIL = "admin@somasmart.co.ke";
+const mail = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
+const PAGES = {
+  about: { title: "About Soma Smart", html: `
+    <p class="lead">Soma Smart is a free, self-guided course that helps Kenyan learners in Grade 4–9 understand
+      how computers and the internet work, and how to stay safe online.</p>
+    <h3>What it is</h3>
+    <ul>
+      <li>Short lessons you can read, listen to and try out, followed by a quiz that explains mistakes.</li>
+      <li>Free, with no ads. It works offline once opened, and no account is needed.</li>
+      <li>Written with practical Kenyan examples. Technical content is reviewed by a network-security engineer.</li>
+      <li>Mapped, as our own best effort, to the CBE digital-literacy strands, pending confirmation by teachers.</li>
+    </ul>
+    <h3>What it is not</h3>
+    <ul>
+      <li><b>Not official.</b> Soma Smart is an independent project. It is not affiliated with, or endorsed by,
+        KICD, KNEC or the Ministry of Education.</li>
+      <li><b>Not accredited.</b> It does not award certificates or grades that count towards any exam or qualification.</li>
+      <li><b>Not a replacement for a teacher</b>, and not a managed classroom: teachers cannot see individual learners' work.</li>
+      <li><b>Not a support desk.</b> We cannot recover lost accounts or passwords. Set a recovery code, or use
+        <b>Backup</b> to keep a copy of your progress.</li>
+      <li><b>Not a chat or social service.</b> There is no messaging between users, and nothing is shown publicly.</li>
+      <li><b>Not a shop.</b> Nothing is sold, and there are no in-app payments.</li>
+    </ul>
+    <h3>Accuracy</h3>
+    <p>We check lessons carefully, but they may contain mistakes or go out of date. Found one? Please tell us.
+      Videos inside lessons are made by other organisations (such as Code.org) and are their responsibility.</p>
+    <h3>Contact</h3>
+    <p>Feedback, corrections and privacy questions: ${mail}. Please remember we cannot recover accounts or passwords.</p>` },
+
+  privacy: { title: "Privacy", html: `
+    <p class="lead">Soma Smart is built to collect as little as possible. Most learners never send us anything personal.</p>
+    <h3>Without an account (most learners)</h3>
+    <ul>
+      <li>Your progress and the name you type are saved <b>only in this browser on this device</b>. We never receive them.</li>
+      <li>Clearing your browser's data deletes them. Use <b>Backup</b> to keep a copy as a file.</li>
+    </ul>
+    <h3>If you create an account (optional)</h3>
+    <ul>
+      <li>We store your <b>username</b>, <b>display name</b>, optional <b>grade band</b>, and your <b>progress</b>
+        (steps reached, best quiz score, attempts).</li>
+      <li>Your password and recovery code are stored only as one-way scrambled codes (hashes). Nobody, including us, can read them.</li>
+      <li>We never ask for an email address, phone number, school or location. Please <b>don't use your full real name</b>
+        as your username or display name.</li>
+      <li>You can delete your account at any time: <b>Backup → Delete my account</b>. It is removed from our server straight away.</li>
+    </ul>
+    <h3>Anonymous lesson statistics</h3>
+    <p>When anyone answers a quiz question, we count it as right or wrong for that module, with no name, account or
+      device attached. These daily totals show which lessons are hardest, so we can improve them.</p>
+    <h3>Other services</h3>
+    <ul>
+      <li><b>Cloudflare</b> hosts the site and stores account data (in Western Europe). Like any web host, it handles
+        your device's IP address to deliver pages. To stop abuse, we keep a short-lived record of IP addresses that try
+        to sign up or log in, for up to an hour.</li>
+      <li><b>Google Fonts</b> supplies the fonts, so your browser fetches them from Google.</li>
+      <li><b>YouTube</b>: a video only loads if you tap <b>Load video</b>, using YouTube's privacy-enhanced mode.
+        After that, YouTube's own privacy policy applies.</li>
+    </ul>
+    <p>No ads, no tracking or advertising cookies, and we never sell or share data.</p>
+    <h3>Children</h3>
+    <p>Soma Smart is designed for learners aged 9–15 and works fully without an account. Parents and teachers are
+      welcome to decide whether a child should create one.</p>
+    <h3>Questions</h3>
+    <p>Email ${mail}.</p>` },
+
+  licences: { title: "Licences", html: `
+    <p class="lead">Soma Smart is free and open. You are welcome to reuse it under these licences.</p>
+    <h3>Lessons: CC BY-NC-SA 4.0</h3>
+    <p>The lesson text, quizzes, missions and explainer captions are © 2026 Soma Smart and licensed under
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener license" target="_blank">Creative Commons
+      Attribution-NonCommercial-ShareAlike 4.0</a>. You may share and adapt them, for example for your class or another
+      language, if you credit Soma Smart, don't use them commercially, and share your version under the same licence.</p>
+    <h3>Code: MIT</h3>
+    <p>The app's code is © 2026 Soma Smart under the <a href="https://github.com/soma-academia/soma-smart/blob/main/LICENSE"
+      rel="noopener" target="_blank">MIT licence</a>. Source:
+      <a href="https://github.com/soma-academia/soma-smart" rel="noopener" target="_blank">github.com/soma-academia/soma-smart</a>.</p>
+    <h3>Other parts</h3>
+    <ul>
+      <li><b>Icons</b> were drawn for Soma Smart and are covered by the MIT licence with the code.</li>
+      <li><b>Fonts:</b> Nunito and Roboto, under the <a href="https://openfontlicense.org" rel="noopener" target="_blank">SIL Open Font License 1.1</a>, served by Google Fonts.</li>
+      <li><b>Videos</b> belong to their creators (mostly Code.org) and are shown through YouTube under its terms.
+        They are not covered by Soma Smart's licences.</li>
+    </ul>` },
+};
+
+function renderPage(name){
+  const pg = PAGES[name] || PAGES.about;
+  document.title = `${pg.title} · Soma Smart`;
+  $app.innerHTML = `
+    <button class="back" id="bk">← Back to lessons</button>
+    <article class="infopage">
+      <h1>${pg.title}</h1>
+      ${pg.html}
+      <p class="hint">Also see: ${Object.keys(PAGES).filter(k => k !== name).map(k => `<a href="${PAGE_PATHS[k]}" data-goto="${k}">${PAGES[k].title}</a>`).join(" · ")}</p>
+    </article>`;
+  document.getElementById("bk").onclick = () => go({ name: "home" });
+  $app.querySelectorAll("[data-goto]").forEach(a => a.onclick = e => { e.preventDefault(); go({ name: "page", page: a.dataset.goto }); });
+}
 
 /* ---------- auth screens & guest mode ---------- */
 async function logout(){
@@ -312,7 +428,8 @@ function showBackup(){
     <div class="disclaim" style="margin-top:20px">
       ${isLocal
         ? `<b>Sync across devices (optional).</b> You never need an account to learn. If you want progress to follow you between devices automatically, you can <a href="#" id="bk-auth">create a free account or log in</a>.`
-        : `<b>Signed in as ${esc(USER.username)}.</b> Progress is saved on this device first and syncs to your account whenever you are online.`}
+        : `<b>Signed in as ${esc(USER.username)}.</b> Progress is saved on this device first and syncs to your account whenever you are online.
+           <br><a href="#" id="bk-delete" class="danger-link">Delete my account</a>`}
     </div>
   `);
 
@@ -334,6 +451,46 @@ function showBackup(){
   if (fn) fn.onsubmit = e => { e.preventDefault(); setLocalName(document.getElementById("ln").value); hud(); render(); toast("Name saved."); };
   const ba = document.getElementById("bk-auth");
   if (ba) ba.onclick = e => { e.preventDefault(); closeModal(); go({ name: "auth", mode: "signup" }); };
+  const bd = document.getElementById("bk-delete");
+  if (bd) bd.onclick = e => { e.preventDefault(); showDeleteAccount(); };
+}
+
+// Self-service, permanent account deletion. Progress on this device stays (as no-account progress).
+function showDeleteAccount(){
+  openModal(`
+    <h2 style="margin:0 0 6px;font-family:Nunito,sans-serif">Delete your account</h2>
+    <p>This permanently deletes the account <b>${esc(USER.username)}</b> and its saved progress from our server.
+      It cannot be undone. Your progress on <i>this device</i> stays, and you can keep learning without an account.</p>
+    <form id="f-del">
+      <label class="q" for="dpw">Type your password to confirm</label>
+      <input class="field" id="dpw" type="password" maxlength="60" required autocomplete="current-password" />
+      <div class="err" id="del-err"></div>
+      <div class="stepFoot">
+        <button type="button" class="btn ghost small" id="del-cancel">Cancel</button>
+        <button class="btn danger" id="del-go">Delete permanently</button>
+      </div>
+    </form>`);
+  document.getElementById("del-cancel").onclick = closeModal;
+  document.getElementById("f-del").onsubmit = async e => {
+    e.preventDefault();
+    const err = document.getElementById("del-err");
+    err.textContent = "Deleting…";
+    try {
+      await api("delete-account", "POST", { password: document.getElementById("dpw").value });
+      const kept = PROG;
+      try { localStorage.removeItem(progKey()); } catch {}
+      localStorage.removeItem(LS_TOKEN);
+      localStorage.removeItem(LS_USER);
+      startLocalMode();
+      PROG = mergeProgress(PROG, kept);
+      saveLocal();
+      closeModal();
+      go({ name: "home" });
+      toast("Your account was deleted. Your progress is still on this device.");
+    } catch (x) {
+      err.textContent = x.message;
+    }
+  };
 }
 
 function renderAuth(mode){
@@ -1538,6 +1695,8 @@ async function renderAdminDashboard(key){
   migrateOldGuestData();
   let savedUser = null;
   try { savedUser = JSON.parse(localStorage.getItem(LS_USER) || "null"); } catch {}
+
+  view = viewFromPath(location.pathname);
 
   if (TOKEN && savedUser) {
     // Show this device's copy immediately; sync in the background without blocking learning

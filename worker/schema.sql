@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS events (
 
 -- Simple IP rate limiting to mitigate automated abuse.
 CREATE TABLE IF NOT EXISTS rate_limits (
-  key       TEXT PRIMARY KEY,
+  key       TEXT PRIMARY KEY,                 -- salted hash of action + IP, never the raw IP
   count     INTEGER NOT NULL DEFAULT 1,
   reset_at  INTEGER NOT NULL
 );

@@ -16,6 +16,7 @@
  *   POST /api/reset    {username, recovery, newPassword}                  -> {token, user} (self-service only)
  *   GET  /api/progress            (Authorization: Bearer <token>)         -> {mods:{...}}
  *   PUT  /api/progress  {mods}    (Authorization: Bearer <token>)         -> {ok:true}
+ *   POST /api/delete-account {password} (Authorization: Bearer <token>)  -> {ok:true}  (self-service, permanent)
  *   POST /api/event    {track, module, correct}                          -> {ok:true}  (anonymous)
  *   GET  /api/insights            (X-Admin-Key: <ADMIN_KEY>)              -> {overview, topModules, hardest, daily}
  * Everything else -> static assets.
@@ -143,9 +144,13 @@ async function readProgress(env, userId) {
 }
 
 // Basic abuse prevention: rate limit by IP / key
+// Rate limiting keyed by a salted hash of "action:IP" (the raw IP is never stored).
+// Expired records are purged on every check, so none outlive their window (at most an hour).
 async function checkRateLimit(env, key, maxAttempts, windowSec) {
   const t = now();
   try {
+    key = await sha256("rl:" + key + ":" + (env.TOKEN_SECRET || ""));
+    await env.DB.prepare("DELETE FROM rate_limits WHERE reset_at < ?1").bind(t).run();
     const row = await env.DB.prepare("SELECT count, reset_at FROM rate_limits WHERE key=?1").bind(key).first();
     if (!row || t > row.reset_at) {
       await env.DB.prepare(
@@ -296,6 +301,24 @@ export default {
       }
 
       // ---------- progress (authenticated) ----------
+      // ---------- self-service account deletion (permanent; password required) ----------
+      if (p === "/api/delete-account" && request.method === "POST") {
+        const allowed = await checkRateLimit(env, "delete:" + clientIP, 10, 1800);
+        if (!allowed) return json({ error: "Too many attempts. Please wait a while." }, 429, request);
+        const token = (request.headers.get("Authorization") || "").replace(/^Bearer\s+/, "");
+        const u = await userFromToken(env, token);
+        if (!u) return json({ error: "Not signed in or session expired. Log in again first." }, 401, request);
+        const b = await request.json();
+        if (!(await verifySecret(u.pass_hash, b.password || ""))) {
+          return json({ error: "Wrong password." }, 401, request);
+        }
+        await env.DB.batch([
+          env.DB.prepare("DELETE FROM progress WHERE user_id=?1").bind(u.id),
+          env.DB.prepare("DELETE FROM users WHERE id=?1").bind(u.id),
+        ]);
+        return json({ ok: true }, 200, request);
+      }
+
       if (p === "/api/progress") {
         const token = (request.headers.get("Authorization") || "").replace(/^Bearer\s+/, "");
         const u = await userFromToken(env, token);
