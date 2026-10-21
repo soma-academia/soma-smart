@@ -1,9 +1,10 @@
 /* Soma Smart — Service Worker for offline CBE learning */
-const CACHE_NAME = "soma-smart-v3";
+const CACHE_NAME = "soma-smart-v4";
 const STATIC_ASSETS = [
   "./",
   "index.html",
   "styles.css",
+  "icons.js",
   "content.js",
   "explainers.js",
   "app.js",

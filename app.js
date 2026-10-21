@@ -9,6 +9,8 @@
 const C = window.COURSE, MODS = C.modules, TRACKS = C.tracks;
 const STEPS = ["read", "listen", "watch", "mission", "quiz"];
 const STEP_LABEL = { read: "READ", listen: "LISTEN", watch: "WATCH", mission: "MISSION", quiz: "QUIZ" };
+const STEP_ICON = { read: "book", listen: "speaker", watch: "play", mission: "flag", quiz: "check" };
+const ICON = (name, size) => (window.ICON ? window.ICON(name, size) : "");
 const $app = document.getElementById("app"), $hud = document.getElementById("hud"), $modal = document.getElementById("modal-layer");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_PROG = "somasmart.progress",
@@ -198,10 +200,10 @@ function hud(){
   const isLocal = !!USER.isLocal;
   // [class, icon, text]; on phones only the icon shows (the text stays as a tooltip / screen-reader label)
   const syncLabels = {
-    local: ["ok", "💾", "Saved on this device"],
+    local: ["ok", ICON("save", 16), "Saved on this device"],
     saved: ["ok", "●", "Saved & synced"],
     saving: ["ok", "↻", "Syncing…"],
-    offline: ["ok", "💾", "Saved on device · will sync later"]
+    offline: ["ok", ICON("save", 16), "Saved on device · will sync later"]
   };
   const sync = syncLabels[syncState] || ["ok", "", ""];
 
@@ -471,10 +473,14 @@ function renderHome(){
     const list = modsForTrack(t.id);
     const done = list.filter(m => ms(m.id).done).length;
     const pct = Math.round((done / list.length) * 100);
-    return `<button class="card" data-t="${t.id}">
-      <div class="card-ic">${t.id === "primary" ? "🌱" : "🖥️"}</div>
-      <div class="card-t">${esc(t.name)}</div>
-      <div class="card-s">${esc(t.level)} · ${list.length} modules</div>
+    return `<button class="card t-${t.id}" data-t="${t.id}">
+      <div class="card-head">
+        <div class="card-ic">${ICON(t.id === "primary" ? "sprout" : "monitor", 26)}</div>
+        <div>
+          <div class="card-t">${esc(t.name)}</div>
+          <div class="card-s">${esc(t.level)} · ${list.length} modules</div>
+        </div>
+      </div>
       <p class="card-b">${esc(t.blurb)}</p>
       <div class="card-m">
         <span>${done}/${list.length} modules completed</span>
@@ -484,8 +490,8 @@ function renderHome(){
     </button>`;
   }).join("");
 
-  const steps = [["📖", "Read", "Short cards with Kenyan examples"], ["🔊", "Listen", "Hear the lesson read aloud"],
-                 ["🛠️", "Mission", "Try it: sort, spot, type, build"], ["✅", "Quiz", "5 questions. Mistakes are explained"]];
+  const steps = [["book", "Read", "Short cards with Kenyan examples"], ["speaker", "Listen", "Hear the lesson read aloud"],
+                 ["flag", "Mission", "Try it: sort, spot, type, build"], ["check", "Quiz", "5 questions. Mistakes are explained"]];
 
   $app.innerHTML = started.length ? `
     <section class="hero">
@@ -499,16 +505,16 @@ function renderHome(){
       <h1>Learn how computers and the internet <em>really work</em>.</h1>
       <p>Free lessons for Kenyan learners in Grade 4–9. Read, listen, try it yourself, then take a short quiz.</p>
       <ul class="trust">
-        <li>🆓 Free, no ads</li>
-        <li>📶 Works offline</li>
-        <li>🙋 No account needed</li>
-        <li>📘 Mapped to CBE strands</li>
+        <li>${ICON("tag", 18)} Free, no ads</li>
+        <li>${ICON("wifi", 18)} Works offline</li>
+        <li>${ICON("user", 18)} No account needed</li>
+        <li>${ICON("book", 18)} Mapped to CBE strands</li>
       </ul>
     </section>
     <h2 class="home-h2">Choose your track</h2>
     <div class="grid">${trackCards}</div>
     <h2 class="home-h2">How each lesson works</h2>
-    <ol class="howto">${steps.map(([ic, t, d]) => `<li><span class="howto-ic">${ic}</span><b>${t}</b><span>${d}</span></li>`).join("")}</ol>
+    <ol class="howto">${steps.map(([ic, t, d]) => `<li><span class="howto-ic">${ICON(ic, 26)}</span><b>${t}</b><span>${d}</span></li>`).join("")}</ol>
     <div class="parents">
       <b>For teachers and parents.</b> Soma Smart is free and needs no sign-up. Progress is saved on the learner's
       own device (use <b>Backup</b> to keep a copy), and it keeps working without internet once opened.
@@ -522,10 +528,10 @@ function renderHome(){
 
 /* ---------- track: list modules ---------- */
 const MASTERY_BADGE = {
-  new: "○ Not started",
-  learning: "📘 Learning",
-  practised: "✅ Practised",
-  mastered: "🏆 Mastered"
+  new: `${ICON("circle", 14)} Not started`,
+  learning: `${ICON("book", 14)} Learning`,
+  practised: `${ICON("check", 14)} Practised`,
+  mastered: `${ICON("star", 14)} Mastered`
 };
 
 function renderTrack(){
@@ -541,8 +547,8 @@ function renderTrack(){
   const renderModRow = (m) => {
     const lvl = masteryOf(m.id), gated = !quizOpen(m), prev = prevMod(m);
     const cbeBadge = m.cbe === "strand"
-      ? `<span class="tag-badge tag-cbe">📘 CBE</span>`
-      : `<span class="tag-badge tag-nice">✨ Going further</span>`;
+      ? `<span class="tag-badge tag-cbe">CBE</span>`
+      : `<span class="tag-badge tag-nice">Going further</span>`;
     const strandHint = (m.cbe === "strand" && m.strandRef)
       ? `<div class="strand-ref">${esc(m.strandRef)}</div>` : "";
     return `<button class="rowitem" data-id="${m.id}">
@@ -573,14 +579,15 @@ function renderTrack(){
     <button class="back" id="bk">← All Tracks</button>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:10px">
       <div>
-        <h2 class="h2" style="margin:0">${esc(t.name)} <span class="muted">${esc(t.level)}</span></h2>
+        <h2 class="h2 track-h t-${t.id}" style="margin:0">${ICON(t.id === "primary" ? "sprout" : "monitor", 26)} ${esc(t.name)}</h2>
+        <div class="track-level">${esc(t.level)}</div>
       </div>
       <div style="font-weight:800;color:var(--green)">${doneCount}/${list.length} modules completed (${Math.round(doneCount/list.length*100)}%)</div>
     </div>
     <div class="meter" style="margin-bottom:20px"><div class="meter-fill" style="width:${(doneCount/list.length)*100}%"></div></div>
 
-    ${renderGroup(coreList, "📘 Core (CBE)", "These modules map to official CBE digital-literacy strands.")}
-    ${renderGroup(enrichList, "✨ Going further", "Enrichment modules — not required by CBE, but great to know.")}
+    ${renderGroup(coreList, `${ICON("book", 20)} Core (CBE)`, "These modules map to official CBE digital-literacy strands.")}
+    ${renderGroup(enrichList, `${ICON("star", 20)} Going further`, "Enrichment modules — not required by CBE, but great to know.")}
 
     <div class="cbe-disclaimer">ℹ️ CBE tags are our best-effort mapping to the KICD curriculum and are pending teacher confirmation.</div>
 
@@ -632,8 +639,8 @@ function renderModule(){
   const rail = stepsFor(m).map(st => {
     const i = STEPS.indexOf(st);
     const cls = st === view.step ? "now" : (i < s.reached || s.done) ? "done" : "";
-    const lock = st === "quiz" && !quizOpen(m) ? "🔒 " : "";
-    return `<button class="chip ${cls}" data-st="${st}" ${cls ? "" : "disabled"}>${lock}${STEP_LABEL[st]}</button>`;
+    const icon = st === "quiz" && !quizOpen(m) ? "lock" : STEP_ICON[st];
+    return `<button class="chip ${cls}" data-st="${st}" ${cls ? "" : "disabled"} aria-current="${st === view.step ? "step" : "false"}">${ICON(icon, 18)}<span>${STEP_LABEL[st]}</span></button>`;
   }).join("");
 
   $app.innerHTML = `
@@ -664,17 +671,14 @@ function stepRead(m, s, el){
   const draw = () => {
     const c = m.read[idx];
     el.innerHTML = `
-      <div class="card2">
-        <div class="ic">${c.icon}</div>
-        <div>
-          <h3>${esc(c.title)}</h3>
-          <p>${esc(c.text)}</p>
-        </div>
+      <div class="readcard">
+        <div class="rc-head"><span class="rc-ic" aria-hidden="true">${esc(c.icon)}</span><h3>${esc(c.title)}</h3></div>
+        <p>${esc(c.text)}</p>
       </div>
       <div class="stepFoot">
         <div class="dots">${m.read.map((_, i) => `<i class="${i <= idx ? "on" : ""}"></i>`).join("")}</div>
         <div class="row">
-          <button class="btn ghost small" id="say">🔊 Read to me</button>
+          <button class="btn ghost small" id="say">${ICON("speaker", 18)} Read to me</button>
           ${idx > 0 ? `<button class="btn ghost small" id="prev">←</button>` : ""}
           <button class="btn" id="nx">${idx < m.read.length - 1 ? "Next" : "Done"}</button>
         </div>
@@ -752,7 +756,7 @@ function stepListen(m, s, el){
   const draw = sub => {
     el.innerHTML = `
       <div class="listen">
-        <div class="byte ${playing ? "talk" : ""}">🔊</div>
+        <div class="byte ${playing ? "talk" : ""}">${ICON("speaker", 56)}</div>
         <div class="subtitle">${esc(sub || "Press play to listen to the lesson.")}</div>
         <div class="bars">${lines.map((_, i) => `<i class="${i < pos ? "on" : ""}"></i>`).join("")}</div>
         <div class="row" style="justify-content:center"><button class="btn teal" id="pl">${playing ? "⏸ Pause" : "▶ Play"}</button></div>
@@ -836,7 +840,7 @@ function stepMission(m, s, el){
 
   el.innerHTML = `
     <div class="mission">
-      <h3>🛠️ ${esc(mi.title)}</h3>
+      <h3>${ICON("flag", 24)} ${esc(mi.title)}</h3>
       ${tasks.map((t, i) => `<div class="task" data-t="${i}"><div class="task-n">${i + 1}</div><div class="task-body"></div></div>`).join("")}
       ${tasks.length ? `<h4 class="try-real">Try it for real <span class="hint">(optional · ask a grown-up if you need help)</span></h4>` : ""}
       ${mi.steps.map((t, i) => `
@@ -1090,7 +1094,7 @@ function stepQuiz(m, s, el){
     const p = prevMod(m);
     el.innerHTML = `
       <div class="result">
-        <h3>🔒 Quiz opens after ${esc(p.code)}</h3>
+        <h3>${ICON("lock", 24)} Quiz opens after ${esc(p.code)}</h3>
         <p class="hint">You can read, listen and do the mission here any time. To take this quiz, first pass the quiz for <b>${esc(p.code)} · ${esc(p.name)}</b>. That way each quiz builds on the one before.</p>
         <div class="row" style="justify-content:center;margin-top:22px;flex-wrap:wrap">
           <button class="btn" id="gp">Go to ${esc(p.code)}</button>
