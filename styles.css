@@ -69,7 +69,7 @@ label.q:first-child{margin-top:0}
 .howto-ic{font-size:26px}
 .howto li span:last-child{color:var(--muted);font-size:15px}
 .parents{margin-top:24px;background:#eef3ee;border-radius:14px;padding:16px 18px;font-size:16px;color:var(--ink2)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:24px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:24px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px;text-align:left;box-shadow:0 1px 3px rgba(20,36,28,.05);transition:transform .08s,box-shadow .15s,border-color .15s}
 .card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,36,28,.10);border-color:var(--green)}
 .card{border-top:5px solid var(--accent,var(--green))}
@@ -343,6 +343,7 @@ svg.i{flex:none;vertical-align:-.2em}
   .ri-badge{flex-basis:100%;padding-left:58px}
   .rc-head h3{font-size:21px}
   .card{padding:16px}
+  .grid{grid-template-columns:1fr}
   .xp{padding:12px}
   .xp-stage{padding-left:56px}
   .xp-ctl{gap:6px}
