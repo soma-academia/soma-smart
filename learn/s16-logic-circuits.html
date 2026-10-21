@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Logic Circuits (S16) · Computer Studies II, Grade 11 · Tech Tayari</title>
+<meta name="description" content="Combining gates to solve problems. A logic circuit joins gates together so the output of one gate becomes the input of another. With a few gates you can…" />
+<link rel="canonical" href="https://tech-tayari.pages.dev/learn/s16-logic-circuits" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Tech Tayari" />
+<meta property="og:title" content="Logic Circuits (S16) · Computer Studies II, Grade 11 · Tech Tayari" />
+<meta property="og:description" content="Combining gates to solve problems. A logic circuit joins gates together so the output of one gate becomes the input of another. With a few gates you can…" />
+<meta property="og:url" content="https://tech-tayari.pages.dev/learn/s16-logic-circuits" />
+<meta property="og:image" content="https://tech-tayari.pages.dev/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#2e7d4f" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Logic Circuits", "description": "Combining gates to solve problems. A logic circuit joins gates together so the output of one gate becomes the input of another. With a few gates you can…", "url": "https://tech-tayari.pages.dev/learn/s16-logic-circuits", "learningResourceType": "Lesson", "educationalLevel": "Grade 11", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://tech-tayari.pages.dev/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["From gates to circuits", "A burglar alarm circuit", "Boolean expressions from circuits", "Truth tables for circuits", "The half adder"], "isPartOf": {"@type": "Course", "name": "Computer Studies II (Grade 11 · ages 16–17)", "url": "https://tech-tayari.pages.dev/learn/#senior11"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://tech-tayari.pages.dev"}}</script>
+</head>
+<body class="lp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
+<main id="app">
+<nav class="lp-crumbs"><a href="/learn/">Lessons</a> › <a href="/learn/#senior11">Computer Studies II</a></nav>
+<article class="lp-main">
+  <p class="lp-kicker">S16 · Computer Studies II · Grade 11 · ages 16–17</p>
+  <h1>Logic Circuits</h1>
+  <p class="lp-lead">Combining gates to solve problems</p>
+  <p><span class="lp-tag">Grade 11 · 1.4 Logic Circuits</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
+  <a class="btn lp-start" href="/?lesson=s11-circuits">▶ Start the interactive lesson</a>
+  <p class="hint">The full lesson adds narration, an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <section class="lp-card"><h2><span aria-hidden="true">🔗</span> From gates to circuits</h2><p>A logic circuit joins gates together so the output of one gate becomes the input of another. With a few gates you can describe real rules, like &quot;sound the alarm if the system is armed AND a door OR a window opens&quot;.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🚨</span> A burglar alarm circuit</h2><p>Let A = the alarm is armed, D = a door is open, W = a window is open. The rule is: Alarm = A AND (D OR W), written A · (D + W). An OR gate combines D and W, and its output goes into an AND gate together with A.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">✍️</span> Boolean expressions from circuits</h2><p>To find a circuit&#x27;s expression, start at the inputs and write each gate&#x27;s output in turn. An OR gate fed by D and W gives D + W. That goes into an AND gate with A, giving A · (D + W). Brackets show which part is worked out first.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">📋</span> Truth tables for circuits</h2><p>Evaluate the expression for every input combination. For A · (D + W): with A = 0 the output is always 0, so a disarmed alarm stays quiet. With A = 1 the output is 1 if D or W is 1. Three inputs give 8 rows to check.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">➕</span> The half adder</h2><p>Gates can also do maths. A half adder adds two bits: Sum = A XOR B, and Carry = A AND B. With A = 1 and B = 1: Sum = 0 and Carry = 1, giving 10, which is 2 in binary. Chain these together and you get the adders inside every CPU.</p></section>
+  <section class="lp-card"><h2>Key points</h2><ul><li>A logic circuit feeds the output of one gate into another.</li><li>An alarm rule can be: armed AND, door OR window.</li><li>That is written A dot, bracket, D plus W.</li><li>Work out a circuit&#x27;s expression gate by gate, from the inputs to the output.</li><li>A truth table checks the circuit for every input combination.</li><li>A half adder uses XOR for the sum and AND for the carry.</li><li>Chains of adders are how the CPU does arithmetic.</li></ul></section>
+  <section class="lp-card"><h2>Try it for real: Design a circuit</h2><ul><li>Use the explainer above: switch the alarm inputs on and off and fill in the 8-row truth table.</li><li>Design a circuit for a security light: the light turns on when it is dark AND motion is detected. Write its Boolean expression.</li></ul></section>
+  <a class="btn lp-start" href="/?lesson=s11-circuits">▶ Start the interactive lesson</a>
+  <nav class="lp-nav"><a href="/learn/s15-logic-gates">← S15 Logic Gates</a> <a href="/learn/s17-network-standards-protocols">S17 Network Standards &amp; Protocols →</a></nav>
+</article>
+</main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Free &amp; open digital literacy for everyone</span>
+    <span class="foot-links"><a href="/learn/">All lessons</a> <a href="/about">About</a> <a href="/privacy">Privacy</a> <a href="/licences">Licences</a></span>
+  </div>
+  <span class="muted">Lessons © 2026 Tech Tayari, licensed CC BY-NC-SA 4.0. An independent project, not affiliated with KICD, KNEC or the Ministry of Education.</span>
+</footer>
+</body>
+</html>

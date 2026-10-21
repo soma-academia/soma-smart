@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /insights
+
+Sitemap: https://tech-tayari.pages.dev/sitemap.xml

@@ -155,6 +155,18 @@ function setLocalName(name){
   if (USER && USER.isLocal) USER.display = name || "Learner";
 }
 
+// Learning funnel: each device reports each step of a module at most once (no IDs; see /privacy)
+const LS_FUNNEL = "somasmart.funnel_sent";
+function funnel(m, step){
+  try {
+    const sent = JSON.parse(localStorage.getItem(LS_FUNNEL) || "{}"), k = m.id + ":" + step;
+    if (sent[k]) return;
+    sent[k] = 1;
+    localStorage.setItem(LS_FUNNEL, JSON.stringify(sent));
+    if (navigator.sendBeacon) navigator.sendBeacon("api/step", JSON.stringify({ track: m.track, module: m.id, step }));
+  } catch {}
+}
+
 function track(m, correct){
   try {
     if (navigator.sendBeacon) {
@@ -320,14 +332,18 @@ const PAGES = {
       <li>You can delete your account at any time: <b>Backup → Delete my account</b>. It is removed from our server straight away.</li>
     </ul>
     <h3>Anonymous lesson statistics</h3>
-    <p>When anyone answers a quiz question, we count it as right or wrong for that module, with no name, account or
-      device attached. These daily totals show which lessons are hardest, so we can improve them.</p>
+    <p>To improve the lessons we keep simple daily totals per module, with no name, account, device ID or IP address
+      attached: how many quiz answers were right or wrong, and how many learners started a module, finished reading,
+      finished the mission, took the quiz and passed. Each device counts each step only once. These totals show where
+      learners get stuck.</p>
+    <h3>Visit counts</h3>
+    <p>We use Cloudflare Web Analytics to count page visits. It uses no cookies, doesn't track you across sites, and
+      reports only totals, such as how many people visited and which pages were popular.</p>
     <h3>Other services</h3>
     <ul>
       <li><b>Cloudflare</b> hosts the site and stores account data (in Western Europe). Like any web host, it handles
         your device's IP address to deliver pages. To stop abuse, we keep a short-lived record of IP addresses that try
         to sign up or log in, for up to an hour.</li>
-      <li><b>Google Fonts</b> supplies the fonts, so your browser fetches them from Google.</li>
       <li><b>YouTube</b>: a video only loads if you tap <b>Load video</b>, using YouTube's privacy-enhanced mode.
         After that, YouTube's own privacy policy applies.</li>
     </ul>
@@ -352,7 +368,7 @@ const PAGES = {
     <h3>Other parts</h3>
     <ul>
       <li><b>Icons</b> were drawn for Tech Tayari and are covered by the MIT licence with the code.</li>
-      <li><b>Fonts:</b> Nunito and Roboto, under the <a href="https://openfontlicense.org" rel="noopener" target="_blank">SIL Open Font License 1.1</a>, served by Google Fonts.</li>
+      <li><b>Fonts:</b> Nunito and Roboto, under the <a href="https://openfontlicense.org" rel="noopener" target="_blank">SIL Open Font License 1.1</a>, included with the site (licence files in the <code>fonts</code> folder).</li>
       <li><b>Videos</b> belong to their creators (mostly Code.org) and are shown through YouTube under its terms.
         They are not covered by Tech Tayari's licences.</li>
     </ul>` },
@@ -783,6 +799,7 @@ const stepsFor = m => STEPS.filter(st => st !== "watch" || hasWatch(m));
 
 function openModule(id){
   const m = MODS.find(x => x.id === id), s = ms(id);
+  funnel(m, "start");
   let step = s.done ? "read" : STEPS[Math.min(s.reached, 4)];
   if (step === "watch" && !hasWatch(m)) step = "mission";
   go({ name: "mod", id, step });
@@ -817,6 +834,7 @@ function renderModule(){
 }
 
 function advance(m, s, from){
+  if (from === "read" || from === "mission") funnel(m, from);
   let i = STEPS.indexOf(from);
   if (STEPS[i + 1] === "watch" && !hasWatch(m)) i++;
   if (s.reached <= i) s.reached = i + 1;
@@ -1345,6 +1363,8 @@ function stepQuiz(m, s, el){
     s.attempts = (s.attempts || 0) + 1;
     s.best = Math.max(s.best || 0, right);
     const passed = right >= pass;
+    funnel(m, "quiz");
+    if (passed) funnel(m, "pass");
     if (passed) {
       s.reached = 5;
       if (!s.done) s.done = true;
@@ -1596,6 +1616,7 @@ async function renderAdminDashboard(key){
     const top = res.topModules || [];
     const hard = res.hardest || [];
     const daily = res.daily || [];
+    const funnelRows = res.funnel || [];
 
     el.innerHTML = `
       <div class="stat-grid">
@@ -1626,6 +1647,28 @@ async function renderAdminDashboard(key){
       </div>
 
       <div style="margin-top:24px">
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">Learning Funnel (last 30 days)</h3>
+        <p class="hint" style="margin:0 0 12px">How many devices reached each step of a module, counted once per device with no IDs. The red figure is where most learners stop.</p>
+        <div class="table-wrap" style="margin-bottom:28px">
+          <table class="admin-table">
+            <thead><tr><th>Module</th><th>Started</th><th>Read it</th><th>Mission done</th><th>Took quiz</th><th>Passed</th></tr></thead>
+            <tbody>
+              ${(() => {
+                const steps = ["start", "read", "mission", "quiz", "pass"];
+                const rows = MODS.map(m => ({ m, r: funnelRows.find(x => x.module_id === m.id) })).filter(x => x.r);
+                if (!rows.length) return `<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:18px">No learning activity recorded yet.</td></tr>`;
+                return rows.map(({ m, r }) => {
+                  const v = steps.map(k => r[k] || 0);
+                  // biggest drop between consecutive steps
+                  let worst = -1, drop = 0;
+                  for (let i = 1; i < v.length; i++) if (v[i - 1] - v[i] > drop) { drop = v[i - 1] - v[i]; worst = i; }
+                  return `<tr><td><b>${esc(m.code)} · ${esc(m.name)}</b></td>${v.map((x, i) => `<td>${i === worst ? `<b style="color:var(--red)">${x}</b>` : x}${i && v[0] ? ` <span class="hint">(${Math.round(x / v[0] * 100)}%)</span>` : ""}</td>`).join("")}</tr>`;
+                }).join("");
+              })()}
+            </tbody>
+          </table>
+        </div>
+
         <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">🎯 Hardest Modules (Teaching Focus)</h3>
         <p class="hint" style="margin:0 0 12px">Modules with the lowest question accuracy — topics needing classroom reinforcement.</p>
         <div class="table-wrap" style="margin-bottom:28px">
@@ -1637,7 +1680,7 @@ async function renderAdminDashboard(key){
               ${hard.length ? hard.map(r => {
                 const m = MODS.find(x => x.id === r.module_id);
                 const name = m ? `${m.code} · ${m.name}` : r.module_id;
-                const trackName = m ? (m.track === "primary" ? "Primary" : "Junior") : "";
+                const trackName = m ? ((TRACKS.find(t => t.id === m.track) || {}).name || "") : "";
                 const rate = r.a ? Math.round((r.c / r.a) * 100) : 0;
                 return `<tr>
                   <td><b>${esc(name)}</b></td>
@@ -1662,7 +1705,7 @@ async function renderAdminDashboard(key){
               ${top.length ? top.map(r => {
                 const m = MODS.find(x => x.id === r.module_id);
                 const name = m ? `${m.code} · ${m.name}` : r.module_id;
-                const trackName = m ? (m.track === "primary" ? "Primary" : "Junior") : "";
+                const trackName = m ? ((TRACKS.find(t => t.id === m.track) || {}).name || "") : "";
                 const rate = r.a ? Math.round((r.c / r.a) * 100) : 0;
                 return `<tr>
                   <td><b>${esc(name)}</b></td>
@@ -1704,6 +1747,13 @@ async function renderAdminDashboard(key){
   try { savedUser = JSON.parse(localStorage.getItem(LS_USER) || "null"); } catch {}
 
   view = viewFromPath(location.pathname);
+  // Lesson pages (learn/*.html) link here as /?lesson=<id> to open that lesson directly
+  const requested = new URLSearchParams(location.search).get("lesson");
+  const openRequested = () => {
+    if (!requested || !MODS.some(m => m.id === requested)) return;
+    history.replaceState(null, "", "/");
+    openModule(requested);
+  };
 
   if (TOKEN && savedUser) {
     // Show this device's copy immediately; sync in the background without blocking learning
@@ -1711,6 +1761,7 @@ async function renderAdminDashboard(key){
     PROG = readLocal(progKey());
     hudSync(navigator.onLine ? "saving" : "offline");
     render();
+    openRequested();
     await syncFromServer();
     if (view.name === "home" || view.name === "track") render();
     return;
@@ -1718,6 +1769,7 @@ async function renderAdminDashboard(key){
 
   startLocalMode();
   render();
+  openRequested();
 })();
 
 })();

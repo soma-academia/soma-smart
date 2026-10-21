@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SQL (S22) · Computer Studies II, Grade 11 · Tech Tayari</title>
+<meta name="description" content="Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with…" />
+<link rel="canonical" href="https://tech-tayari.pages.dev/learn/s22-sql" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Tech Tayari" />
+<meta property="og:title" content="SQL (S22) · Computer Studies II, Grade 11 · Tech Tayari" />
+<meta property="og:description" content="Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with…" />
+<meta property="og:url" content="https://tech-tayari.pages.dev/learn/s22-sql" />
+<meta property="og:image" content="https://tech-tayari.pages.dev/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#2e7d4f" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "SQL", "description": "Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with…", "url": "https://tech-tayari.pages.dev/learn/s22-sql", "learningResourceType": "Lesson", "educationalLevel": "Grade 11", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://tech-tayari.pages.dev/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["What SQL is", "DDL: defining structure", "DML: changing data", "DQL: asking questions", "Relationships in SQL"], "isPartOf": {"@type": "Course", "name": "Computer Studies II (Grade 11 · ages 16–17)", "url": "https://tech-tayari.pages.dev/learn/#senior11"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://tech-tayari.pages.dev"}}</script>
+</head>
+<body class="lp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
+<main id="app">
+<nav class="lp-crumbs"><a href="/learn/">Lessons</a> › <a href="/learn/#senior11">Computer Studies II</a></nav>
+<article class="lp-main">
+  <p class="lp-kicker">S22 · Computer Studies II · Grade 11 · ages 16–17</p>
+  <h1>SQL</h1>
+  <p class="lp-lead">Structured Query Language</p>
+  <p><span class="lp-tag">Grade 11 · 3.4 Structured Query Language (SQL)</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
+  <a class="btn lp-start" href="/?lesson=s11-sql">▶ Start the interactive lesson</a>
+  <p class="hint">The full lesson adds narration, an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <section class="lp-card"><h2><span aria-hidden="true">💬</span> What SQL is</h2><p>SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL defines structure, DML changes data, and DQL asks questions.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🏗️</span> DDL: defining structure</h2><p>CREATE TABLE students (adm INT PRIMARY KEY, name VARCHAR(50), grade INT); builds a new table. ALTER TABLE changes it, for example to add a column. DROP TABLE deletes a whole table and all its data. Use DROP with great care: there is no undo.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">✏️</span> DML: changing data</h2><p>INSERT INTO students VALUES (1021, &#x27;Amani&#x27;, 11); adds a row. UPDATE students SET grade = 12 WHERE adm = 1021; changes matching rows. DELETE FROM students WHERE adm = 1021; removes them. Always include WHERE with UPDATE and DELETE; without it, every row changes or disappears.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔍</span> DQL: asking questions</h2><p>SELECT name, grade FROM students; lists those columns for every row. SELECT * picks all columns. WHERE filters rows (WHERE grade = 11), ORDER BY sorts (ORDER BY name), and GROUP BY groups rows for summaries, such as SELECT grade, COUNT(*) FROM students GROUP BY grade; which counts the students in each grade.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔗</span> Relationships in SQL</h2><p>A FOREIGN KEY constraint links tables, so the database refuses a student whose class_id doesn&#x27;t exist. A JOIN combines related tables in one query: SELECT students.name, classes.teacher FROM students JOIN classes ON students.class_id = classes.id; shows each student with their class teacher.</p></section>
+  <section class="lp-card"><h2>Key points</h2><ul><li>SQL is the standard language for relational databases.</li><li>DDL defines structure: create, alter and drop.</li><li>DML changes data: insert, update and delete.</li><li>DQL asks questions with select.</li><li>Always use where with update and delete, or every row is affected.</li><li>order by sorts results; group by makes summaries like counts.</li><li>A join combines related tables in one query.</li></ul></section>
+  <section class="lp-card"><h2>Try it for real: Query a database</h2><ul><li>If you can, open a free online SQL editor (search for &quot;SQLite online&quot;), create a students table, insert five students, and select those in grade 11.</li><li>Write a query that counts how many students are in each grade.</li></ul></section>
+  <a class="btn lp-start" href="/?lesson=s11-sql">▶ Start the interactive lesson</a>
+  <nav class="lp-nav"><a href="/learn/s21-relational-databases">← S21 Relational Databases</a> <a href="/learn/s23-web-development">S23 Web Development →</a></nav>
+</article>
+</main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Free &amp; open digital literacy for everyone</span>
+    <span class="foot-links"><a href="/learn/">All lessons</a> <a href="/about">About</a> <a href="/privacy">Privacy</a> <a href="/licences">Licences</a></span>
+  </div>
+  <span class="muted">Lessons © 2026 Tech Tayari, licensed CC BY-NC-SA 4.0. An independent project, not affiliated with KICD, KNEC or the Ministry of Education.</span>
+</footer>
+</body>
+</html>

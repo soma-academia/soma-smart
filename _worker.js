@@ -18,6 +18,7 @@
  *   PUT  /api/progress  {mods}    (Authorization: Bearer <token>)         -> {ok:true}
  *   POST /api/delete-account {password} (Authorization: Bearer <token>)  -> {ok:true}  (self-service, permanent)
  *   POST /api/event    {track, module, correct}                          -> {ok:true}  (anonymous)
+ *   POST /api/step     {track, module, step}                             -> {ok:true}  (anonymous funnel)
  *   GET  /api/insights            (X-Admin-Key: <ADMIN_KEY>)              -> {overview, topModules, hardest, daily}
  * Everything else -> static assets.
  */
@@ -166,6 +167,41 @@ async function checkRateLimit(env, key, maxAttempts, windowSec) {
   }
 }
 
+// Anonymous counters accept only well-formed module ids and known tracks, so junk can't pile up
+const TRACK_IDS = ["primary", "junior", "senior", "senior11"];
+const FUNNEL_STEPS = ["start", "read", "mission", "quiz", "pass"];
+const validModule = b => !!b && TRACK_IDS.includes(b.track) && /^[a-z0-9-]{2,40}$/.test(String(b.module || ""));
+
+// The info pages are rendered by the app at "/", so search engines would see the home page's title for them.
+// Rewrite the title, description and canonical address on the way out; keep the insights page out of search.
+const SITE_URL = "https://tech-tayari.pages.dev";
+const PAGE_META = {
+  "/about":    ["About Tech Tayari: what it is and isn't", "Tech Tayari is a free, independent, self-guided course in computers and the internet for Kenyan learners in Grade 4–11. What it offers, and what it doesn't."],
+  "/privacy":  ["Privacy · Tech Tayari", "What Tech Tayari stores (very little), what it never collects, and how to delete an account. No ads, no tracking cookies."],
+  "/licences": ["Licences · Tech Tayari", "Tech Tayari's lessons are CC BY-NC-SA 4.0 and its code is MIT. Fonts are under the SIL Open Font License."],
+};
+function withPageMeta(path, res) {
+  path = path.replace(/\/+$/, "") || "/";
+  if (path === "/licenses") path = "/licences";
+  const isHtml = (res.headers.get("Content-Type") || "").includes("text/html");
+  if (path === "/insights") {
+    const r = new Response(res.body, res);
+    r.headers.set("X-Robots-Tag", "noindex, nofollow");
+    return r;
+  }
+  const meta = PAGE_META[path];
+  if (!meta || !isHtml || typeof HTMLRewriter === "undefined") return res;
+  const [title, desc] = meta;
+  return new HTMLRewriter()
+    .on("title", { element(e) { e.setInnerContent(title); } })
+    .on('meta[name="description"]', { element(e) { e.setAttribute("content", desc); } })
+    .on('meta[property="og:title"]', { element(e) { e.setAttribute("content", title); } })
+    .on('meta[property="og:description"]', { element(e) { e.setAttribute("content", desc); } })
+    .on('meta[property="og:url"]', { element(e) { e.setAttribute("content", SITE_URL + path); } })
+    .on('link[rel="canonical"]', { element(e) { e.setAttribute("href", SITE_URL + path); } })
+    .transform(res);
+}
+
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") {
@@ -175,7 +211,9 @@ export default {
     const url = new URL(request.url);
     const p = url.pathname;
     if (!p.startsWith("/api/")) {
-      return env.ASSETS ? env.ASSETS.fetch(request) : new Response("Not found", { status: 404 });
+      if (!env.ASSETS) return new Response("Not found", { status: 404 });
+      const res = await env.ASSETS.fetch(request);
+      return withPageMeta(p, res);
     }
 
     // Health check endpoint
@@ -354,12 +392,24 @@ export default {
       // ---------- anonymous aggregated analytics ----------
       if (p === "/api/event" && request.method === "POST") {
         const b = await request.json();
-        if (!b.module) return json({ ok: true }, 200, request);
+        if (!validModule(b)) return json({ ok: true }, 200, request);
         const day = new Date().toISOString().slice(0, 10);
         await env.DB.prepare(
           `INSERT INTO events (day, track, module_id, attempts, correct) VALUES (?1,?2,?3,1,?4)
            ON CONFLICT(day, module_id) DO UPDATE SET attempts=attempts+1, correct=correct+?4`
         ).bind(day, b.track || "", String(b.module), b.correct ? 1 : 0).run();
+        return json({ ok: true }, 200, request);
+      }
+
+      // ---------- anonymous learning funnel: how far learners get in each module (no IDs, no IP) ----------
+      if (p === "/api/step" && request.method === "POST") {
+        const b = await request.json();
+        if (!validModule(b) || !FUNNEL_STEPS.includes(b.step)) return json({ ok: true }, 200, request);
+        const day = new Date().toISOString().slice(0, 10);
+        await env.DB.prepare(
+          `INSERT INTO funnel (day, track, module_id, step, count) VALUES (?1,?2,?3,?4,1)
+           ON CONFLICT(day, module_id, step) DO UPDATE SET count=count+1`
+        ).bind(day, b.track, b.module, b.step).run();
         return json({ ok: true }, 200, request);
       }
 
@@ -399,7 +449,20 @@ export default {
            FROM progress WHERE done=1`
         ).first();
 
+        // Learning funnel for the last 30 days (table may not exist on older databases)
+        let funnel = [];
+        try {
+          const since = new Date(Date.now() - 30 * 86400000).toISOString().slice(0, 10);
+          const rows = await env.DB.prepare(
+            `SELECT module_id, step, SUM(count) c FROM funnel WHERE day >= ?1 GROUP BY module_id, step`
+          ).bind(since).all();
+          const byMod = {};
+          for (const r of rows.results || []) (byMod[r.module_id] = byMod[r.module_id] || { module_id: r.module_id })[r.step] = r.c;
+          funnel = Object.values(byMod);
+        } catch {}
+
         return json({
+          funnel,
           overview: {
             totalUsers: totals ? totals.total_users : 0,
             primaryUsers: totals ? totals.primary_users : 0,

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lists &amp; Searching (S11) · Computer Studies I, Grade 10 · Tech Tayari</title>
+<meta name="description" content="Data structures, sorting and searching. A list holds many values in order, in square brackets: marks = [70, 85, 90]. Positions (indexes) start at 0, so…" />
+<link rel="canonical" href="https://tech-tayari.pages.dev/learn/s11-lists-searching" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Tech Tayari" />
+<meta property="og:title" content="Lists &amp; Searching (S11) · Computer Studies I, Grade 10 · Tech Tayari" />
+<meta property="og:description" content="Data structures, sorting and searching. A list holds many values in order, in square brackets: marks = [70, 85, 90]. Positions (indexes) start at 0, so…" />
+<meta property="og:url" content="https://tech-tayari.pages.dev/learn/s11-lists-searching" />
+<meta property="og:image" content="https://tech-tayari.pages.dev/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#2e7d4f" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Lists & Searching", "description": "Data structures, sorting and searching. A list holds many values in order, in square brackets: marks = [70, 85, 90]. Positions (indexes) start at 0, so…", "url": "https://tech-tayari.pages.dev/learn/s11-lists-searching", "learningResourceType": "Lesson", "educationalLevel": "Grade 10", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://tech-tayari.pages.dev/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["Lists", "Tuples and sets", "Dictionaries", "Two-dimensional lists", "Searching and sorting"], "isPartOf": {"@type": "Course", "name": "Computer Studies I (Grade 10 · ages 15–16)", "url": "https://tech-tayari.pages.dev/learn/#senior"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://tech-tayari.pages.dev"}}</script>
+</head>
+<body class="lp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
+<main id="app">
+<nav class="lp-crumbs"><a href="/learn/">Lessons</a> › <a href="/learn/#senior">Computer Studies I</a></nav>
+<article class="lp-main">
+  <p class="lp-kicker">S11 · Computer Studies I · Grade 10 · ages 15–16</p>
+  <h1>Lists &amp; Searching</h1>
+  <p class="lp-lead">Data structures, sorting and searching</p>
+  <p><span class="lp-tag">Grade 10 · 3.5 Data Structures</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
+  <a class="btn lp-start" href="/?lesson=s-containers">▶ Start the interactive lesson</a>
+  <p class="hint">The full lesson adds narration, an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <section class="lp-card"><h2><span aria-hidden="true">📋</span> Lists</h2><p>A list holds many values in order, in square brackets: marks = [70, 85, 90]. Positions (indexes) start at 0, so marks[0] is 70 and marks[2] is 90. Lists can change: marks.append(65) adds a value at the end, and len(marks) tells you how many items there are.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔒</span> Tuples and sets</h2><p>A tuple is like a list but cannot be changed once made, in round brackets: point = (3, 4). Use one for data that should stay fixed. A set holds unique values in curly brackets: {&quot;Maths&quot;, &quot;English&quot;}. Adding a duplicate does nothing, which makes sets great for removing repeats.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">📒</span> Dictionaries</h2><p>A dictionary stores key and value pairs, like a phone book: phones = {&quot;Amani&quot;: &quot;0712 000 000&quot;}. You look values up by key, phones[&quot;Amani&quot;], instead of by position. Keys must be unique.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🗄️</span> Two-dimensional lists</h2><p>A list can hold other lists, like a table with rows and columns: table = [[1, 2], [3, 4]]. table[1][0] means row 1, column 0, which is 3. This is useful for timetables, spreadsheets and game boards.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔍</span> Searching and sorting</h2><p>Linear search checks items one by one from the start; it works on any list but is slow for big ones. Binary search needs a sorted list: check the middle, then throw away the half that can&#x27;t contain the target, and repeat, which is very fast. Bubble sort sorts by repeatedly swapping neighbours that are in the wrong order.</p></section>
+  <section class="lp-card"><h2>Key points</h2><ul><li>A list holds values in order, and its positions start at zero.</li><li>append adds to a list; len counts its items.</li><li>A tuple can&#x27;t be changed once made.</li><li>A set keeps only unique values.</li><li>A dictionary stores key and value pairs, like a phone book.</li><li>Linear search checks every item; binary search halves a sorted list each time.</li><li>Bubble sort swaps neighbours until everything is in order.</li></ul></section>
+  <section class="lp-card"><h2>Try it for real: Class marks</h2><ul><li>If you can, open Python and make a list of five marks. Print the highest with max() and the average with sum() divided by len().</li><li>Make a dictionary of three classmates and their favourite subjects, then print one of them by name.</li></ul></section>
+  <a class="btn lp-start" href="/?lesson=s-containers">▶ Start the interactive lesson</a>
+  <nav class="lp-nav"><a href="/learn/s10-decisions-loops">← S10 Decisions &amp; Loops</a> <a href="/learn/s12-functions">S12 Functions →</a></nav>
+</article>
+</main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Free &amp; open digital literacy for everyone</span>
+    <span class="foot-links"><a href="/learn/">All lessons</a> <a href="/about">About</a> <a href="/privacy">Privacy</a> <a href="/licences">Licences</a></span>
+  </div>
+  <span class="muted">Lessons © 2026 Tech Tayari, licensed CC BY-NC-SA 4.0. An independent project, not affiliated with KICD, KNEC or the Ministry of Education.</span>
+</footer>
+</body>
+</html>

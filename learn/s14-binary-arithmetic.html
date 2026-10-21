@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Binary Arithmetic (S14) · Computer Studies II, Grade 11 · Tech Tayari</title>
+<meta name="description" content="Signed numbers, addition and subtraction. Binary addition has four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 (write 0, carry 1), and 1 + 1 + 1 = 11 (write…" />
+<link rel="canonical" href="https://tech-tayari.pages.dev/learn/s14-binary-arithmetic" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Tech Tayari" />
+<meta property="og:title" content="Binary Arithmetic (S14) · Computer Studies II, Grade 11 · Tech Tayari" />
+<meta property="og:description" content="Signed numbers, addition and subtraction. Binary addition has four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 (write 0, carry 1), and 1 + 1 + 1 = 11 (write…" />
+<meta property="og:url" content="https://tech-tayari.pages.dev/learn/s14-binary-arithmetic" />
+<meta property="og:image" content="https://tech-tayari.pages.dev/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#2e7d4f" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Binary Arithmetic", "description": "Signed numbers, addition and subtraction. Binary addition has four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 (write 0, carry 1), and 1 + 1 + 1 = 11 (write…", "url": "https://tech-tayari.pages.dev/learn/s14-binary-arithmetic", "learningResourceType": "Lesson", "educationalLevel": "Grade 11", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://tech-tayari.pages.dev/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["Adding in binary", "Unsigned numbers", "Sign and magnitude", "One's and two's complement", "Subtracting by adding"], "isPartOf": {"@type": "Course", "name": "Computer Studies II (Grade 11 · ages 16–17)", "url": "https://tech-tayari.pages.dev/learn/#senior11"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://tech-tayari.pages.dev"}}</script>
+</head>
+<body class="lp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
+<main id="app">
+<nav class="lp-crumbs"><a href="/learn/">Lessons</a> › <a href="/learn/#senior11">Computer Studies II</a></nav>
+<article class="lp-main">
+  <p class="lp-kicker">S14 · Computer Studies II · Grade 11 · ages 16–17</p>
+  <h1>Binary Arithmetic</h1>
+  <p class="lp-lead">Signed numbers, addition and subtraction</p>
+  <p><span class="lp-tag">Grade 11 · 1.2 Binary Arithmetic Operations</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
+  <a class="btn lp-start" href="/?lesson=s11-binarith">▶ Start the interactive lesson</a>
+  <p class="hint">The full lesson adds narration, an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <section class="lp-card"><h2><span aria-hidden="true">➕</span> Adding in binary</h2><p>Binary addition has four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 (write 0, carry 1), and 1 + 1 + 1 = 11 (write 1, carry 1). Add column by column from the right, just like decimal: 0101 + 0011 = 1000, which is 5 + 3 = 8.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔓</span> Unsigned numbers</h2><p>An unsigned number has no sign, so it can only be zero or positive. With 8 bits, unsigned values run from 0 (0000 0000) to 255 (1111 1111). If a result needs more bits than you have, it overflows and the answer is wrong.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">±</span> Sign and magnitude</h2><p>To store negative numbers, one simple method uses the leftmost bit as a sign: 0 for positive, 1 for negative. In 8 bits, +5 is 0000 0101 and −5 is 1000 0101. The problem: it has two zeros (+0 and −0), and adding signed numbers this way does not work directly.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔁</span> One&#x27;s and two&#x27;s complement</h2><p>One&#x27;s complement makes a number negative by flipping every bit: +5 = 0000 0101 becomes 1111 1010. Two&#x27;s complement flips every bit and then adds 1: −5 = 1111 1011. Two&#x27;s complement has only one zero, and computers use it because ordinary addition then works for negative numbers too. With 8 bits it covers −128 to +127.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">➖</span> Subtracting by adding</h2><p>Computers subtract by adding the two&#x27;s complement. To work out 7 − 5: write +7 as 0000 0111 and −5 as 1111 1011, then add them, giving 1 0000 0010. Drop the extra carry on the left and the answer is 0000 0010, which is 2. One adding circuit can do both jobs.</p></section>
+  <section class="lp-card"><h2>Key points</h2><ul><li>In binary, one plus one is one-zero: write zero and carry one.</li><li>Unsigned eight-bit numbers go from zero to two hundred and fifty-five.</li><li>Sign and magnitude uses the first bit as the sign, but it has two zeros.</li><li>One&#x27;s complement flips every bit.</li><li>Two&#x27;s complement flips every bit, then adds one.</li><li>Eight-bit two&#x27;s complement covers minus one hundred and twenty-eight to plus one hundred and twenty-seven.</li><li>Computers subtract by adding the two&#x27;s complement.</li></ul></section>
+  <section class="lp-card"><h2>Try it for real: Work it out by hand</h2><ul><li>Add 0110 + 0111 in binary and check your answer in decimal.</li><li>Write −12 in 8-bit sign and magnitude, one&#x27;s complement and two&#x27;s complement.</li></ul></section>
+  <a class="btn lp-start" href="/?lesson=s11-binarith">▶ Start the interactive lesson</a>
+  <nav class="lp-nav"><a href="/learn/s13-number-systems-codes">← S13 Number Systems &amp; Codes</a> <a href="/learn/s15-logic-gates">S15 Logic Gates →</a></nav>
+</article>
+</main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Free &amp; open digital literacy for everyone</span>
+    <span class="foot-links"><a href="/learn/">All lessons</a> <a href="/about">About</a> <a href="/privacy">Privacy</a> <a href="/licences">Licences</a></span>
+  </div>
+  <span class="muted">Lessons © 2026 Tech Tayari, licensed CC BY-NC-SA 4.0. An independent project, not affiliated with KICD, KNEC or the Ministry of Education.</span>
+</footer>
+</body>
+</html>

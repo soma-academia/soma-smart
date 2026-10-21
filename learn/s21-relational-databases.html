@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Relational Databases (S21) · Computer Studies II, Grade 11 · Tech Tayari</title>
+<meta name="description" content="Tables, keys and relationships. Data is raw facts (85, &quot;Amani&quot;); information is data with meaning (&quot;Amani scored 85 in Maths&quot;). A database is an organised…" />
+<link rel="canonical" href="https://tech-tayari.pages.dev/learn/s21-relational-databases" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Tech Tayari" />
+<meta property="og:title" content="Relational Databases (S21) · Computer Studies II, Grade 11 · Tech Tayari" />
+<meta property="og:description" content="Tables, keys and relationships. Data is raw facts (85, &quot;Amani&quot;); information is data with meaning (&quot;Amani scored 85 in Maths&quot;). A database is an organised…" />
+<meta property="og:url" content="https://tech-tayari.pages.dev/learn/s21-relational-databases" />
+<meta property="og:image" content="https://tech-tayari.pages.dev/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#2e7d4f" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Relational Databases", "description": "Tables, keys and relationships. Data is raw facts (85, \"Amani\"); information is data with meaning (\"Amani scored 85 in Maths\"). A database is an organised…", "url": "https://tech-tayari.pages.dev/learn/s21-relational-databases", "learningResourceType": "Lesson", "educationalLevel": "Grade 11", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://tech-tayari.pages.dev/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["Databases and the DBMS", "Database models", "Tables, records and fields", "Keys", "Relationships and ER diagrams"], "isPartOf": {"@type": "Course", "name": "Computer Studies II (Grade 11 · ages 16–17)", "url": "https://tech-tayari.pages.dev/learn/#senior11"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://tech-tayari.pages.dev"}}</script>
+</head>
+<body class="lp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
+<main id="app">
+<nav class="lp-crumbs"><a href="/learn/">Lessons</a> › <a href="/learn/#senior11">Computer Studies II</a></nav>
+<article class="lp-main">
+  <p class="lp-kicker">S21 · Computer Studies II · Grade 11 · ages 16–17</p>
+  <h1>Relational Databases</h1>
+  <p class="lp-lead">Tables, keys and relationships</p>
+  <p><span class="lp-tag">Grade 11 · 3.3 Relational Database Fundamentals</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
+  <a class="btn lp-start" href="/?lesson=s11-db">▶ Start the interactive lesson</a>
+  <p class="hint">The full lesson adds narration, an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <section class="lp-card"><h2><span aria-hidden="true">🗃️</span> Databases and the DBMS</h2><p>Data is raw facts (85, &quot;Amani&quot;); information is data with meaning (&quot;Amani scored 85 in Maths&quot;). A database is an organised collection of related data. A database management system (DBMS), such as MySQL, PostgreSQL, Microsoft Access or Oracle, lets you create, store, search and secure it. Metadata (stored in a data dictionary) is data about the data, such as each field&#x27;s name and type.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🌳</span> Database models</h2><p>Hierarchical databases store data as a tree (one parent, many children). Network databases allow many links between records. Relational databases, the most common today, store data in tables that are linked by shared values. Object-oriented databases store data as objects, like OOP programs.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">📊</span> Tables, records and fields</h2><p>In a relational database each table holds one entity, such as Students. Each row is a record (one student), and each column is a field or attribute (name, admission number, class). Every field has a data type: text, integer, decimal, date or yes/no.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔑</span> Keys</h2><p>A primary key uniquely identifies each record, such as an admission number; it can never be blank or repeated. A foreign key is a field in one table that refers to the primary key of another, which is how tables link. A composite key combines two or more fields to be unique. A secondary key is used for searching, such as a surname.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔗</span> Relationships and ER diagrams</h2><p>Tables relate one-to-one (a student has one ID card), one-to-many (one class has many students) or many-to-many (students take many subjects, and each subject has many students). A many-to-many link needs a linking table. An entity-relationship (ER) diagram plans all this: rectangles for entities, ovals for attributes, diamonds for relationships.</p></section>
+  <section class="lp-card"><h2>Key points</h2><ul><li>Data is raw facts; information is data with meaning.</li><li>A DBMS such as MySQL creates, stores and secures databases.</li><li>Relational databases store data in linked tables.</li><li>A row is a record, and a column is a field.</li><li>A primary key uniquely identifies each record; a foreign key links to another table.</li><li>Relationships can be one-to-one, one-to-many or many-to-many.</li><li>ER diagrams use rectangles for entities and diamonds for relationships.</li></ul></section>
+  <section class="lp-card"><h2>Try it for real: Design a school database</h2><ul><li>Design two tables, Students and Classes: list the fields, their data types, the primary key of each, and the foreign key that links them.</li><li>Draw an ER diagram showing that one class has many students.</li></ul></section>
+  <a class="btn lp-start" href="/?lesson=s11-db">▶ Start the interactive lesson</a>
+  <nav class="lp-nav"><a href="/learn/s20-oop-in-python">← S20 OOP in Python</a> <a href="/learn/s22-sql">S22 SQL →</a></nav>
+</article>
+</main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Free &amp; open digital literacy for everyone</span>
+    <span class="foot-links"><a href="/learn/">All lessons</a> <a href="/about">About</a> <a href="/privacy">Privacy</a> <a href="/licences">Licences</a></span>
+  </div>
+  <span class="muted">Lessons © 2026 Tech Tayari, licensed CC BY-NC-SA 4.0. An independent project, not affiliated with KICD, KNEC or the Ministry of Education.</span>
+</footer>
+</body>
+</html>

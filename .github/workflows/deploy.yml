@@ -25,7 +25,7 @@ jobs:
       - name: Check content.js is up to date
         run: |
           python3 _build.py
-          git diff --exit-code -- content.js || { echo "::error::content.js is out of date. Run python3 _build.py and commit it."; exit 1; }
+          [ -z "$(git status --porcelain -- content.js learn sitemap.xml robots.txt)" ] || { echo "::error::Generated lesson files are out of date. Run python3 _build.py and commit the results."; exit 1; }
 
       # Deploy only tracked files (never local-only files such as .dev.vars)
       - name: Prepare clean copy of the site

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OOP in Python (S20) · Computer Studies II, Grade 11 · Tech Tayari</title>
+<meta name="description" content="Writing classes, objects and class relationships. In Python, a class starts with class Student: and its methods go indented underneath. The special method…" />
+<link rel="canonical" href="https://tech-tayari.pages.dev/learn/s20-oop-in-python" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Tech Tayari" />
+<meta property="og:title" content="OOP in Python (S20) · Computer Studies II, Grade 11 · Tech Tayari" />
+<meta property="og:description" content="Writing classes, objects and class relationships. In Python, a class starts with class Student: and its methods go indented underneath. The special method…" />
+<meta property="og:url" content="https://tech-tayari.pages.dev/learn/s20-oop-in-python" />
+<meta property="og:image" content="https://tech-tayari.pages.dev/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#2e7d4f" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "OOP in Python", "description": "Writing classes, objects and class relationships. In Python, a class starts with class Student: and its methods go indented underneath. The special method…", "url": "https://tech-tayari.pages.dev/learn/s20-oop-in-python", "learningResourceType": "Lesson", "educationalLevel": "Grade 11", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://tech-tayari.pages.dev/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["Declaring a class", "Creating and using objects", "Instance and class (static) variables", "Visibility", "Relationships between classes"], "isPartOf": {"@type": "Course", "name": "Computer Studies II (Grade 11 · ages 16–17)", "url": "https://tech-tayari.pages.dev/learn/#senior11"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://tech-tayari.pages.dev"}}</script>
+</head>
+<body class="lp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
+<main id="app">
+<nav class="lp-crumbs"><a href="/learn/">Lessons</a> › <a href="/learn/#senior11">Computer Studies II</a></nav>
+<article class="lp-main">
+  <p class="lp-kicker">S20 · Computer Studies II · Grade 11 · ages 16–17</p>
+  <h1>OOP in Python</h1>
+  <p class="lp-lead">Writing classes, objects and class relationships</p>
+  <p><span class="lp-tag">Grade 11 · 3.2 Object Oriented Programming Implementation</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
+  <a class="btn lp-start" href="/?lesson=s11-oopimpl">▶ Start the interactive lesson</a>
+  <p class="hint">The full lesson adds narration, an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <section class="lp-card"><h2><span aria-hidden="true">✍️</span> Declaring a class</h2><p>In Python, a class starts with class Student: and its methods go indented underneath. The special method __init__ is the constructor: it runs when a new object is made and sets its starting attributes, for example self.name = name. self means &quot;this particular object&quot;.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🆕</span> Creating and using objects</h2><p>s = Student(&quot;Amani&quot;, 1021) creates an object and calls __init__ for you. Use a dot to reach its parts: s.name gives &quot;Amani&quot;, and s.greet() calls a method. Each object keeps its own attribute values, so another Student(&quot;Wanjiru&quot;, 1022) has a different name.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">📌</span> Instance and class (static) variables</h2><p>Instance variables belong to one object (self.name). Class variables are shared by every object of the class, declared directly inside the class: school = &quot;Kenya High&quot;. Java and C++ call these static variables. Change a class variable and every object sees the new value.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">👁️</span> Visibility</h2><p>Java and C++ use the keywords public, private and protected to control who can use an attribute. Python uses naming conventions instead: name is public, _name means protected (for this class and its children), and __name means private, and Python hides it from outside code. Good programs keep data private and expose methods.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔗</span> Relationships between classes</h2><p>Inheritance: class Teacher(Person): makes Teacher a kind of Person (an &quot;is-a&quot; link). Association: a Teacher teaches Students, but each exists separately. Aggregation: a Department has Teachers, who could exist without it. Composition: a House has Rooms that cannot exist without the house; delete the house and the rooms go too.</p></section>
+  <section class="lp-card"><h2>Key points</h2><ul><li>A class starts with the word class, and its methods are indented underneath.</li><li>The constructor, underscore underscore init, sets up each new object.</li><li>self means this particular object.</li><li>Instance variables belong to one object; class variables are shared by all.</li><li>Python marks protected with one underscore and private with two.</li><li>class Teacher(Person) means Teacher inherits from Person.</li><li>Association uses, aggregation has, and composition owns completely.</li></ul></section>
+  <section class="lp-card"><h2>Try it for real: Code a class</h2><ul><li>If you can, open Python and write a BankAccount class with a balance, a deposit(amount) method, and a withdraw(amount) method that refuses to go below zero.</li><li>Create two accounts, deposit into one, and print both balances to show that each object keeps its own data.</li></ul></section>
+  <a class="btn lp-start" href="/?lesson=s11-oopimpl">▶ Start the interactive lesson</a>
+  <nav class="lp-nav"><a href="/learn/s19-object-oriented-concepts">← S19 Object-Oriented Concepts</a> <a href="/learn/s21-relational-databases">S21 Relational Databases →</a></nav>
+</article>
+</main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Free &amp; open digital literacy for everyone</span>
+    <span class="foot-links"><a href="/learn/">All lessons</a> <a href="/about">About</a> <a href="/privacy">Privacy</a> <a href="/licences">Licences</a></span>
+  </div>
+  <span class="muted">Lessons © 2026 Tech Tayari, licensed CC BY-NC-SA 4.0. An independent project, not affiliated with KICD, KNEC or the Ministry of Education.</span>
+</footer>
+</body>
+</html>

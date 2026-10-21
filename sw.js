@@ -1,10 +1,12 @@
 /* Tech Tayari — Service Worker for offline CBE learning */
-const CACHE_NAME = "tech-tayari-v8";
+const CACHE_NAME = "tech-tayari-v9";
 const STATIC_ASSETS = [
   "./",
   "index.html",
   "styles.css",
   "icons.js",
+  "fonts/nunito-latin.woff2",
+  "fonts/roboto-latin.woff2",
   "content.js",
   "explainers.js",
   "app.js",
@@ -57,32 +59,5 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // Third-party assets (fonts): cache first, refresh in background
-  event.respondWith(
-    caches.match(event.request).then(cachedResponse => {
-      if (cachedResponse) {
-        // Return cached and refresh in background
-        fetch(event.request).then(networkResponse => {
-          if (networkResponse && networkResponse.status === 200) {
-            caches.open(CACHE_NAME).then(cache => cache.put(event.request, networkResponse));
-          }
-        }).catch(() => {});
-        return cachedResponse;
-      }
-
-      return fetch(event.request).then(networkResponse => {
-        // Cache font stylesheets & assets
-        if (networkResponse && networkResponse.status === 200 && (url.origin === location.origin || url.hostname.includes("fonts.g"))) {
-          const respClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, respClone));
-        }
-        return networkResponse;
-      }).catch(() => {
-        // Fallback for navigation
-        if (event.request.mode === "navigate") {
-          return caches.match("index.html");
-        }
-      });
-    })
-  );
+  // Other origins (for example a YouTube video the learner chose to load): let the browser handle them
 });

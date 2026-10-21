@@ -38,6 +38,17 @@ CREATE TABLE IF NOT EXISTS events (
   PRIMARY KEY (day, module_id)
 );
 
+-- Anonymous learning funnel: per day and module, how many devices reached each step (no user link).
+-- step: start | read | mission | quiz | pass
+CREATE TABLE IF NOT EXISTS funnel (
+  day        TEXT NOT NULL,
+  track      TEXT,
+  module_id  TEXT NOT NULL,
+  step       TEXT NOT NULL,
+  count      INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, module_id, step)
+);
+
 -- Simple IP rate limiting to mitigate automated abuse.
 CREATE TABLE IF NOT EXISTS rate_limits (
   key       TEXT PRIMARY KEY,                 -- salted hash of action + IP, never the raw IP

@@ -14,7 +14,7 @@ wrangler whoami >/dev/null 2>&1 || fail "Wrangler isn't logged in. Run: wrangler
 
 say "1/4 Checking lessons are built…"
 python3 _build.py >/dev/null
-git diff --quiet -- content.js || fail "content.js was out of date, so I rebuilt it. Commit it (git commit -am 'Rebuild content'), then run ./deploy.sh again."
+[ -z "$(git status --porcelain -- content.js learn sitemap.xml robots.txt)" ] || fail "Lesson files were out of date, so I rebuilt them. Commit them (git add -A && git commit -m 'Rebuild content'), then run ./deploy.sh again."
 
 say "2/4 Pushing to GitHub…"
 git push origin main
