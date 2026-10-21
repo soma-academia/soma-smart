@@ -6,9 +6,10 @@ name: How the Web Works
 part: Domains, DNS & HTTPS
 cbe: strand
 strand: Grade 7–9 · How the web works: domains, DNS & HTTPS
-video:
-video_title:
-video_channel:
+video: 5o8CwafCxnU
+video_title: The Internet: IP Addresses & DNS
+video_channel: Code.org
+explainer: dns-lookup
 ---
 
 # C10 · How the Web Works

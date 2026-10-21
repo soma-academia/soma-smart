@@ -6,9 +6,10 @@ name: RAM & Storage
 part: Memory and the Disk
 cbe: strand
 strand: Grade 7–9 · Memory & storage basics
-video:
-video_title:
-video_channel:
+video: DKGZlaPlVLY
+video_title: How Computers Work: CPU, Memory, Input & Output
+video_channel: Code.org
+explainer: memory
 ---
 
 # C4 · RAM & Storage

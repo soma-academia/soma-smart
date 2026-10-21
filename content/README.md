@@ -22,6 +22,7 @@ strand: Grade 4–6 · Digital devices & their parts
 video:                      ← YouTube video id, or leave empty
 video_title:
 video_channel:
+explainer:                  ← optional animation: input-process-output, memory, network-path, dns-lookup, bits
 ---
 
 # D1 · Meet the Computer    ← just a title for people, ignored by the build

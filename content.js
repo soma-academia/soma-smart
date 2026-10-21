@@ -1,5 +1,5 @@
 /* Soma Smart — free CBE digital-literacy course content.
- * Two tracks: 'primary' (Grade 4–6, ages ~8–10) and 'junior' (Grade 7–9, ages ~12–15).
+ * Two tracks: 'primary' (Grade 4–6, ages 9–11) and 'junior' (Grade 7–9, ages 12–15).
  * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.
  * Mastery levels (not prizes): new → learning → practised → mastered.
  * video.id = YouTube id ("" shows a friendly no-video screen). quiz 'a' = index of correct option.
@@ -18,13 +18,13 @@ window.COURSE = {
   {
    "id": "primary",
    "name": "Digital Foundations",
-   "level": "Grade 4–6 · ages ~8–10",
+   "level": "Grade 4–6 · ages 9–11",
    "blurb": "Start here. Learn what a computer is, how to use it, and how to stay safe online."
   },
   {
    "id": "junior",
    "name": "Computers & Networks",
-   "level": "Grade 7–9 · ages ~12–15",
+   "level": "Grade 7–9 · ages 12–15",
    "blurb": "Go deeper: inside the computer, how it runs fast, and how the whole internet connects."
   }
  ],
@@ -72,9 +72,9 @@ window.COURSE = {
     "Parts you touch are hardware; programs inside are software. Sawa?"
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "mCq8-xTH7jA",
+    "title": "How Computers Work: What Makes a Computer, a Computer?",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Spot the parts",
@@ -269,7 +269,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 4–6 · Digital devices & their parts"
+   "strandRef": "Grade 4–6 · Digital devices & their parts",
+   "explainer": "input-process-output"
   },
   {
    "track": "primary",
@@ -474,7 +475,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 4–6 · Basic operations: mouse & keyboard"
+   "strandRef": "Grade 4–6 · Basic operations: mouse & keyboard",
+   "explainer": ""
   },
   {
    "track": "primary",
@@ -724,7 +726,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 4–6 · File handling / basic operations"
+   "strandRef": "Grade 4–6 · File handling / basic operations",
+   "explainer": ""
   },
   {
    "track": "primary",
@@ -895,7 +898,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 4–6 · Digital safety & responsible use"
+   "strandRef": "Grade 4–6 · Digital safety & responsible use",
+   "explainer": ""
   },
   {
    "track": "primary",
@@ -940,9 +944,9 @@ window.COURSE = {
     "See https and a padlock? That means your connection is safe. Always check."
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "Dxcc6ycZ73M",
+    "title": "What is the Internet?",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Internet explorer",
@@ -1066,7 +1070,8 @@ window.COURSE = {
     }
    ],
    "cbe": "nice",
-   "strandRef": null
+   "strandRef": null,
+   "explainer": ""
   },
   {
    "track": "junior",
@@ -1106,9 +1111,9 @@ window.COURSE = {
     "The CPU runs the instructions and the GPU draws the screen. Tayari!"
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "xnyFYiK2rSY",
+    "title": "How Computers Work: Hardware and Software",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Read your computer's spec",
@@ -1232,7 +1237,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 7–9 · Hardware basics: the motherboard & boot"
+   "strandRef": "Grade 7–9 · Hardware basics: the motherboard & boot",
+   "explainer": ""
   },
   {
    "track": "junior",
@@ -1277,9 +1283,9 @@ window.COURSE = {
     "Grabbing from cache is quicker than going all the way to RAM."
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "DKGZlaPlVLY",
+    "title": "How Computers Work: CPU, Memory, Input & Output",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Watch the CPU work",
@@ -1403,7 +1409,8 @@ window.COURSE = {
     }
    ],
    "cbe": "nice",
-   "strandRef": null
+   "strandRef": null,
+   "explainer": ""
   },
   {
    "track": "junior",
@@ -1574,7 +1581,8 @@ window.COURSE = {
     }
    ],
    "cbe": "nice",
-   "strandRef": null
+   "strandRef": null,
+   "explainer": ""
   },
   {
    "track": "junior",
@@ -1619,9 +1627,9 @@ window.COURSE = {
     "RAM is a few GB; storage is often hundreds of GB or a whole terabyte."
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "DKGZlaPlVLY",
+    "title": "How Computers Work: CPU, Memory, Input & Output",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Memory detective",
@@ -1745,7 +1753,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 7–9 · Memory & storage basics"
+   "strandRef": "Grade 7–9 · Memory & storage basics",
+   "explainer": "memory"
   },
   {
    "track": "junior",
@@ -1916,7 +1925,8 @@ window.COURSE = {
     }
    ],
    "cbe": "nice",
-   "strandRef": null
+   "strandRef": null,
+   "explainer": ""
   },
   {
    "track": "junior",
@@ -1961,9 +1971,9 @@ window.COURSE = {
     "Apps want endless scrolling. Set your own limits and protect your sleep."
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "AuYNXgO_f3Y",
+    "title": "The Internet: Cybersecurity & Crime",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Lock down an account",
@@ -2152,7 +2162,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 7–9 · Digital safety & security"
+   "strandRef": "Grade 7–9 · Digital safety & security",
+   "explainer": ""
   },
   {
    "track": "junior",
@@ -2323,7 +2334,8 @@ window.COURSE = {
     }
    ],
    "cbe": "nice",
-   "strandRef": null
+   "strandRef": null,
+   "explainer": ""
   },
   {
    "track": "junior",
@@ -2368,9 +2380,9 @@ window.COURSE = {
     "Eight bits per byte, so a 16 Mbps link does about 2 MB a second. Good for bundles!"
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "USCBCmwMCDA",
+    "title": "How Computers Work: Binary & Data",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Size and speed",
@@ -2494,7 +2506,8 @@ window.COURSE = {
     }
    ],
    "cbe": "nice",
-   "strandRef": null
+   "strandRef": null,
+   "explainer": "bits"
   },
   {
    "track": "junior",
@@ -2539,9 +2552,9 @@ window.COURSE = {
     "A far server means higher ping; CDNs keep copies closer to speed things up."
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "AYdF7b3nMto",
+    "title": "The Internet: Packets, Routing & Reliability",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Trace your network",
@@ -2721,7 +2734,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 7–9 · Networks: device to server"
+   "strandRef": "Grade 7–9 · Networks: device to server",
+   "explainer": "network-path"
   },
   {
    "track": "junior",
@@ -2771,9 +2785,9 @@ window.COURSE = {
     "The padlock and a certificate help prove you're talking to the real site. Check the address!"
    ],
    "video": {
-    "id": "",
-    "title": "",
-    "channel": ""
+    "id": "5o8CwafCxnU",
+    "title": "The Internet: IP Addresses & DNS",
+    "channel": "Code.org"
    },
    "mission": {
     "title": "Look under the hood of the web",
@@ -2964,7 +2978,8 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 7–9 · How the web works: domains, DNS & HTTPS"
+   "strandRef": "Grade 7–9 · How the web works: domains, DNS & HTTPS",
+   "explainer": "dns-lookup"
   }
  ]
 };

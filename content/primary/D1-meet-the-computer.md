@@ -6,9 +6,10 @@ name: Meet the Computer
 part: What's inside the box
 cbe: strand
 strand: Grade 4–6 · Digital devices & their parts
-video:
-video_title:
-video_channel:
+video: mCq8-xTH7jA
+video_title: How Computers Work: What Makes a Computer, a Computer?
+video_channel: Code.org
+explainer: input-process-output
 ---
 
 # D1 · Meet the Computer

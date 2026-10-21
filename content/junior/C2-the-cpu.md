@@ -6,9 +6,9 @@ name: The CPU
 part: The Processor
 cbe: nice
 strand:
-video:
-video_title:
-video_channel:
+video: DKGZlaPlVLY
+video_title: How Computers Work: CPU, Memory, Input & Output
+video_channel: Code.org
 ---
 
 # C2 · The CPU

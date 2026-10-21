@@ -6,9 +6,10 @@ name: Bits & Bytes
 part: How Big Is Data
 cbe: nice
 strand:
-video:
-video_title:
-video_channel:
+video: USCBCmwMCDA
+video_title: How Computers Work: Binary & Data
+video_channel: Code.org
+explainer: bits
 ---
 
 # C8 · Bits & Bytes

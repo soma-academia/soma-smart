@@ -462,31 +462,62 @@ function renderAuth(mode){
 
 /* ---------- home: choose a track ---------- */
 function renderHome(){
-  $app.innerHTML = `
+  const started = MODS.filter(m => ms(m.id).reached > 0 || ms(m.id).done);
+  // Resume: the first unfinished module the learner has already opened, else none
+  const resume = MODS.find(m => !ms(m.id).done && ms(m.id).reached > 0);
+  const named = USER.display && USER.display !== "Learner";
+
+  const trackCards = TRACKS.map(t => {
+    const list = modsForTrack(t.id);
+    const done = list.filter(m => ms(m.id).done).length;
+    const pct = Math.round((done / list.length) * 100);
+    return `<button class="card" data-t="${t.id}">
+      <div class="card-ic">${t.id === "primary" ? "🌱" : "🖥️"}</div>
+      <div class="card-t">${esc(t.name)}</div>
+      <div class="card-s">${esc(t.level)} · ${list.length} modules</div>
+      <p class="card-b">${esc(t.blurb)}</p>
+      <div class="card-m">
+        <span>${done}/${list.length} modules completed</span>
+        <span>${pct}%</span>
+      </div>
+      <div class="meter"><div class="meter-fill" style="width:${pct}%"></div></div>
+    </button>`;
+  }).join("");
+
+  const steps = [["📖", "Read", "Short cards with Kenyan examples"], ["🔊", "Listen", "Hear the lesson read aloud"],
+                 ["🛠️", "Mission", "Try it: sort, spot, type, build"], ["✅", "Quiz", "5 questions. Mistakes are explained"]];
+
+  $app.innerHTML = started.length ? `
     <section class="hero">
-      <h1>Welcome, <em>${esc(USER.display)}</em>.</h1>
-      <p>Choose a track to begin learning about computers and the internet.</p>
+      <h1>Welcome back${named ? `, <em>${esc(USER.display)}</em>` : ""}.</h1>
+      <p>${started.filter(m => ms(m.id).done).length} of ${MODS.length} modules done. Keep going!</p>
+      ${resume ? `<button class="btn teal resume" id="resume">▶ Continue: ${esc(resume.code)} · ${esc(resume.name)}</button>` : ""}
     </section>
-    <div class="grid">
-      ${TRACKS.map(t => {
-        const list = modsForTrack(t.id);
-        const done = list.filter(m => ms(m.id).done).length;
-        const pct = Math.round((done / list.length) * 100);
-        return `<button class="card" data-t="${t.id}">
-          <div class="card-ic">${t.id === "primary" ? "🌱" : "🖥️"}</div>
-          <div class="card-t">${esc(t.name)}</div>
-          <div class="card-s">${esc(t.level)}</div>
-          <p class="card-b">${esc(t.blurb)}</p>
-          <div class="card-m">
-            <span>${done}/${list.length} modules completed</span>
-            <span>${pct}%</span>
-          </div>
-          <div class="meter"><div class="meter-fill" style="width:${pct}%"></div></div>
-        </button>`;
-      }).join("")}
+    <div class="grid">${trackCards}</div>
+  ` : `
+    <section class="hero landing">
+      <h1>Learn how computers and the internet <em>really work</em>.</h1>
+      <p>Free lessons for Kenyan learners in Grade 4–9. Read, listen, try it yourself, then take a short quiz.</p>
+      <ul class="trust">
+        <li>🆓 Free, no ads</li>
+        <li>📶 Works offline</li>
+        <li>🙋 No account needed</li>
+        <li>📘 Mapped to CBE strands</li>
+      </ul>
+    </section>
+    <h2 class="home-h2">Choose your track</h2>
+    <div class="grid">${trackCards}</div>
+    <h2 class="home-h2">How each lesson works</h2>
+    <ol class="howto">${steps.map(([ic, t, d]) => `<li><span class="howto-ic">${ic}</span><b>${t}</b><span>${d}</span></li>`).join("")}</ol>
+    <div class="parents">
+      <b>For teachers and parents.</b> Soma Smart is free and needs no sign-up. Progress is saved on the learner's
+      own device (use <b>Backup</b> to keep a copy), and it keeps working without internet once opened.
+      Open it in Chrome and choose <i>Add to Home screen</i> to use it like an app.
     </div>
   `;
   $app.querySelectorAll("[data-t]").forEach(b => b.onclick = () => go({ name: "track", t: b.dataset.t }));
+  const r = document.getElementById("resume");
+  if (r) r.onclick = () => openModule(resume.id);
 }
 
 /* ---------- track: list modules ---------- */
@@ -578,14 +609,15 @@ function renderTrack(){
   });
 }
 
-// No module has a video yet; the WATCH step is skipped until one does
+// The WATCH step appears only for modules with an explainer animation or a curated video
 const hasVideo = m => !!(m.video && m.video.id);
-const stepsFor = m => STEPS.filter(st => st !== "watch" || hasVideo(m));
+const hasWatch = m => hasVideo(m) || !!m.explainer;
+const stepsFor = m => STEPS.filter(st => st !== "watch" || hasWatch(m));
 
 function openModule(id){
   const m = MODS.find(x => x.id === id), s = ms(id);
   let step = s.done ? "read" : STEPS[Math.min(s.reached, 4)];
-  if (step === "watch" && !hasVideo(m)) step = "mission";
+  if (step === "watch" && !hasWatch(m)) step = "mission";
   go({ name: "mod", id, step });
 }
 
@@ -619,7 +651,7 @@ function renderModule(){
 
 function advance(m, s, from){
   let i = STEPS.indexOf(from);
-  if (STEPS[i + 1] === "watch" && !hasVideo(m)) i++;
+  if (STEPS[i + 1] === "watch" && !hasWatch(m)) i++;
   if (s.reached <= i) s.reached = i + 1;
   queueSave();
   const next = STEPS[i + 1];
@@ -765,25 +797,31 @@ function stepListen(m, s, el){
 }
 
 /* ---------- WATCH (optional video; "" => skip screen) ---------- */
+// WATCH: an offline animated explainer (if the module has one) and/or an optional curated video.
+// The video only loads when tapped, so it never spends a learner's data by surprise.
 function stepWatch(m, s, el){
-  const v = m.video;
-  if (!v || !v.id) {
-    el.innerHTML = `
-      <div class="novideo">
-        <div class="byte">🎬</div>
-        <h3>No video for this module</h3>
-        <p class="hint">Proceed directly to the hands-on mission.</p>
-      </div>
-      <div class="stepFoot"><span></span><button class="btn" id="nx">Next</button></div>
-    `;
-    document.getElementById("nx").onclick = () => advance(m, s, "watch");
-    return;
-  }
+  const v = m.video, xp = m.explainer && window.EXPLAINERS ? m.explainer : "";
   el.innerHTML = `
-    <div class="vwrap"><iframe id="yt" src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}?rel=0" allowfullscreen loading="lazy"></iframe></div>
-    <div class="vmeta">${esc(v.title)} · ${esc(v.channel)}</div>
-    <div class="stepFoot"><span class="hint">Watch the video, then continue.</span><button class="btn" id="nx">Next</button></div>
+    ${xp ? `<div id="xp"></div>` : ""}
+    ${hasVideo(m) ? `
+      <div class="vcard" id="vcard">
+        <div class="vcard-t">${xp ? "Optional video" : "Video"}: <b>${esc(v.title)}</b></div>
+        <div class="hint">${esc(v.channel)} · needs internet and uses mobile data</div>
+        <button class="btn ghost small" id="vload">▶ Load video</button>
+      </div>` : ""}
+    <div class="stepFoot"><span class="hint">${xp ? "Step through the animation, then continue." : "Watch the video, then continue."}</span><button class="btn" id="nx">Next</button></div>
   `;
+  if (xp) {
+    const stop = window.EXPLAINERS.render(xp, document.getElementById("xp"));
+    if (stop) cleanup.push(stop);
+  }
+  const vl = document.getElementById("vload");
+  if (vl) vl.onclick = () => {
+    if (!navigator.onLine) { vl.textContent = "You're offline. Try again when connected."; return; }
+    document.getElementById("vcard").outerHTML = `
+      <div class="vwrap"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.id)}?rel=0&autoplay=1" allow="autoplay; encrypted-media" allowfullscreen title="${esc(v.title)}"></iframe></div>
+      <div class="vmeta">${esc(v.title)} · ${esc(v.channel)}</div>`;
+  };
   document.getElementById("nx").onclick = () => advance(m, s, "watch");
 }
 

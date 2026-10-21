@@ -9,6 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 CONTENT = ROOT / "content"
 TASK_TYPES = {"pick", "sort", "text", "typing", "paste", "flags", "order"}
+# Animated explainers available in explainers.js (keep in sync with its SCENES + "bits")
+EXPLAINERS = {"input-process-output", "memory", "network-path", "dns-lookup", "bits"}
 errors = []
 
 
@@ -165,6 +167,7 @@ def parse_module(path):
         "quiz": quiz,
         "cbe": meta.get("cbe"),
         "strandRef": meta.get("strand") or None,
+        "explainer": meta.get("explainer", ""),
     }
 
 
@@ -203,6 +206,10 @@ mids = [m["id"] for m in MODULES]
 for x in {x for x in mids if mids.count(x) > 1}:
     fail(x, "duplicate module id")
 for m in MODULES:
+    if m["explainer"] and m["explainer"] not in EXPLAINERS:
+        fail(m["id"], f"unknown explainer {m['explainer']!r} (use one of {sorted(EXPLAINERS)})")
+    if m["video"]["id"] and not re.fullmatch(r"[A-Za-z0-9_-]{11}", m["video"]["id"]):
+        fail(m["id"], "video must be an 11-character YouTube id (the part after watch?v=)")
     if m["cbe"] not in ("strand", "nice"):
         fail(m["id"], "cbe must be 'strand' or 'nice'")
     if len(m["quiz"]) < course["questionsPerQuiz"]:
@@ -229,7 +236,7 @@ if errors:
 
 header = (
  "/* Soma Smart — free CBE digital-literacy course content.\n"
- " * Two tracks: 'primary' (Grade 4–6, ages ~8–10) and 'junior' (Grade 7–9, ages ~12–15).\n"
+ " * Two tracks: 'primary' (Grade 4–6, ages 9–11) and 'junior' (Grade 7–9, ages 12–15).\n"
  " * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.\n"
  " * Mastery levels (not prizes): new → learning → practised → mastered.\n"
  " * video.id = YouTube id (\"\" shows a friendly no-video screen). quiz 'a' = index of correct option.\n"

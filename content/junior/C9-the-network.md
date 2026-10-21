@@ -6,9 +6,10 @@ name: The Network
 part: From Device to Server
 cbe: strand
 strand: Grade 7–9 · Networks: device to server
-video:
-video_title:
-video_channel:
+video: AYdF7b3nMto
+video_title: The Internet: Packets, Routing & Reliability
+video_channel: Code.org
+explainer: network-path
 ---
 
 # C9 · The Network

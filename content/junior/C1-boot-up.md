@@ -6,9 +6,9 @@ name: Boot Up
 part: The Motherboard
 cbe: strand
 strand: Grade 7–9 · Hardware basics: the motherboard & boot
-video:
-video_title:
-video_channel:
+video: xnyFYiK2rSY
+video_title: How Computers Work: Hardware and Software
+video_channel: Code.org
 ---
 
 # C1 · Boot Up

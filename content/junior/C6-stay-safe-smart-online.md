@@ -6,9 +6,9 @@ name: Stay Safe & Smart Online
 part: Security
 cbe: strand
 strand: Grade 7–9 · Digital safety & security
-video:
-video_title:
-video_channel:
+video: AuYNXgO_f3Y
+video_title: The Internet: Cybersecurity & Crime
+video_channel: Code.org
 ---
 
 # C6 · Stay Safe & Smart Online

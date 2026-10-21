@@ -6,9 +6,9 @@ name: What is the Internet?
 part: The big network
 cbe: nice
 strand:
-video:
-video_title:
-video_channel:
+video: Dxcc6ycZ73M
+video_title: What is the Internet?
+video_channel: Code.org
 ---
 
 # D5 · What is the Internet?
