@@ -1,5 +1,5 @@
 /* Tech Tayari — free CBE digital-literacy course content.
- * Three tracks: 'primary' (Grade 4–6, ages 9–11), 'junior' (Grade 7–9, ages 12–15), 'senior' (Grade 10).
+ * Four tracks: 'primary' (Grade 4–6), 'junior' (Grade 7–9), 'senior' (Grade 10) and 'senior11' (Grade 11).
  * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.
  * Mastery levels (not prizes): new → learning → practised → mastered.
  * video.id = YouTube id ("" shows a friendly no-video screen). quiz 'a' = index of correct option.
@@ -29,9 +29,15 @@ window.COURSE = {
   },
   {
    "id": "senior",
-   "name": "Computer Science",
+   "name": "Computer Studies I",
    "level": "Grade 10 · ages 15–16",
-   "blurb": "Senior School Computer Science: how computers are built and run, how networks carry data, and your first programs in Python."
+   "blurb": "Senior School Computer Studies, Grade 10: how computers are built and run, how networks carry data, and your first programs in Python."
+  },
+  {
+   "id": "senior11",
+   "name": "Computer Studies II",
+   "level": "Grade 11 · ages 16–17",
+   "blurb": "Senior School Computer Studies, Grade 11: number systems and logic, network protocols and security, object-oriented programming, databases, SQL and the web."
   }
  ],
  "modules": [
@@ -5445,7 +5451,7 @@ window.COURSE = {
    "id": "s-containers",
    "code": "S11",
    "name": "Lists & Searching",
-   "part": "Containers, sorting and searching",
+   "part": "Data structures, sorting and searching",
    "read": [
     {
      "icon": "📋",
@@ -5675,7 +5681,7 @@ window.COURSE = {
     }
    ],
    "cbe": "strand",
-   "strandRef": "Grade 10 · 3.5 Containers",
+   "strandRef": "Grade 10 · 3.5 Data Structures",
    "explainer": ""
   },
   {
@@ -5948,6 +5954,2754 @@ window.COURSE = {
    ],
    "cbe": "strand",
    "strandRef": "Grade 10 · 3.6 Functions",
+   "explainer": ""
+  },
+  {
+   "track": "senior11",
+   "id": "s11-datarep",
+   "code": "S13",
+   "name": "Number Systems & Codes",
+   "part": "Data representation",
+   "read": [
+    {
+     "icon": "🔢",
+     "title": "Four number systems",
+     "text": "Computers store everything as binary (base 2: digits 0 and 1). People use decimal (base 10). Programmers often use octal (base 8: digits 0–7) and hexadecimal (base 16: digits 0–9 then A–F, where A = 10 and F = 15), because they are short ways to write long binary numbers."
+    },
+    {
+     "icon": "➗",
+     "title": "Decimal to binary",
+     "text": "Divide by 2 again and again, writing down each remainder, then read the remainders from the bottom up. 13 ÷ 2 = 6 r1, 6 ÷ 2 = 3 r0, 3 ÷ 2 = 1 r1, 1 ÷ 2 = 0 r1, so 13 = 1101 in binary. The same method works for octal (divide by 8) and hex (divide by 16)."
+    },
+    {
+     "icon": "✖️",
+     "title": "Back to decimal with place values",
+     "text": "Each place is worth a power of the base. In binary the places are 8, 4, 2, 1 from the left: 1101 = 8 + 4 + 0 + 1 = 13. In hex the places are 256, 16, 1: 2F = 2 × 16 + 15 = 47."
+    },
+    {
+     "icon": "🧩",
+     "title": "Binary, octal and hex shortcuts",
+     "text": "One hex digit is exactly 4 bits, and one octal digit is exactly 3 bits. So group binary from the right: 1111 1010 = FA in hex, and 011 111 010 = 372 in octal. This is why hex is used for colours (#FF0000 is red) and memory addresses."
+    },
+    {
+     "icon": "🔤",
+     "title": "Character codes: ASCII, EBCDIC, BCD",
+     "text": "Text is stored as numbers using a coding scheme. ASCII gives each character a code (A = 65, a = 97, 0 = 48). EBCDIC is an older scheme used on IBM mainframes. BCD (binary-coded decimal) stores each decimal digit in its own 4 bits: 59 becomes 0101 1001. Unicode extends ASCII to cover every language, including emoji."
+    }
+   ],
+   "listen": [
+    "Computers use binary; people use decimal; programmers also use octal and hex.",
+    "Hex digits go from 0 to 9, then A to F, where F means fifteen.",
+    "To convert decimal to binary, keep dividing by two and read the remainders upwards.",
+    "Binary place values are 8, 4, 2 and 1, doubling each time.",
+    "One hex digit is four bits, and one octal digit is three bits.",
+    "ASCII codes the capital letter A as 65.",
+    "BCD stores each decimal digit in its own four bits."
+   ],
+   "video": {
+    "id": "USCBCmwMCDA",
+    "title": "How Computers Work: Binary & Data",
+    "channel": "Code.org"
+   },
+   "mission": {
+    "title": "Convert like a computer",
+    "steps": [
+     "Convert your age and the day of the month you were born into binary, then into hex.",
+     "Use the explainer above to build the ASCII code for the first letter of your name."
+    ],
+    "question": "Your age in binary and in hex.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "What is decimal 13 in binary?",
+        "options": [
+         "1011",
+         "1101",
+         "1110",
+         "1001"
+        ],
+        "answer": 1,
+        "why": "13 = 8 + 4 + 1, so the 8, 4 and 1 places are on: 1101."
+       },
+       {
+        "q": "What is binary 1010 in decimal?",
+        "options": [
+         "5",
+         "10",
+         "12",
+         "1010"
+        ],
+        "answer": 1,
+        "why": "1010 = 8 + 0 + 2 + 0 = 10."
+       },
+       {
+        "q": "What is hexadecimal FF in decimal?",
+        "options": [
+         "15",
+         "99",
+         "200",
+         "255"
+        ],
+        "answer": 3,
+        "why": "F = 15, so FF = 15 × 16 + 15 = 255, the largest value one byte can hold."
+       },
+       {
+        "q": "What is decimal 59 in BCD?",
+        "options": [
+         "0011 1011",
+         "0101 1001",
+         "1001 0101",
+         "0111 0011"
+        ],
+        "answer": 1,
+        "why": "BCD codes each digit separately: 5 = 0101 and 9 = 1001."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Which number system is each value written in?",
+      "buckets": [
+       "Binary",
+       "Octal",
+       "Hexadecimal"
+      ],
+      "items": [
+       {
+        "t": "1011 0110",
+        "b": 0
+       },
+       {
+        "t": "3F",
+        "b": 2
+       },
+       {
+        "t": "0x1A",
+        "b": 2
+       },
+       {
+        "t": "0b101",
+        "b": 0
+       },
+       {
+        "t": "0o17",
+        "b": 1
+       },
+       {
+        "t": "A9",
+        "b": 2
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is the base of the hexadecimal system?",
+     "options": [
+      "2",
+      "8",
+      "10",
+      "16"
+     ],
+     "a": 3,
+     "why": "Hex has sixteen digits: 0–9 and A–F."
+    },
+    {
+     "q": "In hexadecimal, what value does the digit C stand for?",
+     "options": [
+      "11",
+      "12",
+      "13",
+      "14"
+     ],
+     "a": 1,
+     "why": "A = 10, B = 11, C = 12, up to F = 15."
+    },
+    {
+     "q": "What is binary 1111 in decimal?",
+     "options": [
+      "4",
+      "11",
+      "15",
+      "16"
+     ],
+     "a": 2,
+     "why": "8 + 4 + 2 + 1 = 15."
+    },
+    {
+     "q": "How many bits does one hexadecimal digit represent?",
+     "options": [
+      "2",
+      "3",
+      "4",
+      "8"
+     ],
+     "a": 2,
+     "why": "Four bits give 16 combinations (0000 to 1111), exactly one hex digit."
+    },
+    {
+     "q": "What is octal 17 in decimal?",
+     "options": [
+      "17",
+      "15",
+      "7",
+      "23"
+     ],
+     "a": 1,
+     "why": "Octal places are 8 and 1: 1 × 8 + 7 = 15."
+    },
+    {
+     "q": "Which digits are allowed in octal?",
+     "options": [
+      "0 to 7",
+      "0 to 8",
+      "0 and 1",
+      "0 to 9 and A to F"
+     ],
+     "a": 0,
+     "why": "Base 8 needs eight digits, 0 through 7."
+    },
+    {
+     "q": "In ASCII, what is the code for capital A?",
+     "options": [
+      "1",
+      "48",
+      "65",
+      "97"
+     ],
+     "a": 2,
+     "why": "Capital A is 65; small a is 97, which is why \"A\" and \"a\" are different to a computer."
+    },
+    {
+     "q": "Binary 1111 1010 written in hex is...",
+     "options": [
+      "AF",
+      "FA",
+      "F0",
+      "15 10"
+     ],
+     "a": 1,
+     "why": "Split into 4-bit groups: 1111 = F and 1010 = A, giving FA."
+    },
+    {
+     "q": "Which coding scheme stores each decimal digit in its own 4 bits?",
+     "options": [
+      "ASCII",
+      "EBCDIC",
+      "BCD",
+      "HTML"
+     ],
+     "a": 2,
+     "why": "Binary-coded decimal keeps digits separate, which suits displays and calculators."
+    },
+    {
+     "q": "Why do programmers use hexadecimal?",
+     "options": [
+      "Computers store data in hex",
+      "It is a short, readable way to write long binary numbers",
+      "It is faster than binary",
+      "It only works for colours"
+     ],
+     "a": 1,
+     "why": "Computers still store binary; hex just makes it four times shorter for people to read."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 1.1 Data Representation",
+   "explainer": "bits"
+  },
+  {
+   "track": "senior11",
+   "id": "s11-binarith",
+   "code": "S14",
+   "name": "Binary Arithmetic",
+   "part": "Signed numbers, addition and subtraction",
+   "read": [
+    {
+     "icon": "➕",
+     "title": "Adding in binary",
+     "text": "Binary addition has four rules: 0 + 0 = 0, 0 + 1 = 1, 1 + 1 = 10 (write 0, carry 1), and 1 + 1 + 1 = 11 (write 1, carry 1). Add column by column from the right, just like decimal: 0101 + 0011 = 1000, which is 5 + 3 = 8."
+    },
+    {
+     "icon": "🔓",
+     "title": "Unsigned numbers",
+     "text": "An unsigned number has no sign, so it can only be zero or positive. With 8 bits, unsigned values run from 0 (0000 0000) to 255 (1111 1111). If a result needs more bits than you have, it overflows and the answer is wrong."
+    },
+    {
+     "icon": "±",
+     "title": "Sign and magnitude",
+     "text": "To store negative numbers, one simple method uses the leftmost bit as a sign: 0 for positive, 1 for negative. In 8 bits, +5 is 0000 0101 and −5 is 1000 0101. The problem: it has two zeros (+0 and −0), and adding signed numbers this way does not work directly."
+    },
+    {
+     "icon": "🔁",
+     "title": "One's and two's complement",
+     "text": "One's complement makes a number negative by flipping every bit: +5 = 0000 0101 becomes 1111 1010. Two's complement flips every bit and then adds 1: −5 = 1111 1011. Two's complement has only one zero, and computers use it because ordinary addition then works for negative numbers too. With 8 bits it covers −128 to +127."
+    },
+    {
+     "icon": "➖",
+     "title": "Subtracting by adding",
+     "text": "Computers subtract by adding the two's complement. To work out 7 − 5: write +7 as 0000 0111 and −5 as 1111 1011, then add them, giving 1 0000 0010. Drop the extra carry on the left and the answer is 0000 0010, which is 2. One adding circuit can do both jobs."
+    }
+   ],
+   "listen": [
+    "In binary, one plus one is one-zero: write zero and carry one.",
+    "Unsigned eight-bit numbers go from zero to two hundred and fifty-five.",
+    "Sign and magnitude uses the first bit as the sign, but it has two zeros.",
+    "One's complement flips every bit.",
+    "Two's complement flips every bit, then adds one.",
+    "Eight-bit two's complement covers minus one hundred and twenty-eight to plus one hundred and twenty-seven.",
+    "Computers subtract by adding the two's complement."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Work it out by hand",
+    "steps": [
+     "Add 0110 + 0111 in binary and check your answer in decimal.",
+     "Write −12 in 8-bit sign and magnitude, one's complement and two's complement."
+    ],
+    "question": "Your three ways of writing −12.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "What is 0101 + 0011 in binary?",
+        "options": [
+         "0110",
+         "1000",
+         "0111",
+         "1100"
+        ],
+        "answer": 1,
+        "why": "5 + 3 = 8, and 8 in binary is 1000. Work right to left: 1+1 = 10, carry 1; 0+1+1 = 10, carry 1; 1+0+1 = 10, carry 1; 0+0+1 = 1."
+       },
+       {
+        "q": "What is −5 in 8-bit two's complement?",
+        "options": [
+         "1000 0101",
+         "1111 1010",
+         "1111 1011",
+         "0000 0101"
+        ],
+        "answer": 2,
+        "why": "+5 is 0000 0101. Flip the bits (1111 1010), then add 1: 1111 1011."
+       },
+       {
+        "q": "What is −5 in 8-bit one's complement?",
+        "options": [
+         "1000 0101",
+         "1111 1010",
+         "1111 1011",
+         "0111 1010"
+        ],
+        "answer": 1,
+        "why": "One's complement just flips every bit of +5 (0000 0101)."
+       },
+       {
+        "q": "What is the largest unsigned 8-bit number?",
+        "options": [
+         "127",
+         "128",
+         "255",
+         "256"
+        ],
+        "answer": 2,
+        "why": "1111 1111 = 128 + 64 + 32 + 16 + 8 + 4 + 2 + 1 = 255."
+       }
+      ]
+     },
+     {
+      "type": "order",
+      "label": "Put the steps for finding −6 in two's complement (8 bits) in order.",
+      "items": [
+       {
+        "t": "Write +6 in binary: 0000 0110",
+        "note": "Start from the positive number."
+       },
+       {
+        "t": "Flip every bit: 1111 1001",
+        "note": "This is the one's complement."
+       },
+       {
+        "t": "Add 1: 1111 1010",
+        "note": "This is the two's complement, −6."
+       },
+       {
+        "t": "Check: 0000 0110 + 1111 1010 = 1 0000 0000; drop the carry and you get 0",
+        "note": "A number plus its negative is zero, so the answer is right."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "In binary, 1 + 1 equals...",
+     "options": [
+      "2",
+      "10",
+      "11",
+      "0"
+     ],
+     "a": 1,
+     "why": "Binary has no digit 2, so 1 + 1 = 10: write 0 and carry 1."
+    },
+    {
+     "q": "In binary, 1 + 1 + 1 equals...",
+     "options": [
+      "10",
+      "11",
+      "111",
+      "3"
+     ],
+     "a": 1,
+     "why": "That's 3 in decimal, which is 11 in binary: write 1 and carry 1."
+    },
+    {
+     "q": "In sign and magnitude, what does the leftmost bit show?",
+     "options": [
+      "Whether the number is positive or negative",
+      "The largest digit",
+      "Whether there was a carry",
+      "The parity"
+     ],
+     "a": 0,
+     "why": "0 means positive and 1 means negative; the other bits hold the size."
+    },
+    {
+     "q": "Why do computers prefer two's complement?",
+     "options": [
+      "It uses fewer bits",
+      "It has one zero, and normal addition works for negative numbers",
+      "It only stores positive numbers",
+      "It is easier to read"
+     ],
+     "a": 1,
+     "why": "One adding circuit can handle positive and negative numbers, and subtraction too."
+    },
+    {
+     "q": "What is the range of 8-bit two's complement?",
+     "options": [
+      "0 to 255",
+      "−128 to +127",
+      "−127 to +127",
+      "−255 to +255"
+     ],
+     "a": 1,
+     "why": "There is one more negative number than positive, because zero takes one of the non-negative patterns."
+    },
+    {
+     "q": "How does a computer usually work out A − B?",
+     "options": [
+      "With a separate subtracting circuit only",
+      "By adding A to the two's complement of B",
+      "By flipping A",
+      "By dividing"
+     ],
+     "a": 1,
+     "why": "Adding the two's complement of B gives the same result as subtracting B."
+    },
+    {
+     "q": "What problem does sign and magnitude have?",
+     "options": [
+      "It cannot store positive numbers",
+      "It has two zeros, +0 and −0",
+      "It needs 16 bits",
+      "It only works in hex"
+     ],
+     "a": 1,
+     "why": "0000 0000 and 1000 0000 both mean zero, which wastes a pattern and complicates maths."
+    },
+    {
+     "q": "What is overflow?",
+     "options": [
+      "A result that is too big to fit in the available bits",
+      "A spilled drink on the keyboard",
+      "A very small number",
+      "Adding zero"
+     ],
+     "a": 0,
+     "why": "For example, 200 + 100 in unsigned 8 bits needs 9 bits, so the stored answer is wrong."
+    },
+    {
+     "q": "Flip all bits of 0000 1100. What do you get?",
+     "options": [
+      "0000 1100",
+      "1111 0011",
+      "1111 0100",
+      "1100 0000"
+     ],
+     "a": 1,
+     "why": "Every 0 becomes 1 and every 1 becomes 0. That is the one's complement of +12."
+    },
+    {
+     "q": "What is 0110 + 0111 in binary?",
+     "options": [
+      "1100",
+      "1101",
+      "1111",
+      "1011"
+     ],
+     "a": 1,
+     "why": "6 + 7 = 13, which is 1101 in binary."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 1.2 Binary Arithmetic Operations",
+   "explainer": ""
+  },
+  {
+   "track": "senior11",
+   "id": "s11-gates",
+   "code": "S15",
+   "name": "Logic Gates",
+   "part": "Gates, truth tables and Boolean expressions",
+   "read": [
+    {
+     "icon": "🚦",
+     "title": "What a logic gate is",
+     "text": "A logic gate is a tiny electronic circuit that takes one or more inputs, each 0 (off) or 1 (on), and gives one output. Gates are built from transistors, and billions of them inside a CPU make every decision a computer takes."
+    },
+    {
+     "icon": "✳️",
+     "title": "AND, OR, NOT",
+     "text": "AND gives 1 only when all inputs are 1, like a lift that moves only when the door is closed AND a button is pressed. OR gives 1 when at least one input is 1. NOT has one input and flips it: 1 becomes 0 and 0 becomes 1."
+    },
+    {
+     "icon": "🔄",
+     "title": "NAND, NOR, XOR, XNOR",
+     "text": "NAND is NOT AND: it gives 0 only when all inputs are 1. NOR is NOT OR: it gives 1 only when all inputs are 0. XOR (exclusive OR) gives 1 when the inputs are different. XNOR gives 1 when they are the same. NAND and NOR are called universal gates, because any other gate can be built from them alone."
+    },
+    {
+     "icon": "📋",
+     "title": "Truth tables",
+     "text": "A truth table lists every possible input combination and the output for each. Two inputs give 4 rows (00, 01, 10, 11); three inputs give 8 rows. It is the clearest way to describe exactly what a gate or circuit does."
+    },
+    {
+     "icon": "✍️",
+     "title": "Boolean expressions",
+     "text": "Gates can be written as Boolean algebra: A · B (or AB) for A AND B, A + B for A OR B, Ā (A with a bar, also written A′) for NOT A, and A ⊕ B for XOR. So Q = Ā · B means \"output Q is 1 when A is 0 AND B is 1\"."
+    }
+   ],
+   "listen": [
+    "A logic gate takes inputs of zero or one and gives a single output.",
+    "AND needs all inputs on; OR needs at least one.",
+    "NOT flips its input.",
+    "NAND and NOR are the opposites of AND and OR, and they can build any other gate.",
+    "XOR is on when the inputs differ; XNOR when they match.",
+    "A truth table lists every input combination and its output.",
+    "In Boolean algebra, a dot means AND, a plus means OR, and a bar means NOT."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Gates in real life",
+    "steps": [
+     "Use the explainer above: test each gate with all four input combinations and write its truth table.",
+     "Find one real-life example of an AND decision and one of an OR decision at home or school."
+    ],
+    "question": "Your two real-life examples, and which gate each one matches.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A = 1, B = 1. What does an XOR gate output?",
+        "options": [
+         "1",
+         "0"
+        ],
+        "answer": 1,
+        "why": "XOR gives 1 only when the inputs are different; here they are the same."
+       },
+       {
+        "q": "A = 0, B = 0. What does a NOR gate output?",
+        "options": [
+         "1",
+         "0"
+        ],
+        "answer": 0,
+        "why": "NOR is NOT OR. 0 OR 0 = 0, and NOT 0 = 1."
+       },
+       {
+        "q": "A = 1, B = 1. What does a NAND gate output?",
+        "options": [
+         "1",
+         "0"
+        ],
+        "answer": 1,
+        "why": "NAND is NOT AND. 1 AND 1 = 1, and NOT 1 = 0. It is the only case where NAND gives 0."
+       },
+       {
+        "q": "Which gate gives 1 when at least one input is 1?",
+        "options": [
+         "AND",
+         "OR",
+         "NOR",
+         "XNOR"
+        ],
+        "answer": 1,
+        "why": "OR needs any one input on."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Match each description to its gate.",
+      "buckets": [
+       "AND",
+       "OR",
+       "NOT",
+       "XOR"
+      ],
+      "items": [
+       {
+        "t": "Output is 1 only when both inputs are 1",
+        "b": 0
+       },
+       {
+        "t": "Flips the single input",
+        "b": 2
+       },
+       {
+        "t": "Output is 1 when the inputs are different",
+        "b": 3
+       },
+       {
+        "t": "Output is 1 if any input is 1",
+        "b": 1
+       },
+       {
+        "t": "Written as A · B",
+        "b": 0
+       },
+       {
+        "t": "Written as A + B",
+        "b": 1
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "How many rows does a truth table for 3 inputs have?",
+     "options": [
+      "3",
+      "6",
+      "8",
+      "9"
+     ],
+     "a": 2,
+     "why": "Each input doubles the rows: 2 × 2 × 2 = 8."
+    },
+    {
+     "q": "Which gate has only one input?",
+     "options": [
+      "AND",
+      "XOR",
+      "NOT",
+      "NAND"
+     ],
+     "a": 2,
+     "why": "NOT simply flips one input."
+    },
+    {
+     "q": "What is the output of AND when A = 1 and B = 0?",
+     "options": [
+      "1",
+      "0"
+     ],
+     "a": 1,
+     "why": "AND needs every input to be 1."
+    },
+    {
+     "q": "Why are NAND and NOR called universal gates?",
+     "options": [
+      "They are used in every country",
+      "Any other gate can be built using only NAND (or only NOR) gates",
+      "They have the most inputs",
+      "They never output 0"
+     ],
+     "a": 1,
+     "why": "Chip makers can build whole circuits from one type of gate, which simplifies manufacturing."
+    },
+    {
+     "q": "In Boolean algebra, A + B means...",
+     "options": [
+      "A plus B in arithmetic",
+      "A OR B",
+      "A AND B",
+      "NOT A"
+     ],
+     "a": 1,
+     "why": "In Boolean algebra, + stands for OR and the dot stands for AND."
+    },
+    {
+     "q": "XNOR outputs 1 when...",
+     "options": [
+      "The inputs are different",
+      "The inputs are the same",
+      "Both inputs are 0 only",
+      "Never"
+     ],
+     "a": 1,
+     "why": "XNOR is NOT XOR, so it is on for matching inputs (00 or 11)."
+    },
+    {
+     "q": "A lift should move only if the door is closed AND a floor button is pressed. Which gate fits?",
+     "options": [
+      "AND",
+      "OR",
+      "NOT",
+      "XOR"
+     ],
+     "a": 0,
+     "why": "Both conditions must be true at the same time."
+    },
+    {
+     "q": "A = 0. What is NOT A?",
+     "options": [
+      "0",
+      "1"
+     ],
+     "a": 1,
+     "why": "NOT flips the input."
+    },
+    {
+     "q": "Logic gates inside a chip are built from...",
+     "options": [
+      "Vacuum tubes",
+      "Transistors",
+      "Magnets",
+      "Batteries"
+     ],
+     "a": 1,
+     "why": "Modern chips pack billions of tiny transistor switches to make gates."
+    },
+    {
+     "q": "What does a truth table show?",
+     "options": [
+      "The cost of a circuit",
+      "The output for every possible combination of inputs",
+      "How hot a chip gets",
+      "Only the inputs"
+     ],
+     "a": 1,
+     "why": "Listing every combination leaves no case undescribed."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 1.3 Logic Gates",
+   "explainer": "logic-gates"
+  },
+  {
+   "track": "senior11",
+   "id": "s11-circuits",
+   "code": "S16",
+   "name": "Logic Circuits",
+   "part": "Combining gates to solve problems",
+   "read": [
+    {
+     "icon": "🔗",
+     "title": "From gates to circuits",
+     "text": "A logic circuit joins gates together so the output of one gate becomes the input of another. With a few gates you can describe real rules, like \"sound the alarm if the system is armed AND a door OR a window opens\"."
+    },
+    {
+     "icon": "🚨",
+     "title": "A burglar alarm circuit",
+     "text": "Let A = the alarm is armed, D = a door is open, W = a window is open. The rule is: Alarm = A AND (D OR W), written A · (D + W). An OR gate combines D and W, and its output goes into an AND gate together with A."
+    },
+    {
+     "icon": "✍️",
+     "title": "Boolean expressions from circuits",
+     "text": "To find a circuit's expression, start at the inputs and write each gate's output in turn. An OR gate fed by D and W gives D + W. That goes into an AND gate with A, giving A · (D + W). Brackets show which part is worked out first."
+    },
+    {
+     "icon": "📋",
+     "title": "Truth tables for circuits",
+     "text": "Evaluate the expression for every input combination. For A · (D + W): with A = 0 the output is always 0, so a disarmed alarm stays quiet. With A = 1 the output is 1 if D or W is 1. Three inputs give 8 rows to check."
+    },
+    {
+     "icon": "➕",
+     "title": "The half adder",
+     "text": "Gates can also do maths. A half adder adds two bits: Sum = A XOR B, and Carry = A AND B. With A = 1 and B = 1: Sum = 0 and Carry = 1, giving 10, which is 2 in binary. Chain these together and you get the adders inside every CPU."
+    }
+   ],
+   "listen": [
+    "A logic circuit feeds the output of one gate into another.",
+    "An alarm rule can be: armed AND, door OR window.",
+    "That is written A dot, bracket, D plus W.",
+    "Work out a circuit's expression gate by gate, from the inputs to the output.",
+    "A truth table checks the circuit for every input combination.",
+    "A half adder uses XOR for the sum and AND for the carry.",
+    "Chains of adders are how the CPU does arithmetic."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Design a circuit",
+    "steps": [
+     "Use the explainer above: switch the alarm inputs on and off and fill in the 8-row truth table.",
+     "Design a circuit for a security light: the light turns on when it is dark AND motion is detected. Write its Boolean expression."
+    ],
+    "question": "Your security-light expression, and one row of its truth table.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Alarm = A · (D + W). The alarm is armed (A = 1), the door is shut (D = 0) and a window is open (W = 1). Does it sound?",
+        "options": [
+         "Yes, output 1",
+         "No, output 0"
+        ],
+        "answer": 0,
+        "why": "D + W = 0 + 1 = 1, then A · 1 = 1 · 1 = 1."
+       },
+       {
+        "q": "Same circuit: A = 0, D = 1, W = 1. Does it sound?",
+        "options": [
+         "Yes, output 1",
+         "No, output 0"
+        ],
+        "answer": 1,
+        "why": "Whatever the door and window do, A = 0 makes the AND gate output 0. A disarmed alarm stays quiet."
+       },
+       {
+        "q": "A half adder gets A = 1 and B = 0. What are Sum and Carry?",
+        "options": [
+         "Sum 1, Carry 0",
+         "Sum 0, Carry 1",
+         "Sum 1, Carry 1",
+         "Sum 0, Carry 0"
+        ],
+        "answer": 0,
+        "why": "Sum = 1 XOR 0 = 1, Carry = 1 AND 0 = 0. That's 1 + 0 = 1."
+       },
+       {
+        "q": "Which expression means \"Q is 1 when A is 1 and B is 0\"?",
+        "options": [
+         "A + B",
+         "A · B̄",
+         "Ā · B",
+         "A ⊕ B̄"
+        ],
+        "answer": 1,
+        "why": "B̄ (NOT B) is 1 exactly when B is 0, and the dot means AND."
+       }
+      ]
+     },
+     {
+      "type": "order",
+      "label": "Put the steps for analysing a logic circuit in order.",
+      "items": [
+       {
+        "t": "Label every input (for example A, D, W)",
+        "note": "Know what each input stands for."
+       },
+       {
+        "t": "Write the output expression of the first gate(s) next to the inputs",
+        "note": "For example, the OR gate gives D + W."
+       },
+       {
+        "t": "Feed that into the next gate and write the full expression",
+        "note": "For example, A · (D + W)."
+       },
+       {
+        "t": "Build a truth table with every input combination",
+        "note": "Three inputs need 8 rows."
+       },
+       {
+        "t": "Check the table against the real-life rule",
+        "note": "Make sure the circuit does what the problem asks."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is a logic circuit?",
+     "options": [
+      "A single transistor",
+      "Gates connected so one gate's output feeds another",
+      "A type of cable",
+      "A program"
+     ],
+     "a": 1,
+     "why": "Combining gates lets a circuit carry out more complex rules."
+    },
+    {
+     "q": "For Q = A · (B + C), what is Q when A = 1, B = 0, C = 0?",
+     "options": [
+      "1",
+      "0"
+     ],
+     "a": 1,
+     "why": "B + C = 0, and 1 · 0 = 0."
+    },
+    {
+     "q": "For Q = A + B · C, what is Q when A = 0, B = 1, C = 1?",
+     "options": [
+      "1",
+      "0"
+     ],
+     "a": 0,
+     "why": "AND is worked out before OR: B · C = 1, then 0 + 1 = 1."
+    },
+    {
+     "q": "In a half adder, which gate gives the Sum?",
+     "options": [
+      "AND",
+      "OR",
+      "XOR",
+      "NOT"
+     ],
+     "a": 2,
+     "why": "The sum bit is 1 when exactly one input is 1, which is what XOR does."
+    },
+    {
+     "q": "In a half adder, which gate gives the Carry?",
+     "options": [
+      "AND",
+      "OR",
+      "XOR",
+      "NOR"
+     ],
+     "a": 0,
+     "why": "You only carry when both bits are 1."
+    },
+    {
+     "q": "How many rows does a truth table need for a circuit with 4 inputs?",
+     "options": [
+      "4",
+      "8",
+      "16",
+      "32"
+     ],
+     "a": 2,
+     "why": "2 × 2 × 2 × 2 = 16 combinations."
+    },
+    {
+     "q": "In A · (D + W), why are the brackets there?",
+     "options": [
+      "For decoration",
+      "To show that D + W is worked out first",
+      "To show NOT",
+      "To show the inputs are equal"
+     ],
+     "a": 1,
+     "why": "Without brackets, AND would be done before OR, which would change the meaning."
+    },
+    {
+     "q": "A school bell should ring when it is break time AND it is NOT a weekend. Which gate turns \"weekend\" into \"not weekend\"?",
+     "options": [
+      "AND",
+      "OR",
+      "NOT",
+      "XOR"
+     ],
+     "a": 2,
+     "why": "A NOT gate flips the weekend signal; its output then goes into an AND gate with \"break time\"."
+    },
+    {
+     "q": "What is the main use of a truth table when designing a circuit?",
+     "options": [
+      "To check the circuit gives the right output in every case",
+      "To decide the colour of the wires",
+      "To count the transistors",
+      "To measure the voltage"
+     ],
+     "a": 0,
+     "why": "Checking every combination catches mistakes before the circuit is built."
+    },
+    {
+     "q": "A half adder adds 1 + 1. What do Carry and Sum show?",
+     "options": [
+      "Carry 0, Sum 0",
+      "Carry 0, Sum 1",
+      "Carry 1, Sum 0",
+      "Carry 1, Sum 1"
+     ],
+     "a": 2,
+     "why": "1 + 1 = 10 in binary: carry 1, sum 0."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 1.4 Logic Circuits",
+   "explainer": "logic-circuit"
+  },
+  {
+   "track": "senior11",
+   "id": "s11-protocols",
+   "code": "S17",
+   "name": "Network Standards & Protocols",
+   "part": "TCP/IP, OSI and encapsulation",
+   "read": [
+    {
+     "icon": "📏",
+     "title": "Why standards exist",
+     "text": "Standards are agreed specifications that let equipment from different makers work together. IEEE writes standards such as 802.3 (Ethernet) and 802.11 (Wi-Fi). The IETF publishes the internet's protocols. ISO created the OSI model. Because of standards, any phone can join any Wi-Fi network."
+    },
+    {
+     "icon": "📜",
+     "title": "Common protocols",
+     "text": "HTTP and HTTPS load web pages (HTTPS is the encrypted version). SMTP sends email; POP3 and IMAP collect it. FTP transfers files. DNS turns names into IP addresses. DHCP gives devices an IP address automatically when they join a network. TCP delivers data reliably and in order; UDP is faster but doesn't guarantee delivery, which suits video calls."
+    },
+    {
+     "icon": "🧱",
+     "title": "The TCP/IP model",
+     "text": "The internet follows the four-layer TCP/IP model. Application: the protocols apps use (HTTP, SMTP, DNS). Transport: TCP or UDP split data into segments and use port numbers to reach the right app. Internet: IP addresses and routes packets across networks. Network access: sends frames over the actual medium, such as Ethernet or Wi-Fi."
+    },
+    {
+     "icon": "🏢",
+     "title": "The OSI model",
+     "text": "OSI describes networking in seven layers: 7 Application, 6 Presentation (formats and encryption), 5 Session (manages conversations), 4 Transport, 3 Network, 2 Data link (frames and MAC addresses), 1 Physical (bits on the wire). OSI's top three layers map to TCP/IP's Application layer, and its bottom two to Network access."
+    },
+    {
+     "icon": "📦",
+     "title": "Encapsulation and decapsulation",
+     "text": "When you send data, each layer wraps it with its own header on the way down: data becomes a segment (transport), then a packet (internet), then a frame (network access), then bits on the wire. The receiver unwraps the layers in reverse on the way up. This is called decapsulation."
+    }
+   ],
+   "listen": [
+    "Standards let equipment from different makers work together.",
+    "IEEE 802.11 is Wi-Fi, and 802.3 is Ethernet.",
+    "HTTP loads pages, SMTP sends email, DNS finds addresses, and DHCP hands them out.",
+    "TCP is reliable and ordered; UDP is fast but makes no promises.",
+    "TCP/IP has four layers: application, transport, internet and network access.",
+    "OSI has seven layers, from physical up to application.",
+    "Each layer adds a header going down, and removes it coming up."
+   ],
+   "video": {
+    "id": "5o8CwafCxnU",
+    "title": "The Internet: IP Addresses & DNS",
+    "channel": "Code.org"
+   },
+   "mission": {
+    "title": "Inspect a real network",
+    "steps": [
+     "On a computer, run ipconfig (Windows) or ifconfig (Mac or Linux) and find your IP address, subnet mask and default gateway.",
+     "On a phone, open Wi-Fi settings: find the IP address that DHCP assigned and whether it uses 802.11n, ac or ax (if shown)."
+    ],
+    "question": "Your IP address and default gateway, and which protocol gave you that address.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Which TCP/IP layer does each one belong to?",
+      "buckets": [
+       "Application",
+       "Transport",
+       "Internet",
+       "Network access"
+      ],
+      "items": [
+       {
+        "t": "HTTP",
+        "b": 0
+       },
+       {
+        "t": "TCP",
+        "b": 1
+       },
+       {
+        "t": "IP",
+        "b": 2
+       },
+       {
+        "t": "Ethernet frames",
+        "b": 3
+       },
+       {
+        "t": "DNS",
+        "b": 0
+       },
+       {
+        "t": "UDP",
+        "b": 1
+       },
+       {
+        "t": "Wi-Fi (802.11) radio signals",
+        "b": 3
+       }
+      ]
+     },
+     {
+      "type": "order",
+      "label": "Put the OSI layers in order, from layer 1 (bottom) to layer 7 (top).",
+      "items": [
+       {
+        "t": "Physical",
+        "note": "Bits as electrical, light or radio signals."
+       },
+       {
+        "t": "Data link",
+        "note": "Frames and MAC addresses on the local network."
+       },
+       {
+        "t": "Network",
+        "note": "IP addresses and routing between networks."
+       },
+       {
+        "t": "Transport",
+        "note": "TCP or UDP, ports, reliable delivery."
+       },
+       {
+        "t": "Session",
+        "note": "Starts, manages and ends conversations."
+       },
+       {
+        "t": "Presentation",
+        "note": "Formats, compresses and encrypts data."
+       },
+       {
+        "t": "Application",
+        "note": "The protocols apps use, such as HTTP."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which protocol gives your phone an IP address automatically when it joins Wi-Fi?",
+        "options": [
+         "DNS",
+         "DHCP",
+         "SMTP",
+         "FTP"
+        ],
+        "answer": 1,
+        "why": "DHCP (Dynamic Host Configuration Protocol) leases addresses so you don't have to set them by hand."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What does a network standard do?",
+     "options": [
+      "Makes the internet slower",
+      "Lets equipment from different makers work together",
+      "Charges devices",
+      "Blocks all traffic"
+     ],
+     "a": 1,
+     "why": "Agreed specifications mean any compliant device can talk to any other."
+    },
+    {
+     "q": "Which IEEE standard is Wi-Fi?",
+     "options": [
+      "802.3",
+      "802.11",
+      "802.1",
+      "404"
+     ],
+     "a": 1,
+     "why": "The 802.11 family (n, ac, ax and so on) defines wireless LANs; 802.3 is wired Ethernet."
+    },
+    {
+     "q": "Which protocol sends email?",
+     "options": [
+      "SMTP",
+      "HTTP",
+      "DHCP",
+      "FTP"
+     ],
+     "a": 0,
+     "why": "SMTP sends mail between servers; POP3 or IMAP fetch it into your inbox."
+    },
+    {
+     "q": "Why would a video call use UDP instead of TCP?",
+     "options": [
+      "UDP is more secure",
+      "Speed matters more than resending a lost packet",
+      "TCP cannot carry video",
+      "UDP uses no IP address"
+     ],
+     "a": 1,
+     "why": "A late, resent frame is useless in a live call, so UDP's speed wins."
+    },
+    {
+     "q": "How many layers does the TCP/IP model have?",
+     "options": [
+      "3",
+      "4",
+      "5",
+      "7"
+     ],
+     "a": 1,
+     "why": "Application, transport, internet and network access."
+    },
+    {
+     "q": "Which OSI layer handles IP addresses and routing?",
+     "options": [
+      "Data link",
+      "Network",
+      "Session",
+      "Physical"
+     ],
+     "a": 1,
+     "why": "Layer 3 (network) moves packets between networks using IP addresses."
+    },
+    {
+     "q": "What is encapsulation?",
+     "options": [
+      "Deleting old data",
+      "Each layer adding its own header as data goes down the layers",
+      "Encrypting a password",
+      "Storing data in a capsule"
+     ],
+     "a": 1,
+     "why": "Headers carry what each layer needs, such as ports, IP addresses and MAC addresses."
+    },
+    {
+     "q": "At the transport layer, what directs data to the right application?",
+     "options": [
+      "The MAC address",
+      "A port number",
+      "The screen size",
+      "The IP address only"
+     ],
+     "a": 1,
+     "why": "Ports (like 443 for HTTPS) tell the computer which app should receive the data."
+    },
+    {
+     "q": "Which OSI layer formats and encrypts data?",
+     "options": [
+      "Physical",
+      "Transport",
+      "Presentation",
+      "Network"
+     ],
+     "a": 2,
+     "why": "Layer 6 (presentation) handles formats, compression and encryption."
+    },
+    {
+     "q": "What does the receiving computer do in decapsulation?",
+     "options": [
+      "Removes each layer's header on the way up",
+      "Adds more headers",
+      "Sends the data back",
+      "Turns the data into light"
+     ],
+     "a": 0,
+     "why": "Each layer reads and strips its header, until the app gets the original data."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 2.1 Computer Network Standards and Protocols",
+   "explainer": "dns-lookup"
+  },
+  {
+   "track": "senior11",
+   "id": "s11-netsec",
+   "code": "S18",
+   "name": "Network Security",
+   "part": "Threats and controls",
+   "read": [
+    {
+     "icon": "🔺",
+     "title": "The CIA triad",
+     "text": "Network security protects three things. Confidentiality: only authorised people can read the data. Integrity: data is not changed without permission. Availability: systems and data are there when they are needed. Every threat attacks at least one of these, and every control protects at least one."
+    },
+    {
+     "icon": "⚠️",
+     "title": "Common threats",
+     "text": "Malware: viruses, worms, trojans and ransomware, which locks files for payment. Phishing tricks people into giving away passwords or PINs. Denial of service (DoS, or DDoS from many machines) floods a service until it stops. Eavesdropping, or man-in-the-middle, intercepts data, often on open Wi-Fi. Weak passwords and careless insiders cause many breaches too."
+    },
+    {
+     "icon": "🛡️",
+     "title": "Technical controls",
+     "text": "A firewall filters traffic using rules, blocking what isn't allowed. An intrusion detection system (IDS) watches for attack patterns and raises alerts. Encryption scrambles data so only the right key can read it: HTTPS for websites, WPA2 or WPA3 for Wi-Fi. Antivirus and anti-malware find and remove malicious software."
+    },
+    {
+     "icon": "🔑",
+     "title": "Access control",
+     "text": "Give each user their own account with only the access they need (least privilege). Require strong passwords, and add multi-factor authentication, such as a code sent to your phone. Remove accounts when people leave. Keep server rooms and network equipment physically locked."
+    },
+    {
+     "icon": "🔎",
+     "title": "Keeping it secure",
+     "text": "Install software updates promptly; they patch known weaknesses. Back up important data, offline or in a separate place, so ransomware can't hold you hostage. Audit and review logs to spot unusual activity. Train users to recognise phishing. In Kenya, the Computer Misuse and Cybercrimes Act (2018) makes unauthorised access to computer systems a crime."
+    }
+   ],
+   "listen": [
+    "Security protects confidentiality, integrity and availability: the CIA triad.",
+    "Threats include malware, phishing, denial of service and eavesdropping.",
+    "A firewall filters traffic; an IDS watches for attacks.",
+    "Encryption, like HTTPS and WPA3, keeps data private.",
+    "Give each user only the access they need, with strong passwords and multi-factor authentication.",
+    "Update software, back up data, and review the logs.",
+    "Kenya's Computer Misuse and Cybercrimes Act makes unauthorised access a crime."
+   ],
+   "video": {
+    "id": "ZghMPWGXexs",
+    "title": "The Internet: Encryption & Public Keys",
+    "channel": "Code.org"
+   },
+   "mission": {
+    "title": "Secure a network",
+    "steps": [
+     "Check your home or school Wi-Fi settings (with permission): is it using WPA2 or WPA3, and has the router's default admin password been changed?",
+     "Write three password rules you would set for your school's computers, and explain which part of the CIA triad each protects."
+    ],
+    "question": "Your three password rules, and what each protects.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Which part of the CIA triad does each attack mainly hit?",
+      "buckets": [
+       "Confidentiality",
+       "Integrity",
+       "Availability"
+      ],
+      "items": [
+       {
+        "t": "A hacker reads students' private records",
+        "b": 0
+       },
+       {
+        "t": "Someone secretly changes exam marks in the database",
+        "b": 1
+       },
+       {
+        "t": "A DDoS attack takes the school website offline",
+        "b": 2
+       },
+       {
+        "t": "Passwords are captured on open Wi-Fi",
+        "b": 0
+       },
+       {
+        "t": "Ransomware locks every file on the server",
+        "b": 2
+       },
+       {
+        "t": "A virus alters files without permission",
+        "b": 1
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which control blocks unwanted network traffic using rules?",
+        "options": [
+         "Firewall",
+         "Backup",
+         "Printer",
+         "Router admin page"
+        ],
+        "answer": 0,
+        "why": "A firewall checks traffic against rules and blocks what isn't allowed."
+       },
+       {
+        "q": "Your school's files are hit by ransomware. What lets you recover without paying?",
+        "options": [
+         "A faster computer",
+         "Recent backups kept offline or separately",
+         "A new password",
+         "Turning off Wi-Fi"
+        ],
+        "answer": 1,
+        "why": "Separate backups let you restore files; ransomware can't encrypt what it can't reach."
+       },
+       {
+        "q": "An email from \"Admin\" asks you to reply with your password to keep your account. What is this?",
+        "options": [
+         "A system update",
+         "Phishing",
+         "Encryption",
+         "A firewall alert"
+        ],
+        "answer": 1,
+        "why": "Real administrators never ask for your password. Report it instead of replying."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What does the \"I\" in the CIA triad stand for?",
+     "options": [
+      "Internet",
+      "Integrity",
+      "Information",
+      "Inspection"
+     ],
+     "a": 1,
+     "why": "Integrity means data is accurate and only changed by authorised people."
+    },
+    {
+     "q": "A DDoS attack mainly harms...",
+     "options": [
+      "Confidentiality",
+      "Integrity",
+      "Availability",
+      "Encryption"
+     ],
+     "a": 2,
+     "why": "Flooding a service with traffic stops genuine users from reaching it."
+    },
+    {
+     "q": "What does an intrusion detection system (IDS) do?",
+     "options": [
+      "Encrypts files",
+      "Monitors traffic for signs of attack and raises alerts",
+      "Assigns IP addresses",
+      "Charges batteries"
+     ],
+     "a": 1,
+     "why": "An IDS spots suspicious patterns so administrators can respond quickly."
+    },
+    {
+     "q": "Which Wi-Fi security setting is strongest?",
+     "options": [
+      "Open (no password)",
+      "WEP",
+      "WPA3",
+      "Hidden network name only"
+     ],
+     "a": 2,
+     "why": "WPA3 is the newest Wi-Fi encryption standard; WEP is broken, and hiding the name gives no real protection."
+    },
+    {
+     "q": "What is least privilege?",
+     "options": [
+      "Giving users only the access they need for their job",
+      "Giving everyone administrator rights",
+      "Using the cheapest equipment",
+      "Logging in as little as possible"
+     ],
+     "a": 0,
+     "why": "Less access means less damage if an account is misused or stolen."
+    },
+    {
+     "q": "Multi-factor authentication means...",
+     "options": [
+      "Using a longer password",
+      "Needing two or more proofs of identity, such as a password and a phone code",
+      "Logging in from many devices",
+      "Sharing a password with a friend"
+     ],
+     "a": 1,
+     "why": "A stolen password alone isn't enough to get in."
+    },
+    {
+     "q": "Why install software updates promptly?",
+     "options": [
+      "They change the wallpaper",
+      "They patch known security weaknesses",
+      "They delete old files",
+      "They are required to switch on"
+     ],
+     "a": 1,
+     "why": "Attackers target weaknesses that have already been published; updates close them."
+    },
+    {
+     "q": "Which threat pretends to be a useful program but does harm?",
+     "options": [
+      "Worm",
+      "Trojan",
+      "Firewall",
+      "Backup"
+     ],
+     "a": 1,
+     "why": "Like the wooden horse of the story, a trojan hides its harmful purpose inside something that looks useful."
+    },
+    {
+     "q": "What law in Kenya covers unauthorised access to computer systems?",
+     "options": [
+      "The Traffic Act",
+      "The Computer Misuse and Cybercrimes Act (2018)",
+      "The Copyright Act only",
+      "There is no such law"
+     ],
+     "a": 1,
+     "why": "The 2018 Act makes offences like unauthorised access and interference with computer systems crimes."
+    },
+    {
+     "q": "Why review and audit logs?",
+     "options": [
+      "To make the network faster",
+      "To spot unusual activity and investigate incidents",
+      "To print reports for fun",
+      "To replace the firewall"
+     ],
+     "a": 1,
+     "why": "Logs show who did what and when, which reveals attacks and misuse."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 2.2 Network Security",
+   "explainer": ""
+  },
+  {
+   "track": "senior11",
+   "id": "s11-oop",
+   "code": "S19",
+   "name": "Object-Oriented Concepts",
+   "part": "Classes, objects and the four principles",
+   "read": [
+    {
+     "icon": "🧭",
+     "title": "Two ways to organise programs",
+     "text": "Procedural programming organises a program as a sequence of functions that act on data. Object-oriented programming (OOP) bundles the data and the functions that use it into objects, modelled on real things: a student, a bank account, a matatu. Large programs are easier to manage and reuse this way. Java, C++, C# and Python all support OOP."
+    },
+    {
+     "icon": "🧱",
+     "title": "Classes and objects",
+     "text": "A class is a blueprint; an object is one thing built from it. The Student class describes what every student has (attributes such as name and admission number) and can do (methods such as enrol() and pay_fees()). Amani and Wanjiru are two different objects of that one class, each with their own values."
+    },
+    {
+     "icon": "🔒",
+     "title": "Encapsulation and abstraction",
+     "text": "Encapsulation bundles data and methods together and hides the inner details, so the data can only be changed through the object's own methods. A bank balance should change only through deposit() and withdraw(). Abstraction shows only what users need: you call send_money() without seeing all the steps inside."
+    },
+    {
+     "icon": "🧬",
+     "title": "Inheritance and polymorphism",
+     "text": "Inheritance lets a new class reuse an existing one: Teacher and Student can both inherit name and phone from a Person class, then add their own features. Polymorphism means one method name behaves differently for each class: area() works out a circle's area one way and a rectangle's another way."
+    },
+    {
+     "icon": "🗂️",
+     "title": "UML class diagrams",
+     "text": "Programmers plan classes with UML (Unified Modelling Language) class diagrams: a box in three parts, holding the class name, its attributes, and its methods. Symbols show visibility: + for public, − for private, # for protected. An arrow with a hollow triangle points from a child class to its parent."
+    }
+   ],
+   "listen": [
+    "OOP bundles data and the functions that use it into objects.",
+    "A class is a blueprint; an object is one thing made from it.",
+    "Attributes describe an object; methods are what it can do.",
+    "Encapsulation hides an object's data behind its methods.",
+    "Abstraction shows only what the user needs.",
+    "Inheritance reuses a parent class; polymorphism lets one method act differently.",
+    "UML class diagrams show the class name, attributes and methods."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Model your school",
+    "steps": [
+     "Pick three things at school (for example Student, Teacher, Classroom) and list two attributes and two methods for each.",
+     "Draw a UML class diagram for one of them, using + and − for public and private."
+    ],
+    "question": "Your class, with its attributes and methods.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Is each one a class or an object?",
+      "buckets": [
+       "Class",
+       "Object"
+      ],
+      "items": [
+       {
+        "t": "Student (the blueprint)",
+        "b": 0
+       },
+       {
+        "t": "Amani, admission number 1021",
+        "b": 1
+       },
+       {
+        "t": "Matatu",
+        "b": 0
+       },
+       {
+        "t": "The matatu with plate KDA 123A",
+        "b": 1
+       },
+       {
+        "t": "BankAccount",
+        "b": 0
+       },
+       {
+        "t": "Wanjiru's savings account",
+        "b": 1
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A balance can only change through deposit() and withdraw(). Which principle is this?",
+        "options": [
+         "Encapsulation",
+         "Inheritance",
+         "Polymorphism",
+         "Compilation"
+        ],
+        "answer": 0,
+        "why": "Hiding the data and allowing changes only through the object's methods is encapsulation."
+       },
+       {
+        "q": "Teacher and Student both reuse name and phone from a Person class. Which principle is this?",
+        "options": [
+         "Abstraction",
+         "Inheritance",
+         "Encapsulation",
+         "Iteration"
+        ],
+        "answer": 1,
+        "why": "Child classes inherit attributes and methods from a parent class."
+       },
+       {
+        "q": "Circle.area() and Rectangle.area() calculate in different ways. Which principle is this?",
+        "options": [
+         "Encapsulation",
+         "Inheritance",
+         "Polymorphism",
+         "Abstraction"
+        ],
+        "answer": 2,
+        "why": "Polymorphism means \"many forms\": one method name, behaving differently for each class."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is a class?",
+     "options": [
+      "A blueprint that describes attributes and methods",
+      "One specific object",
+      "A type of loop",
+      "A database table only"
+     ],
+     "a": 0,
+     "why": "Objects are created from a class, the way houses are built from one plan."
+    },
+    {
+     "q": "What is an object?",
+     "options": [
+      "A blueprint",
+      "One instance created from a class, with its own values",
+      "A function",
+      "A comment"
+     ],
+     "a": 1,
+     "why": "Each object has the class's attributes, but with its own values."
+    },
+    {
+     "q": "Which describes what an object can DO?",
+     "options": [
+      "Attributes",
+      "Methods",
+      "Parameters only",
+      "Comments"
+     ],
+     "a": 1,
+     "why": "Methods are functions that belong to the object."
+    },
+    {
+     "q": "Abstraction means...",
+     "options": [
+      "Copying a class",
+      "Showing only the essential features and hiding complex details",
+      "Making everything public",
+      "Deleting objects"
+     ],
+     "a": 1,
+     "why": "Users get a simple interface without needing to know how it works inside."
+    },
+    {
+     "q": "In a UML class diagram, what does − before an attribute mean?",
+     "options": [
+      "Public",
+      "Private",
+      "Protected",
+      "Deleted"
+     ],
+     "a": 1,
+     "why": "+ is public, − is private and # is protected."
+    },
+    {
+     "q": "Which is an advantage of OOP?",
+     "options": [
+      "Programs need no testing",
+      "Code is easier to reuse and maintain in large programs",
+      "It always runs faster",
+      "It needs no classes"
+     ],
+     "a": 1,
+     "why": "Objects group related code, and inheritance lets you reuse what exists."
+    },
+    {
+     "q": "Which language does NOT support object-oriented programming?",
+     "options": [
+      "Java",
+      "Python",
+      "C++",
+      "Plain machine code"
+     ],
+     "a": 3,
+     "why": "Classes and objects are high-level ideas; machine code is just CPU instructions."
+    },
+    {
+     "q": "Inheritance creates a relationship between...",
+     "options": [
+      "A parent class and a child class",
+      "Two unrelated variables",
+      "A loop and a function",
+      "A file and a folder"
+     ],
+     "a": 0,
+     "why": "The child class gets the parent's features and can add or change its own."
+    },
+    {
+     "q": "Polymorphism literally means...",
+     "options": [
+      "Many classes",
+      "Many forms",
+      "Hidden data",
+      "One method only"
+     ],
+     "a": 1,
+     "why": "From Greek: \"poly\" means many and \"morph\" means form."
+    },
+    {
+     "q": "How does procedural programming differ from OOP?",
+     "options": [
+      "Procedural uses objects; OOP doesn't",
+      "Procedural organises code as functions acting on data; OOP bundles data and methods into objects",
+      "They are exactly the same",
+      "OOP has no functions"
+     ],
+     "a": 1,
+     "why": "Both are valid; OOP models real-world things as objects."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 3.1 Object Oriented Programming (OOP) Concepts",
+   "explainer": ""
+  },
+  {
+   "track": "senior11",
+   "id": "s11-oopimpl",
+   "code": "S20",
+   "name": "OOP in Python",
+   "part": "Writing classes, objects and class relationships",
+   "read": [
+    {
+     "icon": "✍️",
+     "title": "Declaring a class",
+     "text": "In Python, a class starts with class Student: and its methods go indented underneath. The special method __init__ is the constructor: it runs when a new object is made and sets its starting attributes, for example self.name = name. self means \"this particular object\"."
+    },
+    {
+     "icon": "🆕",
+     "title": "Creating and using objects",
+     "text": "s = Student(\"Amani\", 1021) creates an object and calls __init__ for you. Use a dot to reach its parts: s.name gives \"Amani\", and s.greet() calls a method. Each object keeps its own attribute values, so another Student(\"Wanjiru\", 1022) has a different name."
+    },
+    {
+     "icon": "📌",
+     "title": "Instance and class (static) variables",
+     "text": "Instance variables belong to one object (self.name). Class variables are shared by every object of the class, declared directly inside the class: school = \"Kenya High\". Java and C++ call these static variables. Change a class variable and every object sees the new value."
+    },
+    {
+     "icon": "👁️",
+     "title": "Visibility",
+     "text": "Java and C++ use the keywords public, private and protected to control who can use an attribute. Python uses naming conventions instead: name is public, _name means protected (for this class and its children), and __name means private, and Python hides it from outside code. Good programs keep data private and expose methods."
+    },
+    {
+     "icon": "🔗",
+     "title": "Relationships between classes",
+     "text": "Inheritance: class Teacher(Person): makes Teacher a kind of Person (an \"is-a\" link). Association: a Teacher teaches Students, but each exists separately. Aggregation: a Department has Teachers, who could exist without it. Composition: a House has Rooms that cannot exist without the house; delete the house and the rooms go too."
+    }
+   ],
+   "listen": [
+    "A class starts with the word class, and its methods are indented underneath.",
+    "The constructor, underscore underscore init, sets up each new object.",
+    "self means this particular object.",
+    "Instance variables belong to one object; class variables are shared by all.",
+    "Python marks protected with one underscore and private with two.",
+    "class Teacher(Person) means Teacher inherits from Person.",
+    "Association uses, aggregation has, and composition owns completely."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Code a class",
+    "steps": [
+     "If you can, open Python and write a BankAccount class with a balance, a deposit(amount) method, and a withdraw(amount) method that refuses to go below zero.",
+     "Create two accounts, deposit into one, and print both balances to show that each object keeps its own data."
+    ],
+    "question": "Your BankAccount class, or how you planned it.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which method is Python's constructor?",
+        "options": [
+         "start()",
+         "__init__",
+         "main()",
+         "new()"
+        ],
+        "answer": 1,
+        "why": "__init__ runs automatically when an object is created and sets its starting values."
+       },
+       {
+        "q": "s = Student(\"Amani\", 1021). What does s.name give, if __init__ stores self.name = name?",
+        "options": [
+         "Amani",
+         "1021",
+         "Student",
+         "self"
+        ],
+        "answer": 0,
+        "why": "The constructor saved the first argument in the object's name attribute."
+       },
+       {
+        "q": "In Python, how do you mark an attribute as private?",
+        "options": [
+         "One underscore: _balance",
+         "Two underscores: __balance",
+         "Capital letters: BALANCE",
+         "The word private"
+        ],
+        "answer": 1,
+        "why": "Two leading underscores make Python hide the name from outside the class."
+       },
+       {
+        "q": "A House has Rooms that are destroyed when the house is destroyed. Which relationship is this?",
+        "options": [
+         "Association",
+         "Aggregation",
+         "Composition",
+         "Inheritance"
+        ],
+        "answer": 2,
+        "why": "In composition the parts' lives depend on the whole."
+       }
+      ]
+     },
+     {
+      "type": "order",
+      "label": "Put the steps of creating and using an object in order.",
+      "items": [
+       {
+        "t": "Define the class: class Student:",
+        "note": "The blueprint comes first."
+       },
+       {
+        "t": "Write the constructor __init__(self, name, adm) to set attributes",
+        "note": "It stores self.name and self.adm."
+       },
+       {
+        "t": "Create an object: s = Student(\"Amani\", 1021)",
+        "note": "Python runs __init__ for you."
+       },
+       {
+        "t": "Use the object: print(s.name) or s.greet()",
+        "note": "Reach attributes and methods with a dot."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What does self refer to inside a method?",
+     "options": [
+      "The class name",
+      "The particular object the method is working on",
+      "The programmer",
+      "The whole program"
+     ],
+     "a": 1,
+     "why": "self lets each object reach its own attributes."
+    },
+    {
+     "q": "How do you call the greet method of object s?",
+     "options": [
+      "greet.s()",
+      "s.greet()",
+      "s->greet",
+      "call greet(s)"
+     ],
+     "a": 1,
+     "why": "Python uses a dot: object.method()."
+    },
+    {
+     "q": "A class variable is...",
+     "options": [
+      "Different for every object",
+      "Shared by all objects of the class",
+      "Only used in loops",
+      "Always private"
+     ],
+     "a": 1,
+     "why": "It is declared in the class body, not on self, so every object sees one value."
+    },
+    {
+     "q": "What does class Teacher(Person): mean?",
+     "options": [
+      "Teacher contains a Person attribute",
+      "Teacher inherits from Person",
+      "Person inherits from Teacher",
+      "Teacher and Person are unrelated"
+     ],
+     "a": 1,
+     "why": "The parent class goes in the brackets."
+    },
+    {
+     "q": "In Python, one leading underscore (_name) signals...",
+     "options": [
+      "Public",
+      "Protected, for use within the class and its children",
+      "A constant",
+      "A syntax error"
+     ],
+     "a": 1,
+     "why": "It's a convention telling other programmers not to use it from outside."
+    },
+    {
+     "q": "Which keyword do Java and C++ use for attributes anyone may access?",
+     "options": [
+      "public",
+      "private",
+      "protected",
+      "static"
+     ],
+     "a": 0,
+     "why": "Public members can be used from anywhere; private ones only inside the class."
+    },
+    {
+     "q": "A Department has Teachers who can still exist if the department closes. Which relationship is this?",
+     "options": [
+      "Composition",
+      "Aggregation",
+      "Inheritance",
+      "Encapsulation"
+     ],
+     "a": 1,
+     "why": "Aggregation is \"has-a\" where the parts can exist on their own."
+    },
+    {
+     "q": "When does __init__ run?",
+     "options": [
+      "When the program ends",
+      "Automatically, whenever a new object is created",
+      "Only when you call it by name",
+      "Never"
+     ],
+     "a": 1,
+     "why": "Creating Student(\"Amani\", 1021) calls __init__ with those values."
+    },
+    {
+     "q": "Why keep attributes private and expose methods?",
+     "options": [
+      "It makes code shorter",
+      "It protects data from being changed in invalid ways",
+      "Python requires it",
+      "It uses less memory"
+     ],
+     "a": 1,
+     "why": "A withdraw() method can refuse a negative balance; direct access can't."
+    },
+    {
+     "q": "Two objects a and b are made from the same class. If a.name changes, what happens to b.name?",
+     "options": [
+      "It changes too",
+      "Nothing; each object has its own instance variables",
+      "It is deleted",
+      "It becomes a class variable"
+     ],
+     "a": 1,
+     "why": "Instance variables are stored separately in each object."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 3.2 Object Oriented Programming Implementation",
+   "explainer": ""
+  },
+  {
+   "track": "senior11",
+   "id": "s11-db",
+   "code": "S21",
+   "name": "Relational Databases",
+   "part": "Tables, keys and relationships",
+   "read": [
+    {
+     "icon": "🗃️",
+     "title": "Databases and the DBMS",
+     "text": "Data is raw facts (85, \"Amani\"); information is data with meaning (\"Amani scored 85 in Maths\"). A database is an organised collection of related data. A database management system (DBMS), such as MySQL, PostgreSQL, Microsoft Access or Oracle, lets you create, store, search and secure it. Metadata (stored in a data dictionary) is data about the data, such as each field's name and type."
+    },
+    {
+     "icon": "🌳",
+     "title": "Database models",
+     "text": "Hierarchical databases store data as a tree (one parent, many children). Network databases allow many links between records. Relational databases, the most common today, store data in tables that are linked by shared values. Object-oriented databases store data as objects, like OOP programs."
+    },
+    {
+     "icon": "📊",
+     "title": "Tables, records and fields",
+     "text": "In a relational database each table holds one entity, such as Students. Each row is a record (one student), and each column is a field or attribute (name, admission number, class). Every field has a data type: text, integer, decimal, date or yes/no."
+    },
+    {
+     "icon": "🔑",
+     "title": "Keys",
+     "text": "A primary key uniquely identifies each record, such as an admission number; it can never be blank or repeated. A foreign key is a field in one table that refers to the primary key of another, which is how tables link. A composite key combines two or more fields to be unique. A secondary key is used for searching, such as a surname."
+    },
+    {
+     "icon": "🔗",
+     "title": "Relationships and ER diagrams",
+     "text": "Tables relate one-to-one (a student has one ID card), one-to-many (one class has many students) or many-to-many (students take many subjects, and each subject has many students). A many-to-many link needs a linking table. An entity-relationship (ER) diagram plans all this: rectangles for entities, ovals for attributes, diamonds for relationships."
+    }
+   ],
+   "listen": [
+    "Data is raw facts; information is data with meaning.",
+    "A DBMS such as MySQL creates, stores and secures databases.",
+    "Relational databases store data in linked tables.",
+    "A row is a record, and a column is a field.",
+    "A primary key uniquely identifies each record; a foreign key links to another table.",
+    "Relationships can be one-to-one, one-to-many or many-to-many.",
+    "ER diagrams use rectangles for entities and diamonds for relationships."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Design a school database",
+    "steps": [
+     "Design two tables, Students and Classes: list the fields, their data types, the primary key of each, and the foreign key that links them.",
+     "Draw an ER diagram showing that one class has many students."
+    ],
+    "question": "Your two tables, with their keys.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which field makes the best primary key for a Students table?",
+        "options": [
+         "First name",
+         "Admission number",
+         "Favourite subject",
+         "Age"
+        ],
+        "answer": 1,
+        "why": "A primary key must be unique and never blank; names and ages repeat."
+       },
+       {
+        "q": "The Students table has a field class_id that matches the primary key of the Classes table. What is class_id in Students?",
+        "options": [
+         "A primary key",
+         "A foreign key",
+         "A composite key",
+         "Metadata"
+        ],
+        "answer": 1,
+        "why": "A foreign key refers to another table's primary key, which links the tables."
+       },
+       {
+        "q": "One class has many students, but each student is in one class. Which relationship is this?",
+        "options": [
+         "One-to-one",
+         "One-to-many",
+         "Many-to-many",
+         "No relationship"
+        ],
+        "answer": 1,
+        "why": "One class row links to many student rows."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Sort these database terms.",
+      "buckets": [
+       "Structure",
+       "Key",
+       "Relationship"
+      ],
+      "items": [
+       {
+        "t": "Table",
+        "b": 0
+       },
+       {
+        "t": "Record (row)",
+        "b": 0
+       },
+       {
+        "t": "Field (column)",
+        "b": 0
+       },
+       {
+        "t": "Primary key",
+        "b": 1
+       },
+       {
+        "t": "Foreign key",
+        "b": 1
+       },
+       {
+        "t": "One-to-many",
+        "b": 2
+       },
+       {
+        "t": "Many-to-many",
+        "b": 2
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is a DBMS?",
+     "options": [
+      "Software for creating, storing, searching and securing databases",
+      "A type of cable",
+      "A single table",
+      "A spreadsheet formula"
+     ],
+     "a": 0,
+     "why": "Examples include MySQL, PostgreSQL, Microsoft Access and Oracle."
+    },
+    {
+     "q": "In a table, a row is called a...",
+     "options": [
+      "Field",
+      "Record",
+      "Key",
+      "Model"
+     ],
+     "a": 1,
+     "why": "Each row holds all the data about one item, such as one student."
+    },
+    {
+     "q": "What is metadata?",
+     "options": [
+      "Very large data",
+      "Data about data, such as field names and types",
+      "Deleted data",
+      "Encrypted data"
+     ],
+     "a": 1,
+     "why": "Metadata describes the structure, and is often stored in a data dictionary."
+    },
+    {
+     "q": "Which database model stores data in linked tables?",
+     "options": [
+      "Hierarchical",
+      "Network",
+      "Relational",
+      "Paper-based"
+     ],
+     "a": 2,
+     "why": "Relational databases use tables linked by keys."
+    },
+    {
+     "q": "Which is true of a primary key?",
+     "options": [
+      "It can repeat",
+      "It can be left blank",
+      "It is unique for every record and never blank",
+      "It must be text"
+     ],
+     "a": 2,
+     "why": "Uniqueness lets the database find exactly one record."
+    },
+    {
+     "q": "What is a composite key?",
+     "options": [
+      "Two or more fields that are unique together",
+      "A key made of letters only",
+      "A foreign key",
+      "A password"
+     ],
+     "a": 0,
+     "why": "For example, student ID plus subject ID identifies one exam result."
+    },
+    {
+     "q": "How is a many-to-many relationship stored?",
+     "options": [
+      "In one table",
+      "With a linking table between the two tables",
+      "It cannot be stored",
+      "In a spreadsheet"
+     ],
+     "a": 1,
+     "why": "A linking table (such as Enrolments) holds pairs of foreign keys."
+    },
+    {
+     "q": "In an ER diagram, a rectangle represents...",
+     "options": [
+      "An entity",
+      "A relationship",
+      "An attribute",
+      "A key only"
+     ],
+     "a": 0,
+     "why": "Rectangles are entities, ovals are attributes and diamonds are relationships."
+    },
+    {
+     "q": "What is the difference between data and information?",
+     "options": [
+      "There is none",
+      "Information is processed data that has meaning",
+      "Data has meaning; information doesn't",
+      "Information is always numbers"
+     ],
+     "a": 1,
+     "why": "\"85\" is data; \"Amani scored 85 in Maths\" is information."
+    },
+    {
+     "q": "What is a secondary key used for?",
+     "options": [
+      "Uniquely identifying records",
+      "Searching and sorting by another field, such as surname",
+      "Encrypting data",
+      "Linking to the internet"
+     ],
+     "a": 1,
+     "why": "Secondary keys speed up common searches but don't have to be unique."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 3.3 Relational Database Fundamentals",
+   "explainer": ""
+  },
+  {
+   "track": "senior11",
+   "id": "s11-sql",
+   "code": "S22",
+   "name": "SQL",
+   "part": "Structured Query Language",
+   "read": [
+    {
+     "icon": "💬",
+     "title": "What SQL is",
+     "text": "SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL defines structure, DML changes data, and DQL asks questions."
+    },
+    {
+     "icon": "🏗️",
+     "title": "DDL: defining structure",
+     "text": "CREATE TABLE students (adm INT PRIMARY KEY, name VARCHAR(50), grade INT); builds a new table. ALTER TABLE changes it, for example to add a column. DROP TABLE deletes a whole table and all its data. Use DROP with great care: there is no undo."
+    },
+    {
+     "icon": "✏️",
+     "title": "DML: changing data",
+     "text": "INSERT INTO students VALUES (1021, 'Amani', 11); adds a row. UPDATE students SET grade = 12 WHERE adm = 1021; changes matching rows. DELETE FROM students WHERE adm = 1021; removes them. Always include WHERE with UPDATE and DELETE; without it, every row changes or disappears."
+    },
+    {
+     "icon": "🔍",
+     "title": "DQL: asking questions",
+     "text": "SELECT name, grade FROM students; lists those columns for every row. SELECT * picks all columns. WHERE filters rows (WHERE grade = 11), ORDER BY sorts (ORDER BY name), and GROUP BY groups rows for summaries, such as SELECT grade, COUNT(*) FROM students GROUP BY grade; which counts the students in each grade."
+    },
+    {
+     "icon": "🔗",
+     "title": "Relationships in SQL",
+     "text": "A FOREIGN KEY constraint links tables, so the database refuses a student whose class_id doesn't exist. A JOIN combines related tables in one query: SELECT students.name, classes.teacher FROM students JOIN classes ON students.class_id = classes.id; shows each student with their class teacher."
+    }
+   ],
+   "listen": [
+    "SQL is the standard language for relational databases.",
+    "DDL defines structure: create, alter and drop.",
+    "DML changes data: insert, update and delete.",
+    "DQL asks questions with select.",
+    "Always use where with update and delete, or every row is affected.",
+    "order by sorts results; group by makes summaries like counts.",
+    "A join combines related tables in one query."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Query a database",
+    "steps": [
+     "If you can, open a free online SQL editor (search for \"SQLite online\"), create a students table, insert five students, and select those in grade 11.",
+     "Write a query that counts how many students are in each grade."
+    ],
+    "question": "Your SELECT query for grade 11 students.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Is each statement DDL, DML or DQL?",
+      "buckets": [
+       "DDL",
+       "DML",
+       "DQL"
+      ],
+      "items": [
+       {
+        "t": "CREATE TABLE",
+        "b": 0
+       },
+       {
+        "t": "INSERT INTO",
+        "b": 1
+       },
+       {
+        "t": "SELECT",
+        "b": 2
+       },
+       {
+        "t": "DROP TABLE",
+        "b": 0
+       },
+       {
+        "t": "UPDATE",
+        "b": 1
+       },
+       {
+        "t": "DELETE FROM",
+        "b": 1
+       },
+       {
+        "t": "ALTER TABLE",
+        "b": 0
+       }
+      ]
+     },
+     {
+      "type": "typing",
+      "label": "Type this SQL query exactly. It lists every column for every student.",
+      "target": "SELECT * FROM students;"
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "What does DELETE FROM students; (with no WHERE) do?",
+        "options": [
+         "Deletes one row",
+         "Deletes every row in the table",
+         "Deletes the table's structure",
+         "Nothing"
+        ],
+        "answer": 1,
+        "why": "Without WHERE, the condition applies to all rows. The table remains, but empty."
+       },
+       {
+        "q": "Which query lists the names of students in grade 11 only?",
+        "options": [
+         "SELECT name FROM students;",
+         "SELECT name FROM students WHERE grade = 11;",
+         "SELECT 11 FROM students;",
+         "UPDATE students SET grade = 11;"
+        ],
+        "answer": 1,
+        "why": "WHERE filters the rows; the last option would change data instead of reading it."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What does SQL stand for?",
+     "options": [
+      "Structured Query Language",
+      "Simple Question Logic",
+      "Server Quick Link",
+      "System Quality Level"
+     ],
+     "a": 0,
+     "why": "It's the standard language for querying and managing relational databases."
+    },
+    {
+     "q": "Which statement adds a new row?",
+     "options": [
+      "SELECT",
+      "UPDATE",
+      "INSERT INTO",
+      "CREATE TABLE"
+     ],
+     "a": 2,
+     "why": "INSERT adds records; CREATE TABLE makes a new table."
+    },
+    {
+     "q": "Which statement changes existing data?",
+     "options": [
+      "INSERT",
+      "UPDATE",
+      "DROP",
+      "SELECT"
+     ],
+     "a": 1,
+     "why": "UPDATE ... SET ... WHERE changes matching rows."
+    },
+    {
+     "q": "Which statement removes a whole table and all its data?",
+     "options": [
+      "DELETE",
+      "DROP TABLE",
+      "ALTER TABLE",
+      "CLEAR"
+     ],
+     "a": 1,
+     "why": "DROP removes the structure too; DELETE only removes rows."
+    },
+    {
+     "q": "What does SELECT * mean?",
+     "options": [
+      "Select the first row",
+      "Select all columns",
+      "Select nothing",
+      "Select the primary key only"
+     ],
+     "a": 1,
+     "why": "* is shorthand for every column."
+    },
+    {
+     "q": "Which clause sorts the results?",
+     "options": [
+      "WHERE",
+      "GROUP BY",
+      "ORDER BY",
+      "SORT"
+     ],
+     "a": 2,
+     "why": "ORDER BY name sorts alphabetically; add DESC for reverse order."
+    },
+    {
+     "q": "What does GROUP BY grade with COUNT(*) produce?",
+     "options": [
+      "Every student's name",
+      "The number of students in each grade",
+      "The total of all grades",
+      "An error"
+     ],
+     "a": 1,
+     "why": "GROUP BY puts rows into groups, and COUNT counts each group."
+    },
+    {
+     "q": "What is a JOIN used for?",
+     "options": [
+      "Combining related rows from two or more tables",
+      "Deleting tables",
+      "Creating users",
+      "Encrypting data"
+     ],
+     "a": 0,
+     "why": "A JOIN matches rows using keys, such as students.class_id = classes.id."
+    },
+    {
+     "q": "CREATE, ALTER and DROP belong to...",
+     "options": [
+      "DDL (Data Definition Language)",
+      "DML",
+      "DQL",
+      "HTML"
+     ],
+     "a": 0,
+     "why": "They define or change the structure, not the data inside."
+    },
+    {
+     "q": "Why should UPDATE nearly always have a WHERE clause?",
+     "options": [
+      "It runs faster",
+      "Without it, every row in the table is changed",
+      "SQL requires it",
+      "To sort the results"
+     ],
+     "a": 1,
+     "why": "A missing WHERE is one of the most common and costly database mistakes."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 3.4 Structured Query Language (SQL)",
+   "explainer": ""
+  },
+  {
+   "track": "senior11",
+   "id": "s11-web",
+   "code": "S23",
+   "name": "Web Development",
+   "part": "HTML, CSS and dynamic web apps",
+   "read": [
+    {
+     "icon": "🌐",
+     "title": "Web words",
+     "text": "A web page is one document; a website is a group of linked pages; a web application does work for the user, like booking a bus ticket. The web follows the client–server model: your browser (the client) asks a web server for a page using HTTP, and the server sends it back."
+    },
+    {
+     "icon": "🧱",
+     "title": "HTML: structure",
+     "text": "HTML (HyperText Markup Language) gives a page its structure using tags in angle brackets. Every page has <html>, a <head> holding the <title>, and a <body> holding the content. Common tags: <h1> heading, <p> paragraph, <a href=\"...\"> link, <img src=\"...\" alt=\"...\"> image, <ul> and <li> lists, <table> tables, <form> and <input> for user input."
+    },
+    {
+     "icon": "🎨",
+     "title": "CSS: style",
+     "text": "CSS (Cascading Style Sheets) controls how a page looks: colours, fonts, spacing and layout. Inline CSS goes in a tag's style attribute. Internal CSS goes in a <style> block in the head. External CSS lives in a separate .css file linked to many pages, which is the best way to keep a whole site consistent."
+    },
+    {
+     "icon": "⚙️",
+     "title": "Static and dynamic pages",
+     "text": "A static page shows the same content to everyone, straight from a file. A dynamic page is built when you ask for it. Client-side scripts (JavaScript) run in your browser, for example checking a form. Server-side scripts (such as PHP) run on the server, often reading or saving data in a database."
+    },
+    {
+     "icon": "🔄",
+     "title": "A dynamic web app, end to end",
+     "text": "A learner fills in a registration form and taps Submit. The browser sends the form to the server. A PHP script checks the data and saves it to a MySQL database with SQL. The server then sends back a confirmation page. Design first with a wireframe (a simple sketch of the layout), and add alt text so everyone can use the site."
+    }
+   ],
+   "listen": [
+    "A browser, the client, asks a web server for pages using HTTP.",
+    "HTML gives a page its structure with tags.",
+    "Every page has a head with a title, and a body with the content.",
+    "CSS controls colours, fonts and layout.",
+    "External CSS keeps a whole site looking consistent.",
+    "JavaScript runs in the browser; PHP runs on the server.",
+    "A dynamic app sends form data to a server script that saves it in a database."
+   ],
+   "video": {
+    "id": "kBXQZMmiA4s",
+    "title": "The Internet: HTTP & HTML",
+    "channel": "Code.org"
+   },
+   "mission": {
+    "title": "Build a page",
+    "steps": [
+     "If you can, open a text editor, write a page with a heading, a paragraph, a list and a link, save it as index.html, and open it in a browser.",
+     "Add an external style.css file that changes the heading colour and the font."
+    ],
+    "question": "The HTML tags you used, and what each one does.",
+    "tasks": [
+     {
+      "type": "order",
+      "label": "Put the parts of a basic HTML page in order, from top to bottom.",
+      "items": [
+       {
+        "t": "<!DOCTYPE html>",
+        "note": "Tells the browser this is an HTML5 document."
+       },
+       {
+        "t": "<html>",
+        "note": "Opens the whole page."
+       },
+       {
+        "t": "<head> with a <title>",
+        "note": "Information about the page, shown in the browser tab."
+       },
+       {
+        "t": "<body>",
+        "note": "Everything visible on the page goes here."
+       },
+       {
+        "t": "</html>",
+        "note": "Closes the page."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Does each one run in the browser (client) or on the server?",
+      "buckets": [
+       "Client side",
+       "Server side"
+      ],
+      "items": [
+       {
+        "t": "JavaScript checking a form before it is sent",
+        "b": 0
+       },
+       {
+        "t": "PHP saving a registration to the database",
+        "b": 1
+       },
+       {
+        "t": "CSS styling the page",
+        "b": 0
+       },
+       {
+        "t": "A MySQL query that finds a user's bookings",
+        "b": 1
+       },
+       {
+        "t": "HTML being displayed",
+        "b": 0
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which tag makes a link?",
+        "options": [
+         "<img>",
+         "<a href=\"...\">",
+         "<link>",
+         "<p>"
+        ],
+        "answer": 1,
+        "why": "The a (anchor) tag with an href address makes a clickable link."
+       },
+       {
+        "q": "Which kind of CSS keeps a whole website consistent most easily?",
+        "options": [
+         "Inline CSS in every tag",
+         "Internal CSS on every page",
+         "One external .css file linked to every page",
+         "No CSS"
+        ],
+        "answer": 2,
+        "why": "Change one file and every linked page updates."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What does HTML stand for?",
+     "options": [
+      "HyperText Markup Language",
+      "High Tech Modern Language",
+      "Home Tool Markup Language",
+      "Hyperlink Text Machine Language"
+     ],
+     "a": 0,
+     "why": "It marks up content with tags so browsers know what each part is."
+    },
+    {
+     "q": "Where does the <title> tag go?",
+     "options": [
+      "In the body",
+      "In the head",
+      "After </html>",
+      "In the CSS file"
+     ],
+     "a": 1,
+     "why": "The title is information about the page, shown in the browser tab."
+    },
+    {
+     "q": "What is CSS used for?",
+     "options": [
+      "Storing data",
+      "Controlling how a page looks",
+      "Sending email",
+      "Running the server"
+     ],
+     "a": 1,
+     "why": "HTML gives structure; CSS adds style."
+    },
+    {
+     "q": "What does the alt attribute on an image do?",
+     "options": [
+      "Makes the image bigger",
+      "Gives a text description, for screen readers and when the image can't load",
+      "Links the image",
+      "Changes its colour"
+     ],
+     "a": 1,
+     "why": "Alt text makes images accessible to blind users and helps search engines."
+    },
+    {
+     "q": "What is the difference between a static and a dynamic page?",
+     "options": [
+      "A static page is the same for everyone; a dynamic page is built when requested",
+      "Static pages have no text",
+      "Dynamic pages cannot use HTML",
+      "There is no difference"
+     ],
+     "a": 0,
+     "why": "Dynamic pages can show your own data, such as your bookings."
+    },
+    {
+     "q": "Where does PHP run?",
+     "options": [
+      "In the browser",
+      "On the web server",
+      "In the CSS file",
+      "On the keyboard"
+     ],
+     "a": 1,
+     "why": "PHP is server-side: it builds the page or saves data before the response is sent."
+    },
+    {
+     "q": "In the client–server model, the browser is the...",
+     "options": [
+      "Client",
+      "Server",
+      "Database",
+      "Router"
+     ],
+     "a": 0,
+     "why": "The client asks for resources, and the server responds."
+    },
+    {
+     "q": "Which tag starts a bulleted list?",
+     "options": [
+      "<ol>",
+      "<ul>",
+      "<li>",
+      "<list>"
+     ],
+     "a": 1,
+     "why": "ul is an unordered (bulleted) list; ol is numbered; li is each item."
+    },
+    {
+     "q": "What is a wireframe?",
+     "options": [
+      "A network cable",
+      "A simple sketch of a page's layout, drawn before building it",
+      "A type of virus",
+      "A CSS file"
+     ],
+     "a": 1,
+     "why": "Wireframes let you plan the layout cheaply before writing any code."
+    },
+    {
+     "q": "A learner submits a form, and the data is saved in MySQL. Which order is right?",
+     "options": [
+      "Database → browser → server",
+      "Browser → server script → database",
+      "CSS → HTML → PHP",
+      "Server → keyboard → browser"
+     ],
+     "a": 1,
+     "why": "The browser sends the form, the server script checks it and saves it to the database."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "Grade 11 · 3.5 Web Development Fundamentals",
    "explainer": ""
   }
  ]

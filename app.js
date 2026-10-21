@@ -11,7 +11,7 @@ const STEPS = ["read", "listen", "watch", "mission", "quiz"];
 const STEP_LABEL = { read: "READ", listen: "LISTEN", watch: "WATCH", mission: "MISSION", quiz: "QUIZ" };
 const STEP_ICON = { read: "book", listen: "speaker", watch: "play", mission: "flag", quiz: "check" };
 const ICON = (name, size) => (window.ICON ? window.ICON(name, size) : "");
-const TRACK_ICON = { primary: "sprout", junior: "monitor", senior: "cpu" };
+const TRACK_ICON = { primary: "sprout", junior: "monitor", senior: "cpu", senior11: "server" };
 const $app = document.getElementById("app"), $hud = document.getElementById("hud"), $modal = document.getElementById("modal-layer");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_PROG = "somasmart.progress",
@@ -277,7 +277,7 @@ const SUPPORT_EMAIL = "";
 const mail = SUPPORT_EMAIL ? `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>` : "our new contact address (coming soon; we're setting it up)";
 const PAGES = {
   about: { title: "About Tech Tayari", html: `
-    <p class="lead">Tech Tayari is a free, self-guided course that helps Kenyan learners in Grade 4–10 understand
+    <p class="lead">Tech Tayari is a free, self-guided course that helps Kenyan learners in Grade 4–11 understand
       how computers and the internet work, and how to stay safe online.</p>
     <h3>What it is</h3>
     <ul>
@@ -333,7 +333,7 @@ const PAGES = {
     </ul>
     <p>No ads, no tracking or advertising cookies, and we never sell or share data.</p>
     <h3>Children</h3>
-    <p>Tech Tayari is designed for learners aged 9–16 and works fully without an account. Parents and teachers are
+    <p>Tech Tayari is designed for learners aged 9–17 and works fully without an account. Parents and teachers are
       welcome to decide whether a child should create one.</p>
     <h3>Questions</h3>
     <p>Email ${mail}.</p>` },
@@ -529,7 +529,7 @@ function renderAuth(mode){
         <select class="field" id="tb">
           <option value="p">Grade 4–6 (Digital Foundations)</option>
           <option value="j">Grade 7–9 (Computers & Networks)</option>
-          <option value="s">Grade 10 (Computer Science)</option>
+          <option value="s">Grade 10–11 (Computer Studies)</option>
         </select>
         <label class="q" for="rc">Recovery Code <span class="hint">(optional secret word to reset your password if forgotten)</span></label>
         <input class="field" id="rc" maxlength="40" placeholder="e.g. simba2026" />
@@ -663,7 +663,7 @@ function renderHome(){
   ` : `
     <section class="hero landing">
       <h1>Learn how computers and the internet <em>really work</em>.</h1>
-      <p>Free lessons for Kenyan learners in Grade 4–10. Read, listen, try it yourself, then take a short quiz.</p>
+      <p>Free lessons for Kenyan learners in Grade 4–11. Read, listen, try it yourself, then take a short quiz.</p>
       <ul class="trust">
         <li>${ICON("tag", 18)} Free, no ads</li>
         <li>${ICON("wifi", 18)} Works offline</li>
@@ -1613,7 +1613,7 @@ async function renderAdminDashboard(key){
         </div>
         <div class="stat-card">
           <div class="stat-val" style="color:#3b5ba5">${o.seniorUsers || 0}</div>
-          <div class="stat-lbl">Senior (Grade 10)</div>
+          <div class="stat-lbl">Senior (Grade 10–11)</div>
         </div>
         <div class="stat-card">
           <div class="stat-val" style="color:var(--gold-d)">${o.totalCompletions || 0}</div>

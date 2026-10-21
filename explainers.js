@@ -167,11 +167,77 @@ function renderBits(el){
   return () => {};
 }
 
+// ---------- S15: try every logic gate ----------
+const GATES = {
+  AND:  { f: (a, b) => a & b,        expr: "A · B" },
+  OR:   { f: (a, b) => a | b,        expr: "A + B" },
+  NOT:  { f: a => 1 - a,             expr: "NOT A", one: true },
+  NAND: { f: (a, b) => 1 - (a & b),  expr: "NOT (A · B)" },
+  NOR:  { f: (a, b) => 1 - (a | b),  expr: "NOT (A + B)" },
+  XOR:  { f: (a, b) => a ^ b,        expr: "A ⊕ B" },
+  XNOR: { f: (a, b) => 1 - (a ^ b),  expr: "NOT (A ⊕ B)" },
+};
+function renderGates(el){
+  let gate = "AND", A = 0, B = 0;
+  const draw = () => {
+    const g = GATES[gate], out = g.one ? g.f(A) : g.f(A, B);
+    const rows = g.one ? [[0], [1]] : [[0, 0], [0, 1], [1, 0], [1, 1]];
+    el.innerHTML = `
+      <div class="xp">
+        <div class="xp-title">${window.ICON ? window.ICON("film", 22) : ""} Try the logic gates</div>
+        <div class="xp-gates">${Object.keys(GATES).map(k => `<button class="opt small ${k === gate ? "right" : ""}" data-g="${k}">${k}</button>`).join("")}</div>
+        <div class="xp-lg">
+          <div class="xp-lg-in">
+            <button class="xp-bit ${A ? "on" : ""}" data-in="A" aria-pressed="${!!A}"><span class="xp-bitv">${A}</span><small>A</small></button>
+            ${g.one ? "" : `<button class="xp-bit ${B ? "on" : ""}" data-in="B" aria-pressed="${!!B}"><span class="xp-bitv">${B}</span><small>B</small></button>`}
+          </div>
+          <div class="xp-lg-gate">${gate}<small>${esc(g.expr)}</small></div>
+          <div class="xp-lamp ${out ? "on" : ""}" aria-live="polite">${out}<small>output</small></div>
+        </div>
+        <table class="xp-tt"><thead><tr><th>A</th>${g.one ? "" : "<th>B</th>"}<th>${gate}</th></tr></thead><tbody>
+          ${rows.map(r => `<tr class="${r[0] === A && (g.one || r[1] === B) ? "now" : ""}"><td>${r[0]}</td>${g.one ? "" : `<td>${r[1]}</td>`}<td><b>${g.one ? g.f(r[0]) : g.f(r[0], r[1])}</b></td></tr>`).join("")}
+        </tbody></table>
+        <p class="hint">Tap A and B to switch the inputs. The highlighted row of the truth table is the one you are testing.</p>
+      </div>`;
+    el.querySelectorAll("[data-g]").forEach(b => b.onclick = () => { gate = b.dataset.g; draw(); });
+    el.querySelectorAll("[data-in]").forEach(b => b.onclick = () => { if (b.dataset.in === "A") A = 1 - A; else B = 1 - B; draw(); });
+  };
+  draw();
+  return () => {};
+}
+
+// ---------- S16: a burglar alarm circuit, Alarm = A · (D + W) ----------
+function renderCircuit(el){
+  const s = { A: 1, D: 0, W: 0 };
+  const names = { A: "Alarm armed", D: "Door open", W: "Window open" };
+  const draw = () => {
+    const or = s.D | s.W, out = s.A & or;
+    el.innerHTML = `
+      <div class="xp">
+        <div class="xp-title">${window.ICON ? window.ICON("film", 22) : ""} Burglar alarm: A · (D + W)</div>
+        <div class="xp-lg-in xp-lg-wide">${["A", "D", "W"].map(k => `<button class="xp-bit ${s[k] ? "on" : ""}" data-in="${k}" aria-pressed="${!!s[k]}"><span class="xp-bitv">${s[k]}</span><small>${k} · ${names[k]}</small></button>`).join("")}</div>
+        <div class="xp-chain">
+          <div class="xp-lg-gate">OR<small>D + W = ${s.D} + ${s.W} = <b>${or}</b></small></div>
+          <span aria-hidden="true">→</span>
+          <div class="xp-lg-gate">AND<small>A · (D + W) = ${s.A} · ${or} = <b>${out}</b></small></div>
+          <span aria-hidden="true">→</span>
+          <div class="xp-lamp ${out ? "on alarm" : ""}" aria-live="polite">${out ? "ALARM" : "quiet"}<small>output ${out}</small></div>
+        </div>
+        <p class="xp-cap">${out ? "The alarm is armed and something is open, so it sounds." : s.A ? "Armed, but every door and window is shut, so it stays quiet." : "The alarm is not armed, so it stays quiet whatever is open."}</p>
+      </div>`;
+    el.querySelectorAll("[data-in]").forEach(b => b.onclick = () => { s[b.dataset.in] = 1 - s[b.dataset.in]; draw(); });
+  };
+  draw();
+  return () => {};
+}
+
 // Public API: render(id, element) -> cleanup function, or null if the id is unknown
 window.EXPLAINERS = {
-  ids: [...Object.keys(SCENES), "bits"],
+  ids: [...Object.keys(SCENES), "bits", "logic-gates", "logic-circuit"],
   render(id, el){
     if (id === "bits") return renderBits(el);
+    if (id === "logic-gates") return renderGates(el);
+    if (id === "logic-circuit") return renderCircuit(el);
     return SCENES[id] ? renderScene(SCENES[id], el) : null;
   },
 };

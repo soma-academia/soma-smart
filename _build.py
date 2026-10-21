@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Compiles content/<track>/*.md into content.js for Tech Tayari. Three tracks, mastery levels, no prizes/XP.
+# Compiles content/<track>/*.md into content.js for Tech Tayari. Four tracks, mastery levels, no prizes/XP.
 # Content lives in Markdown so teachers can fix a card in GitHub's web editor; the format is described
 # in content/README.md. Standard library only. Nothing is written unless every check passes.
 import json, re, sys
@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent
 CONTENT = ROOT / "content"
 TASK_TYPES = {"pick", "sort", "text", "typing", "paste", "flags", "order"}
 # Animated explainers available in explainers.js (keep in sync with its SCENES + "bits")
-EXPLAINERS = {"input-process-output", "memory", "network-path", "dns-lookup", "bits"}
+EXPLAINERS = {"input-process-output", "memory", "network-path", "dns-lookup", "bits", "logic-gates", "logic-circuit"}
 errors = []
 
 
@@ -236,7 +236,7 @@ if errors:
 
 header = (
  "/* Tech Tayari — free CBE digital-literacy course content.\n"
- " * Three tracks: 'primary' (Grade 4–6, ages 9–11), 'junior' (Grade 7–9, ages 12–15), 'senior' (Grade 10).\n"
+ " * Four tracks: 'primary' (Grade 4–6), 'junior' (Grade 7–9), 'senior' (Grade 10) and 'senior11' (Grade 11).\n"
  " * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.\n"
  " * Mastery levels (not prizes): new → learning → practised → mastered.\n"
  " * video.id = YouTube id (\"\" shows a friendly no-video screen). quiz 'a' = index of correct option.\n"

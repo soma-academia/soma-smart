@@ -3,9 +3,9 @@ id: s-containers
 track: senior
 code: S11
 name: Lists & Searching
-part: Containers, sorting and searching
+part: Data structures, sorting and searching
 cbe: strand
-strand: Grade 10 · 3.5 Containers
+strand: Grade 10 · 3.5 Data Structures
 video:
 video_title:
 video_channel:
