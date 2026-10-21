@@ -42,6 +42,7 @@ jobs:
           if [ -z "$TOKEN" ]; then echo "::error::CLOUDFLARE_API_TOKEN secret is empty or missing."; exit 1; fi
           if printf '%s' "$TOKEN" | grep -q '[[:space:]]'; then echo "::error::CLOUDFLARE_API_TOKEN contains spaces or line breaks. Save only the token itself."; exit 1; fi
           if printf '%s' "$TOKEN" | grep -qi 'bearer\|curl'; then echo "::error::CLOUDFLARE_API_TOKEN looks like a command, not a token. Save only the token itself."; exit 1; fi
+          if [ ${#TOKEN} -lt 30 ]; then echo "::error::CLOUDFLARE_API_TOKEN is only ${#TOKEN} characters; a Cloudflare API token is about 40. It may be the token's name or ID instead of the token."; exit 1; fi
           echo "Token is set (${#TOKEN} characters, no spaces)."
 
       - name: Deploy
