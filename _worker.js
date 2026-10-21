@@ -239,7 +239,7 @@ export default {
         // pass_salt is kept for schema compatibility; the salt now lives inside pass_hash
         const res = await env.DB.prepare(
           "INSERT INTO users (username, display_name, pass_salt, pass_hash, recovery_hash, age_band, created_at, updated_at) VALUES (?1,?2,?3,?4,?5,?6,?7,?7)"
-        ).bind(username, display, "pbkdf2", pass_hash, recovery_hash, b.ageBand || null, t).run();
+        ).bind(username, display, "pbkdf2", pass_hash, recovery_hash, ["p", "j", "s"].includes(b.ageBand) ? b.ageBand : null, t).run();
 
         const u = await env.DB.prepare("SELECT * FROM users WHERE id=?1").bind(res.meta.last_row_id).first();
         return json({ token: await makeToken(env, u), user: publicUser(u) }, 200, request);
@@ -387,7 +387,8 @@ export default {
           `SELECT
              COUNT(DISTINCT id) as total_users,
              SUM(CASE WHEN age_band='p' THEN 1 ELSE 0 END) as primary_users,
-             SUM(CASE WHEN age_band='j' THEN 1 ELSE 0 END) as junior_users
+             SUM(CASE WHEN age_band='j' THEN 1 ELSE 0 END) as junior_users,
+             SUM(CASE WHEN age_band='s' THEN 1 ELSE 0 END) as senior_users
            FROM users`
         ).first();
 
@@ -403,6 +404,7 @@ export default {
             totalUsers: totals ? totals.total_users : 0,
             primaryUsers: totals ? totals.primary_users : 0,
             juniorUsers: totals ? totals.junior_users : 0,
+            seniorUsers: totals ? totals.senior_users : 0,
             totalCompletions: progStats ? progStats.total_completions : 0,
             totalMasteries: progStats ? progStats.total_masteries : 0
           },

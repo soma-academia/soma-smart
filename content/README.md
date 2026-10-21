@@ -1,6 +1,6 @@
 # Editing Tech Tayari lessons
 
-Every module is one Markdown file in `content/primary/` (Grade 4–6) or `content/junior/` (Grade 7–9).
+Every module is one Markdown file in `content/primary/` (Grade 4–6), `content/junior/` (Grade 7–9) or `content/senior/` (Grade 10).
 To fix a typo or improve a card, open the file on GitHub, click the ✏️ pencil, edit, and propose the change.
 You don't need to know any programming.
 

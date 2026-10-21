@@ -11,6 +11,7 @@ const STEPS = ["read", "listen", "watch", "mission", "quiz"];
 const STEP_LABEL = { read: "READ", listen: "LISTEN", watch: "WATCH", mission: "MISSION", quiz: "QUIZ" };
 const STEP_ICON = { read: "book", listen: "speaker", watch: "play", mission: "flag", quiz: "check" };
 const ICON = (name, size) => (window.ICON ? window.ICON(name, size) : "");
+const TRACK_ICON = { primary: "sprout", junior: "monitor", senior: "cpu" };
 const $app = document.getElementById("app"), $hud = document.getElementById("hud"), $modal = document.getElementById("modal-layer");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_PROG = "somasmart.progress",
@@ -276,7 +277,7 @@ const SUPPORT_EMAIL = "";
 const mail = SUPPORT_EMAIL ? `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>` : "our new contact address (coming soon; we're setting it up)";
 const PAGES = {
   about: { title: "About Tech Tayari", html: `
-    <p class="lead">Tech Tayari is a free, self-guided course that helps Kenyan learners in Grade 4–9 understand
+    <p class="lead">Tech Tayari is a free, self-guided course that helps Kenyan learners in Grade 4–10 understand
       how computers and the internet work, and how to stay safe online.</p>
     <h3>What it is</h3>
     <ul>
@@ -332,7 +333,7 @@ const PAGES = {
     </ul>
     <p>No ads, no tracking or advertising cookies, and we never sell or share data.</p>
     <h3>Children</h3>
-    <p>Tech Tayari is designed for learners aged 9–15 and works fully without an account. Parents and teachers are
+    <p>Tech Tayari is designed for learners aged 9–16 and works fully without an account. Parents and teachers are
       welcome to decide whether a child should create one.</p>
     <h3>Questions</h3>
     <p>Email ${mail}.</p>` },
@@ -528,6 +529,7 @@ function renderAuth(mode){
         <select class="field" id="tb">
           <option value="p">Grade 4–6 (Digital Foundations)</option>
           <option value="j">Grade 7–9 (Computers & Networks)</option>
+          <option value="s">Grade 10 (Computer Science)</option>
         </select>
         <label class="q" for="rc">Recovery Code <span class="hint">(optional secret word to reset your password if forgotten)</span></label>
         <input class="field" id="rc" maxlength="40" placeholder="e.g. simba2026" />
@@ -633,7 +635,7 @@ function renderHome(){
     const pct = Math.round((done / list.length) * 100);
     return `<button class="card t-${t.id}" data-t="${t.id}">
       <div class="card-head">
-        <div class="card-ic">${ICON(t.id === "primary" ? "sprout" : "monitor", 26)}</div>
+        <div class="card-ic">${ICON(TRACK_ICON[t.id] || "book", 26)}</div>
         <div>
           <div class="card-t">${esc(t.name)}</div>
           <div class="card-s">${esc(t.level)} · ${list.length} modules</div>
@@ -661,7 +663,7 @@ function renderHome(){
   ` : `
     <section class="hero landing">
       <h1>Learn how computers and the internet <em>really work</em>.</h1>
-      <p>Free lessons for Kenyan learners in Grade 4–9. Read, listen, try it yourself, then take a short quiz.</p>
+      <p>Free lessons for Kenyan learners in Grade 4–10. Read, listen, try it yourself, then take a short quiz.</p>
       <ul class="trust">
         <li>${ICON("tag", 18)} Free, no ads</li>
         <li>${ICON("wifi", 18)} Works offline</li>
@@ -737,7 +739,7 @@ function renderTrack(){
     <button class="back" id="bk">← All Tracks</button>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:10px">
       <div>
-        <h2 class="h2 track-h t-${t.id}" style="margin:0">${ICON(t.id === "primary" ? "sprout" : "monitor", 26)} ${esc(t.name)}</h2>
+        <h2 class="h2 track-h t-${t.id}" style="margin:0">${ICON(TRACK_ICON[t.id] || "book", 26)} ${esc(t.name)}</h2>
         <div class="track-level">${esc(t.level)}</div>
       </div>
       <div style="font-weight:800;color:var(--green)">${doneCount}/${list.length} modules completed (${Math.round(doneCount/list.length*100)}%)</div>
@@ -1608,6 +1610,10 @@ async function renderAdminDashboard(key){
         <div class="stat-card">
           <div class="stat-val" style="color:var(--green)">${o.juniorUsers || 0}</div>
           <div class="stat-lbl">Junior (Grade 7–9)</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" style="color:#3b5ba5">${o.seniorUsers || 0}</div>
+          <div class="stat-lbl">Senior (Grade 10)</div>
         </div>
         <div class="stat-card">
           <div class="stat-val" style="color:var(--gold-d)">${o.totalCompletions || 0}</div>
