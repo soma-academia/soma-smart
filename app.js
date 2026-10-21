@@ -8,7 +8,7 @@
 "use strict";
 const C = window.COURSE, MODS = C.modules, TRACKS = C.tracks;
 const STEPS = ["read", "listen", "watch", "mission", "quiz"];
-const STEP_LABEL = { read: "SOMA", listen: "SIKIZA", watch: "TAZAMA", mission: "FANYA", quiz: "JARIBU" };
+const STEP_LABEL = { read: "READ", listen: "LISTEN", watch: "WATCH", mission: "MISSION", quiz: "QUIZ" };
 const $app = document.getElementById("app"), $hud = document.getElementById("hud"), $modal = document.getElementById("modal-layer");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_PROG = "somasmart.progress",
@@ -578,7 +578,7 @@ function renderTrack(){
   });
 }
 
-// No module has a video yet; the TAZAMA step is skipped until one does
+// No module has a video yet; the WATCH step is skipped until one does
 const hasVideo = m => !!(m.video && m.video.id);
 const stepsFor = m => STEPS.filter(st => st !== "watch" || hasVideo(m));
 
@@ -822,7 +822,7 @@ function stepMission(m, s, el){
     if (tasks.length) {
       const left = tasks.filter((t, i) => !taskDone(t, st.tasks[i])).length;
       nx.disabled = left > 0;
-      mhint.textContent = left ? `${left} task${left === 1 ? "" : "s"} left to finish.` : "All tasks done. Kazi nzuri!";
+      mhint.textContent = left ? `${left} task${left === 1 ? "" : "s"} left to finish.` : "All tasks done. Great work!";
     } else {
       nx.disabled = !(st.ticks.length === mi.steps.length && ans.value.trim().length >= 1);
     }
