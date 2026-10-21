@@ -6,3 +6,5 @@ __pycache__/
 # Local Wrangler state
 .wrangler/
 node_modules/
+# Owner's private planning notes (kept local)
+SUGGESTIONS.md
