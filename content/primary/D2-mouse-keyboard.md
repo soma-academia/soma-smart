@@ -55,7 +55,7 @@ Question: The sentence you typed, and which shortcut you liked most.
 
 ### Task: typing
 Label: Use Shift for the capital letters (on a phone, tap ⇧ first). Type exactly:
-Target: Soma Smart Kenya
+Target: Tech Tayari Kenya
 
 ### Task: typing
 Label: Now type this sentence. Made a mistake? Fix it with Backspace.

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Publish Soma Smart: push main to GitHub, then deploy the committed code to Cloudflare Pages
-# (project "soma-smart") with your own Wrangler login. Run from anywhere:  ./deploy.sh
+# Publish Tech Tayari: push main to GitHub, then deploy the committed code to Cloudflare Pages
+# (project "tech-tayari") with your own Wrangler login. Run from anywhere:  ./deploy.sh
 # Needs: git, python3, and Wrangler logged in (brew install cloudflare-wrangler && wrangler login).
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -23,11 +23,11 @@ say "3/4 Deploying to Cloudflare Pages…"
 sha="$(git rev-parse HEAD)"; msg="$(git log -1 --format=%s)"
 site="$(mktemp -d)"; trap 'rm -rf "$site"' EXIT
 git archive HEAD | tar -x -C "$site"          # only committed files, never local ones like .dev.vars
-(cd "$site" && wrangler pages deploy . --project-name soma-smart --branch main --commit-hash "$sha" --commit-message "$msg")
+(cd "$site" && wrangler pages deploy . --project-name tech-tayari --branch main --commit-hash "$sha" --commit-message "$msg")
 
 say "4/4 Checking the live site…"
 sleep 8
-health="$(curl -fsS https://soma-smart.pages.dev/api/health)" || fail "Couldn't reach https://soma-smart.pages.dev/api/health"
+health="$(curl -fsS https://tech-tayari.pages.dev/api/health)" || fail "Couldn't reach https://tech-tayari.pages.dev/api/health"
 echo "$health"
 echo "$health" | grep -q '"tokenSecretConfigured":true' || fail "Site is up, but its secrets aren't configured."
-say "✅ Live at https://soma-smart.pages.dev"
+say "✅ Live at https://tech-tayari.pages.dev"

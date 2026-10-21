@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Compiles content/<track>/*.md into content.js for Soma Smart. Two tracks, mastery levels, no prizes/XP.
+# Compiles content/<track>/*.md into content.js for Tech Tayari. Two tracks, mastery levels, no prizes/XP.
 # Content lives in Markdown so teachers can fix a card in GitHub's web editor; the format is described
 # in content/README.md. Standard library only. Nothing is written unless every check passes.
 import json, re, sys
@@ -191,7 +191,7 @@ for m in MODULES:
 MODULES.sort(key=lambda m: (track_ids.index(m["track"]) if m["track"] in track_ids else 99, code_number(m)))
 
 course = {
-    "title": "Soma Smart",
+    "title": "Tech Tayari",
     "tagline": "Free computer and internet literacy for everyone.",
     "passMark": 4,
     "questionsPerQuiz": 5,
@@ -235,7 +235,7 @@ if errors:
     sys.exit(1)
 
 header = (
- "/* Soma Smart — free CBE digital-literacy course content.\n"
+ "/* Tech Tayari — free CBE digital-literacy course content.\n"
  " * Two tracks: 'primary' (Grade 4–6, ages 9–11) and 'junior' (Grade 7–9, ages 12–15).\n"
  " * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.\n"
  " * Mastery levels (not prizes): new → learning → practised → mastered.\n"

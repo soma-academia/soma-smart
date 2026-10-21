@@ -1,4 +1,4 @@
-/* Soma Smart — Cloudflare Pages Worker (canonical root).
+/* Tech Tayari — Cloudflare Pages Worker (canonical root).
  * Backed by Cloudflare D1. Self-service accounts, offline-first guest mode,
  * anonymous aggregate analytics. NO support desk or admin password resets.
  *
@@ -98,7 +98,7 @@ const normUser = u => String(u || "").trim().toLowerCase();
 
 const BLOCKED_USERNAMES = new Set([
   "admin", "administrator", "root", "system", "support", "help", "helpdesk",
-  "somasmart", "soma_smart", "moderator", "mod", "official", "mwalimu", "teacher",
+  "techtayari", "tech_tayari", "somasmart", "soma_smart", "moderator", "mod", "official", "mwalimu", "teacher",
   "staff", "security", "null", "undefined", "anonymous", "guest", "test"
 ]);
 
@@ -182,7 +182,7 @@ export default {
     if (p === "/api/health") {
       return json({
         ok: true,
-        service: "soma-smart",
+        service: "tech-tayari",
         d1: !!env.DB,
         adminKeyConfigured: !!env.ADMIN_KEY,
         tokenSecretConfigured: !!env.TOKEN_SECRET,

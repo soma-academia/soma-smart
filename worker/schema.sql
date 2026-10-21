@@ -1,4 +1,4 @@
--- Soma Smart — D1 schema. Accounts + per-user progress + anonymous aggregate analytics.
+-- Tech Tayari — D1 schema. Accounts + per-user progress + anonymous aggregate analytics.
 -- Run once: paste into the D1 database's Console tab in the Cloudflare dashboard (see DEPLOY.md).
 
 -- Learner accounts. Passwords are stored ONLY as salted hashes (never plaintext).

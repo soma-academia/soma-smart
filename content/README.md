@@ -1,4 +1,4 @@
-# Editing Soma Smart lessons
+# Editing Tech Tayari lessons
 
 Every module is one Markdown file in `content/primary/` (Grade 4–6) or `content/junior/` (Grade 7–9).
 To fix a typo or improve a card, open the file on GitHub, click the ✏️ pencil, edit, and propose the change.
@@ -64,7 +64,7 @@ learner must finish them, and the `- steps` become an optional "Try it for real"
 | `pick` | Answers questions (graded with `[x]`, or a free choice with plain `- options`) | `#### Question` then options, optional `Why:` |
 | `sort` | Puts each item in a bucket | `Buckets: Hardware \| Software` then `- Keyboard → Hardware` |
 | `text` | Types a short answer | `Min: 3`, optional `Reject: new folder \| untitled`, `Hint:` |
-| `typing` | Types text exactly (paste is blocked) | `Target: Soma Smart Kenya` |
+| `typing` | Types text exactly (paste is blocked) | `Target: Tech Tayari Kenya` |
 | `paste` | Pastes text (practises copy + paste) | `Target: …` |
 | `flags` | Taps the red flags in a message | `Header: Email · Inbox`, then `- line` items; a red flag gets an indented `  > 🚩 why` line |
 | `order` | Taps steps in the right order | `1. First step` with an indented `   > note` line, in the correct order |

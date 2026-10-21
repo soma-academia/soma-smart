@@ -1,4 +1,4 @@
-/* Soma Smart — animated explainers for the WATCH step.
+/* Tech Tayari — animated explainers for the WATCH step.
  * Tiny, offline, and exact: a "packet" moves between labelled boxes one step at a time, with a caption
  * per step. Learners control the pace (Back / Next / Play). Respects prefers-reduced-motion.
  * A module opts in with `explainer: <id>` in its Markdown front matter; ids must exist below

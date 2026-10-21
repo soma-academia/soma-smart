@@ -259,7 +259,7 @@ svg.i{flex:none;vertical-align:-.2em}
 .modal-close{position:absolute;top:16px;right:18px;background:none;border:0;font-size:26px;color:var(--muted);font-weight:700;line-height:1;padding:4px 8px;border-radius:8px}
 .modal-close:hover{color:var(--ink);background:#f1f5f1}
 
-/* Celebration card (replaces certificate — Soma Smart is not an accredited body) */
+/* Celebration card (replaces certificate — Tech Tayari is not an accredited body) */
 .celebration-card{padding:8px 0}
 .celeb-confetti{font-size:28px;letter-spacing:6px;margin-bottom:12px;display:block}
 .celeb-title{font-family:Nunito,system-ui,sans-serif;font-size:30px;font-weight:900;color:var(--green-d);margin:0 0 6px}

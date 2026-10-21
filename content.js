@@ -1,4 +1,4 @@
-/* Soma Smart — free CBE digital-literacy course content.
+/* Tech Tayari — free CBE digital-literacy course content.
  * Two tracks: 'primary' (Grade 4–6, ages 9–11) and 'junior' (Grade 7–9, ages 12–15).
  * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.
  * Mastery levels (not prizes): new → learning → practised → mastered.
@@ -6,7 +6,7 @@
  * Kenyan, practical references; light Kiswahili/Sheng. Verify technical facts before publishing.
  */
 window.COURSE = {
- "title": "Soma Smart",
+ "title": "Tech Tayari",
  "tagline": "Free computer and internet literacy for everyone.",
  "passMark": 4,
  "questionsPerQuiz": 5,
@@ -331,7 +331,7 @@ window.COURSE = {
      {
       "type": "typing",
       "label": "Use Shift for the capital letters (on a phone, tap ⇧ first). Type exactly:",
-      "target": "Soma Smart Kenya"
+      "target": "Tech Tayari Kenya"
      },
      {
       "type": "typing",
@@ -2955,11 +2955,11 @@ window.COURSE = {
      "why": "No encryption = unsafe."
     },
     {
-     "q": "In the URL 'https://soma-smart.pages.dev', which part is the Top-Level Domain (TLD)?",
+     "q": "In the URL 'https://tech-tayari.pages.dev', which part is the Top-Level Domain (TLD)?",
      "options": [
       ".dev",
       "https",
-      "soma-smart",
+      "tech-tayari",
       "pages"
      ],
      "a": 0,

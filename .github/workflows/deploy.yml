@@ -1,4 +1,4 @@
-# Deploys the site to Cloudflare Pages (project "soma-smart"). MANUAL ONLY for now: day-to-day publishing
+# Deploys the site to Cloudflare Pages (project "tech-tayari"). MANUAL ONLY for now: day-to-day publishing
 # is ./deploy.sh on the owner's Mac. To use this, save a working CLOUDFLARE_API_TOKEN secret (Account →
 # Cloudflare Pages → Edit, plus Account Settings → Read), then run it from the repo's Actions tab, or
 # restore the `push: branches: [main]` trigger below to deploy on every push. See DEPLOY.md.
@@ -52,7 +52,7 @@ jobs:
           if [ ${#CLOUDFLARE_API_TOKEN} -lt 30 ]; then echo "::error::CLOUDFLARE_API_TOKEN is only ${#CLOUDFLARE_API_TOKEN} characters; a Cloudflare API token is about 40. It may be the token's name or ID instead of the token."; exit 1; fi
           echo "Token looks right (${#CLOUDFLARE_API_TOKEN} characters)."
           export CLOUDFLARE_API_TOKEN
-          if npx --yes wrangler@4.151.2 pages deploy . --project-name soma-smart --branch main --commit-hash "$GITHUB_SHA" --commit-message "$GITHUB_SHA"; then exit 0; fi
+          if npx --yes wrangler@4.151.2 pages deploy . --project-name tech-tayari --branch main --commit-hash "$GITHUB_SHA" --commit-message "$GITHUB_SHA"; then exit 0; fi
           # Deploy failed: ask Cloudflare what it thinks of the token (prints status only, never the token)
           echo "::group::Token diagnostics"
           api() { curl -s -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "https://api.cloudflare.com/client/v4$1"; }
@@ -66,4 +66,4 @@ jobs:
       - name: Check the live API
         run: |
           sleep 10
-          curl -fsS https://soma-smart.pages.dev/api/health | tee /dev/stderr | grep -q '"tokenSecretConfigured":true'
+          curl -fsS https://tech-tayari.pages.dev/api/health | tee /dev/stderr | grep -q '"tokenSecretConfigured":true'

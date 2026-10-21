@@ -152,10 +152,10 @@ Why: Check the address carefully.
 - [ ] Your own account
 Why: No encryption = unsafe.
 
-### In the URL 'https://soma-smart.pages.dev', which part is the Top-Level Domain (TLD)?
+### In the URL 'https://tech-tayari.pages.dev', which part is the Top-Level Domain (TLD)?
 - [x] .dev
 - [ ] https
-- [ ] soma-smart
+- [ ] tech-tayari
 - [ ] pages
 Why: .dev is the TLD at the end of the domain hierarchy.
 

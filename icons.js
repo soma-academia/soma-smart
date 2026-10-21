@@ -1,4 +1,4 @@
-/* Soma Smart — tiny line-icon set (24×24, drawn for this project). Used instead of emoji for interface
+/* Tech Tayari — tiny line-icon set (24×24, drawn for this project). Used instead of emoji for interface
  * icons, because emoji look different on every phone and older Androids show some as empty boxes.
  * ICON(name, size?) returns an inline SVG string that takes the surrounding text colour.
  */

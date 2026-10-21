@@ -1,5 +1,5 @@
-/* Soma Smart — Service Worker for offline CBE learning */
-const CACHE_NAME = "soma-smart-v5";
+/* Tech Tayari — Service Worker for offline CBE learning */
+const CACHE_NAME = "tech-tayari-v6";
 const STATIC_ASSETS = [
   "./",
   "index.html",

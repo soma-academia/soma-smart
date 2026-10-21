@@ -1,4 +1,4 @@
-/* Soma Smart — front-end application.
+/* Tech Tayari — front-end application.
  * Aligned with the Kenya Institute of Curriculum Development (KICD) CBE curriculum.
  * Local-first: progress lives on this device (backup/restore as a JSON file). Accounts are an
  * optional "sync across devices" extra. PWA offline caching, celebration screen, and anonymous
@@ -40,7 +40,7 @@ async function api(path, method, body, extraHeaders){
   if (TOKEN) headers["Authorization"] = "Bearer " + TOKEN;
   // Never let a slow or dropped connection hang the app
   const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 10000);
-  const offlineMsg = "Can't reach Soma Smart's server right now. You can keep learning without an account. Your progress is saved on this device.";
+  const offlineMsg = "Can't reach Tech Tayari's server right now. You can keep learning without an account. Your progress is saved on this device.";
   let r;
   try {
     r = await fetch("api/" + path, { method: method || "GET", headers, body: body ? JSON.stringify(body) : undefined, signal: ctl.signal });
@@ -126,21 +126,21 @@ window.addEventListener("online", () => pushProgress());
 
 /* ---------- backup & restore (the zero-backend recovery story) ---------- */
 function exportBackup(){
-  const data = { app: "soma-smart", version: 1, exportedAt: new Date().toISOString(), name: USER.display, mods: cleanProgress(PROG) };
+  const data = { app: "tech-tayari", version: 1, exportedAt: new Date().toISOString(), name: USER.display, mods: cleanProgress(PROG) };
   const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 1)], { type: "application/json" }));
   const a = document.createElement("a");
   a.href = url;
-  a.download = `soma-smart-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = `tech-tayari-backup-${new Date().toISOString().slice(0, 10)}.json`;
   document.body.appendChild(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 async function importBackup(file){
-  const bad = new Error("That file is not a Soma Smart backup.");
+  const bad = new Error("That file is not a Tech Tayari backup.");
   if (!file || file.size > 1024 * 1024) throw bad;
   let data;
   try { data = JSON.parse(await file.text()); } catch { throw bad; }
-  if (!data || data.app !== "soma-smart" || !data.mods || typeof data.mods !== "object") throw bad;
+  if (!data || !["tech-tayari", "soma-smart"].includes(data.app) || !data.mods || typeof data.mods !== "object") throw bad;
   const doneBefore = MODS.filter(m => ms(m.id).done).length;
   PROG = mergeProgress(PROG, data.mods);
   if (USER.isLocal && typeof data.name === "string" && data.name.trim() && !localStorage.getItem(LS_NAME)) setLocalName(data.name);
@@ -251,7 +251,7 @@ window.addEventListener("popstate", () => go(viewFromPath(location.pathname), tr
 
 function render(){
   hud();
-  if (view.name !== "page") document.title = "Soma Smart · Free Digital Literacy for Kenya";
+  if (view.name !== "page") document.title = "Tech Tayari · Free Digital Literacy for Kenya";
   if (view.name === "admin") return renderAdmin();
   if (view.name === "page") return renderPage(view.page);
   if (view.name === "auth") return renderAuth(view.mode);
@@ -275,8 +275,8 @@ document.querySelectorAll("a[data-page]").forEach(a => a.onclick = e => { e.prev
 const SUPPORT_EMAIL = "";
 const mail = SUPPORT_EMAIL ? `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>` : "our new contact address (coming soon; we're setting it up)";
 const PAGES = {
-  about: { title: "About Soma Smart", html: `
-    <p class="lead">Soma Smart is a free, self-guided course that helps Kenyan learners in Grade 4–9 understand
+  about: { title: "About Tech Tayari", html: `
+    <p class="lead">Tech Tayari is a free, self-guided course that helps Kenyan learners in Grade 4–9 understand
       how computers and the internet work, and how to stay safe online.</p>
     <h3>What it is</h3>
     <ul>
@@ -287,7 +287,7 @@ const PAGES = {
     </ul>
     <h3>What it is not</h3>
     <ul>
-      <li><b>Not official.</b> Soma Smart is an independent project. It is not affiliated with, or endorsed by,
+      <li><b>Not official.</b> Tech Tayari is an independent project. It is not affiliated with, or endorsed by,
         KICD, KNEC or the Ministry of Education.</li>
       <li><b>Not accredited.</b> It does not award certificates or grades that count towards any exam or qualification.</li>
       <li><b>Not a replacement for a teacher</b>, and not a managed classroom: teachers cannot see individual learners' work.</li>
@@ -303,7 +303,7 @@ const PAGES = {
     <p>Feedback, corrections and privacy questions: ${mail}. Please remember we cannot recover accounts or passwords.</p>` },
 
   privacy: { title: "Privacy", html: `
-    <p class="lead">Soma Smart is built to collect as little as possible. Most learners never send us anything personal.</p>
+    <p class="lead">Tech Tayari is built to collect as little as possible. Most learners never send us anything personal.</p>
     <h3>Without an account (most learners)</h3>
     <ul>
       <li>Your progress and the name you type are saved <b>only in this browser on this device</b>. We never receive them.</li>
@@ -332,34 +332,34 @@ const PAGES = {
     </ul>
     <p>No ads, no tracking or advertising cookies, and we never sell or share data.</p>
     <h3>Children</h3>
-    <p>Soma Smart is designed for learners aged 9–15 and works fully without an account. Parents and teachers are
+    <p>Tech Tayari is designed for learners aged 9–15 and works fully without an account. Parents and teachers are
       welcome to decide whether a child should create one.</p>
     <h3>Questions</h3>
     <p>Email ${mail}.</p>` },
 
   licences: { title: "Licences", html: `
-    <p class="lead">Soma Smart is free and open. You are welcome to reuse it under these licences.</p>
+    <p class="lead">Tech Tayari is free and open. You are welcome to reuse it under these licences.</p>
     <h3>Lessons: CC BY-NC-SA 4.0</h3>
-    <p>The lesson text, quizzes, missions and explainer captions are © 2026 Soma Smart and licensed under
+    <p>The lesson text, quizzes, missions and explainer captions are © 2026 Tech Tayari and licensed under
       <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener license" target="_blank">Creative Commons
       Attribution-NonCommercial-ShareAlike 4.0</a>. You may share and adapt them, for example for your class or another
-      language, if you credit Soma Smart, don't use them commercially, and share your version under the same licence.</p>
+      language, if you credit Tech Tayari, don't use them commercially, and share your version under the same licence.</p>
     <h3>Code: MIT</h3>
-    <p>The app's code is © 2026 Soma Smart under the <a href="https://github.com/soma-academia/soma-smart/blob/main/LICENSE"
+    <p>The app's code is © 2026 Tech Tayari under the <a href="https://github.com/soma-academia/tech-tayari/blob/main/LICENSE"
       rel="noopener" target="_blank">MIT licence</a>. Source:
-      <a href="https://github.com/soma-academia/soma-smart" rel="noopener" target="_blank">github.com/soma-academia/soma-smart</a>.</p>
+      <a href="https://github.com/soma-academia/tech-tayari" rel="noopener" target="_blank">github.com/soma-academia/tech-tayari</a>.</p>
     <h3>Other parts</h3>
     <ul>
-      <li><b>Icons</b> were drawn for Soma Smart and are covered by the MIT licence with the code.</li>
+      <li><b>Icons</b> were drawn for Tech Tayari and are covered by the MIT licence with the code.</li>
       <li><b>Fonts:</b> Nunito and Roboto, under the <a href="https://openfontlicense.org" rel="noopener" target="_blank">SIL Open Font License 1.1</a>, served by Google Fonts.</li>
       <li><b>Videos</b> belong to their creators (mostly Code.org) and are shown through YouTube under its terms.
-        They are not covered by Soma Smart's licences.</li>
+        They are not covered by Tech Tayari's licences.</li>
     </ul>` },
 };
 
 function renderPage(name){
   const pg = PAGES[name] || PAGES.about;
-  document.title = `${pg.title} · Soma Smart`;
+  document.title = `${pg.title} · Tech Tayari`;
   $app.innerHTML = `
     <button class="back" id="bk">← Back to lessons</button>
     <article class="infopage">
@@ -562,7 +562,7 @@ function renderAuth(mode){
     </div>
 
     <p class="disclaim">
-      <b>Account recovery notice:</b> Soma Smart has no support desk or email recovery. Please write down your recovery code when signing up, or create a new account if you forget your password.
+      <b>Account recovery notice:</b> Tech Tayari has no support desk or email recovery. Please write down your recovery code when signing up, or create a new account if you forget your password.
     </p>
   </section>`;
 
@@ -674,7 +674,7 @@ function renderHome(){
     <h2 class="home-h2">How each lesson works</h2>
     <ol class="howto">${steps.map(([ic, t, d]) => `<li><span class="howto-ic">${ICON(ic, 26)}</span><b>${t}</b><span>${d}</span></li>`).join("")}</ol>
     <div class="parents">
-      <b>For teachers and parents.</b> Soma Smart is free and needs no sign-up. Progress is saved on the learner's
+      <b>For teachers and parents.</b> Tech Tayari is free and needs no sign-up. Progress is saved on the learner's
       own device (use <b>Backup</b> to keep a copy), and it keeps working without internet once opened.
       Open it in Chrome and choose <i>Add to Home screen</i> to use it like an app.
     </div>
@@ -1408,7 +1408,7 @@ function showCelebration(trackId){
       : `You completed all ${list.length} modules. Well done!`;
 
   const shareText = encodeURIComponent(
-    `I just finished ${t.name} on Soma Smart! 🎉
+    `I just finished ${t.name} on Tech Tayari! 🎉
 ` +
     `Modules completed: ${completedCount}/${list.length}
 ` +
@@ -1443,7 +1443,7 @@ function showCelebration(trackId){
         <button class="btn small" id="celeb-report">📋 View Progress Report</button>
         <button class="btn ghost small" id="celeb-close">Close</button>
       </div>
-      <p class="celeb-note">Soma Smart is an independent learning tool, not affiliated with KICD or the government.</p>
+      <p class="celeb-note">Tech Tayari is an independent learning tool, not affiliated with KICD or the government.</p>
     </div>
   `);
 
@@ -1521,7 +1521,7 @@ function showLearnerReport(){
   document.getElementById("close-rep").onclick = closeModal;
   document.getElementById("print-report").onclick = () => window.print();
   document.getElementById("copy-summary").onclick = () => {
-    const text = `Soma Smart · Progress Report for ${USER.display}\nCompleted Modules: ${done}/${total}\nMastered (5/5): ${mastered}\nCourse Progress: ${Math.round((done/total)*100)}%\nAligned with KICD CBE curriculum.`;
+    const text = `Tech Tayari · Progress Report for ${USER.display}\nCompleted Modules: ${done}/${total}\nMastered (5/5): ${mastered}\nCourse Progress: ${Math.round((done/total)*100)}%\nAligned with KICD CBE curriculum.`;
     navigator.clipboard.writeText(text).then(() => toast("Report summary copied to clipboard!"));
   };
 }
