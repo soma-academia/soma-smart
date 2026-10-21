@@ -1,5 +1,5 @@
 -- Soma Smart — D1 schema. Accounts + per-user progress + anonymous aggregate analytics.
--- Run once:  wrangler d1 execute soma-smart --file=worker/schema.sql
+-- Run once: paste into the D1 database's Console tab in the Cloudflare dashboard (see DEPLOY.md).
 
 -- Learner accounts. Passwords are stored ONLY as salted hashes (never plaintext).
 CREATE TABLE IF NOT EXISTS users (
