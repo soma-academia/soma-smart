@@ -1,0 +1,50 @@
+# Deploys the site to Cloudflare Pages (project "soma-smart") on every push to main.
+# Needs one repository secret: CLOUDFLARE_API_TOKEN (Cloudflare Pages: Edit permission). See DEPLOY.md.
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Never run two deploys at once; a newer push replaces a waiting one
+concurrency:
+  group: deploy-pages
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      # content.js is generated from content/*.md; fail if someone edited the Markdown but forgot to rebuild
+      - name: Check content.js is up to date
+        run: |
+          python3 _build.py
+          git diff --exit-code -- content.js || { echo "::error::content.js is out of date. Run python3 _build.py and commit it."; exit 1; }
+
+      # Deploy only tracked files (never local-only files such as .dev.vars)
+      - name: Prepare clean copy of the site
+        run: |
+          mkdir _site
+          git archive HEAD | tar -x -C _site
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v4.1.3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: "4.151.2"
+          workingDirectory: _site
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          command: pages deploy . --project-name soma-smart --branch main --commit-hash ${{ github.sha }} --commit-message "${{ github.sha }}"
+
+      - name: Check the live API
+        run: |
+          sleep 10
+          curl -fsS https://soma-smart.pages.dev/api/health | tee /dev/stderr | grep -q '"tokenSecretConfigured":true'

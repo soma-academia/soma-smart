@@ -10,3 +10,5 @@ node_modules/
 SUGGESTIONS.md
 # Local secrets for wrangler pages dev (keep this file out of git)
 .dev.vars
+# CI deploy staging folder
+_site/
