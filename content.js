@@ -1,7 +1,7 @@
 /* Soma Smart — free CBE digital-literacy course content.
  * Two tracks: 'primary' (Grade 4–6, ages ~8–10) and 'junior' (Grade 7–9, ages ~12–15).
  * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.
- * Mastery levels (not prizes): locked → learning → practised → mastered.
+ * Mastery levels (not prizes): new → learning → practised → mastered.
  * video.id = YouTube id ("" shows a friendly no-video screen). quiz 'a' = index of correct option.
  * Kenyan, practical references; light Kiswahili/Sheng. Verify technical facts before publishing.
  */
@@ -291,12 +291,12 @@ window.COURSE = {
     {
      "icon": "⇧",
      "title": "Shift and Caps",
-     "text": "Hold Shift to type a CAPITAL letter or the symbol on top of a key. Caps Lock keeps all letters capital until you press it again."
+     "text": "Hold Shift to type a CAPITAL letter or the symbol on top of a key. Caps Lock keeps all letters capital until you press it again. On a phone, tap the ⇧ arrow key once for one capital letter, or twice to keep capitals on."
     },
     {
      "icon": "✂️",
      "title": "Copy, cut, paste",
-     "text": "Ctrl + C copies, Ctrl + X cuts (moves), Ctrl + V pastes. Ctrl + Z undoes a mistake. These shortcuts save you a lot of time — they work in school work too."
+     "text": "Ctrl + C copies, Ctrl + X cuts (moves), Ctrl + V pastes. Ctrl + Z undoes a mistake. These shortcuts save you a lot of time — they work in school work too. On a phone: press and hold a word to select it, tap Copy, then press and hold where you want it and tap Paste."
     },
     {
      "icon": "👆",
@@ -321,15 +321,15 @@ window.COURSE = {
    "mission": {
     "title": "Mouse and keyboard practice",
     "steps": [
-     "Open any writing app. Type your name, then make it CAPITAL using Shift.",
+     "Open any writing app (on a phone, the Notes or Messages app works). Type your name, then make it CAPITAL using Shift (the ⇧ key on a phone).",
      "Type a short sentence, then use Backspace to fix one letter.",
-     "Copy your sentence (Ctrl+C) and paste it (Ctrl+V) on a new line."
+     "Copy your sentence (Ctrl+C) and paste it (Ctrl+V) on a new line. On a phone: press and hold, tap Copy, then Paste."
     ],
     "question": "The sentence you typed, and which shortcut you liked most.",
     "tasks": [
      {
       "type": "typing",
-      "label": "Use Shift for the capital letters. Type exactly:",
+      "label": "Use Shift for the capital letters (on a phone, tap ⇧ first). Type exactly:",
       "target": "Soma Smart Kenya"
      },
      {

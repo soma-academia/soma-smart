@@ -196,20 +196,21 @@ function hud(){
 
   const total = MODS.length, done = MODS.filter(m => ms(m.id).done).length;
   const isLocal = !!USER.isLocal;
+  // [class, icon, text]; on phones only the icon shows (the text stays as a tooltip / screen-reader label)
   const syncLabels = {
-    local: ["ok", "💾 Saved on this device"],
-    saved: ["ok", "● Saved & synced"],
-    saving: ["ok", "Syncing…"],
-    offline: ["ok", "💾 Saved on device · will sync later"]
+    local: ["ok", "💾", "Saved on this device"],
+    saved: ["ok", "●", "Saved & synced"],
+    saving: ["ok", "↻", "Syncing…"],
+    offline: ["ok", "💾", "Saved on device · will sync later"]
   };
-  const sync = syncLabels[syncState] || ["ok", ""];
+  const sync = syncLabels[syncState] || ["ok", "", ""];
 
   $hud.innerHTML = `
     <span class="who">
       ${esc(USER.display)}
     </span>
-    <span class="prog">${done}/${total} done</span>
-    <span class="sync ${sync[0]}">${sync[1]}</span>
+    <span class="prog">${done}/${total}<span class="prog-txt"> done</span></span>
+    <span class="sync ${sync[0]}" title="${sync[2] || ""}" aria-label="${sync[2] || ""}">${sync[1]}<span class="sync-txt"> ${sync[2] || ""}</span></span>
     <button class="btn gold small" id="hud-backup" title="Download or restore a backup of your progress">Backup</button>
     <button class="btn ghost small" id="hud-report" title="View your learning progress report">Report</button>
     ${isLocal ? "" : `<button class="btn ghost small" id="logout">Log Out</button>`}
@@ -577,9 +578,14 @@ function renderTrack(){
   });
 }
 
+// No module has a video yet; the TAZAMA step is skipped until one does
+const hasVideo = m => !!(m.video && m.video.id);
+const stepsFor = m => STEPS.filter(st => st !== "watch" || hasVideo(m));
+
 function openModule(id){
   const m = MODS.find(x => x.id === id), s = ms(id);
-  const step = s.done ? "read" : STEPS[Math.min(s.reached, 4)];
+  let step = s.done ? "read" : STEPS[Math.min(s.reached, 4)];
+  if (step === "watch" && !hasVideo(m)) step = "mission";
   go({ name: "mod", id, step });
 }
 
@@ -591,7 +597,8 @@ function renderModule(){
 
   const m = MODS.find(x => x.id === view.id), s = ms(m.id);
   const trackObj = TRACKS.find(t => t.id === m.track);
-  const rail = STEPS.map((st, i) => {
+  const rail = stepsFor(m).map(st => {
+    const i = STEPS.indexOf(st);
     const cls = st === view.step ? "now" : (i < s.reached || s.done) ? "done" : "";
     const lock = st === "quiz" && !quizOpen(m) ? "🔒 " : "";
     return `<button class="chip ${cls}" data-st="${st}" ${cls ? "" : "disabled"}>${lock}${STEP_LABEL[st]}</button>`;
@@ -611,7 +618,8 @@ function renderModule(){
 }
 
 function advance(m, s, from){
-  const i = STEPS.indexOf(from);
+  let i = STEPS.indexOf(from);
+  if (STEPS[i + 1] === "watch" && !hasVideo(m)) i++;
   if (s.reached <= i) s.reached = i + 1;
   queueSave();
   const next = STEPS[i + 1];

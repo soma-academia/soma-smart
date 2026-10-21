@@ -231,7 +231,7 @@ header = (
  "/* Soma Smart — free CBE digital-literacy course content.\n"
  " * Two tracks: 'primary' (Grade 4–6, ages ~8–10) and 'junior' (Grade 7–9, ages ~12–15).\n"
  " * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.\n"
- " * Mastery levels (not prizes): locked → learning → practised → mastered.\n"
+ " * Mastery levels (not prizes): new → learning → practised → mastered.\n"
  " * video.id = YouTube id (\"\" shows a friendly no-video screen). quiz 'a' = index of correct option.\n"
  " * Kenyan, practical references; light Kiswahili/Sheng. Verify technical facts before publishing.\n"
  " */\n"
