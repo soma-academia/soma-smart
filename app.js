@@ -160,6 +160,18 @@ function setLocalName(name){
   if (USER && USER.isLocal) USER.display = name || "Learner";
 }
 
+// Visits: once a day, each device reports whether it is new or returning. Only the date of the last report is
+// kept on the device; nothing identifies it (see /privacy)
+function countVisit(){
+  try {
+    const today = new Date().toISOString().slice(0, 10), last = localStorage.getItem("somasmart.last_visit");
+    if (last === today) return;
+    const hadProgress = Object.keys(localStorage).some(k => k.startsWith(LS_PROG) && localStorage.getItem(k).length > 2);
+    localStorage.setItem("somasmart.last_visit", today);
+    if (navigator.sendBeacon) navigator.sendBeacon("api/visit", JSON.stringify({ kind: last || hadProgress ? "return" : "new" }));
+  } catch {}
+}
+
 // Learning funnel: each device reports each step of a module at most once (no IDs; see /privacy)
 const LS_FUNNEL = "somasmart.funnel_sent";
 function funnel(m, step){
@@ -322,6 +334,10 @@ const PAGES = {
     <h3>Accuracy</h3>
     <p>We check lessons carefully, but they may contain mistakes or go out of date. Found one? Please tell us.
       Videos inside lessons are made by other organisations (such as Code.org) and are their responsibility.</p>
+    <h3>Help improve the lessons</h3>
+    <p>Tech Tayari is open. Every lesson is a plain text file that anyone can read and suggest changes to on
+      <a href="https://github.com/soma-academia/tech-tayari" target="_blank" rel="noopener">GitHub</a> (in the <b>content</b> folder). Teachers' corrections and
+      better Kenyan examples are especially welcome.</p>
     <h3>Contact</h3>
     <p>Feedback, corrections and privacy questions: ${mail}. Please remember we cannot recover accounts or passwords.</p>` },
 
@@ -344,8 +360,9 @@ const PAGES = {
     <h3>Anonymous lesson statistics</h3>
     <p>To improve the lessons we keep simple daily totals per module, with no name, account, device ID or IP address
       attached: how many quiz answers were right or wrong, and how many learners started a module, finished reading,
-      finished the mission, took the quiz and passed. Each device counts each step only once. These totals show where
-      learners get stuck.</p>
+      finished the mission, took the quiz and passed (and whether they passed first time). Each device counts each step only
+      once. We also count, once a day, whether a device is opening Tech Tayari for the first time or coming back; the
+      device only remembers the date it last did so. These totals show where learners get stuck and whether they return.</p>
     <h3>Teachers who review lessons</h3>
     <p>Reviewers can vote to keep or remove lesson items on our review pages. We store each vote and any note, the name
       they choose to give (optional), and a random code made in their browser so they can change a vote. Nothing else.</p>
@@ -1397,6 +1414,7 @@ function stepQuiz(m, s, el){
     const passed = right >= pass;
     funnel(m, "quiz");
     if (passed) funnel(m, "pass");
+    if (passed && s.attempts === 1) funnel(m, "pass1");
     if (passed) {
       s.reached = 5;
       if (!s.done) s.done = true;
@@ -1650,6 +1668,7 @@ async function renderAdminDashboard(key){
     const daily = res.daily || [];
     const funnelRows = res.funnel || [];
     const review = res.review || { tallies: [], notes: [] };
+    const eng = res.engagement || {};
     // "j-network:q3" -> readable label from the course content
     const reviewLabel = item => {
       const [mid, part] = item.split(":"), m = MODS.find(x => x.id === mid);
@@ -1662,6 +1681,31 @@ async function renderAdminDashboard(key){
     };
 
     el.innerHTML = `
+      ${(() => {
+        // Engagement: learning, not time on site. Rates come from the 30-day funnel (devices, counted once per step).
+        const sum = k => funnelRows.reduce((a, r) => a + (r[k] || 0), 0);
+        const pct = (a, b) => b ? Math.round(a / b * 100) + "%" : "–";
+        const wk = eng.passWeek || 0, prev = eng.passPrevWeek || 0;
+        const trend = prev ? `${wk >= prev ? "▲" : "▼"} ${Math.abs(Math.round((wk - prev) / prev * 100))}% vs last week` : `${prev} last week`;
+        const v = eng.visits7 || {}, nv = v.new || 0, rv = v.return || 0;
+        const drops = MODS.map(m => ({ m, r: funnelRows.find(x => x.module_id === m.id) }))
+          .filter(x => x.r && (x.r.start || 0) >= 5)
+          .map(x => ({ m: x.m, lost: 1 - (x.r.pass || 0) / x.r.start }))
+          .sort((a, b) => b.lost - a.lost).slice(0, 3);
+        return `
+      <div style="margin:0 0 24px">
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">Engagement</h3>
+        <p class="hint" style="margin:0 0 12px">We measure learning, not time on site. Main number: quiz passes per week.</p>
+        <div class="stat-grid">
+          <div class="stat-card"><div class="stat-val" style="color:var(--green)">${wk}</div><div class="stat-lbl">Passes this week<br><span class="hint">${trend}</span></div></div>
+          <div class="stat-card"><div class="stat-val">${pct(sum("read"), sum("start"))}</div><div class="stat-lbl">Activation<br><span class="hint">started a module → finished reading</span></div></div>
+          <div class="stat-card"><div class="stat-val">${pct(sum("pass"), sum("start"))}</div><div class="stat-lbl">Completion<br><span class="hint">started → passed (30 days)</span></div></div>
+          <div class="stat-card"><div class="stat-val">${pct(sum("pass1"), sum("quiz"))}</div><div class="stat-lbl">First-try pass rate<br><span class="hint">of devices that took a quiz</span></div></div>
+          <div class="stat-card"><div class="stat-val" style="color:var(--teal)">${pct(rv, nv + rv)}</div><div class="stat-lbl">Returning devices<br><span class="hint">${rv} returning, ${nv} new (7 days)</span></div></div>
+        </div>
+        <p class="hint" style="margin:10px 0 0">${drops.length ? `Most learners drop off in: ${drops.map(d => `<b>${esc(d.m.code)} · ${esc(d.m.name)}</b> (${Math.round(d.lost * 100)}% don't pass)`).join(", ")}.` : "Drop-off shows once a module has 5 or more starts."}</p>
+      </div>`;
+      })()}
       <div class="stat-grid">
         <div class="stat-card">
           <div class="stat-val">${o.totalUsers || 0}</div>
@@ -1688,6 +1732,7 @@ async function renderAdminDashboard(key){
           <div class="stat-lbl">Masteries (5/5)</div>
         </div>
       </div>
+
 
       <div style="margin-top:24px">
         <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">Content Review</h3>
@@ -1822,6 +1867,7 @@ async function renderAdminDashboard(key){
     openModule(requested);
   };
 
+  countVisit();
   if (TOKEN && savedUser) {
     // Show this device's copy immediately; sync in the background without blocking learning
     USER = savedUser;

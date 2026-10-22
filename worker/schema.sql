@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS events (
 );
 
 -- Anonymous learning funnel: per day and module, how many devices reached each step (no user link).
--- step: start | read | mission | quiz | pass
+-- step: start | read | mission | quiz | pass | pass1 (passed on the first try)
 CREATE TABLE IF NOT EXISTS funnel (
   day        TEXT NOT NULL,
   track      TEXT,
@@ -47,6 +47,15 @@ CREATE TABLE IF NOT EXISTS funnel (
   step       TEXT NOT NULL,
   count      INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (day, module_id, step)
+);
+
+-- Anonymous visits: per day, how many devices opened the app for the first time ("new") or came back ("return").
+-- Each device reports at most once a day and keeps only the date; no IDs, no IP.
+CREATE TABLE IF NOT EXISTS visits (
+  day    TEXT NOT NULL,
+  kind   TEXT NOT NULL,
+  count  INTEGER NOT NULL DEFAULT 0,
+  PRIMARY KEY (day, kind)
 );
 
 -- Content review votes from teachers/reviewers (adults, via /review pages). One row per reviewer device per item.

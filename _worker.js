@@ -170,7 +170,7 @@ async function checkRateLimit(env, key, maxAttempts, windowSec) {
 
 // Anonymous counters accept only well-formed module ids and known tracks, so junk can't pile up
 const TRACK_IDS = ["primary", "junior", "senior", "senior11", "ai", "kcse"];
-const FUNNEL_STEPS = ["start", "read", "mission", "quiz", "pass"];
+const FUNNEL_STEPS = ["start", "read", "mission", "quiz", "pass", "pass1"];   // pass1 = passed on the first try
 const validModule = b => !!b && TRACK_IDS.includes(b.track) && /^[a-z0-9-]{2,40}$/.test(String(b.module || ""));
 
 // The info pages are rendered by the app at "/", so search engines would see the home page's title for them.
@@ -414,6 +414,17 @@ export default {
         return json({ ok: true }, 200, request);
       }
 
+      // ---------- anonymous visits: once a day per device, "new" or "return" (no IDs, no IP) ----------
+      if (p === "/api/visit" && request.method === "POST") {
+        const b = await request.json().catch(() => ({}));
+        if (b.kind !== "new" && b.kind !== "return") return json({ ok: true }, 200, request);
+        const day = new Date().toISOString().slice(0, 10);
+        await env.DB.prepare(
+          `INSERT INTO visits (day, kind, count) VALUES (?1, ?2, 1) ON CONFLICT(day, kind) DO UPDATE SET count=count+1`
+        ).bind(day, b.kind).run();
+        return json({ ok: true }, 200, request);
+      }
+
       // ---------- content review: reviewers vote keep (+1) or remove (-1) per card, task or question ----------
       if (p === "/api/review" && request.method === "POST") {
         const allowed = await checkRateLimit(env, "review:" + clientIP, 600, 3600);
@@ -482,6 +493,19 @@ export default {
           funnel = Object.values(byMod);
         } catch {}
 
+        // Engagement: quiz passes this week vs last week, and new vs returning devices (last 7 days)
+        let engagement = {};
+        try {
+          const d = n => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10);
+          const pw = await env.DB.prepare(
+            `SELECT SUM(CASE WHEN day >= ?1 THEN count ELSE 0 END) w, SUM(CASE WHEN day < ?1 THEN count ELSE 0 END) pw
+             FROM funnel WHERE step='pass' AND day >= ?2`
+          ).bind(d(6), d(13)).first();
+          engagement = { passWeek: (pw && pw.w) || 0, passPrevWeek: (pw && pw.pw) || 0, visits7: {} };
+          const vs = await env.DB.prepare(`SELECT kind, SUM(count) c FROM visits WHERE day >= ?1 GROUP BY kind`).bind(d(6)).all();
+          for (const r of vs.results || []) engagement.visits7[r.kind] = r.c;
+        } catch {}
+
         // Content review tallies and notes (table may not exist on older databases)
         let review = { tallies: [], notes: [] };
         try {
@@ -498,6 +522,7 @@ export default {
         return json({
           review,
           funnel,
+          engagement,
           overview: {
             totalUsers: totals ? totals.total_users : 0,
             primaryUsers: totals ? totals.primary_users : 0,
