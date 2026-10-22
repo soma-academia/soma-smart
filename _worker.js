@@ -169,7 +169,7 @@ async function checkRateLimit(env, key, maxAttempts, windowSec) {
 }
 
 // Anonymous counters accept only well-formed module ids and known tracks, so junk can't pile up
-const TRACK_IDS = ["primary", "junior", "senior", "senior11", "ai"];
+const TRACK_IDS = ["primary", "junior", "senior", "senior11", "ai", "kcse"];
 const FUNNEL_STEPS = ["start", "read", "mission", "quiz", "pass"];
 const validModule = b => !!b && TRACK_IDS.includes(b.track) && /^[a-z0-9-]{2,40}$/.test(String(b.module || ""));
 
@@ -185,7 +185,7 @@ function withPageMeta(path, res) {
   path = path.replace(/\/+$/, "") || "/";
   if (path === "/licenses") path = "/licences";
   const isHtml = (res.headers.get("Content-Type") || "").includes("text/html");
-  if (path === "/insights" || path === "/review" || path.startsWith("/review/")) {
+  if (path === "/insights" || path === "/kcse" || path === "/review" || path.startsWith("/review/")) {
     const r = new Response(res.body, res);
     r.headers.set("X-Robots-Tag", "noindex, nofollow");
     return r;
@@ -249,7 +249,7 @@ export default {
       if (p === "/api/signup" && request.method === "POST") {
         const allowed = await checkRateLimit(env, "signup:" + clientIP, 8, 3600); // 8 signups/hr per IP
         if (!allowed) {
-          return json({ error: "Majaribio mengi mno ya kujisajili. Tafadhali subiri saa moja. (Too many signup attempts. Please wait an hour.)" }, 429, request);
+          return json({ error: "Too many signup attempts. Please wait an hour." }, 429, request);
         }
 
         const b = await request.json();
@@ -260,7 +260,7 @@ export default {
           return json({ error: "Username: 3+ letters/numbers/underscore." }, 400, request);
         }
         if (BLOCKED_USERNAMES.has(username)) {
-          return json({ error: "Jina hilo haliruhusiwi. Chagua username nyingine. (That username is reserved.)" }, 400, request);
+          return json({ error: "That username is reserved. Please choose another." }, 400, request);
         }
         if (String(b.password || "").length < 4) {
           return json({ error: "Password needs at least 4 characters." }, 400, request);
@@ -288,7 +288,7 @@ export default {
       if (p === "/api/login" && request.method === "POST") {
         const allowed = await checkRateLimit(env, "login:" + clientIP, 15, 900); // 15 attempts / 15 min
         if (!allowed) {
-          return json({ error: "Majaribio mengi yasiyo sahihi. Subiri dakika 15. (Too many login attempts. Please wait 15 minutes.)" }, 429, request);
+          return json({ error: "Too many login attempts. Please wait 15 minutes." }, 429, request);
         }
 
         const b = await request.json();
@@ -315,14 +315,14 @@ export default {
       if (p === "/api/reset" && request.method === "POST") {
         const allowed = await checkRateLimit(env, "reset:" + clientIP, 10, 1800);
         if (!allowed) {
-          return json({ error: "Majaribio mengi mno. Tafadhali subiri kidogo. (Too many attempts. Please wait.)" }, 429, request);
+          return json({ error: "Too many attempts. Please wait a little." }, 429, request);
         }
 
         const b = await request.json();
         const u = await env.DB.prepare("SELECT * FROM users WHERE username=?1").bind(normUser(b.username)).first();
         if (!u) return json({ error: "No such username." }, 404, request);
         if (!u.recovery_hash) {
-          return json({ error: "Hakuna recovery code iliyowekwa kwa akaunti hii. Hakuna msaada wa kurejesha akaunti — tafadhali fungua akaunti mpya." }, 400, request);
+          return json({ error: "This account has no recovery code, so it cannot be recovered. Please create a new account." }, 400, request);
         }
 
         if (!(await verifySecret(u.recovery_hash, b.recovery || ""))) {

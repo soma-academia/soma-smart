@@ -74,6 +74,6 @@ and `primary/D2-mouse-keyboard.md` for full examples.
 
 ## House style
 
-- Practical Kenyan examples; light Kiswahili/Sheng is welcome. No pop culture.
+- English only: no Kiswahili or Sheng words. Practical Kenyan examples. No pop culture.
 - KSh, not other currencies.
 - Technical facts are checked by the owner before release, especially C6, C9 and C10.

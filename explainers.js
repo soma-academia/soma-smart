@@ -311,10 +311,10 @@ function renderDecisionTree(el){
 
 // ---------- A4: a tiny next-word predictor (how chatbots generate text, in miniature) ----------
 const NW_CORPUS = [
-  "i go to school every day", "i go to school by matatu", "i go to the market on saturday",
-  "we go to church on sunday", "the matatu is late today", "the matatu is full",
+  "i go to school every day", "i go to school by bus", "i go to the market on saturday",
+  "we go to church on sunday", "the bus is late today", "the bus is full",
   "the teacher is kind", "the teacher is in class", "my phone is on the table",
-  "habari ya asubuhi", "habari ya leo", "habari ya shule", "twende shule pamoja",
+  "good morning teacher", "good morning class", "good night mother", "we walk to school together",
 ];
 function renderNextWord(el){
   let corpus = NW_CORPUS.slice(), words = ["i"];
@@ -331,7 +331,7 @@ function renderNextWord(el){
     el.innerHTML = `
       <div class="xp">
         <div class="xp-title">${window.ICON ? window.ICON("film", 22) : ""} A tiny next-word predictor</div>
-        <p class="hint">It learned from ${corpus.length} short sentences by counting which word usually comes next. It only looks at the last word, so it can write things that sound fine but make no sense, like “the matatu is kind”. Big chatbots look at far more words, learned from billions of sentences, but they can still sound right and be wrong.</p>
+        <p class="hint">It learned from ${corpus.length} short sentences by counting which word usually comes next. It only looks at the last word, so it can write things that sound fine but make no sense, like “the bus is kind”. Big chatbots look at far more words, learned from billions of sentences, but they can still sound right and be wrong.</p>
         <div class="nw-sentence">${words.map(w => esc(w)).join(" ")} <span class="nw-cursor">▌</span></div>
         ${ranked.length ? `<p class="xp-cap">After “${esc(last)}”, it predicts:</p>
           <div class="nw-bars">${ranked.map(([w, c]) => `<button class="nw-bar" data-w="${esc(w)}"><span class="nw-fill" style="width:${Math.round(c / total * 100)}%"></span><b>${esc(w)}</b><span>${Math.round(c / total * 100)}%</span></button>`).join("")}</div>`
@@ -343,7 +343,7 @@ function renderNextWord(el){
         </div>
         <form class="nw-add" data-x="add">
           <label class="q" for="nw-in">Add your own training sentence</label>
-          <div style="display:flex;gap:8px"><input class="field" id="nw-in" maxlength="80" placeholder="e.g. the matatu is fast" style="flex:1;min-width:0" /><button class="btn ghost small">Add</button></div>
+          <div style="display:flex;gap:8px"><input class="field" id="nw-in" maxlength="80" placeholder="e.g. the bus is fast" style="flex:1;min-width:0" /><button class="btn ghost small">Add</button></div>
         </form>
       </div>`;
     el.querySelectorAll("[data-w]").forEach(b => b.onclick = () => { words.push(b.dataset.w); draw(); });

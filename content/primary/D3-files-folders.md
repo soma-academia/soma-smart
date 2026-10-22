@@ -43,7 +43,7 @@ A backup is a spare copy kept somewhere safe — a flash disk or the cloud. If a
 - Give folders clear names: School, Photos, Music.
 - Always Save your work so it is not lost.
 - Save As makes a new copy to try changes safely.
-- And back up important work to a flash disk or the cloud. Usipoteze kazi yako!
+- And back up important work to a flash disk or the cloud. Don't lose your work!
 
 ## Mission: Tidy up
 

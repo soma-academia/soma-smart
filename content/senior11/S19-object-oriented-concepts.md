@@ -18,7 +18,7 @@ explainer:
 
 ### 🧭 Two ways to organise programs
 
-Procedural programming organises a program as a sequence of functions that act on data. Object-oriented programming (OOP) bundles the data and the functions that use it into objects, modelled on real things: a student, a bank account, a matatu. Large programs are easier to manage and reuse this way. Java, C++, C# and Python all support OOP.
+Procedural programming organises a program as a sequence of functions that act on data. Object-oriented programming (OOP) bundles the data and the functions that use it into objects, modelled on real things: a student, a bank account, a bus. Large programs are easier to manage and reuse this way. Java, C++, C# and Python all support OOP.
 
 ### 🧱 Classes and objects
 
@@ -58,8 +58,8 @@ Label: Is each one a class or an object?
 Buckets: Class | Object
 - Student (the blueprint) → Class
 - Amani, admission number 1021 → Object
-- Matatu → Class
-- The matatu with plate KDA 123A → Object
+- Bus → Class
+- The bus with plate KDA 123A → Object
 - BankAccount → Class
 - Wanjiru's savings account → Object
 

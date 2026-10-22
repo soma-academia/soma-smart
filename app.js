@@ -7,11 +7,16 @@
 (() => {
 "use strict";
 const C = window.COURSE, MODS = C.modules, TRACKS = C.tracks;
+// Unlisted tracks (e.g. KCSE) are not on the home page; they open at their own address, /<track id>
+const HOME_TRACKS = TRACKS.filter(t => !t.unlisted);
+// Modules counted in totals: listed tracks, plus an unlisted track once the learner has started it
+const countedMods = () => MODS.filter(m => HOME_TRACKS.some(t => t.id === m.track) || MODS.some(x => x.track === m.track && (ms(x.id).reached > 0 || ms(x.id).done)));
+const isKcse = t => t && t.id === "kcse";
 const STEPS = ["read", "listen", "watch", "mission", "quiz"];
 const STEP_LABEL = { read: "READ", listen: "LISTEN", watch: "WATCH", mission: "MISSION", quiz: "QUIZ" };
 const STEP_ICON = { read: "book", listen: "speaker", watch: "play", mission: "flag", quiz: "check" };
 const ICON = (name, size) => (window.ICON ? window.ICON(name, size) : "");
-const TRACK_ICON = { primary: "sprout", junior: "monitor", senior: "cpu", senior11: "server", ai: "spark" };
+const TRACK_ICON = { primary: "sprout", junior: "monitor", senior: "cpu", senior11: "server", ai: "spark", kcse: "book" };
 const $app = document.getElementById("app"), $hud = document.getElementById("hud"), $modal = document.getElementById("modal-layer");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_PROG = "somasmart.progress",
@@ -209,7 +214,7 @@ function hud(){
   }
   if (linkReport) linkReport.style.display = "inline";
 
-  const total = MODS.length, done = MODS.filter(m => ms(m.id).done).length;
+  const cm = countedMods(), total = cm.length, done = cm.filter(m => ms(m.id).done).length;
   const isLocal = !!USER.isLocal;
   // [class, icon, text]; on phones only the icon shows (the text stays as a tooltip / screen-reader label)
   const syncLabels = {
@@ -240,11 +245,16 @@ function hud(){
 /* ---------- router ---------- */
 // Info pages and the (unlinked) insights page have their own addresses; everything else lives at "/"
 const PAGE_PATHS = { about: "/about", privacy: "/privacy", licences: "/licences" };
-const pathFor = v => v.name === "page" ? PAGE_PATHS[v.page] : v.name === "admin" ? "/insights" : "/";
+const unlistedTrackOf = v => v.name === "track" ? TRACKS.find(t => t.id === v.t && t.unlisted)
+  : v.name === "mod" ? TRACKS.find(t => t.unlisted && MODS.some(m => m.id === v.id && m.track === t.id)) : null;
+const pathFor = v => v.name === "page" ? PAGE_PATHS[v.page] : v.name === "admin" ? "/insights"
+  : unlistedTrackOf(v) ? "/" + unlistedTrackOf(v).id : "/";
 function viewFromPath(path){
   path = path.replace(/\/+$/, "") || "/";
   if (path === "/insights") return { name: "admin" };
   if (path === "/licenses") return { name: "page", page: "licences" };
+  const hidden = TRACKS.find(t => t.unlisted && "/" + t.id === path);
+  if (hidden) return { name: "track", t: hidden.id };
   const page = Object.keys(PAGE_PATHS).find(k => PAGE_PATHS[k] === path);
   return page ? { name: "page", page } : { name: "home" };
 }
@@ -648,7 +658,7 @@ function renderHome(){
   const resume = MODS.find(m => !ms(m.id).done && ms(m.id).reached > 0);
   const named = USER.display && USER.display !== "Learner";
 
-  const trackCards = TRACKS.map(t => {
+  const trackCards = HOME_TRACKS.map(t => {
     const list = modsForTrack(t.id);
     const done = list.filter(m => ms(m.id).done).length;
     const pct = Math.round((done / list.length) * 100);
@@ -675,7 +685,7 @@ function renderHome(){
   $app.innerHTML = started.length ? `
     <section class="hero">
       <h1>Welcome back${named ? `, <em>${esc(USER.display)}</em>` : ""}.</h1>
-      <p>${started.filter(m => ms(m.id).done).length} of ${MODS.length} modules done. Keep going!</p>
+      <p>${countedMods().filter(m => ms(m.id).done).length} of ${countedMods().length} modules done. Keep going!</p>
       ${resume ? `<button class="btn teal resume" id="resume">▶ Continue: ${esc(resume.code)} · ${esc(resume.name)}</button>` : ""}
     </section>
     <div class="grid">${trackCards}</div>
@@ -726,7 +736,7 @@ function renderTrack(){
   const renderModRow = (m) => {
     const lvl = masteryOf(m.id), gated = !quizOpen(m), prev = prevMod(m);
     const cbeBadge = m.cbe === "strand"
-      ? `<span class="tag-badge tag-cbe">CBE</span>`
+      ? `<span class="tag-badge tag-cbe">${isKcse(t) ? "KCSE" : "CBE"}</span>`
       : `<span class="tag-badge tag-nice">Going further</span>`;
     const strandHint = (m.cbe === "strand" && m.strandRef)
       ? `<div class="strand-ref">${esc(m.strandRef)}</div>` : "";
@@ -765,10 +775,12 @@ function renderTrack(){
     </div>
     <div class="meter" style="margin-bottom:20px"><div class="meter-fill" style="width:${(doneCount/list.length)*100}%"></div></div>
 
-    ${renderGroup(coreList, `${ICON("book", 20)} Core (CBE)`, "These modules map to official CBE digital-literacy strands.")}
+    ${isKcse(t) ? renderGroup(coreList, `${ICON("book", 20)} Form 4 syllabus`, "These modules follow the Form 4 topics of the KCSE Computer Studies (451) syllabus.")
+      : renderGroup(coreList, `${ICON("book", 20)} Core (CBE)`, "These modules map to official CBE digital-literacy strands.")}
     ${renderGroup(enrichList, `${ICON("star", 20)} Going further`, "Enrichment modules — not required by CBE, but great to know.")}
 
-    <div class="cbe-disclaimer">ℹ️ CBE tags are our best-effort mapping to the KICD curriculum and are pending teacher confirmation.</div>
+    <div class="cbe-disclaimer">${isKcse(t) ? "ℹ️ Independent revision notes for the 8-4-4 KCSE Computer Studies syllabus. Not affiliated with or endorsed by KNEC."
+      : "ℹ️ CBE tags are our best-effort mapping to the KICD curriculum and are pending teacher confirmation."}</div>
 
     ${allDone ? `
       <div class="track-done-card">
@@ -908,9 +920,30 @@ function getAvailableVoices(){
   return cachedVoices;
 }
 
+// Narration voice: a Kenyan English voice when the device has one (e.g. Microsoft Asilia or Chilemba on
+// Windows/Edge), else the nearest East African, then other African, then British English. The learner can
+// override it with the voice picker in the Listen step (saved per device).
+const LS_VOICE = "somasmart.voice";
+const VOICE_ORDER = ["en-KE", "en-TZ", "en-UG", "en-NG", "en-ZA", "en-GB", "en-IE", "en-AU", "en-US"];
+const voiceLang = x => String(x.lang || "").replace("_", "-");
+function englishVoices(){
+  const rank = x => { const i = VOICE_ORDER.findIndex(l => voiceLang(x).toLowerCase() === l.toLowerCase()); return i < 0 ? VOICE_ORDER.length : i; };
+  const natural = x => /natural|online|enhanced|premium/i.test(x.name) ? 0 : 1;
+  const novelty = /^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Good News|Jester|Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Junior|Ralph|Fred|Kathy|Grandma|Grandpa|Rocko)\b/;
+  return getAvailableVoices().filter(x => /^en/i.test(voiceLang(x)) && !novelty.test(x.name)).sort((a, b) => rank(a) - rank(b) || natural(a) - natural(b));
+}
+const isKenyanVoice = x => !!x && /^en-KE$/i.test(voiceLang(x));
 function pickVoice(){
-  const v = getAvailableVoices();
-  return v.find(x => /en-(KE|GB|US|ZA)/i.test(x.lang)) || v.find(x => /^en/i.test(x.lang)) || (v.length ? v[0] : null);
+  const v = englishVoices(), saved = (() => { try { return localStorage.getItem(LS_VOICE) || ""; } catch { return ""; } })();
+  return v.find(x => x.voiceURI === saved) || v[0] || getAvailableVoices()[0] || null;
+}
+function voicePicker(){
+  const v = englishVoices();
+  if (v.length < 2) return "";
+  const cur = pickVoice();
+  const opts = v.map(x => `<option value="${esc(x.voiceURI)}" ${cur && x.voiceURI === cur.voiceURI ? "selected" : ""}>${esc(x.name.replace(/^(Microsoft|Google)\s+/, "").replace(/\s*-\s*English.*$/, ""))} (${esc(voiceLang(x))})</option>`).join("");
+  return `<div class="voice-pick"><label class="hint" for="voice">Voice</label><select class="field" id="voice">${opts}</select>
+    ${v.some(isKenyanVoice) ? "" : `<div class="hint">No Kenyan English voice on this device, so the closest one is used. Microsoft Edge on a computer has Kenyan voices.</div>`}</div>`;
 }
 
 function speak(lines, onLine, onEnd){
@@ -919,7 +952,7 @@ function speak(lines, onLine, onEnd){
   const next = () => {
     if (i >= lines.length) return onEnd && onEnd();
     const u = new SpeechSynthesisUtterance(lines[i]);
-    if (voice) u.voice = voice;
+    if (voice) { u.voice = voice; u.lang = voice.lang; } else u.lang = "en-KE";
     u.rate = 0.93;
     u.onstart = () => onLine && onLine(i);
     u.onend = () => { i++; next(); };
@@ -941,6 +974,7 @@ function stepListen(m, s, el){
         <div class="subtitle">${esc(sub || "Press play to listen to the lesson.")}</div>
         <div class="bars">${lines.map((_, i) => `<i class="${i < pos ? "on" : ""}"></i>`).join("")}</div>
         <div class="row" style="justify-content:center"><button class="btn teal" id="pl">${playing ? "⏸ Pause" : "▶ Play"}</button></div>
+        ${voicePicker()}
       </div>
       <div class="stepFoot">
         <span class="hint">Listen to the full audio to continue.</span>
@@ -950,7 +984,16 @@ function stepListen(m, s, el){
 
     document.getElementById("pl").onclick = toggle;
     document.getElementById("nx").onclick = () => { stop(); advance(m, s, "listen"); };
+    const vs = document.getElementById("voice");
+    if (vs) vs.onchange = () => {
+      try { localStorage.setItem(LS_VOICE, vs.value); } catch {}
+      if (playing) { stop(); draw("Voice changed. Press play to listen again."); } else draw();
+    };
   };
+  // Voices can load after the first draw (Chrome), so redraw once they arrive
+  if ("speechSynthesis" in window && !englishVoices().length) {
+    try { speechSynthesis.addEventListener("voiceschanged", () => { cachedVoices = []; if (!playing && el.isConnected) draw(); }, { once: true }); } catch {}
+  }
 
   const stop = () => { playing = false; try { speechSynthesis.cancel(); } catch {} };
   const toggle = () => {
@@ -1487,9 +1530,9 @@ function hashCode(str) {
 
 /* ---------- LEARNER REPORT MODAL ---------- */
 function showLearnerReport(){
-  const total = MODS.length;
-  const done = MODS.filter(m => ms(m.id).done).length;
-  const mastered = MODS.filter(m => masteryOf(m.id) === "mastered").length;
+  const cm = countedMods(), total = cm.length;
+  const done = cm.filter(m => ms(m.id).done).length;
+  const mastered = cm.filter(m => masteryOf(m.id) === "mastered").length;
 
   openModal(`
     <h2 style="margin:0 0 4px;font-family:Nunito,sans-serif">Learner Progress Report</h2>

@@ -3,7 +3,7 @@
  * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.
  * Mastery levels (not prizes): new → learning → practised → mastered.
  * video.id = YouTube id ("" shows a friendly no-video screen). quiz 'a' = index of correct option.
- * Kenyan, practical references; light Kiswahili/Sheng. Verify technical facts before publishing.
+ * Kenyan, practical references; English only (no Kiswahili or Sheng). Verify technical facts before publishing.
  */
 window.COURSE = {
  "title": "Tech Tayari",
@@ -44,6 +44,13 @@ window.COURSE = {
    "name": "Computer Studies II",
    "level": "Grade 11 · ages 16–17",
    "blurb": "Senior School Computer Studies, Grade 11: number systems and logic, network protocols and security, object-oriented programming, databases, SQL and the web."
+  },
+  {
+   "id": "kcse",
+   "name": "KCSE Computer Studies",
+   "level": "Form 4 · KCSE 451",
+   "blurb": "Revision for KCSE Computer Studies (451), Form 4 topics: networking and data communication, application areas of ICT, the impact of ICT on society, and careers in ICT.",
+   "unlisted": true
   }
  ],
  "modules": [
@@ -57,12 +64,12 @@ window.COURSE = {
     {
      "icon": "🖥️",
      "title": "What is a computer?",
-     "text": "A computer is a machine that follows instructions to do work: typing a letter, playing a video, storing photos. A desktop, a laptop, even the smartphone in your pocket — zote ni computers."
+     "text": "A computer is a machine that follows instructions to do work: typing a letter, playing a video, storing photos. A desktop, a laptop, even the smartphone in your pocket — all of them are computers."
     },
     {
      "icon": "🧠",
      "title": "The brain: CPU",
-     "text": "Inside is a chip called the CPU (processor). It is the ubongo — the brain — that does the thinking and follows your instructions, step by step, very fast."
+     "text": "Inside is a chip called the CPU (processor). It is the brain that does the thinking and follows your instructions, step by step, very fast."
     },
     {
      "icon": "🏗️",
@@ -72,22 +79,22 @@ window.COURSE = {
     {
      "icon": "⌨️",
      "title": "Input and output",
-     "text": "You put things IN with a keyboard, mouse or touch screen (input). The computer shows results OUT on the screen or speaker (output). Input, process, output — ingiza, fanya kazi, toa."
+     "text": "You put things IN with a keyboard, mouse or touch screen (input). The computer shows results OUT on the screen or speaker (output). Input, process, output."
     },
     {
      "icon": "⚡",
      "title": "Hardware vs software",
-     "text": "Hardware is the parts you can touch (screen, keyboard). Software is the programs inside that you cannot touch (a browser, a game, the calculator). Hardware ni kushika, software ni programu."
+     "text": "Hardware is the parts you can touch (screen, keyboard). Software is the programs inside that you cannot touch (a browser, a game, the calculator). Hardware you can hold; software you can only use."
     }
    ],
    "listen": [
-    "Karibu! Let's meet the computer.",
+    "Welcome! Let's meet the computer.",
     "A computer is a machine that follows instructions to do work.",
-    "Inside is the CPU — the ubongo, the brain that does the thinking.",
+    "Inside is the CPU, the brain that does the thinking.",
     "RAM holds what you are using now; the disk stores files for keeps.",
     "You put things in with a keyboard or mouse: that is input.",
     "It shows results on the screen: that is output.",
-    "Parts you touch are hardware; programs inside are software. Sawa?"
+    "Parts you touch are hardware; programs inside are software. Got it?"
    ],
    "video": {
     "id": "mCq8-xTH7jA",
@@ -283,7 +290,7 @@ window.COURSE = {
       "Turn on, heat up, switch off"
      ],
      "a": 0,
-     "why": "Ingiza, fanya kazi, toa."
+     "why": "Input goes in, the computer processes it, and output comes out."
     }
    ],
    "cbe": "strand",
@@ -354,12 +361,12 @@ window.COURSE = {
      {
       "type": "typing",
       "label": "Now type this sentence. Made a mistake? Fix it with Backspace.",
-      "target": "Habari yako? I can type!"
+      "target": "Hello! I can type!"
      },
      {
       "type": "paste",
       "label": "Copy the sentence (select it, then Ctrl+C) and paste it here with Ctrl+V. On a phone: press and hold, tap Copy, then Paste.",
-      "target": "Habari yako? I can type!"
+      "target": "Hello! I can type!"
      },
      {
       "type": "pick",
@@ -536,7 +543,7 @@ window.COURSE = {
     "Give folders clear names: School, Photos, Music.",
     "Always Save your work so it is not lost.",
     "Save As makes a new copy to try changes safely.",
-    "And back up important work to a flash disk or the cloud. Usipoteze kazi yako!"
+    "And back up important work to a flash disk or the cloud. Don't lose your work!"
    ],
    "video": {
     "id": "",
@@ -762,12 +769,12 @@ window.COURSE = {
     {
      "icon": "🔑",
      "title": "Strong passwords",
-     "text": "A password is the key to your account. Make it long and hard to guess, like a short silly sentence. Keep it secret — even from friends. Usimpe mtu password yako."
+     "text": "A password is the key to your account. Make it long and hard to guess, like a short silly sentence. Keep it secret — even from friends. Never give anyone your password."
     },
     {
      "icon": "🎣",
      "title": "Spot the tricks",
-     "text": "If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN, it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, ni uwongo."
+     "text": "If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN, it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, it is a lie."
     },
     {
      "icon": "🙅",
@@ -783,11 +790,11 @@ window.COURSE = {
    "listen": [
     "This is the most important lesson: staying safe online.",
     "Keep your real name, home and school private from strangers.",
-    "Make your password long and secret. Usimpe mtu password yako!",
-    "Free airtime or a prize for your PIN or password? Ni scam. Walk away.",
+    "Make your password long and secret. Never give anyone your password!",
+    "Free airtime or a prize for your PIN or password? It's a scam. Walk away.",
     "If a stranger makes you feel weird, don't reply. Tell a grown-up.",
     "Too much screen time tires your eyes and steals your time.",
-    "Agree your screen time with a grown-up. You are the boss, si simu."
+    "Agree your screen time with a grown-up. You are the boss, not the phone."
    ],
    "video": {
     "id": "",
@@ -857,7 +864,7 @@ window.COURSE = {
       "Safe to accept"
      ],
      "a": 0,
-     "why": "Too good to be true = uwongo."
+     "why": "If it is too good to be true, it is a lie."
     },
     {
      "q": "Too much screen time can...",
@@ -3316,7 +3323,7 @@ window.COURSE = {
         "b": 0
        },
        {
-        "t": "\"This voice recording says habari\"",
+        "t": "\"This voice recording says hello\"",
         "b": 1
        }
       ]
@@ -6446,7 +6453,7 @@ window.COURSE = {
    "mission": {
     "title": "Your first variables",
     "steps": [
-     "If you can, open Python (on a computer, or a free online Python editor) and try: name = input(\"Name? \") then print(\"Habari\", name).",
+     "If you can, open Python (on a computer, or a free online Python editor) and try: name = input(\"Name? \") then print(\"Hello\", name).",
      "Write a program that asks for a price in KSh and prints the price with 16% VAT added."
     ],
     "question": "Your VAT program, or what you expect it to print for a price of 100.",
@@ -8909,7 +8916,7 @@ window.COURSE = {
     {
      "icon": "🧭",
      "title": "Two ways to organise programs",
-     "text": "Procedural programming organises a program as a sequence of functions that act on data. Object-oriented programming (OOP) bundles the data and the functions that use it into objects, modelled on real things: a student, a bank account, a matatu. Large programs are easier to manage and reuse this way. Java, C++, C# and Python all support OOP."
+     "text": "Procedural programming organises a program as a sequence of functions that act on data. Object-oriented programming (OOP) bundles the data and the functions that use it into objects, modelled on real things: a student, a bank account, a bus. Large programs are easier to manage and reuse this way. Java, C++, C# and Python all support OOP."
     },
     {
      "icon": "🧱",
@@ -8971,11 +8978,11 @@ window.COURSE = {
         "b": 1
        },
        {
-        "t": "Matatu",
+        "t": "Bus",
         "b": 0
        },
        {
-        "t": "The matatu with plate KDA 123A",
+        "t": "The bus with plate KDA 123A",
         "b": 1
        },
        {
@@ -10141,6 +10148,1766 @@ window.COURSE = {
    ],
    "cbe": "strand",
    "strandRef": "Grade 11 · 3.5 Web Development Fundamentals",
+   "explainer": ""
+  },
+  {
+   "track": "kcse",
+   "id": "k-netcomm",
+   "code": "K1",
+   "name": "Networking & Data Communication",
+   "part": "Purposes, signals and transmission modes",
+   "read": [
+    {
+     "icon": "🌐",
+     "title": "What a network is, and why we network",
+     "text": "A computer network is a collection of independent computers and other devices linked together by a transmission medium so that they can communicate and share resources. Purposes of networking: resource sharing (data, programs and hardware such as one printer for a whole lab), remote communication (users far apart exchange messages and files, as when a bank branch in Kisumu updates records held in Nairobi), distributed processing (tasks and data are spread across several computers instead of one central machine), cost effectiveness (shared hardware and software licences cost less than buying for every user) and reliability (if one computer fails, data can be fetched from another and work continues)."
+    },
+    {
+     "icon": "⚠️",
+     "title": "Limitations of networking",
+     "text": "Networks also bring problems. Security threats: data is exposed to hackers, viruses and eavesdropping as it moves across the network. High initial cost: cables, devices, network software and trained staff are expensive to set up. Moral and cultural effects: easy access to the internet can expose users, especially the young, to pornography and other harmful material, and can erode cultural values. Over-reliance: when an organisation depends fully on its network, a breakdown stops all work, as when a bank's system goes down and no transactions can be made. Networks are classified by area as LAN (local area network: one building or campus such as a school), MAN (metropolitan area network: a town or city) and WAN (wide area network: a country or the world, the internet being the largest)."
+    },
+    {
+     "icon": "📶",
+     "title": "Data communication terms",
+     "text": "Data communication is the transmission of data from one location to another. A data signal is the electromagnetic or voltage form in which data travels. An analogue signal is a continuous wave that varies smoothly; a digital signal is discrete, made of on/off pulses (1s and 0s). Modulation converts digital data into analogue form for transmission and demodulation converts it back; a modem (modulator-demodulator) does both. Multiplexing sends several signals at the same time over one medium; a multiplexer combines them and a demultiplexer separates them at the other end. Bandwidth is the maximum amount of data a channel can carry per second, measured in bits per second (bps). Baseband carries one signal at a time using the whole bandwidth of the medium, as in most LANs; broadband carries many signals at once on different frequencies. Attenuation is the loss of signal strength as it travels further along a medium. Guided (bounded) media direct signals along a physical path such as a cable; unguided (unbounded) media send signals through air or space."
+    },
+    {
+     "icon": "↔️",
+     "title": "Transmission modes, serial and parallel",
+     "text": "Simplex: data flows in one direction only, for example radio and television broadcasts such as KBC. Half duplex: data flows in both directions but only one way at a time, for example a walkie-talkie or police radio where users take turns. Full duplex: data flows in both directions at the same time, for example a telephone conversation. Serial transmission sends bits one after another along a single line; it is cheaper and reliable over long distances, so it is used in USB, network cables and telephone lines. Parallel transmission sends several bits at the same time along separate lines; it is faster but only suitable for short distances because bits can arrive out of step (skew), so it was used for old printer cables and inside the computer's buses."
+    },
+    {
+     "icon": "📝",
+     "title": "In the exam",
+     "text": "KCSE often asks: define a computer network; state three purposes of networking; state two limitations of networks; differentiate between LAN and WAN; define terms such as bandwidth, attenuation, multiplexing, modulation and baseband; explain the difference between simplex, half duplex and full duplex giving an example of each; and compare serial and parallel transmission. Remember: a modem modulates (digital to analogue) and demodulates (analogue to digital); attenuation is loss of signal strength over distance; bandwidth is measured in bits per second; and always give an example with each transmission mode to earn the full marks."
+    }
+   ],
+   "listen": [
+    "A network is computers and devices linked by a medium so they can communicate and share resources.",
+    "Purposes of networking: resource sharing, remote communication, distributed processing, cost effectiveness and reliability.",
+    "Limitations include security threats, high initial cost, moral and cultural effects, and over-reliance on the network.",
+    "A modem modulates digital data into analogue signals and demodulates it back.",
+    "Bandwidth is the maximum data a channel carries per second; attenuation is loss of signal strength over distance.",
+    "Simplex is one way only, half duplex is both ways in turns, and full duplex is both ways at once.",
+    "Serial sends bits one after another; parallel sends several bits at the same time over short distances."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Spot data communication around you",
+    "steps": [
+     "Look at your school computer lab or a cybercafé: list three resources that are shared over the network.",
+     "Listen to a radio, use a phone and, if possible, watch someone use a two-way radio; decide which transmission mode each one uses.",
+     "Find a modem or home router and read its label: does it mention the speed or bandwidth in Mbps?"
+    ],
+    "question": "One resource shared on a network you know, and the transmission mode of a telephone call.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Sort each example by its transmission mode.",
+      "buckets": [
+       "Simplex",
+       "Half duplex",
+       "Full duplex"
+      ],
+      "items": [
+       {
+        "t": "A KBC radio broadcast",
+        "b": 0
+       },
+       {
+        "t": "Television broadcast",
+        "b": 0
+       },
+       {
+        "t": "A security guard's walkie-talkie",
+        "b": 1
+       },
+       {
+        "t": "Police two-way radio where users say \"over\"",
+        "b": 1
+       },
+       {
+        "t": "A mobile phone call",
+        "b": 2
+       },
+       {
+        "t": "A video call on a laptop",
+        "b": 2
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A school lab connects 40 computers to one laser printer. Which purpose of networking is this?",
+        "options": [
+         "Distributed processing",
+         "Resource sharing",
+         "Remote communication",
+         "Attenuation"
+        ],
+        "answer": 1,
+        "why": "Sharing hardware such as printers, as well as data and programs, is resource sharing."
+       },
+       {
+        "q": "A signal sent along a long cable becomes weaker the further it travels. This is called...",
+        "options": [
+         "Attenuation",
+         "Multiplexing",
+         "Modulation",
+         "Bandwidth"
+        ],
+        "answer": 0,
+        "why": "Attenuation is the loss of signal strength over distance; repeaters are used to boost the signal."
+       },
+       {
+        "q": "Which device converts digital data from a computer into analogue signals for a telephone line?",
+        "options": [
+         "Multiplexer",
+         "Hub",
+         "Modem",
+         "Printer"
+        ],
+        "answer": 2,
+        "why": "A modem modulates digital data into analogue form and demodulates it back at the other end."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Which of these best defines a computer network?",
+     "options": [
+      "A single computer with many programs installed",
+      "A collection of software used to type documents",
+      "Computers and devices linked by a transmission medium to communicate and share resources",
+      "A room where computers are stored"
+     ],
+     "a": 2,
+     "why": "A network needs two or more devices, a medium linking them, and the purpose of communicating and sharing resources."
+    },
+    {
+     "q": "Which of the following is a limitation of networking?",
+     "options": [
+      "Data is exposed to security threats such as hackers and viruses",
+      "Users can share one printer",
+      "Data can be accessed from remote locations",
+      "Work continues if one computer fails"
+     ],
+     "a": 0,
+     "why": "The other three are advantages; security threats, high cost, moral effects and over-reliance are limitations."
+    },
+    {
+     "q": "A network linking the branches of a bank in Nairobi, Mombasa and Eldoret is best described as a...",
+     "options": [
+      "LAN",
+      "PAN",
+      "MAN",
+      "WAN"
+     ],
+     "a": 3,
+     "why": "A WAN covers a large geographical area such as a whole country; a MAN covers a single town or city."
+    },
+    {
+     "q": "What is modulation?",
+     "options": [
+      "Combining several signals on one channel",
+      "Converting digital data into an analogue signal for transmission",
+      "Loss of signal strength over distance",
+      "Sending bits one after another"
+     ],
+     "a": 1,
+     "why": "Modulation turns digital data into analogue form; demodulation does the reverse. A modem does both."
+    },
+    {
+     "q": "Multiplexing is...",
+     "options": [
+      "Boosting a weak signal",
+      "Converting analogue signals to digital",
+      "Sending data in one direction only",
+      "Sending several signals at the same time over one medium"
+     ],
+     "a": 3,
+     "why": "A multiplexer combines many signals on one line, and a demultiplexer separates them at the receiving end."
+    },
+    {
+     "q": "Bandwidth is measured in...",
+     "options": [
+      "Bits per second",
+      "Metres",
+      "Kilograms",
+      "Pixels per inch"
+     ],
+     "a": 0,
+     "why": "Bandwidth is the maximum amount of data a channel can carry per second, given in bps, kbps, Mbps or Gbps."
+    },
+    {
+     "q": "Which statement about baseband transmission is correct?",
+     "options": [
+      "It carries many signals at once on different frequencies",
+      "It carries one signal at a time using the whole bandwidth of the medium",
+      "It is only used by satellites",
+      "It sends data through the air"
+     ],
+     "a": 1,
+     "why": "Baseband uses the full capacity of the medium for one signal, as in most LANs; broadband splits it into many channels."
+    },
+    {
+     "q": "A walkie-talkie lets both users speak, but only one at a time. This mode is...",
+     "options": [
+      "Simplex",
+      "Full duplex",
+      "Half duplex",
+      "Parallel"
+     ],
+     "a": 2,
+     "why": "Half duplex allows two-way communication, but in only one direction at any one time."
+    },
+    {
+     "q": "Why is parallel transmission not used over long distances?",
+     "options": [
+      "It sends only one bit at a time",
+      "It cannot carry digital data",
+      "It is slower than serial transmission",
+      "Bits sent together can arrive out of step, and many lines are costly"
+     ],
+     "a": 3,
+     "why": "Parallel is fast over short distances, but over long cables the bits drift out of step (skew) and the many wires cost more."
+    },
+    {
+     "q": "Which of these uses guided (bounded) media?",
+     "options": [
+      "A satellite TV link",
+      "A radio broadcast",
+      "A computer connected by a network cable",
+      "A Bluetooth headset"
+     ],
+     "a": 2,
+     "why": "Guided media carry signals along a physical path such as a cable; the others send signals through air or space."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "KCSE 451 · Form 4 · Networking and data communication",
+   "explainer": ""
+  },
+  {
+   "track": "kcse",
+   "id": "k-media",
+   "code": "K2",
+   "name": "Transmission Media",
+   "part": "Bounded and unbounded media",
+   "read": [
+    {
+     "icon": "🔌",
+     "title": "Twisted pair and coaxial cable",
+     "text": "Twisted pair cable is made of pairs of insulated copper wires twisted around each other; the twisting reduces crosstalk (interference where a signal in one wire leaks into a neighbouring wire). Unshielded twisted pair (UTP) has no extra shielding and is the cheap, common LAN cable graded in categories such as Cat 5 (and Cat 5e) and Cat 6, the higher categories supporting faster speeds. Shielded twisted pair (STP) adds a foil or braided shield to protect against electromagnetic interference, but costs more. Twisted pair is cheap and easy to install, but suffers attenuation over long distances and has limited bandwidth. Coaxial cable has a central copper conductor, surrounded by an insulator (dielectric), a braided metal shield, and an outer plastic jacket. Thin coaxial (thinnet) is flexible and used in LANs; thick coaxial (thicknet) is stiffer and carries signals further. Coaxial is more resistant to interference and has higher bandwidth than twisted pair, but is bulkier and more expensive; it is still used for TV aerials and satellite dishes."
+    },
+    {
+     "icon": "💡",
+     "title": "Fibre optic cable",
+     "text": "Fibre optic cable carries data as pulses of light instead of electricity. Its parts are the core (very thin glass or plastic that carries the light), the cladding (surrounds the core and reflects light back into it), the buffer (a protective coating) and the jacket (the outer cover). Single-mode fibre has a very narrow core that carries one ray of light and is used over long distances; multimode fibre has a wider core that carries many rays and is used over shorter distances. Advantages: very high bandwidth, low attenuation so it carries data over long distances, immune to electromagnetic interference, very secure because it is hard to tap, and small and light. Disadvantages: expensive to buy and install, fragile, and difficult to join or repair, needing skilled technicians and special equipment. Kenya's undersea links such as SEACOM and TEAMS, which land at Mombasa, are fibre optic cables."
+    },
+    {
+     "icon": "📡",
+     "title": "Microwave and satellite",
+     "text": "Microwave transmission sends high-frequency radio signals in a straight line between dish antennas, so the dishes must have a clear line of sight. Because the earth curves and buildings or hills block the signal, relay (repeater) stations are placed on hilltops and masts to receive, boost and pass the signal on. A communication satellite is a microwave relay station in space. Geostationary satellites orbit about 36,000 km above the equator and move with the earth's rotation, so they appear fixed above one spot. An earth station sends signals up to the satellite (uplink); the satellite's transponder receives, amplifies and changes the frequency of the signal, then sends it back down (downlink) to other earth stations over a very wide area. A VSAT (very small aperture terminal) is a small dish that lets a site such as a remote school, bank branch or petrol station connect by satellite. Satellites cover wide and remote areas, but are expensive to launch and maintain and the long distance causes a delay (latency)."
+    },
+    {
+     "icon": "📻",
+     "title": "Radio, infrared, Bluetooth and cellular",
+     "text": "Radio waves travel in all directions and do not need line of sight. They are grouped by frequency: high frequency (HF) carries far by bouncing off the ionosphere, very high frequency (VHF) is used for FM radio and two-way radios, and ultra high frequency (UHF) is used for television and mobile phones. Infrared uses invisible light over a very short distance with line of sight, as in a TV remote control. Bluetooth uses low-power radio waves to link devices within about 10 metres, such as a phone and a wireless headset. Cellular (mobile) networks, such as Safaricom's, divide an area into cells, each served by a base station (mast); a call or data session is handed from one cell to the next as the user moves. Wireless media allow mobility and reach places where cables are hard to lay, but they are less secure, can suffer interference from weather and other signals, and are often slower than fibre. When choosing a medium, consider cost, data transfer speed (bandwidth), the distance to be covered, ease of installation, resistance to interference (attenuation and noise) and security."
+    },
+    {
+     "icon": "📝",
+     "title": "In the exam",
+     "text": "KCSE often asks: state two advantages of fibre optic over coaxial cable (higher bandwidth, immune to electromagnetic interference, lower attenuation over long distances, more secure, lighter); name the parts of a fibre optic cable and give their functions; differentiate between UTP and STP; explain why microwave needs relay stations (line of sight and the curvature of the earth); explain the terms uplink, downlink and transponder; and list factors to consider when choosing a transmission medium. Remember: cladding reflects light back into the core; crosstalk is reduced by twisting the wires; geostationary satellites are about 36,000 km above the equator; and bounded means guided, unbounded means wireless."
+    }
+   ],
+   "listen": [
+    "Bounded media are cables: twisted pair, coaxial and fibre optic.",
+    "Twisting the wires in twisted pair reduces crosstalk; STP adds a shield against interference.",
+    "Coaxial cable has a central copper core, insulator, braided shield and outer jacket.",
+    "Fibre optic carries light through a glass core; the cladding reflects the light back into the core.",
+    "Fibre has high bandwidth, low attenuation and immunity to interference, but is expensive and fragile.",
+    "Microwave needs line of sight, so relay stations boost the signal along the way.",
+    "Geostationary satellites sit about 36,000 km above the equator, receiving on the uplink and sending on the downlink."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Find the media around you",
+    "steps": [
+     "Look behind a computer in your school lab: is the network cable UTP? Read the printing on the cable to find its category, such as Cat 5e or Cat 6.",
+     "Look at the back of a TV decoder or satellite dish: which cable connects them?",
+     "Spot a mobile phone mast or a microwave dish on a hill or tall building near you."
+    ],
+    "question": "The type and category of network cable you found, and one wireless medium you use every day.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Sort each medium as bounded (guided) or unbounded (wireless).",
+      "buckets": [
+       "Bounded",
+       "Unbounded"
+      ],
+      "items": [
+       {
+        "t": "Unshielded twisted pair",
+        "b": 0
+       },
+       {
+        "t": "Coaxial cable",
+        "b": 0
+       },
+       {
+        "t": "Fibre optic cable",
+        "b": 0
+       },
+       {
+        "t": "Microwave",
+        "b": 1
+       },
+       {
+        "t": "Satellite",
+        "b": 1
+       },
+       {
+        "t": "Infrared",
+        "b": 1
+       },
+       {
+        "t": "Bluetooth",
+        "b": 1
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which part of a fibre optic cable reflects light back into the core?",
+        "options": [
+         "Jacket",
+         "Cladding",
+         "Buffer",
+         "Braided shield"
+        ],
+        "answer": 1,
+        "why": "The cladding has a lower refractive index than the core, so light is reflected back and stays in the core."
+       },
+       {
+        "q": "Why are relay stations needed in microwave transmission?",
+        "options": [
+         "Microwaves travel in straight lines and the earth curves, so dishes need line of sight",
+         "Microwaves can only travel through cables",
+         "Relay stations convert light into sound",
+         "They store data for later use"
+        ],
+        "answer": 0,
+        "why": "Relay stations on hills and masts keep the line of sight and boost the signal over long distances."
+       },
+       {
+        "q": "A bank wants to link its branches through busy electrical areas with the highest security and speed. Which medium suits it best?",
+        "options": [
+         "Unshielded twisted pair",
+         "Infrared",
+         "Fibre optic cable",
+         "Bluetooth"
+        ],
+        "answer": 2,
+        "why": "Fibre is immune to electromagnetic interference, hard to tap and has very high bandwidth."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is the main purpose of twisting the wires in a twisted pair cable?",
+     "options": [
+      "To make the cable look neat",
+      "To carry light signals",
+      "To reduce crosstalk and interference",
+      "To make the cable stronger"
+     ],
+     "a": 2,
+     "why": "Twisting cancels much of the interference between neighbouring wires, known as crosstalk."
+    },
+    {
+     "q": "How does STP differ from UTP?",
+     "options": [
+      "STP has a shield that protects against electromagnetic interference",
+      "STP carries light while UTP carries electricity",
+      "STP is cheaper than UTP",
+      "STP has no copper wires"
+     ],
+     "a": 0,
+     "why": "Shielded twisted pair adds foil or braiding around the pairs, which reduces interference but raises the cost."
+    },
+    {
+     "q": "Which is the correct order of the layers of a coaxial cable, from the centre outwards?",
+     "options": [
+      "Jacket, shield, insulator, copper conductor",
+      "Shield, copper conductor, jacket, insulator",
+      "Insulator, jacket, copper conductor, shield",
+      "Copper conductor, insulator, braided shield, jacket"
+     ],
+     "a": 3,
+     "why": "The central copper conductor carries the signal, the insulator separates it from the shield, and the jacket protects everything."
+    },
+    {
+     "q": "In a fibre optic cable, data is carried as...",
+     "options": [
+      "Electrical current",
+      "Pulses of light",
+      "Sound waves",
+      "Radio waves"
+     ],
+     "a": 1,
+     "why": "A light source such as a laser or LED sends pulses of light through the glass core."
+    },
+    {
+     "q": "Which is an advantage of fibre optic cable over coaxial cable?",
+     "options": [
+      "It is cheaper to buy and install",
+      "It is easier to join and repair",
+      "It is immune to electromagnetic interference",
+      "It carries electricity better"
+     ],
+     "a": 2,
+     "why": "Light is not affected by electromagnetic interference; fibre also has higher bandwidth and lower attenuation."
+    },
+    {
+     "q": "Single-mode fibre differs from multimode fibre because it...",
+     "options": [
+      "Has a narrower core carrying one ray of light, suited to long distances",
+      "Has a wider core carrying many rays of light",
+      "Uses copper instead of glass",
+      "Is used only inside a computer"
+     ],
+     "a": 0,
+     "why": "Single-mode fibre's narrow core keeps light on one path, so signals travel further; multimode suits shorter distances."
+    },
+    {
+     "q": "Geostationary communication satellites orbit at about...",
+     "options": [
+      "360 km above the equator",
+      "3,600 km above the North Pole",
+      "360,000 km above the equator",
+      "36,000 km above the equator"
+     ],
+     "a": 3,
+     "why": "At about 36,000 km above the equator a satellite moves with the earth's rotation, so it appears fixed above one spot."
+    },
+    {
+     "q": "In satellite communication, the transponder...",
+     "options": [
+      "Sends signals from the earth station up to the satellite",
+      "Receives, amplifies and changes the frequency of signals before sending them back",
+      "Is the dish on the roof of a remote school",
+      "Stores all the data that passes through"
+     ],
+     "a": 1,
+     "why": "The transponder on the satellite receives the uplink signal, boosts it and changes its frequency for the downlink."
+    },
+    {
+     "q": "Which wireless medium needs line of sight and works only over a very short distance, as in a TV remote?",
+     "options": [
+      "Bluetooth",
+      "Satellite",
+      "Infrared",
+      "HF radio"
+     ],
+     "a": 2,
+     "why": "Infrared light is blocked by walls and objects, so the sender and receiver must face each other at close range."
+    },
+    {
+     "q": "Which of these is a factor to consider when choosing a transmission medium?",
+     "options": [
+      "Cost, distance, speed, interference and security",
+      "The colour of the cable",
+      "The brand of the computers",
+      "The number of windows in the room"
+     ],
+     "a": 0,
+     "why": "The right medium depends on cost, bandwidth, distance, ease of installation, interference and how secure it must be."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "KCSE 451 · Form 4 · Networking and data communication",
+   "explainer": ""
+  },
+  {
+   "track": "kcse",
+   "id": "k-topology",
+   "code": "K3",
+   "name": "Network Devices, Topologies & Security",
+   "part": "Devices, topologies and keeping networks safe",
+   "read": [
+    {
+     "icon": "🧰",
+     "title": "Network devices",
+     "text": "A network interface card (NIC) connects a computer to the network medium and gives it a unique physical (MAC) address. A modem converts digital data to analogue and back so computers can communicate over telephone lines. A hub connects computers in a star network and sends (broadcasts) every packet to all ports. A switch also connects computers, but it forwards each packet only to the port of the destination computer, which reduces traffic. A repeater receives a weak signal and regenerates (boosts) it so it can travel further, overcoming attenuation. A bridge joins two network segments (usually using the same protocol) and filters traffic between them. A router connects different networks and chooses the best path for each packet, such as linking a school LAN to the internet. A gateway connects networks that use different protocols by translating between them. A wireless access point (WAP) lets wireless devices join a wired network."
+    },
+    {
+     "icon": "💽",
+     "title": "Network software and network models",
+     "text": "Networks need software as well as hardware. A network operating system (NOS), such as Windows Server or Linux, manages network resources, user accounts, security and access to shared files and printers. Protocols are the set of rules that govern how data is sent and received on a network; TCP/IP (Transmission Control Protocol/Internet Protocol) is the protocol used on the internet, where TCP breaks data into packets and reassembles them, and IP addresses and routes the packets. In a peer-to-peer network, all computers are equal and each user shares resources from their own computer; it is cheap and simple for a few computers but hard to secure and manage. In a client-server network, one or more powerful servers provide resources and services to client computers; it is centrally managed, more secure and easy to back up, but the server is costly and if it fails users lose access."
+    },
+    {
+     "icon": "🕸️",
+     "title": "Topologies",
+     "text": "Topology is the way computers are arranged in a network. Physical topology is the actual layout of devices and cables; logical topology is how data flows through the network. Star: each computer connects to a central hub or switch; a failed cable affects only one computer and it is easy to add devices, but if the central device fails the whole network fails and it uses a lot of cable. Bus: all computers share one backbone cable with terminators at each end; it is cheap and uses little cable, but a break in the backbone brings down the network and faults are hard to find. Ring: computers form a closed loop and data passes in one direction from one to the next; every computer gets equal access, but one failed computer or cable can break the whole ring. Mesh: each computer has links to many or all others; it is very reliable because data can take another route, but it is expensive and complex to cable. Tree (hierarchical): groups of star networks connected to a backbone in levels; it is easy to expand and manage, but if the backbone or a top-level device fails, the networks below it are cut off."
+    },
+    {
+     "icon": "🔐",
+     "title": "Network security",
+     "text": "Share-level security protects each shared resource, such as a folder or printer, with its own password; anyone who knows the password can use it. User-level security gives each user an account with a username and password, and the administrator sets which resources each user can access; it is more secure and is used in client-server networks. A firewall is hardware or software that filters traffic between a private network and the internet, blocking unauthorised access. A proxy server sits between users and the internet, forwarding their requests; it can hide internal addresses, filter websites and cache (store) popular pages to speed up access. Encryption scrambles data into a coded form so that only someone with the right key can read it, protecting data as it travels. An audit trail is a record (log) of who accessed the system, when, and what they did, which helps to detect and investigate security breaches."
+    },
+    {
+     "icon": "📝",
+     "title": "In the exam",
+     "text": "KCSE often asks: state the function of a given device (hub, switch, repeater, bridge, router, gateway, NIC); differentiate between a hub and a switch, or a bridge and a router; state two advantages and two disadvantages of a given topology, often from a diagram; differentiate between physical and logical topology; differentiate between peer-to-peer and client-server networks; and explain security measures such as firewalls, encryption and audit trails. Remember: a hub broadcasts to all ports while a switch sends only to the destination; a repeater boosts a signal; a router connects different networks; a gateway connects networks using different protocols; in a star the central device is a single point of failure; and in a bus a backbone break stops the whole network."
+    }
+   ],
+   "listen": [
+    "A NIC connects a computer to the network; a repeater boosts weak signals.",
+    "A hub sends data to all ports, but a switch sends it only to the right computer.",
+    "A router connects different networks; a gateway connects networks that use different protocols.",
+    "Protocols are rules for communication; the internet uses TCP/IP.",
+    "In a star topology, if the central hub or switch fails, the whole network fails.",
+    "In a bus topology, a break in the backbone cable brings the network down.",
+    "Firewalls, proxy servers, encryption and audit trails help keep a network secure."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Inspect a network",
+    "steps": [
+     "In your school computer lab, follow the cables from a few computers: do they all go to one central box? Is it a hub or a switch?",
+     "Ask the lab technician whether the lab is peer-to-peer or client-server, and how users log in.",
+     "Find the router that connects the school or a cybercafé to the internet."
+    ],
+    "question": "The topology of your school lab and one device you saw in it.",
+    "tasks": [
+     {
+      "type": "order",
+      "label": "Put the path in order, from a lab computer out to a website on the internet.",
+      "items": [
+       {
+        "t": "A computer in the school lab",
+        "note": "The user requests a web page."
+       },
+       {
+        "t": "The NIC",
+        "note": "It puts the data onto the network cable."
+       },
+       {
+        "t": "The switch",
+        "note": "It forwards the packets to the port connected to the router."
+       },
+       {
+        "t": "The firewall",
+        "note": "It checks the traffic leaving and entering the school network."
+       },
+       {
+        "t": "The router",
+        "note": "It chooses the best path out to the internet service provider."
+       },
+       {
+        "t": "The web server",
+        "note": "It receives the request and sends the page back the same way."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Which device sends incoming data to every port, causing extra traffic?",
+        "options": [
+         "A hub",
+         "A switch",
+         "A router",
+         "A firewall"
+        ],
+        "answer": 0,
+        "why": "A hub broadcasts to all ports; a switch learns where each computer is and sends data only to that port."
+       },
+       {
+        "q": "A school wants every student to log in with their own username, with the administrator deciding who can open which folders. Which type of security is this?",
+        "options": [
+         "Share-level security",
+         "User-level security",
+         "Encryption",
+         "A proxy server"
+        ],
+        "answer": 1,
+        "why": "User-level security grants access per user account; share-level security puts a password on each shared resource."
+       },
+       {
+        "q": "Which topology keeps working best when one link fails, because data can take another route?",
+        "options": [
+         "Bus",
+         "Ring",
+         "Star",
+         "Mesh"
+        ],
+        "answer": 3,
+        "why": "Mesh provides many paths between computers, so a failed link is bypassed."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is the function of a repeater?",
+     "options": [
+      "To connect networks using different protocols",
+      "To regenerate a weak signal so it can travel further",
+      "To block unauthorised access",
+      "To give a computer a MAC address"
+     ],
+     "a": 1,
+     "why": "A repeater overcomes attenuation by receiving a weakened signal and boosting it."
+    },
+    {
+     "q": "How does a switch differ from a hub?",
+     "options": [
+      "A switch connects a computer to the internet; a hub prints documents",
+      "A switch sends data to all ports; a hub sends data to one port",
+      "A switch sends data only to the destination port; a hub sends it to all ports",
+      "There is no difference"
+     ],
+     "a": 2,
+     "why": "A switch reads the destination address and forwards data only where it is needed, reducing network traffic."
+    },
+    {
+     "q": "Which device connects two networks that use different protocols?",
+     "options": [
+      "Repeater",
+      "Hub",
+      "Network interface card",
+      "Gateway"
+     ],
+     "a": 3,
+     "why": "A gateway translates between different protocols; a router connects networks and chooses paths for packets."
+    },
+    {
+     "q": "TCP/IP is an example of a...",
+     "options": [
+      "Protocol",
+      "Topology",
+      "Transmission medium",
+      "Network operating system"
+     ],
+     "a": 0,
+     "why": "A protocol is a set of rules for communication; TCP/IP is the protocol suite used on the internet."
+    },
+    {
+     "q": "Which is an advantage of a client-server network over a peer-to-peer network?",
+     "options": [
+      "It needs no server",
+      "Resources and security are managed centrally",
+      "It is cheaper to set up",
+      "Every computer is equal"
+     ],
+     "a": 1,
+     "why": "Servers centralise user accounts, security and backups; peer-to-peer is cheaper but harder to manage."
+    },
+    {
+     "q": "Logical topology describes...",
+     "options": [
+      "The colour and length of the cables",
+      "The physical position of computers in a room",
+      "How data flows through the network",
+      "The number of printers on the network"
+     ],
+     "a": 2,
+     "why": "Physical topology is the actual layout of cables and devices; logical topology is the path data takes."
+    },
+    {
+     "q": "What is a disadvantage of a star topology?",
+     "options": [
+      "If the central hub or switch fails, the whole network fails",
+      "One faulty cable brings down the whole network",
+      "It is very hard to add new computers",
+      "Data can only travel in one direction around a loop"
+     ],
+     "a": 0,
+     "why": "All computers connect through the central device, so it is a single point of failure."
+    },
+    {
+     "q": "In a bus topology, what are terminators used for?",
+     "options": [
+      "To connect the network to the internet",
+      "To encrypt data",
+      "To boost the signal",
+      "To absorb signals at the ends of the backbone so they do not bounce back"
+     ],
+     "a": 3,
+     "why": "Without terminators, signals reflect from the cable ends and collide with new data."
+    },
+    {
+     "q": "A tree (hierarchical) topology is best described as...",
+     "options": [
+      "A single closed loop of computers",
+      "Groups of star networks connected to a backbone in levels",
+      "Every computer linked to every other computer",
+      "Two computers joined by one cable"
+     ],
+     "a": 1,
+     "why": "A tree links several star networks in levels, which makes it easy to expand, as in a school with several labs."
+    },
+    {
+     "q": "What does an audit trail provide?",
+     "options": [
+      "A coded version of the data",
+      "A cache of popular web pages",
+      "A record of who accessed the system, when, and what they did",
+      "A backup power supply"
+     ],
+     "a": 2,
+     "why": "Audit trails log user activity so administrators can detect and investigate security breaches."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "KCSE 451 · Form 4 · Networking and data communication",
+   "explainer": "network-path"
+  },
+  {
+   "track": "kcse",
+   "id": "k-apps1",
+   "code": "K4",
+   "name": "ICT in Business & Services",
+   "part": "Banking, retail, booking, learning and communication",
+   "read": [
+    {
+     "icon": "🏦",
+     "title": "Financial systems",
+     "text": "Businesses use accounting packages to record sales, purchases, invoices and ledgers, and payroll systems to calculate each worker's gross pay, deductions (such as PAYE and NSSF) and net pay, then print payslips. Banks use ICT everywhere: automated teller machines (ATMs) let customers withdraw cash and check balances at any time using a card and PIN; cheque clearing uses magnetic ink character recognition (MICR) to read the cheque number, bank code and account number printed in magnetic ink quickly and accurately; and internet and mobile banking let customers transfer money and pay bills without visiting a branch. M-Pesa is a form of electronic funds transfer (EFT): money moves from one account to another electronically, with no cash or cheque changing hands."
+    },
+    {
+     "icon": "🛒",
+     "title": "Retail systems",
+     "text": "Supermarkets use point-of-sale (POS) terminals at the till. A barcode reader scans the product's barcode, and the computer looks up the item's name and price in the stock file, prints an itemised receipt and reduces the stock level. This gives automatic stock control: when an item falls below its reorder level, the system flags it or orders more from the supplier. Customers can pay by electronic funds transfer at point of sale (EFTPOS), using a debit card or mobile money, so the amount is moved straight from the customer's account to the shop's account."
+    },
+    {
+     "icon": "✈️",
+     "title": "Reservation systems",
+     "text": "Reservation systems let customers book seats or rooms in advance from a central computer, for airlines (such as Kenya Airways), hotels, long-distance buses and the SGR train. They are real-time, online systems: an agent or a customer on the internet checks availability, books, and pays, and the central database is updated immediately. To avoid double booking, the system locks a seat or room while one transaction is being processed, so no other terminal can book it at the same moment, and once sold it is shown as unavailable to everyone."
+    },
+    {
+     "icon": "🎓",
+     "title": "Education",
+     "text": "Computer-aided instruction (CAI) uses the computer to teach: it presents lessons, drill-and-practice exercises and tests, and marks them, taking some of the teacher's role. Computer-aided learning (CAL) uses the computer as a resource that learners explore for themselves, such as encyclopaedias and tutorials. E-learning delivers lessons over the internet, so learners can study at a distance and at their own pace. Computer-based simulation models real situations, such as a science experiment or a flight, so learners can practise safely and cheaply."
+    },
+    {
+     "icon": "📝",
+     "title": "In the exam",
+     "text": "KCSE often asks: \"Explain two ways ICT is used in the banking industry\", \"Describe how a POS terminal helps in stock control\", \"Explain how a reservation system prevents double booking\", or \"Differentiate between CAI and CAL\". Each point should name the system and say what it does, for example \"ATMs allow customers to withdraw cash at any time without queueing in a banking hall\". For communication, remember fax (sends a scanned copy of a document over telephone lines), email, radio and TV broadcasting, video conferencing (people in different places meet using cameras, microphones and screens over a network) and telecommuting (working from home using a computer linked to the office network)."
+    }
+   ],
+   "listen": [
+    "Payroll systems calculate gross pay, deductions and net pay, and print payslips.",
+    "Banks read cheques using magnetic ink character recognition, MICR.",
+    "M-Pesa is an example of electronic funds transfer: money moves electronically, with no cash.",
+    "A point-of-sale terminal scans barcodes, prints receipts and updates the stock level.",
+    "Reservation systems update a central database in real time, so a seat cannot be sold twice.",
+    "CAI teaches and tests the learner; CAL lets the learner explore and learn on their own.",
+    "Telecommuting means working from home using a computer linked to the office."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "ICT in your town",
+    "steps": [
+     "Next time you are at a supermarket, watch the till: count how many items are scanned by barcode and note what is printed on the receipt.",
+     "Ask an adult how they pay bills or send money without visiting a bank. Which system do they use?",
+     "Look at an online bus, train or airline booking page and find where it shows which seats are already taken."
+    ],
+    "question": "Name one business system you saw, and explain in one sentence what ICT does in it.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A customer at a Nairobi supermarket pays KSh 2,350 with a debit card at the till. Which term describes this payment?",
+        "options": [
+         "Magnetic ink character recognition",
+         "Computer-aided instruction",
+         "Electronic funds transfer at point of sale (EFTPOS)",
+         "Telecommuting"
+        ],
+        "answer": 2,
+        "why": "EFTPOS moves money electronically from the customer's account to the shop's account at the till."
+       },
+       {
+        "q": "Two travel agents in Mombasa and Kisumu try to book the last seat on the same flight at the same moment. What stops both from getting it?",
+        "options": [
+         "The central reservation system locks the seat while the first booking is processed",
+         "The second agent's computer switches off",
+         "The airline prints two tickets and lets them decide",
+         "The seat is split between the two passengers"
+        ],
+        "answer": 0,
+        "why": "A real-time reservation system locks the record during a transaction, so the seat can only be sold once."
+       },
+       {
+        "q": "A learner uses a program that shows a lesson on fractions, gives 20 practice questions and marks them. This is an example of...",
+        "options": [
+         "Video conferencing",
+         "A payroll system",
+         "Process control",
+         "Computer-aided instruction (CAI)"
+        ],
+        "answer": 3,
+        "why": "CAI uses the computer to teach, drill and test the learner."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Match each technology to its application area.",
+      "buckets": [
+       "Banking",
+       "Retail",
+       "Reservation",
+       "Education"
+      ],
+      "items": [
+       {
+        "t": "MICR cheque reader",
+        "b": 0
+       },
+       {
+        "t": "ATM",
+        "b": 0
+       },
+       {
+        "t": "Barcode reader at a till",
+        "b": 1
+       },
+       {
+        "t": "Automatic stock reorder",
+        "b": 1
+       },
+       {
+        "t": "Online SGR seat booking",
+        "b": 2
+       },
+       {
+        "t": "Hotel room availability screen",
+        "b": 2
+       },
+       {
+        "t": "Drill-and-practice program",
+        "b": 3
+       },
+       {
+        "t": "Flight simulator for trainee pilots",
+        "b": 3
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Which technology do banks use to read the details printed at the bottom of a cheque?",
+     "options": [
+      "Magnetic ink character recognition (MICR)",
+      "Optical mark recognition (OMR)",
+      "Barcode reader",
+      "Point-of-sale terminal"
+     ],
+     "a": 0,
+     "why": "Cheque details are printed in magnetic ink, which MICR reads quickly and accurately, even if the cheque is stamped or written on."
+    },
+    {
+     "q": "Sending money to a relative through M-Pesa is an example of...",
+     "options": [
+      "Computer-aided learning",
+      "Electronic funds transfer",
+      "Cheque clearing",
+      "Telecommuting"
+     ],
+     "a": 1,
+     "why": "Electronic funds transfer (EFT) moves money from one account to another electronically, without cash or cheques."
+    },
+    {
+     "q": "Which task is carried out by a payroll system?",
+     "options": [
+      "Reading barcodes on goods",
+      "Booking airline seats",
+      "Calculating workers' net pay after deductions and printing payslips",
+      "Clearing cheques between banks"
+     ],
+     "a": 2,
+     "why": "Payroll systems work out gross pay, deductions such as PAYE and NSSF, and net pay for each employee."
+    },
+    {
+     "q": "How does a point-of-sale terminal help with stock control?",
+     "options": [
+      "It counts the money in the till at the end of the day",
+      "It prints adverts for the shop",
+      "It sends emails to customers",
+      "It reduces the stock level each time an item is scanned and flags items below the reorder level"
+     ],
+     "a": 3,
+     "why": "Each sale updates the stock file automatically, so the shop knows when to reorder."
+    },
+    {
+     "q": "An ATM allows a bank customer to...",
+     "options": [
+      "Withdraw cash and check their balance at any time",
+      "Clear cheques for the bank",
+      "Calculate staff salaries",
+      "Design new bank branches"
+     ],
+     "a": 0,
+     "why": "ATMs provide 24-hour self-service banking using a card and PIN."
+    },
+    {
+     "q": "What is the main way a reservation system avoids double booking?",
+     "options": [
+      "It only allows bookings at the airport",
+      "It updates a central database in real time and locks a seat while it is being booked",
+      "It prints tickets in advance",
+      "It limits each customer to one booking per year"
+     ],
+     "a": 1,
+     "why": "Real-time processing and record locking mean a seat or room shown as available really is free, and only one terminal can book it at a time."
+    },
+    {
+     "q": "What is the difference between CAI and CAL?",
+     "options": [
+      "CAI is used in banks; CAL is used in hospitals",
+      "CAI needs the internet; CAL does not",
+      "In CAI the computer teaches and tests; in CAL the learner uses the computer as a resource to explore",
+      "They are two names for exactly the same thing"
+     ],
+     "a": 2,
+     "why": "Computer-aided instruction takes on a teaching role, while computer-aided learning supports learners who direct their own study."
+    },
+    {
+     "q": "Trainee pilots practise landing in bad weather on a computer before flying a real aircraft. This is...",
+     "options": [
+      "Electronic funds transfer",
+      "A payroll system",
+      "Telecommuting",
+      "Computer-based simulation"
+     ],
+     "a": 3,
+     "why": "Simulation models a real situation so people can practise safely and cheaply, without risking lives or equipment."
+    },
+    {
+     "q": "An accountant in Nakuru works from home and sends reports to her Nairobi office over the internet. This is called...",
+     "options": [
+      "Telecommuting",
+      "Video conferencing",
+      "E-learning",
+      "Teletext"
+     ],
+     "a": 0,
+     "why": "Telecommuting means working away from the office, usually at home, using computers and communication links."
+    },
+    {
+     "q": "Managers in Nairobi, Kisumu and Eldoret hold a live meeting where they see and hear each other on screens. This is...",
+     "options": [
+      "Fax",
+      "Video conferencing",
+      "Email",
+      "Radio broadcasting"
+     ],
+     "a": 1,
+     "why": "Video conferencing uses cameras, microphones, screens and a network so people in different places can meet face to face, saving travel time and cost."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "KCSE 451 · Form 4 · Application areas of ICT",
+   "explainer": ""
+  },
+  {
+   "track": "kcse",
+   "id": "k-apps2",
+   "code": "K5",
+   "name": "ICT in Industry, Science & Society",
+   "part": "Factories, research, transport, law and more",
+   "read": [
+    {
+     "icon": "🏭",
+     "title": "Industry",
+     "text": "Industrial simulation models a system, such as a new production line or a nuclear plant, on a computer so designers can test it before building. Process control uses sensors to monitor a continuous process, such as temperature in a brewery or pressure in an oil refinery; the computer compares readings with set values and adjusts valves or heaters automatically. Computer-aided design (CAD) lets engineers and architects draw and test products and buildings on screen, and computer-aided manufacturing (CAM) uses those designs to control machines that cut and shape parts. Robots do repetitive, heavy or dangerous jobs, such as welding and painting car bodies, accurately and without tiring."
+    },
+    {
+     "icon": "🔬",
+     "title": "Science, research and libraries",
+     "text": "Weather forecasting uses powerful computers to process huge amounts of data from weather stations, satellites and radar, run models and predict the weather. In medical research computers analyse test results, model diseases and help design drugs; in hospitals expert systems help diagnose illness. The military uses ICT for simulating battles, guiding missiles and keeping secure communication. Library systems record the lending of books (who borrowed what and when it is due), keep an inventory of stock, and hold a computerised catalogue so users can search by title, author or subject."
+    },
+    {
+     "icon": "🚆",
+     "title": "Transport, entertainment and the home",
+     "text": "Air traffic control uses radar and computers to track aircraft and keep them safely apart during take-off, flight and landing. Shipping and railway control systems track vessels and trains and control signals and points. GPS (global positioning system) uses satellites to find the exact position of a vehicle, so companies can track lorries, buses and parcels. In entertainment, computers are used to play and create games, record and edit music, and edit video and make special effects. At home people use ICT for study, budgeting, communication and entertainment, and to control appliances."
+    },
+    {
+     "icon": "🛡️",
+     "title": "Expert systems, marketing, VR and law enforcement",
+     "text": "An expert system copies the knowledge of a human expert. It has three parts: a knowledge base (facts and rules from experts), an inference engine (which applies the rules to the user's answers to reach a conclusion) and a user interface (through which the user asks and answers questions). In marketing, ICT supports e-commerce (buying and selling online), electronic presentations to clients, and advertising on websites and social media. Virtual reality (VR) creates a 3D artificial world that the user enters with a head-mounted display (HMD) and data gloves that sense hand movements. Law enforcement uses biometrics such as fingerprint matching to identify suspects, CCTV cameras to monitor public places, and computerised police records to store and search criminal records quickly."
+    },
+    {
+     "icon": "📝",
+     "title": "In the exam",
+     "text": "KCSE often asks: \"Explain three ways computers are used in industry\", \"Name the three components of an expert system and state the function of each\", \"Explain how ICT is used in weather forecasting\", \"State two devices used to interact with a virtual reality system\", or \"Describe how computers are used in law enforcement\". Remember: process control uses sensors and works in real time; CAD is for designing, CAM is for manufacturing; an expert system is knowledge base + inference engine + user interface; VR uses a head-mounted display and data gloves. Always link the device or system to what it does."
+    }
+   ],
+   "listen": [
+    "Process control uses sensors to monitor a process and adjusts it automatically.",
+    "CAD is used to design products; CAM uses computers to control the machines that make them.",
+    "Robots do repetitive, heavy or dangerous work, like welding car bodies.",
+    "Weather forecasting uses supercomputers to process data from satellites and weather stations.",
+    "An expert system has a knowledge base, an inference engine and a user interface.",
+    "Virtual reality uses a head-mounted display and data gloves.",
+    "Police use fingerprint matching, CCTV and computerised records to fight crime."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Spot ICT around you",
+    "steps": [
+     "Look out for CCTV cameras on a street or in a shop, and note what they might help with.",
+     "Listen to a weather forecast on radio or TV and note which information it gives, such as rain or temperature.",
+     "Ask someone who has used a GPS map app how it knew where they were."
+    ],
+    "question": "Name one application area you spotted, the technology used, and what it does.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A milk processing plant in Nakuru must keep pasteurising tanks at a fixed temperature. Sensors feed readings to a computer that switches heaters on and off. This is...",
+        "options": [
+         "Computer-aided design",
+         "Process control",
+         "Virtual reality",
+         "E-commerce"
+        ],
+        "answer": 1,
+        "why": "Process control monitors a continuous process with sensors and makes adjustments automatically."
+       },
+       {
+        "q": "A doctor answers questions on screen and the program suggests a likely illness by applying stored rules. Which part of the system applies the rules?",
+        "options": [
+         "The user interface",
+         "The knowledge base",
+         "The inference engine",
+         "The printer"
+        ],
+        "answer": 2,
+        "why": "The knowledge base stores the facts and rules; the inference engine reasons with them to reach a conclusion."
+       },
+       {
+        "q": "A transport company wants to know where each of its lorries is on the Mombasa–Nairobi highway at any time. What should it use?",
+        "options": [
+         "GPS tracking",
+         "CAD software",
+         "A library catalogue",
+         "Data gloves"
+        ],
+        "answer": 0,
+        "why": "GPS uses satellite signals to find each vehicle's exact position, which can be sent back to the company."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Match each technology to its application area.",
+      "buckets": [
+       "Industry",
+       "Transport",
+       "Law enforcement",
+       "Virtual reality"
+      ],
+      "items": [
+       {
+        "t": "Robot welding car bodies",
+        "b": 0
+       },
+       {
+        "t": "CAD/CAM",
+        "b": 0
+       },
+       {
+        "t": "Air traffic control radar",
+        "b": 1
+       },
+       {
+        "t": "GPS lorry tracking",
+        "b": 1
+       },
+       {
+        "t": "Fingerprint matching",
+        "b": 2
+       },
+       {
+        "t": "CCTV in a town centre",
+        "b": 2
+       },
+       {
+        "t": "Head-mounted display",
+        "b": 3
+       },
+       {
+        "t": "Data gloves",
+        "b": 3
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Which of the following is the best example of process control?",
+     "options": [
+      "An architect drawing a house plan on screen",
+      "A librarian searching the catalogue",
+      "A computer using sensors to keep the temperature in an oil refinery within set limits",
+      "A shopper buying shoes online"
+     ],
+     "a": 2,
+     "why": "Process control uses sensors to monitor a continuous process and automatically adjusts it to keep it within set values."
+    },
+    {
+     "q": "What does CAM stand for, and what does it do?",
+     "options": [
+      "Computer-aided manufacturing: computers control the machines that make products",
+      "Computer-aided marketing: computers advertise products",
+      "Computer-assisted mail: computers send letters",
+      "Computer-aided memory: computers store more data"
+     ],
+     "a": 0,
+     "why": "CAD is used to design a product, and CAM uses the design to control machine tools that make it."
+    },
+    {
+     "q": "Why are robots used on car assembly lines?",
+     "options": [
+      "They need no electricity",
+      "They can make their own decisions about car designs",
+      "They are cheaper to buy than any human worker's yearly wage",
+      "They do repetitive, heavy or dangerous tasks accurately and without tiring"
+     ],
+     "a": 3,
+     "why": "Robots are ideal for welding, painting and lifting, where precision and safety matter."
+    },
+    {
+     "q": "Which are the three components of an expert system?",
+     "options": [
+      "Input, process and output",
+      "Knowledge base, inference engine and user interface",
+      "Monitor, keyboard and mouse",
+      "Sensor, actuator and robot"
+     ],
+     "a": 1,
+     "why": "The knowledge base holds expert facts and rules, the inference engine reasons with them, and the user interface lets the user interact."
+    },
+    {
+     "q": "How do computers help in weather forecasting?",
+     "options": [
+      "They control the rain",
+      "They replace weather stations completely",
+      "They only print weather maps",
+      "They process large amounts of data from satellites and weather stations to predict the weather"
+     ],
+     "a": 3,
+     "why": "Weather forecasting needs fast computers to analyse huge volumes of data and run models of the atmosphere."
+    },
+    {
+     "q": "Which two devices are commonly used to interact with a virtual reality system?",
+     "options": [
+      "Head-mounted display and data gloves",
+      "Barcode reader and POS terminal",
+      "MICR reader and printer",
+      "Plotter and scanner"
+     ],
+     "a": 0,
+     "why": "The head-mounted display shows the 3D world and tracks head movement, and data gloves sense hand movement."
+    },
+    {
+     "q": "Which task does a computerised library system perform?",
+     "options": [
+      "Controlling aircraft landings",
+      "Recording which member borrowed a book and when it is due back",
+      "Welding metal parts",
+      "Forecasting rainfall"
+     ],
+     "a": 1,
+     "why": "Library systems handle lending, keep an inventory of books and provide a searchable catalogue."
+    },
+    {
+     "q": "How does ICT help air traffic control?",
+     "options": [
+      "It sells airline tickets",
+      "It designs new aircraft engines",
+      "It uses radar and computers to track aircraft and keep them safely apart",
+      "It prints boarding passes"
+     ],
+     "a": 2,
+     "why": "Air traffic control systems show controllers each aircraft's position and height so they can prevent collisions."
+    },
+    {
+     "q": "The police compare a fingerprint found at a crime scene with millions of stored records in seconds. This is an example of...",
+     "options": [
+      "Computer-aided design",
+      "E-commerce",
+      "Process control",
+      "Biometric identification"
+     ],
+     "a": 3,
+     "why": "Biometrics use unique body features, such as fingerprints, to identify people, and computers can search large records quickly."
+    },
+    {
+     "q": "A Kenyan craft business sells baskets to customers through its website and receives payment online. This is...",
+     "options": [
+      "E-commerce",
+      "Telecommuting",
+      "Simulation",
+      "Process control"
+     ],
+     "a": 0,
+     "why": "E-commerce is buying and selling goods and services over the internet, reaching customers far beyond the shop."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "KCSE 451 · Form 4 · Application areas of ICT",
+   "explainer": ""
+  },
+  {
+   "track": "kcse",
+   "id": "k-impact",
+   "code": "K6",
+   "name": "Impact of ICT on Society",
+   "part": "Jobs, health, environment, culture and the future",
+   "read": [
+    {
+     "icon": "💼",
+     "title": "Effects on employment",
+     "text": "ICT affects employment in three ways. Job creation: new jobs appear, such as programmer, network administrator, web designer and computer technician. Job replacement: some jobs disappear and are taken over by people with ICT skills or by computerised machines, so workers who do not retrain may lose their jobs (for example, a manual filing clerk). Job displacement: a worker is moved to a different job or department, usually after retraining, instead of being laid off. Automated production, where computer-controlled machines and robots do repetitive work in factories, raises output and quality and lowers costs, but reduces the need for unskilled labour."
+    },
+    {
+     "icon": "🩺",
+     "title": "Workers' health and ergonomics",
+     "text": "Long hours at a computer can cause repetitive strain injury (RSI), pain in the wrists, fingers and arms from repeated typing and mouse use; eye strain and headaches from glare and staring at the screen; back and neck problems from poor posture and badly designed furniture; and stress, including computer phobia (fear of using computers) and information overload. Older monitors were also said to give off low-level radiation. Ergonomics is the design of the working environment to suit the user: adjustable chairs with back support, the screen at eye level, anti-glare filters, wrist rests, good lighting and ventilation, and regular breaks."
+    },
+    {
+     "icon": "🌍",
+     "title": "Environment and culture",
+     "text": "ICT uses a lot of electricity, and old computers, phones and batteries become e-waste that contains harmful substances such as lead and mercury; burning or dumping it pollutes soil, water and air, so it should be recycled through licensed e-waste handlers. On culture, ICT brings moral issues such as easy access to pornography and violent content, flaming (sending rude or abusive messages online), computer crime (hacking, fraud, piracy, cyberbullying) and erosion of culture, as young people adopt foreign values and languages from the internet. In Kenya, the Computer Misuse and Cybercrimes Act (2018) makes offences such as unauthorised access and cyber harassment punishable, and the Data Protection Act (2019) protects people's personal data."
+    },
+    {
+     "icon": "🚀",
+     "title": "Breakthroughs and future trends",
+     "text": "ICT has brought breakthroughs in health care, such as expert systems that help diagnose illness and telemedicine, where a doctor treats or advises a patient far away through ICT, and in communication, through email, mobile phones, video calls and mobile money like M-Pesa. Computer systems keep evolving: hardware becomes smaller, faster and cheaper, and software more powerful and easier to use. Future trends centre on artificial intelligence (AI), which includes expert systems, natural language processing (computers understanding ordinary human language), voice recognition, robotics and artificial neural networks (systems that learn in a way modelled on the human brain). The internet, often called the information superhighway, links all of this together."
+    },
+    {
+     "icon": "📝",
+     "title": "In the exam",
+     "text": "KCSE usually asks you to state, explain or describe: \"State three ways ICT has affected employment\", \"Explain two health problems associated with computer use and how to prevent them\", \"Define flaming\", \"Explain two effects of ICT on the environment\", \"Describe two areas of artificial intelligence\" or \"Differentiate between job replacement and job displacement\". Remember: creation is new jobs, replacement is jobs lost to ICT skills or machines, displacement is moving a worker elsewhere. Pair each health problem with its cause and a prevention. Give an example with each point, because explanations earn more marks than single words."
+    }
+   ],
+   "listen": [
+    "ICT affects employment through job creation, job replacement and job displacement.",
+    "Job displacement means a worker is moved to another job or department, usually after retraining.",
+    "Repetitive strain injury comes from repeated typing and mouse use; eye strain comes from glare and staring at the screen.",
+    "Ergonomics means designing the workplace to suit the user, like adjustable chairs and the screen at eye level.",
+    "Old computers become e-waste, which contains harmful substances and should be recycled safely.",
+    "Flaming is sending rude or abusive messages online.",
+    "Artificial intelligence includes expert systems, natural language processing, voice recognition, robotics and neural networks."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "ICT in your community",
+    "steps": [
+     "Look at a computer workstation at school or home. List two things that follow good ergonomics and two that could be improved.",
+     "Ask an adult who works in an office, bank or shop how ICT has changed their job over the years. Was any job created, replaced or displaced?",
+     "Find out where old phones and computers in your area end up, and whether there is a safe e-waste collection point."
+    ],
+    "question": "Two ergonomic improvements you would make to the workstation you checked.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A bank introduces ATMs and online banking. Some cashiers who retrain are moved to the customer care and ICT support desks instead of being laid off. Which effect of ICT is this?",
+        "options": [
+         "Job creation",
+         "Job replacement",
+         "Job displacement",
+         "Automated production"
+        ],
+        "answer": 2,
+        "why": "The workers keep their employment but are moved to different roles after retraining, which is job displacement."
+       },
+       {
+        "q": "A data entry clerk complains of pain in her wrists and fingers after typing all day. What is the most likely problem, and the best way to prevent it?",
+        "options": [
+         "Repetitive strain injury; use a wrist rest, keep good posture and take regular breaks",
+         "Eye strain; fit an anti-glare filter",
+         "Computer phobia; avoid using computers",
+         "Radiation; move the printer further away"
+        ],
+        "answer": 0,
+        "why": "RSI comes from repeating the same movements for long periods. Ergonomic support and breaks reduce it."
+       },
+       {
+        "q": "A doctor in Nairobi examines X-rays sent from a clinic in a remote county and advises the local nurse by video call. What is this called?",
+        "options": [
+         "An expert system",
+         "Natural language processing",
+         "Telemedicine",
+         "Automated production"
+        ],
+        "answer": 2,
+        "why": "Telemedicine uses ICT to give medical care or advice to patients who are far away."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Is each effect of ICT positive or negative?",
+      "buckets": [
+       "Positive",
+       "Negative"
+      ],
+      "items": [
+       {
+        "t": "New jobs such as web designer and network administrator",
+        "b": 0
+       },
+       {
+        "t": "Old phones and computers dumped as e-waste",
+        "b": 1
+       },
+       {
+        "t": "Doctors advising remote patients through telemedicine",
+        "b": 0
+       },
+       {
+        "t": "Flaming and cyberbullying on social media",
+        "b": 1
+       },
+       {
+        "t": "Robots doing dangerous, repetitive work in factories",
+        "b": 0
+       },
+       {
+        "t": "Repetitive strain injury from long hours of typing",
+        "b": 1
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is job displacement?",
+     "options": [
+      "Creating new jobs because of ICT",
+      "Moving a worker to another job or department, usually after retraining",
+      "Permanently losing a job to a robot",
+      "Working from home using the internet"
+     ],
+     "a": 1,
+     "why": "In displacement the worker stays employed but in a different role. When jobs disappear and are taken by people with ICT skills or by machines, that is job replacement."
+    },
+    {
+     "q": "Which of these is an example of job creation by ICT?",
+     "options": [
+      "A typist losing a job to a word processor",
+      "A cashier moved to the customer care desk",
+      "A factory worker replaced by a robot",
+      "A company hiring a database administrator"
+     ],
+     "a": 3,
+     "why": "Job creation means new jobs that did not exist before ICT, such as database administrator, programmer and web designer."
+    },
+    {
+     "q": "What causes repetitive strain injury (RSI)?",
+     "options": [
+      "Repeating the same hand and wrist movements, such as typing, for long periods",
+      "Staring at a bright screen in a dark room",
+      "Radiation from the monitor",
+      "Reading too much information online"
+     ],
+     "a": 0,
+     "why": "RSI affects the wrists, fingers and arms. Wrist rests, good posture and regular breaks help prevent it."
+    },
+    {
+     "q": "What is ergonomics?",
+     "options": [
+      "The study of computer viruses",
+      "The safe disposal of old computers",
+      "Designing the working environment and equipment to suit the user's comfort and health",
+      "Measuring how fast a computer works"
+     ],
+     "a": 2,
+     "why": "Ergonomic features include adjustable chairs, the screen at eye level, anti-glare filters, wrist rests and good lighting."
+    },
+    {
+     "q": "What is flaming?",
+     "options": [
+      "Overheating of a computer's processor",
+      "Sending rude, abusive or insulting messages online",
+      "Burning e-waste in the open",
+      "Copying software without a licence"
+     ],
+     "a": 1,
+     "why": "Flaming is a moral issue caused by ICT. It usually happens on social media, forums and email."
+    },
+    {
+     "q": "Why is careless disposal of e-waste harmful?",
+     "options": [
+      "It makes new computers more expensive",
+      "It slows down the internet",
+      "It deletes data on other computers",
+      "It contains harmful substances like lead and mercury that pollute soil, water and air"
+     ],
+     "a": 3,
+     "why": "E-waste should be collected and recycled by licensed handlers, not burned or dumped."
+    },
+    {
+     "q": "Which branch of artificial intelligence lets a computer understand ordinary human language, such as typed questions in English?",
+     "options": [
+      "Robotics",
+      "Natural language processing",
+      "Automated production",
+      "Telemedicine"
+     ],
+     "a": 1,
+     "why": "Natural language processing helps computers understand and respond to everyday human language, for example in chatbots."
+    },
+    {
+     "q": "What is an expert system?",
+     "options": [
+      "A program that stores the knowledge of human experts and uses it to give advice or make decisions",
+      "A very fast computer used by experts",
+      "A network used by professionals",
+      "An expert who repairs computers"
+     ],
+     "a": 0,
+     "why": "Expert systems are used, for example, to help doctors diagnose diseases or to advise farmers. They are a branch of artificial intelligence."
+    },
+    {
+     "q": "Which Kenyan law makes unauthorised access to computer systems and cyber harassment offences?",
+     "options": [
+      "The Data Protection Act (2019)",
+      "The Copyright Act",
+      "The Computer Misuse and Cybercrimes Act (2018)",
+      "The Employment Act"
+     ],
+     "a": 2,
+     "why": "The Computer Misuse and Cybercrimes Act (2018) deals with computer crime. The Data Protection Act (2019) protects personal data."
+    },
+    {
+     "q": "What are artificial neural networks?",
+     "options": [
+      "Networks of computers in a hospital",
+      "Cables that connect the brain to a computer",
+      "The wiring inside a motherboard",
+      "Computer systems that learn from examples in a way modelled on the human brain"
+     ],
+     "a": 3,
+     "why": "Neural networks are used for tasks like recognising faces, handwriting and speech. They are part of artificial intelligence."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "KCSE 451 · Form 4 · Impact of ICT on society",
+   "explainer": ""
+  },
+  {
+   "track": "kcse",
+   "id": "k-careers",
+   "code": "K7",
+   "name": "Careers in ICT",
+   "part": "Jobs, duties and where to study",
+   "read": [
+    {
+     "icon": "🧑‍💻",
+     "title": "Building systems and software",
+     "text": "A computer operator enters data, operates and monitors computers and peripherals, keeps a log of activities and does basic troubleshooting. A programmer writes, tests, debugs, documents and maintains programs. A systems analyst studies the current system, identifies problems, recommends and designs a new system, and writes specifications for programmers. A chief programmer leads the programming team, assigns tasks and makes sure programs meet standards. A software engineer designs, develops and tests system and application software. A computer engineer designs, develops and maintains computer hardware and its components."
+    },
+    {
+     "icon": "🌐",
+     "title": "Data, networks and the web",
+     "text": "A database administrator (DBA) designs and maintains the organisation's databases, controls who can access them, keeps data secure and accurate, and makes backups and restores data after a failure. A network administrator sets up and configures the network, monitors its performance, solves network problems and keeps it secure. A web administrator, or webmaster, develops, tests and updates the organisation's website, monitors traffic and responds to users' queries. A web designer plans and creates the layout and look of web pages. A graphic designer creates images, logos, adverts and other visual material."
+    },
+    {
+     "icon": "🛠️",
+     "title": "Support, management and business",
+     "text": "A computer technician assembles, installs, repairs, upgrades and troubleshoots hardware and software. An ICT trainer or teacher teaches ICT skills, prepares learning materials and assesses learners. An information systems manager plans and controls the ICT department and makes sure the organisation's information needs are met. A data processing manager supervises the data processing section and its staff so that data is processed accurately and on time. A computer sales representative sells hardware and software and advises customers on what to buy. An ICT entrepreneur runs an ICT business, such as a cyber café or a software firm, while an ICT consultant gives expert advice to organisations for a fee."
+    },
+    {
+     "icon": "🎓",
+     "title": "Further education and choosing a course",
+     "text": "After KCSE you can study ICT at public and private universities (degrees), national polytechnics and TVET colleges (certificates and diplomas), or take professional certifications such as ICDL, CCNA or vendor certificates from companies like Microsoft, Cisco and CompTIA. Government-sponsored places are allocated through KUCCPS. When choosing a course or institution, consider: accreditation (universities by the Commission for University Education, CUE, and TVET institutions by the TVET Authority, TVETA), entry requirements (your KCSE grade and subject cluster), cost of fees and upkeep, duration of the course, reputation of the institution, mode of study (full-time, part-time, evening or online), and your own interests and the job market."
+    },
+    {
+     "icon": "📝",
+     "title": "In the exam",
+     "text": "KCSE typically asks: \"State three duties of a database administrator\", \"Differentiate between a programmer and a systems analyst\", \"Name the ICT career responsible for maintaining a website\" or \"State three factors to consider when choosing an institution for further training in ICT\". Remember the key differences: the systems analyst designs the system, the programmer codes it, the computer operator runs it, the technician repairs it. A computer engineer works on hardware, a software engineer on software. Give duties as action phrases, such as \"backing up the database\", and give at least as many points as the question asks."
+    }
+   ],
+   "listen": [
+    "A programmer writes, tests, debugs and maintains programs.",
+    "A systems analyst studies the current system and designs a new one.",
+    "A database administrator controls access to the database, keeps it secure and makes backups.",
+    "A network administrator sets up, monitors and secures the network.",
+    "A webmaster develops, updates and monitors the organisation's website.",
+    "A computer technician assembles, repairs and upgrades computers.",
+    "When choosing an institution, check accreditation, entry requirements, cost, duration, reputation and mode of study."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Plan your ICT path",
+    "steps": [
+     "Pick one ICT career you like and write down three of its duties.",
+     "Look up two institutions that offer a course leading to that career. Check whether each is accredited by CUE or TVETA, and note the entry requirements and course length.",
+     "If you can, ask someone working in ICT what a normal working day looks like for them."
+    ],
+    "question": "Your chosen ICT career and three of its duties.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A school's computer lab has several machines that will not boot and one with a broken keyboard. Who is best suited to fix them?",
+        "options": [
+         "A systems analyst",
+         "A computer technician",
+         "A web designer",
+         "A data processing manager"
+        ],
+        "answer": 1,
+        "why": "Computer technicians assemble, repair, upgrade and troubleshoot hardware and software."
+       },
+       {
+        "q": "A hospital wants to replace its paper patient records with a computerised system. Who should first study the current system and design the new one?",
+        "options": [
+         "A programmer",
+         "A computer operator",
+         "A systems analyst",
+         "A graphic designer"
+        ],
+        "answer": 2,
+        "why": "The systems analyst studies the existing system, recommends improvements and designs the new system. Programmers then write the code."
+       },
+       {
+        "q": "Wanjiru has a C+ in KCSE and wants an ICT diploma. She finds a college with low fees but cannot confirm it is registered with TVETA. What should she do first?",
+        "options": [
+         "Pay the fees quickly before places run out",
+         "Choose it because it is the cheapest",
+         "Confirm the college's accreditation before applying",
+         "Ignore accreditation as long as the course is short"
+        ],
+        "answer": 2,
+        "why": "An unaccredited institution may award certificates that employers and other institutions do not recognise. Accreditation comes first."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Match each duty to the ICT career.",
+      "buckets": [
+       "Database administrator",
+       "Network administrator",
+       "Webmaster",
+       "Programmer"
+      ],
+      "items": [
+       {
+        "t": "Backing up data and restoring it after a failure",
+        "b": 0
+       },
+       {
+        "t": "Controlling which users can view or change records",
+        "b": 0
+       },
+       {
+        "t": "Configuring routers and switches",
+        "b": 1
+       },
+       {
+        "t": "Monitoring the network for faults and intruders",
+        "b": 1
+       },
+       {
+        "t": "Updating the organisation's website with new information",
+        "b": 2
+       },
+       {
+        "t": "Responding to queries from website visitors",
+        "b": 2
+       },
+       {
+        "t": "Writing and debugging program code",
+        "b": 3
+       },
+       {
+        "t": "Documenting a program for future maintenance",
+        "b": 3
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "Which of these is a duty of a database administrator?",
+     "options": [
+      "Repairing faulty monitors",
+      "Making backups of the database and restoring data after a failure",
+      "Designing company logos",
+      "Selling software to customers"
+     ],
+     "a": 1,
+     "why": "A DBA designs and maintains databases, controls access, ensures security and integrity, and backs up and restores data."
+    },
+    {
+     "q": "Who studies an existing system, identifies its problems and designs a new system?",
+     "options": [
+      "A systems analyst",
+      "A computer operator",
+      "A computer technician",
+      "A web designer"
+     ],
+     "a": 0,
+     "why": "The systems analyst designs the system and writes specifications. The programmer then turns the design into code."
+    },
+    {
+     "q": "What is the main difference between a computer engineer and a software engineer?",
+     "options": [
+      "There is no difference",
+      "A computer engineer only sells computers",
+      "A computer engineer works mainly on hardware; a software engineer works mainly on software",
+      "A software engineer repairs printers"
+     ],
+     "a": 2,
+     "why": "Computer engineers design and develop hardware and its components. Software engineers design, develop and test system and application software."
+    },
+    {
+     "q": "Who leads a team of programmers, assigns tasks and makes sure the programs meet standards?",
+     "options": [
+      "A computer operator",
+      "A webmaster",
+      "A data processing manager",
+      "A chief programmer"
+     ],
+     "a": 3,
+     "why": "The chief programmer coordinates the programming team and checks the quality of their work."
+    },
+    {
+     "q": "Which ICT professional is responsible for developing, updating and monitoring an organisation's website?",
+     "options": [
+      "A network administrator",
+      "A webmaster (web administrator)",
+      "A computer technician",
+      "A database administrator"
+     ],
+     "a": 1,
+     "why": "The webmaster keeps the website running and up to date, monitors traffic and responds to users' queries."
+    },
+    {
+     "q": "Which of these is a duty of a computer operator?",
+     "options": [
+      "Entering data and keeping a log of computer activities",
+      "Designing a new information system",
+      "Writing system specifications",
+      "Approving the ICT department's budget"
+     ],
+     "a": 0,
+     "why": "Computer operators run the computers day to day: entering data, operating peripherals, keeping logs and doing basic troubleshooting."
+    },
+    {
+     "q": "Which body accredits universities in Kenya?",
+     "options": [
+      "KNEC",
+      "KUCCPS",
+      "TVETA",
+      "The Commission for University Education (CUE)"
+     ],
+     "a": 3,
+     "why": "CUE accredits universities. TVETA accredits TVET institutions, KUCCPS places students, and KNEC runs national examinations like KCSE."
+    },
+    {
+     "q": "Which of these is a professional certification in networking?",
+     "options": [
+      "KCSE",
+      "CCNA",
+      "A university degree in commerce",
+      "A driving licence"
+     ],
+     "a": 1,
+     "why": "CCNA (Cisco Certified Network Associate) is a vendor certification for networking. ICDL covers basic computer skills."
+    },
+    {
+     "q": "Which of these is NOT a factor to consider when choosing an institution for ICT training?",
+     "options": [
+      "Accreditation of the institution",
+      "Entry requirements",
+      "Cost and duration of the course",
+      "The colour of the institution's buildings"
+     ],
+     "a": 3,
+     "why": "Accreditation, entry requirements, cost, duration, reputation and mode of study all affect the value and suitability of the course."
+    },
+    {
+     "q": "What does an ICT consultant do?",
+     "options": [
+      "Repairs computers in a cyber café",
+      "Enters data for a bank",
+      "Gives expert ICT advice to organisations, usually for a fee",
+      "Teaches ICT in a secondary school"
+     ],
+     "a": 2,
+     "why": "Consultants use their expertise to advise organisations, for example on which system to buy or how to secure their network."
+    }
+   ],
+   "cbe": "strand",
+   "strandRef": "KCSE 451 · Form 4 · Career opportunities in ICT",
    "explainer": ""
   }
  ]

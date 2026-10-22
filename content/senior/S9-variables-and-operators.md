@@ -48,7 +48,7 @@ Arithmetic: + − * / for add, subtract, multiply and divide, // for whole-numbe
 
 ## Mission: Your first variables
 
-- If you can, open Python (on a computer, or a free online Python editor) and try: name = input("Name? ") then print("Habari", name).
+- If you can, open Python (on a computer, or a free online Python editor) and try: name = input("Name? ") then print("Hello", name).
 - Write a program that asks for a price in KSh and prints the price with 16% VAT added.
 
 Question: Your VAT program, or what you expect it to print for a price of 100.

@@ -59,11 +59,11 @@ Target: Tech Tayari Kenya
 
 ### Task: typing
 Label: Now type this sentence. Made a mistake? Fix it with Backspace.
-Target: Habari yako? I can type!
+Target: Hello! I can type!
 
 ### Task: paste
 Label: Copy the sentence (select it, then Ctrl+C) and paste it here with Ctrl+V. On a phone: press and hold, tap Copy, then Paste.
-Target: Habari yako? I can type!
+Target: Hello! I can type!
 
 ### Task: pick
 

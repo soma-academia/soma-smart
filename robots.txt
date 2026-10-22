@@ -3,5 +3,6 @@ Allow: /
 Disallow: /api/
 Disallow: /insights
 Disallow: /review
+Disallow: /kcse
 
 Sitemap: https://tech-tayari.pages.dev/sitemap.xml

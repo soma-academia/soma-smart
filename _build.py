@@ -181,7 +181,11 @@ for f in sorted(CONTENT.glob("*/_track.md")):
     meta, _ = front_matter(f.relative_to(ROOT).as_posix(), f.read_text(encoding="utf-8"))
     tracks_meta.append(meta)
 tracks_meta.sort(key=lambda t: int(t.get("order", 99)))
-TRACKS = [{"id": t["id"], "name": t["name"], "level": t["level"], "blurb": t["blurb"]} for t in tracks_meta]
+# unlisted: true keeps a track off the home page, /learn and the sitemap; it opens only at /<track id> (e.g. /kcse)
+TRACKS = [{"id": t["id"], "name": t["name"], "level": t["level"], "blurb": t["blurb"],
+           **({"unlisted": True} if str(t.get("unlisted", "")).lower() == "true" else {})} for t in tracks_meta]
+PUBLIC_TRACKS = [t for t in TRACKS if not t.get("unlisted")]
+PUBLIC_IDS = {t["id"] for t in PUBLIC_TRACKS}
 track_ids = [t["id"] for t in TRACKS]
 
 MODULES = [parse_module(f) for f in sorted(CONTENT.glob("*/*.md")) if not f.name.startswith("_")]
@@ -240,7 +244,7 @@ header = (
  " * Each module: read cards → listen (narrated) → watch (optional video) → mission → quiz.\n"
  " * Mastery levels (not prizes): new → learning → practised → mastered.\n"
  " * video.id = YouTube id (\"\" shows a friendly no-video screen). quiz 'a' = index of correct option.\n"
- " * Kenyan, practical references; light Kiswahili/Sheng. Verify technical facts before publishing.\n"
+ " * Kenyan, practical references; English only (no Kiswahili or Sheng). Verify technical facts before publishing.\n"
  " */\n"
  "window.COURSE = "
 )
@@ -342,7 +346,7 @@ def lesson_page(m, prev_m, next_m):
 
 def learn_index():
     blocks, courses = [], []
-    for t in TRACKS:
+    for t in PUBLIC_TRACKS:
         tm = [m for m in MODULES if m["track"] == t["id"]]
         items = "".join(f'<li><a href="/learn/{lesson_slug(m)}"><b>{H(m["code"])}</b> {H(m["name"])}</a> <span class="hint">{H(m["part"])}</span></li>' for m in tm)
         blocks.append(f'<section class="lp-card" id="{H(t["id"])}"><h2>{H(t["name"])} <span class="hint">{H(t["level"])}</span></h2><p>{H(t["blurb"])}</p><ul class="lp-list">{items}</ul></section>')
@@ -363,7 +367,7 @@ def write_if_changed(path, text):
         path.write_text(text, encoding="utf-8")
 
 wanted = set()
-for t in TRACKS:
+for t in PUBLIC_TRACKS:
     tm = [m for m in MODULES if m["track"] == t["id"]]
     for i, m in enumerate(tm):
         path, html_text = lesson_page(m, tm[i - 1] if i else None, tm[i + 1] if i + 1 < len(tm) else None)
@@ -438,7 +442,7 @@ def review_track(t):
         strand = f' · {H(m["strandRef"])}' if m.get("strandRef") else ""
         mods.append(f"""<article class="rv-mod" id="{H(m['id'])}">
   <h2>{H(m['code'])} · {H(m['name'])}</h2>
-  <p class="hint">{H(m['part'])} · {"CBE strand" if m["cbe"] == "strand" else "Going further"}{strand} · <a href="/learn/{lesson_slug(m)}">lesson page</a></p>
+  <p class="hint">{H(m['part'])} · {"CBE strand" if m["cbe"] == "strand" else "Going further"}{strand}{f' · <a href="/learn/{lesson_slug(m)}">lesson page</a>' if m["track"] in PUBLIC_IDS else ""}</p>
   <h3>Reading cards</h3>{cards}
   <h3>Narration</h3><ul>{"".join(f"<li>{H(x)}</li>" for x in m["listen"])}</ul>
   <h3>Mission: {H(m['mission']['title'])}</h3><ul>{"".join(f"<li>{H(x)}</li>" for x in m["mission"]["steps"])}</ul>
@@ -449,7 +453,7 @@ def review_track(t):
     body = f"""<nav class="lp-crumbs"><a href="/review/">Review home</a> › {H(t['name'])}</nav>
 <h1>Review: {H(t['name'])} <span class="hint">{H(t['level'])}</span></h1>
 <div class="rv-help"><p>For each reading card, task and quiz question, tap <b>＋ Keep</b> or <b>− Remove</b>. Add a note to say what's wrong or how to fix it. Tap a choice again to undo it. Your votes are saved as you go.</p>
-<label class="q" for="rv-name">Your name (optional, shown to the Tech Tayari team)</label><input class="field" id="rv-name" maxlength="40" placeholder="e.g. Mwalimu Achieng, Grade 7" />
+<label class="q" for="rv-name">Your name (optional, shown to the Tech Tayari team)</label><input class="field" id="rv-name" maxlength="40" placeholder="e.g. Ms Achieng, Grade 7 teacher" />
 <p class="rv-progress hint"></p></div>
 <p class="rv-toc">{toc}</p>
 {"".join(mods)}"""
@@ -473,10 +477,10 @@ for old in REVIEW.glob("*.html"):
     if old.name not in wanted_r:
         old.unlink()
 
-urls = ["/", "/learn/", "/about", "/privacy", "/licences"] + [f"/learn/{lesson_slug(m)}" for m in MODULES]
+urls = ["/", "/learn/", "/about", "/privacy", "/licences"] + [f"/learn/{lesson_slug(m)}" for m in MODULES if m["track"] in PUBLIC_IDS]
 write_if_changed(ROOT / "sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                  + "".join(f"  <url><loc>{SITE_URL}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
-write_if_changed(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /insights\nDisallow: /review\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+write_if_changed(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /insights\nDisallow: /review\n" + "".join(f"Disallow: /{t['id']}\n" for t in TRACKS if t.get("unlisted")) + f"\nSitemap: {SITE_URL}/sitemap.xml\n")
 
 print("tracks=%d modules=%d" % (len(TRACKS), len(MODULES)))
 for t in TRACKS:
@@ -485,5 +489,5 @@ for t in TRACKS:
 for m in MODULES:
     print("   ", m["track"], m["code"], m["id"], "| read", len(m["read"]), "quiz", len(m["quiz"]),
           "tasks", len(m["mission"].get("tasks", [])), "vid", repr(m["video"]["id"]))
-print(f"lesson pages: {len(MODULES)} in learn/, plus learn/index.html, sitemap.xml ({len(urls)} URLs), robots.txt; review pages: {len(TRACKS)} in review/")
+print(f"lesson pages: {len(wanted) - 1} in learn/, plus learn/index.html, sitemap.xml ({len(urls)} URLs), robots.txt; review pages: {len(TRACKS)} in review/")
 print("content.js written, all checks passed")

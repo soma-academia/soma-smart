@@ -60,7 +60,7 @@ Buckets: Feature | Label
 - The length of a message → Feature
 - "This leaf has maize streak virus" → Label
 - How round a fruit is → Feature
-- "This voice recording says habari" → Label
+- "This voice recording says hello" → Label
 
 ### Task: pick
 

@@ -18,11 +18,11 @@ explainer: input-process-output
 
 ### 🖥️ What is a computer?
 
-A computer is a machine that follows instructions to do work: typing a letter, playing a video, storing photos. A desktop, a laptop, even the smartphone in your pocket — zote ni computers.
+A computer is a machine that follows instructions to do work: typing a letter, playing a video, storing photos. A desktop, a laptop, even the smartphone in your pocket — all of them are computers.
 
 ### 🧠 The brain: CPU
 
-Inside is a chip called the CPU (processor). It is the ubongo — the brain — that does the thinking and follows your instructions, step by step, very fast.
+Inside is a chip called the CPU (processor). It is the brain that does the thinking and follows your instructions, step by step, very fast.
 
 ### 🏗️ Memory and storage
 
@@ -30,21 +30,21 @@ RAM is the short-term memory — like your hand holding what you use right now. 
 
 ### ⌨️ Input and output
 
-You put things IN with a keyboard, mouse or touch screen (input). The computer shows results OUT on the screen or speaker (output). Input, process, output — ingiza, fanya kazi, toa.
+You put things IN with a keyboard, mouse or touch screen (input). The computer shows results OUT on the screen or speaker (output). Input, process, output.
 
 ### ⚡ Hardware vs software
 
-Hardware is the parts you can touch (screen, keyboard). Software is the programs inside that you cannot touch (a browser, a game, the calculator). Hardware ni kushika, software ni programu.
+Hardware is the parts you can touch (screen, keyboard). Software is the programs inside that you cannot touch (a browser, a game, the calculator). Hardware you can hold; software you can only use.
 
 ## Listen
 
-- Karibu! Let's meet the computer.
+- Welcome! Let's meet the computer.
 - A computer is a machine that follows instructions to do work.
-- Inside is the CPU — the ubongo, the brain that does the thinking.
+- Inside is the CPU, the brain that does the thinking.
 - RAM holds what you are using now; the disk stores files for keeps.
 - You put things in with a keyboard or mouse: that is input.
 - It shows results on the screen: that is output.
-- Parts you touch are hardware; programs inside are software. Sawa?
+- Parts you touch are hardware; programs inside are software. Got it?
 
 ## Mission: Spot the parts
 
@@ -152,4 +152,4 @@ Why: Storage keeps files permanently.
 - [ ] Sleep, eat, run
 - [ ] Download, copy, delete
 - [ ] Turn on, heat up, switch off
-Why: Ingiza, fanya kazi, toa.
+Why: Input goes in, the computer processes it, and output comes out.

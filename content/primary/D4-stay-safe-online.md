@@ -21,11 +21,11 @@ Online, keep your real name, home, school and phone number private from stranger
 
 ### 🔑 Strong passwords
 
-A password is the key to your account. Make it long and hard to guess, like a short silly sentence. Keep it secret — even from friends. Usimpe mtu password yako.
+A password is the key to your account. Make it long and hard to guess, like a short silly sentence. Keep it secret — even from friends. Never give anyone your password.
 
 ### 🎣 Spot the tricks
 
-If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN, it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, ni uwongo.
+If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN, it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, it is a lie.
 
 ### 🙅 Strangers online
 
@@ -39,11 +39,11 @@ Screens are useful but too much tires your eyes, spoils sleep and steals time fo
 
 - This is the most important lesson: staying safe online.
 - Keep your real name, home and school private from strangers.
-- Make your password long and secret. Usimpe mtu password yako!
-- Free airtime or a prize for your PIN or password? Ni scam. Walk away.
+- Make your password long and secret. Never give anyone your password!
+- Free airtime or a prize for your PIN or password? It's a scam. Walk away.
 - If a stranger makes you feel weird, don't reply. Tell a grown-up.
 - Too much screen time tires your eyes and steals your time.
-- Agree your screen time with a grown-up. You are the boss, si simu.
+- Agree your screen time with a grown-up. You are the boss, not the phone.
 
 ## Mission: Safety promise
 
@@ -88,7 +88,7 @@ Why: Always tell a grown-up.
 - [ ] A real offer
 - [ ] From your teacher
 - [ ] Safe to accept
-Why: Too good to be true = uwongo.
+Why: If it is too good to be true, it is a lie.
 
 ### Too much screen time can...
 - [x] Tire your eyes and spoil sleep

@@ -411,3 +411,8 @@ svg.i{flex:none;vertical-align:-.2em}
   .xp-ctl{gap:6px}
   .xp-ctl .btn.small{padding:7px 10px;font-size:14px}
 }
+
+/* Narration voice picker (Listen step) */
+.voice-pick { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px; }
+.voice-pick select.field { width: auto; max-width: 100%; min-width: 0; padding: 6px 10px; font-size: 14px; }
+.voice-pick > .hint:last-child { flex-basis: 100%; text-align: center; font-size: 12px; }
