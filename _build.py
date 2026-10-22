@@ -374,10 +374,109 @@ for old in LEARN.glob("*.html"):
     if old.name not in wanted:
         old.unlink()   # lesson renamed or removed
 
+# ---------- review pages for teachers: everything in each track, with keep/remove voting (not indexed) ----------
+REVIEW = ROOT / "review"
+
+def review_shell(title, body):
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>{H(title)}</title>
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="lp rvp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a><span class="rv-badge">Content review</span></header>
+<main id="app">
+{body}
+</main>
+<script src="/review.js"></script>
+</body>
+</html>
+"""
+
+def vote(item):
+    return f'<div class="rv" data-item="{H(item)}"><button class="rv-b keep" data-v="1">＋ Keep</button><button class="rv-b remove" data-v="-1">− Remove</button><button class="rv-note-t" type="button">Add note</button><span class="rv-state" aria-live="polite"></span></div>'
+
+def task_html(t):
+    ty = t.get("type")
+    lab = f'<p class="rv-label">{H(t.get("label"))}</p>' if t.get("label") else ""
+    if ty == "pick":
+        rounds = "".join(
+            f'<p class="rv-q">{H(r["q"])}</p><ul class="rv-opts">' + "".join(
+                f'<li class="{"ok" if r["answer"] == i else ""}">{"✓ " if r["answer"] == i else ""}{H(o)}</li>' for i, o in enumerate(r["options"]))
+            + "</ul>" + (f'<p class="rv-why">{"Free choice (any answer accepted)." if r["answer"] is None else ""} {H(r["why"])}</p>' if (r["why"] or r["answer"] is None) else "")
+            for r in t["rounds"])
+        return lab + rounds
+    if ty == "sort":
+        return lab + '<ul class="rv-opts">' + "".join(f'<li>{H(it["t"])} → <b>{H(t["buckets"][it["b"]])}</b></li>' for it in t["items"]) + "</ul>"
+    if ty == "order":
+        return lab + '<ol class="rv-opts">' + "".join(f'<li><b>{H(it["t"])}</b><br><span class="hint">{H(it["note"])}</span></li>' for it in t["items"]) + "</ol>"
+    if ty == "flags":
+        return lab + f'<p class="hint">{H(t["header"])}</p><ul class="rv-opts">' + "".join(
+            f'<li class="{"flag" if sg["flag"] else ""}">{H(sg["t"])}' + (f'<br><span class="hint">🚩 {H(sg["flag"])}</span>' if sg["flag"] else "") + "</li>" for sg in t["segments"]) + "</ul>"
+    if ty in ("typing", "paste"):
+        return lab + f'<p>Learner must {"type" if ty == "typing" else "paste"} exactly: <code>{H(t["target"])}</code></p>'
+    if ty == "text":
+        rej = ", ".join(t.get("reject") or []) or "none"
+        return lab + f'<p class="hint">Free text, at least {t.get("min", 1)} characters. Rejected answers: {H(rej)}. Hint shown: {H(t.get("hint") or "none")}</p>'
+    return lab
+
+def review_track(t):
+    tm = [m for m in MODULES if m["track"] == t["id"]]
+    mods = []
+    for m in tm:
+        cards = "".join(f'<section class="rv-item"><h4>{H(c["icon"])} {H(c["title"])} <span class="rv-tag">Card {i + 1}</span></h4><p>{H(c["text"])}</p>{vote(m["id"] + ":card" + str(i))}</section>' for i, c in enumerate(m["read"]))
+        tasks = "".join(f'<section class="rv-item"><h4>Task {i + 1}: {H(tk.get("type"))}</h4>{task_html(tk)}{vote(m["id"] + ":task" + str(i))}</section>' for i, tk in enumerate(m["mission"].get("tasks", [])))
+        quiz = "".join(
+            f'<section class="rv-item"><h4>Q{i + 1}. {H(q["q"])}</h4><ul class="rv-opts">' + "".join(
+                f'<li class="{"ok" if q["a"] == j else ""}">{"✓ " if q["a"] == j else ""}{H(o)}</li>' for j, o in enumerate(q["options"]))
+            + f'</ul><p class="rv-why">{H(q["why"])}</p>{vote(m["id"] + ":q" + str(i))}</section>' for i, q in enumerate(m["quiz"]))
+        strand = f' · {H(m["strandRef"])}' if m.get("strandRef") else ""
+        mods.append(f"""<article class="rv-mod" id="{H(m['id'])}">
+  <h2>{H(m['code'])} · {H(m['name'])}</h2>
+  <p class="hint">{H(m['part'])} · {"CBE strand" if m["cbe"] == "strand" else "Going further"}{strand} · <a href="/learn/{lesson_slug(m)}">lesson page</a></p>
+  <h3>Reading cards</h3>{cards}
+  <h3>Narration</h3><ul>{"".join(f"<li>{H(x)}</li>" for x in m["listen"])}</ul>
+  <h3>Mission: {H(m['mission']['title'])}</h3><ul>{"".join(f"<li>{H(x)}</li>" for x in m["mission"]["steps"])}</ul>
+  {tasks}
+  <h3>Quiz bank ({len(m['quiz'])} questions; each quiz shows 5)</h3>{quiz}
+</article>""")
+    toc = " · ".join(f'<a href="#{H(m["id"])}">{H(m["code"])}</a>' for m in tm)
+    body = f"""<nav class="lp-crumbs"><a href="/review/">Review home</a> › {H(t['name'])}</nav>
+<h1>Review: {H(t['name'])} <span class="hint">{H(t['level'])}</span></h1>
+<div class="rv-help"><p>For each reading card, task and quiz question, tap <b>＋ Keep</b> or <b>− Remove</b>. Add a note to say what's wrong or how to fix it. Tap a choice again to undo it. Your votes are saved as you go.</p>
+<label class="q" for="rv-name">Your name (optional, shown to the Tech Tayari team)</label><input class="field" id="rv-name" maxlength="40" placeholder="e.g. Mwalimu Achieng, Grade 7" />
+<p class="rv-progress hint"></p></div>
+<p class="rv-toc">{toc}</p>
+{"".join(mods)}"""
+    return review_shell(f"Review: {t['name']} · Tech Tayari", body)
+
+def review_index():
+    items = "".join(f'<li><a href="/review/{H(t["id"])}"><b>{H(t["name"])}</b></a> <span class="hint">{H(t["level"])} · {len([m for m in MODULES if m["track"] == t["id"]])} modules</span></li>' for t in TRACKS)
+    body = f"""<h1>Content review</h1>
+<div class="rv-help"><p>Thank you for helping check Tech Tayari's lessons. Pick a track below. You'll see every reading card,
+mission task and quiz question, with the correct answers marked. Vote <b>＋ Keep</b> or <b>− Remove</b> on each, and add a note
+whenever something is wrong, unclear, or not suitable for the age group.</p>
+<p class="hint">No account is needed. Your votes are linked only to a random code stored in this browser, and to your name if you choose to give it.</p></div>
+<ul class="lp-list">{items}</ul>"""
+    return review_shell("Content review · Tech Tayari", body)
+
+wanted_r = set()
+for t in TRACKS:
+    f = REVIEW / f"{t['id']}.html"; wanted_r.add(f.name); write_if_changed(f, review_track(t))
+write_if_changed(REVIEW / "index.html", review_index()); wanted_r.add("index.html")
+for old in REVIEW.glob("*.html"):
+    if old.name not in wanted_r:
+        old.unlink()
+
 urls = ["/", "/learn/", "/about", "/privacy", "/licences"] + [f"/learn/{lesson_slug(m)}" for m in MODULES]
 write_if_changed(ROOT / "sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
                  + "".join(f"  <url><loc>{SITE_URL}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
-write_if_changed(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /insights\n\nSitemap: {SITE_URL}/sitemap.xml\n")
+write_if_changed(ROOT / "robots.txt", f"User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /insights\nDisallow: /review\n\nSitemap: {SITE_URL}/sitemap.xml\n")
 
 print("tracks=%d modules=%d" % (len(TRACKS), len(MODULES)))
 for t in TRACKS:
@@ -386,5 +485,5 @@ for t in TRACKS:
 for m in MODULES:
     print("   ", m["track"], m["code"], m["id"], "| read", len(m["read"]), "quiz", len(m["quiz"]),
           "tasks", len(m["mission"].get("tasks", [])), "vid", repr(m["video"]["id"]))
-print(f"lesson pages: {len(MODULES)} in learn/, plus learn/index.html, sitemap.xml ({len(urls)} URLs), robots.txt")
+print(f"lesson pages: {len(MODULES)} in learn/, plus learn/index.html, sitemap.xml ({len(urls)} URLs), robots.txt; review pages: {len(TRACKS)} in review/")
 print("content.js written, all checks passed")

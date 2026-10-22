@@ -19,6 +19,7 @@
  *   POST /api/delete-account {password} (Authorization: Bearer <token>)  -> {ok:true}  (self-service, permanent)
  *   POST /api/event    {track, module, correct}                          -> {ok:true}  (anonymous)
  *   POST /api/step     {track, module, step}                             -> {ok:true}  (anonymous funnel)
+ *   POST /api/review   {item, vote: 1|-1|0, note?, name?, rk}            -> {ok:true}  (content review keep/remove)
  *   GET  /api/insights            (X-Admin-Key: <ADMIN_KEY>)              -> {overview, topModules, hardest, daily}
  * Everything else -> static assets.
  */
@@ -184,7 +185,7 @@ function withPageMeta(path, res) {
   path = path.replace(/\/+$/, "") || "/";
   if (path === "/licenses") path = "/licences";
   const isHtml = (res.headers.get("Content-Type") || "").includes("text/html");
-  if (path === "/insights") {
+  if (path === "/insights" || path === "/review" || path.startsWith("/review/")) {
     const r = new Response(res.body, res);
     r.headers.set("X-Robots-Tag", "noindex, nofollow");
     return r;
@@ -413,6 +414,26 @@ export default {
         return json({ ok: true }, 200, request);
       }
 
+      // ---------- content review: reviewers vote keep (+1) or remove (-1) per card, task or question ----------
+      if (p === "/api/review" && request.method === "POST") {
+        const allowed = await checkRateLimit(env, "review:" + clientIP, 600, 3600);
+        if (!allowed) return json({ error: "Too many votes in an hour. Please wait a little." }, 429, request);
+        const b = await request.json();
+        const item = String(b.item || ""), rk = String(b.rk || ""), vote = Number(b.vote);
+        if (!/^[a-z0-9-]{2,40}:(card|task|q)\d{1,2}$/.test(item) || !/^[a-f0-9]{16,64}$/.test(rk) || ![1, -1, 0].includes(vote)) {
+          return json({ error: "Invalid review vote." }, 400, request);
+        }
+        if (vote === 0) {
+          await env.DB.prepare("DELETE FROM review WHERE reviewer_key=?1 AND item=?2").bind(rk, item).run();
+        } else {
+          await env.DB.prepare(
+            `INSERT INTO review (reviewer_key, item, vote, note, name, updated_at) VALUES (?1,?2,?3,?4,?5,?6)
+             ON CONFLICT(reviewer_key, item) DO UPDATE SET vote=?3, note=?4, name=?5, updated_at=?6`
+          ).bind(rk, item, vote, String(b.note || "").trim().slice(0, 500), String(b.name || "").trim().slice(0, 40), now()).run();
+        }
+        return json({ ok: true }, 200, request);
+      }
+
       // ---------- anonymous curriculum insights (NO PII, NO password reset) ----------
       if (p === "/api/insights" && request.method === "GET") {
         // Key travels in a header, never the URL, so it stays out of history and access logs
@@ -461,7 +482,21 @@ export default {
           funnel = Object.values(byMod);
         } catch {}
 
+        // Content review tallies and notes (table may not exist on older databases)
+        let review = { tallies: [], notes: [] };
+        try {
+          const t = await env.DB.prepare(
+            `SELECT item, SUM(CASE WHEN vote=1 THEN 1 ELSE 0 END) keep, SUM(CASE WHEN vote=-1 THEN 1 ELSE 0 END) remove
+             FROM review GROUP BY item`
+          ).all();
+          const n = await env.DB.prepare(
+            `SELECT item, vote, note, name, updated_at FROM review WHERE note IS NOT NULL AND note != '' ORDER BY updated_at DESC LIMIT 300`
+          ).all();
+          review = { tallies: t.results || [], notes: n.results || [] };
+        } catch {}
+
         return json({
+          review,
           funnel,
           overview: {
             totalUsers: totals ? totals.total_users : 0,

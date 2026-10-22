@@ -336,6 +336,9 @@ const PAGES = {
       attached: how many quiz answers were right or wrong, and how many learners started a module, finished reading,
       finished the mission, took the quiz and passed. Each device counts each step only once. These totals show where
       learners get stuck.</p>
+    <h3>Teachers who review lessons</h3>
+    <p>Reviewers can vote to keep or remove lesson items on our review pages. We store each vote and any note, the name
+      they choose to give (optional), and a random code made in their browser so they can change a vote. Nothing else.</p>
     <h3>Visit counts</h3>
     <p>We use Cloudflare Web Analytics to count page visits. It uses no cookies, doesn't track you across sites, and
       reports only totals, such as how many people visited and which pages were popular.</p>
@@ -1617,6 +1620,17 @@ async function renderAdminDashboard(key){
     const hard = res.hardest || [];
     const daily = res.daily || [];
     const funnelRows = res.funnel || [];
+    const review = res.review || { tallies: [], notes: [] };
+    // "j-network:q3" -> readable label from the course content
+    const reviewLabel = item => {
+      const [mid, part] = item.split(":"), m = MODS.find(x => x.id === mid);
+      if (!m) return { mod: mid, what: part };
+      const n = parseInt(part.replace(/\D/g, ""), 10);
+      const what = part.startsWith("card") ? `Card ${n + 1}: ${(m.read[n] || {}).title || "?"}`
+        : part.startsWith("task") ? `Task ${n + 1}: ${((m.mission.tasks || [])[n] || {}).label || ((m.mission.tasks || [])[n] || {}).type || "?"}`
+        : `Q${n + 1}: ${(m.quiz[n] || {}).q || "?"}`;
+      return { mod: `${m.code} · ${m.name}`, what, order: MODS.indexOf(m) };
+    };
 
     el.innerHTML = `
       <div class="stat-grid">
@@ -1647,6 +1661,30 @@ async function renderAdminDashboard(key){
       </div>
 
       <div style="margin-top:24px">
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">Content Review</h3>
+        <p class="hint" style="margin:0 0 12px">Votes and notes from reviewers on the <a href="/review/" target="_blank" rel="noopener">review pages</a>. Items with the most "remove" votes come first.</p>
+        <div class="table-wrap" style="margin-bottom:28px">
+          <table class="admin-table">
+            <thead><tr><th>Module</th><th>Item</th><th>Keep</th><th>Remove</th><th>Notes</th></tr></thead>
+            <tbody>
+              ${(() => {
+                const notesBy = {};
+                (review.notes || []).forEach(n => (notesBy[n.item] = notesBy[n.item] || []).push(n));
+                const rows = (review.tallies || []).map(t => ({ ...t, ...reviewLabel(t.item), notes: notesBy[t.item] || [] }))
+                  .sort((a, b) => (b.remove - a.remove) || (b.notes.length - a.notes.length) || (a.order - b.order));
+                if (!rows.length) return `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">No review votes yet. Share a link such as <b>${esc(location.origin)}/review/primary</b> with reviewers.</td></tr>`;
+                return rows.map(r => `<tr>
+                  <td><b>${esc(r.mod)}</b></td>
+                  <td>${esc(r.what)}</td>
+                  <td>${r.keep}</td>
+                  <td>${r.remove ? `<b style="color:var(--red)">${r.remove}</b>` : 0}</td>
+                  <td>${r.notes.map(n => `<div style="margin:2px 0"><b>${n.vote > 0 ? "＋" : "−"}</b> ${esc(n.note)} <span class="hint">${esc(n.name || "anonymous")}</span></div>`).join("")}</td>
+                </tr>`).join("");
+              })()}
+            </tbody>
+          </table>
+        </div>
+
         <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">Learning Funnel (last 30 days)</h3>
         <p class="hint" style="margin:0 0 12px">How many devices reached each step of a module, counted once per device with no IDs. The red figure is where most learners stop.</p>
         <div class="table-wrap" style="margin-bottom:28px">

@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /insights
+Disallow: /review
 
 Sitemap: https://tech-tayari.pages.dev/sitemap.xml

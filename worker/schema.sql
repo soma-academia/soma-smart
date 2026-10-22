@@ -49,6 +49,18 @@ CREATE TABLE IF NOT EXISTS funnel (
   PRIMARY KEY (day, module_id, step)
 );
 
+-- Content review votes from teachers/reviewers (adults, via /review pages). One row per reviewer device per item.
+-- item: <module_id>:card<n> | <module_id>:task<n> | <module_id>:q<n>; vote: 1 = keep, -1 = remove.
+CREATE TABLE IF NOT EXISTS review (
+  reviewer_key TEXT NOT NULL,                 -- random code made on the reviewer's device (not personal data)
+  item         TEXT NOT NULL,
+  vote         INTEGER NOT NULL,
+  note         TEXT,
+  name         TEXT,                          -- optional, as typed by the reviewer
+  updated_at   INTEGER NOT NULL,
+  PRIMARY KEY (reviewer_key, item)
+);
+
 -- Simple IP rate limiting to mitigate automated abuse.
 CREATE TABLE IF NOT EXISTS rate_limits (
   key       TEXT PRIMARY KEY,                 -- salted hash of action + IP, never the raw IP
