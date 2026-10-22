@@ -1,8 +1,7 @@
 /* Tech Tayari — Service Worker for offline CBE learning */
-const CACHE_NAME = "tech-tayari-v11";
+const CACHE_NAME = "tech-tayari-v12";
 const STATIC_ASSETS = [
   "./",
-  "index.html",
   "styles.css",
   "icons.js",
   "fonts/nunito-latin.woff2",
@@ -40,21 +39,26 @@ self.addEventListener("fetch", event => {
     return;
   }
 
-  // App shell (own origin): network first so a new deploy shows on the next load,
-  // falling back to the cached copy when offline or on a dropped connection.
+  // App shell (own origin): network first so a new deploy shows on the next load, falling back to the
+  // cached copy when offline, on a dropped connection, or when the network is too slow (2G) to answer in time.
+  // Pages that aren't cached (/kcse, /about, /?lesson=…) are all served by the app shell, cached under "./".
+  // (Never fall back to "index.html": Cloudflare redirects it to "/", and browsers refuse a redirected
+  // response for a page load.)
   if (url.origin === location.origin) {
+    const isPage = event.request.mode === "navigate";
+    const fromCache = () => caches.match(event.request, { ignoreSearch: isPage })
+      .then(cached => cached || (isPage ? caches.match("./") : undefined));
+    const network = fetch(event.request).then(networkResponse => {
+      if (networkResponse && networkResponse.status === 200 && !networkResponse.redirected) {
+        const respClone = networkResponse.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, respClone));
+      }
+      return networkResponse;
+    });
+    const slow = new Promise(resolve => setTimeout(resolve, 4000)).then(fromCache);
     event.respondWith(
-      fetch(event.request).then(networkResponse => {
-        if (networkResponse && networkResponse.status === 200) {
-          const respClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, respClone));
-        }
-        return networkResponse;
-      }).catch(() =>
-        caches.match(event.request).then(cached =>
-          cached || (event.request.mode === "navigate" ? caches.match("index.html") : undefined)
-        )
-      )
+      Promise.race([network, slow.then(c => c || network)])
+        .catch(() => fromCache().then(c => c || Response.error()))
     );
     return;
   }

@@ -279,13 +279,22 @@ function go(v, fromHistory){
     window.removeEventListener("keydown", currentKeyHandler);
     currentKeyHandler = null;
   }
+  // Every screen change (home, track, module, page) gets a history entry, so the phone's Back button
+  // steps back through the app instead of leaving it. Moving between steps of one module replaces the entry.
+  const screen = x => [x.name, x.t || x.id || x.page || x.mode || ""].join(":");
+  const prev = view;
   view = v;
   const path = pathFor(v);
-  if (!fromHistory && location.pathname !== path) history.pushState(null, "", path);
+  if (!fromHistory) {
+    try {
+      if (screen(prev) !== screen(v)) history.pushState({ v }, "", path);
+      else history.replaceState({ v }, "", path);
+    } catch {}
+  }
   render();
   window.scrollTo(0, 0);
 }
-window.addEventListener("popstate", () => go(viewFromPath(location.pathname), true));
+window.addEventListener("popstate", e => go((e.state && e.state.v) || viewFromPath(location.pathname), true));
 
 function render(){
   hud();
@@ -1867,6 +1876,7 @@ async function renderAdminDashboard(key){
   try { savedUser = JSON.parse(localStorage.getItem(LS_USER) || "null"); } catch {}
 
   view = viewFromPath(location.pathname);
+  try { history.replaceState({ v: view }, "", location.pathname + location.search); } catch {}
   // Lesson pages (learn/*.html) link here as /?lesson=<id> to open that lesson directly
   const requested = new URLSearchParams(location.search).get("lesson");
   const openRequested = () => {

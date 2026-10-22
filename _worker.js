@@ -539,7 +539,10 @@ export default {
 
       return json({ error: "not found" }, 404, request);
     } catch (e) {
-      return json({ error: "server error", detail: String(e) }, 500, request);
+      // Malformed request bodies are the caller's mistake; never echo internal error text back
+      if (e instanceof SyntaxError) return json({ error: "Invalid request." }, 400, request);
+      console.error("api error", p, e);
+      return json({ error: "Something went wrong. Please try again." }, 500, request);
     }
   }
 };
