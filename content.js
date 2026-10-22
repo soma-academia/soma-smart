@@ -38,6 +38,12 @@ window.COURSE = {
    "name": "Computer Studies II",
    "level": "Grade 11 · ages 16–17",
    "blurb": "Senior School Computer Studies, Grade 11: number systems and logic, network protocols and security, object-oriented programming, databases, SQL and the web."
+  },
+  {
+   "id": "ai",
+   "name": "AI Basics",
+   "level": "Grade 7–11 · ages 12–17",
+   "blurb": "What artificial intelligence is, how machines learn from data, how chatbots write, and how to use AI fairly, safely and honestly."
   }
  ],
  "modules": [
@@ -8702,6 +8708,1439 @@ window.COURSE = {
    ],
    "cbe": "strand",
    "strandRef": "Grade 11 · 3.5 Web Development Fundamentals",
+   "explainer": ""
+  },
+  {
+   "track": "ai",
+   "id": "ai-what",
+   "code": "A1",
+   "name": "What Is AI?",
+   "part": "Machines that learn from examples",
+   "read": [
+    {
+     "icon": "🤖",
+     "title": "Artificial intelligence",
+     "text": "Artificial intelligence (AI) is a computer system that does tasks we normally think need human intelligence: recognising speech or faces, translating, predicting, or writing text. AI isn't magic, and it isn't alive. It is software that finds patterns in huge amounts of data."
+    },
+    {
+     "icon": "📜",
+     "title": "Rules or learning?",
+     "text": "Ordinary programs follow rules a programmer wrote: \"IF the mark is 50 or more, print Pass.\" Many AI systems instead learn their own rules from examples. Show a system thousands of emails marked \"spam\" or \"not spam\", and it learns what spam usually looks like, without anyone writing every rule."
+    },
+    {
+     "icon": "📱",
+     "title": "AI around you",
+     "text": "You probably use AI every day: voice typing on your phone (including in Kiswahili), the spam folder in email, maps that predict traffic on Thika Road, apps that suggest the next video, face unlock, and translation apps. Banks and mobile-money services also use AI to flag unusual transactions that might be fraud."
+    },
+    {
+     "icon": "🎯",
+     "title": "Narrow AI",
+     "text": "Today's AI is narrow: each system is good at one kind of task. A chess AI can't drive a car, and a translation app can't diagnose a sick goat. Films often show AI that thinks like a person about everything, but that doesn't exist."
+    },
+    {
+     "icon": "⚠️",
+     "title": "What AI can't do",
+     "text": "AI can be confidently wrong. It doesn't understand the world the way you do, it can repeat unfairness hidden in its data, and it has no common sense outside its training. That's why people must check its work, especially for anything important like health, money or exams."
+    }
+   ],
+   "listen": [
+    "Artificial intelligence is software that finds patterns in lots of data.",
+    "Ordinary programs follow written rules; AI often learns rules from examples.",
+    "Voice typing, spam filters, maps and video suggestions all use AI.",
+    "Today's AI is narrow: each system does one kind of task.",
+    "AI can be confidently wrong, so people must check its work.",
+    "AI is a tool made by people, not a living thing."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "AI spotter",
+    "steps": [
+     "For one day, list every time you or your family use something that might be AI (phone, TV, apps, shops).",
+     "Pick one and ask: what examples might it have learned from?"
+    ],
+    "question": "Three AI examples you spotted, and what one of them learned from.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Does each one use AI (learning from data) or a fixed rule?",
+      "buckets": [
+       "Uses AI",
+       "Fixed rule"
+      ],
+      "items": [
+       {
+        "t": "An email app moving likely spam into a spam folder",
+        "b": 0
+       },
+       {
+        "t": "A calculator adding 2 + 2",
+        "b": 1
+       },
+       {
+        "t": "A phone typing what you say out loud",
+        "b": 0
+       },
+       {
+        "t": "A traffic light changing every 60 seconds",
+        "b": 1
+       },
+       {
+        "t": "A video app suggesting what to watch next",
+        "b": 0
+       },
+       {
+        "t": "A school bell set to ring at 8:00",
+        "b": 1
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "What is the main difference between ordinary programs and most AI?",
+        "options": [
+         "AI is always faster",
+         "Ordinary programs follow rules written by people; AI often learns patterns from examples",
+         "AI doesn't need computers",
+         "Ordinary programs can't do maths"
+        ],
+        "answer": 1,
+        "why": "Learning from examples is what lets AI handle tasks that are hard to write rules for, like recognising speech."
+       },
+       {
+        "q": "A chess-playing AI is asked to drive a car. What happens?",
+        "options": [
+         "It drives well",
+         "It can't; today's AI is narrow and only does what it was built and trained for",
+         "It learns instantly",
+         "It asks a human for the keys"
+        ],
+        "answer": 1,
+        "why": "Each AI system is specialised. There's no all-purpose thinking machine."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is artificial intelligence?",
+     "options": [
+      "Computer systems that do tasks we usually think need human intelligence",
+      "A robot that is alive",
+      "Any computer at all",
+      "A type of cable"
+     ],
+     "a": 0,
+     "why": "AI includes recognising speech, translating and predicting, all done by software learning from data."
+    },
+    {
+     "q": "How do most modern AI systems get their abilities?",
+     "options": [
+      "Someone types every possible rule",
+      "They learn patterns from many examples",
+      "They are born with them",
+      "From electricity alone"
+     ],
+     "a": 1,
+     "why": "Machine learning finds patterns in example data instead of following hand-written rules."
+    },
+    {
+     "q": "Which is an example of AI?",
+     "options": [
+      "A light switch",
+      "Voice typing on a phone",
+      "A ruler",
+      "A printed timetable"
+     ],
+     "a": 1,
+     "why": "Turning speech into text needs a system that learned from many recordings of speech."
+    },
+    {
+     "q": "What does \"narrow AI\" mean?",
+     "options": [
+      "AI that is very small",
+      "AI that is good at one kind of task only",
+      "AI that works on thin phones",
+      "AI that can't use the internet"
+     ],
+     "a": 1,
+     "why": "All AI today is narrow; a translation AI can't also drive or play chess."
+    },
+    {
+     "q": "Can AI be wrong?",
+     "options": [
+      "No, computers are never wrong",
+      "Yes, it can be confidently wrong, so people should check it",
+      "Only when the battery is low",
+      "Only in Kiswahili"
+     ],
+     "a": 1,
+     "why": "AI predicts from patterns; when the patterns don't fit a new situation, it can make mistakes."
+    },
+    {
+     "q": "Why might a bank use AI?",
+     "options": [
+      "To print money",
+      "To flag unusual transactions that might be fraud",
+      "To open branches",
+      "To replace all its staff"
+     ],
+     "a": 1,
+     "why": "AI can learn what normal spending looks like and spot activity that doesn't fit."
+    },
+    {
+     "q": "Which is a fixed rule, not AI?",
+     "options": [
+      "A school bell that rings at the same times every day",
+      "A spam filter learning from reported emails",
+      "Face unlock on a phone",
+      "A translation app"
+     ],
+     "a": 0,
+     "why": "The bell follows a set timetable; it doesn't learn from data."
+    },
+    {
+     "q": "Is AI alive or does it have feelings?",
+     "options": [
+      "Yes, it has feelings",
+      "No, it is software that processes data",
+      "Only chatbots are alive",
+      "Only when it talks"
+     ],
+     "a": 1,
+     "why": "Even when AI writes like a person, it is a program predicting patterns, not a living being."
+    },
+    {
+     "q": "Why should people check AI's work on important things like health or exams?",
+     "options": [
+      "AI is always wrong",
+      "AI can make mistakes and has no common sense outside its data",
+      "AI refuses to help",
+      "AI is too slow"
+     ],
+     "a": 1,
+     "why": "AI is a helpful tool, but people stay responsible for important decisions."
+    },
+    {
+     "q": "A maps app predicts a traffic jam on Thika Road. What is it most likely using?",
+     "options": [
+      "Guesswork",
+      "Patterns learned from lots of past and live traffic data",
+      "A fixed timetable",
+      "Radio announcements only"
+     ],
+     "a": 1,
+     "why": "Learning from many phones' movement data lets it predict likely delays."
+    }
+   ],
+   "cbe": "nice",
+   "strandRef": null,
+   "explainer": ""
+  },
+  {
+   "track": "ai",
+   "id": "ai-data",
+   "code": "A2",
+   "name": "Data & Patterns",
+   "part": "Training data, labels and features",
+   "read": [
+    {
+     "icon": "📊",
+     "title": "Data is AI's food",
+     "text": "AI learns from data: photos, sounds, text, numbers. The more good, relevant examples it sees, the better it usually gets. A system that recognises maize leaf disease needs many photos of healthy and diseased leaves, taken in different light, on different phones."
+    },
+    {
+     "icon": "🏷️",
+     "title": "Labels",
+     "text": "In supervised learning, every example comes with the right answer, called a label: this photo is \"healthy\", that one is \"maize streak virus\". The AI tries to find what separates the labels. Labelling is often done by people, and mistakes in labels become mistakes in the AI."
+    },
+    {
+     "icon": "🔍",
+     "title": "Features",
+     "text": "Features are the details the AI looks at to make a decision. To tell mangoes from avocados, useful features might be colour, shape and skin texture. Choosing good features (or letting the AI discover them) is a big part of building a model."
+    },
+    {
+     "icon": "🧪",
+     "title": "Training data and test data",
+     "text": "You don't test a learner with the exact questions they practised. In the same way, data is split: training data teaches the model, and separate test data, which the model has never seen, checks whether it really learned the pattern or just memorised the examples."
+    },
+    {
+     "icon": "🗑️",
+     "title": "Garbage in, garbage out",
+     "text": "If the data is poor, so is the AI. Too few examples, wrong labels, or examples that only show one kind of situation (only sunny photos, only one region's accent) produce a model that fails in the real world. Good data is varied, correctly labelled and fairly collected."
+    }
+   ],
+   "listen": [
+    "AI learns from data: photos, sounds, text and numbers.",
+    "A label is the right answer attached to each example.",
+    "Features are the details the AI uses to decide.",
+    "Training data teaches the model; test data checks it.",
+    "Test data must be examples the model has never seen.",
+    "Garbage in, garbage out: poor data makes poor AI."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Be the data collector",
+    "steps": [
+     "Imagine building an AI that tells ripe from unripe bananas. List the features you would use and how you would label 20 example photos.",
+     "Explain why your photos should come from different shops, times of day and phones."
+    ],
+    "question": "Your features, and one reason your data needs variety.",
+    "tasks": [
+     {
+      "type": "sort",
+      "label": "Is each one a feature or a label?",
+      "buckets": [
+       "Feature",
+       "Label"
+      ],
+      "items": [
+       {
+        "t": "The colour of a mango's skin",
+        "b": 0
+       },
+       {
+        "t": "\"This email is spam\"",
+        "b": 1
+       },
+       {
+        "t": "The length of a message",
+        "b": 0
+       },
+       {
+        "t": "\"This leaf has maize streak virus\"",
+        "b": 1
+       },
+       {
+        "t": "How round a fruit is",
+        "b": 0
+       },
+       {
+        "t": "\"This voice recording says habari\"",
+        "b": 1
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "Why is some data kept back as test data?",
+        "options": [
+         "To save storage",
+         "To check the model on examples it has never seen",
+         "Because it is less important",
+         "To train twice as fast"
+        ],
+        "answer": 1,
+        "why": "A model that only works on its training examples has memorised, not learned."
+       },
+       {
+        "q": "A crop-disease AI was trained only on photos taken in bright sunshine. What is likely to happen on cloudy days?",
+        "options": [
+         "It works even better",
+         "It may make more mistakes, because cloudy photos look different from its training data",
+         "It stops needing data",
+         "Nothing changes"
+        ],
+        "answer": 1,
+        "why": "AI struggles with situations its training data didn't include."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What does AI learn from?",
+     "options": [
+      "Data, such as photos, text, sounds and numbers",
+      "Only electricity",
+      "Dreams",
+      "Its own feelings"
+     ],
+     "a": 0,
+     "why": "Patterns in data are where machine learning gets its abilities."
+    },
+    {
+     "q": "What is a label in supervised learning?",
+     "options": [
+      "A sticker on the computer",
+      "The correct answer attached to an example",
+      "The name of the programmer",
+      "The file size"
+     ],
+     "a": 1,
+     "why": "Labels tell the model what each training example is, so it can learn to predict them."
+    },
+    {
+     "q": "What are features?",
+     "options": [
+      "The details the AI uses to make a decision",
+      "The prices of AI apps",
+      "The buttons on a phone",
+      "Mistakes in data"
+     ],
+     "a": 0,
+     "why": "Colour, shape and size can be features for sorting fruit, for example."
+    },
+    {
+     "q": "Why use separate test data?",
+     "options": [
+      "Training data is too small",
+      "To check the model works on new examples, not just ones it memorised",
+      "Test data is cheaper",
+      "It makes the model bigger"
+     ],
+     "a": 1,
+     "why": "Like a fair exam, test data must be new to the learner."
+    },
+    {
+     "q": "What does \"garbage in, garbage out\" mean?",
+     "options": [
+      "AI eats rubbish",
+      "Poor or wrong data produces a poor AI",
+      "Old computers should be recycled",
+      "AI deletes bad files"
+     ],
+     "a": 1,
+     "why": "A model can only be as good as the examples it learned from."
+    },
+    {
+     "q": "A label is wrong on many training photos. What happens to the AI?",
+     "options": [
+      "Nothing",
+      "It learns those mistakes too",
+      "It fixes the labels by itself",
+      "It refuses to train"
+     ],
+     "a": 1,
+     "why": "The model trusts its labels, so wrong labels teach wrong answers."
+    },
+    {
+     "q": "Why should voice-typing data include many accents?",
+     "options": [
+      "To make files bigger",
+      "So it works well for people from different regions, not just one",
+      "Accents don't matter to AI",
+      "To slow it down"
+     ],
+     "a": 1,
+     "why": "If the data only has one accent, people with other accents get more mistakes."
+    },
+    {
+     "q": "Which is the best training data for a banana-ripeness AI?",
+     "options": [
+      "10 photos from one shop at noon",
+      "Many photos from different shops, times of day and phones, correctly labelled",
+      "One very clear photo",
+      "Photos of mangoes"
+     ],
+     "a": 1,
+     "why": "Varied, correctly labelled examples help the model handle real-world situations."
+    },
+    {
+     "q": "Who often labels training data?",
+     "options": [
+      "The AI itself, always",
+      "People, who look at examples and record the right answer",
+      "Nobody; labels appear automatically",
+      "Only robots"
+     ],
+     "a": 1,
+     "why": "Human labellers are a big part of building AI, which is why their accuracy matters."
+    },
+    {
+     "q": "More data always fixes AI. True or false?",
+     "options": [
+      "True, any data helps",
+      "False; the data must also be relevant, varied and correctly labelled",
+      "True, if it is stored in the cloud",
+      "False; AI doesn't use data"
+     ],
+     "a": 1,
+     "why": "Lots of bad or one-sided data can make a model worse, not better."
+    }
+   ],
+   "cbe": "nice",
+   "strandRef": null,
+   "explainer": ""
+  },
+  {
+   "track": "ai",
+   "id": "ai-learn",
+   "code": "A3",
+   "name": "How Machines Learn",
+   "part": "Models, decision trees and testing",
+   "read": [
+    {
+     "icon": "🧠",
+     "title": "What a model is",
+     "text": "When AI learns, it builds a model: a set of rules or numbers that turns inputs (features) into a prediction. A model for crop prices might take the season and the rainfall, and predict the price of maize next month. The model is the part that is \"trained\"."
+    },
+    {
+     "icon": "🌳",
+     "title": "Decision trees",
+     "text": "A decision tree is one simple kind of model. It asks yes/no questions, one after another, until it reaches an answer: \"Does it have feathers? Yes → bird. No → Does it breathe with gills? Yes → fish. No → mammal.\" Training means finding which questions to ask, and in what order."
+    },
+    {
+     "icon": "🔁",
+     "title": "Training is trial and improvement",
+     "text": "Most models start bad and improve. They make predictions on the training data, measure how wrong they are, adjust a little, and repeat, often thousands or millions of times. Neural networks, the models behind modern speech and image AI, learn this way by adjusting millions of numbers."
+    },
+    {
+     "icon": "📈",
+     "title": "Accuracy and testing",
+     "text": "Accuracy is the share of predictions that are correct. A model that is right 90 times out of 100 has 90% accuracy. It must be measured on test data the model has never seen. A model can score 100% on its training data and still fail on new examples."
+    },
+    {
+     "icon": "🎯",
+     "title": "Overfitting",
+     "text": "Overfitting is when a model memorises its training examples instead of learning the general pattern, like a learner who memorises past-paper answers but can't solve a new question. In the explainer above, a tree can sort every training animal perfectly and still get a dolphin wrong."
+    }
+   ],
+   "listen": [
+    "A trained model turns inputs into a prediction.",
+    "A decision tree asks yes or no questions until it reaches an answer.",
+    "Training is trial and improvement, repeated many times.",
+    "Neural networks learn by adjusting millions of numbers.",
+    "Accuracy is the share of predictions that are correct.",
+    "Always measure accuracy on test data the model hasn't seen.",
+    "Overfitting is memorising the examples instead of the pattern."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Train and test your tree",
+    "steps": [
+     "In the explainer, build a tree that sorts all the training animals, then test it on the new ones. Note how many it gets right.",
+     "Start again and build a different tree. Which questions worked best on the new animals, and why?"
+    ],
+    "question": "Your best tree's questions, and how many new animals it got right.",
+    "tasks": [
+     {
+      "type": "order",
+      "label": "Put the steps of building a model in order.",
+      "items": [
+       {
+        "t": "Collect and label example data",
+        "note": "For example, animals marked mammal, bird or fish."
+       },
+       {
+        "t": "Split it into training data and test data",
+        "note": "Keep some examples hidden from training."
+       },
+       {
+        "t": "Train the model on the training data",
+        "note": "It adjusts its rules to fit the examples."
+       },
+       {
+        "t": "Measure accuracy on the test data",
+        "note": "Check it on examples it has never seen."
+       },
+       {
+        "t": "Improve and repeat, or put the model to use",
+        "note": "Better data or features often matter more than anything else."
+       }
+      ]
+     },
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A model gets 45 out of 50 test examples right. What is its accuracy?",
+        "options": [
+         "45%",
+         "50%",
+         "90%",
+         "95%"
+        ],
+        "answer": 2,
+        "why": "45 ÷ 50 = 0.9, which is 90%."
+       },
+       {
+        "q": "A model scores 100% on training data but 60% on test data. What is the most likely problem?",
+        "options": [
+         "The test data is too easy",
+         "Overfitting: it memorised the training examples",
+         "The model is perfect",
+         "The computer is too slow"
+        ],
+        "answer": 1,
+        "why": "A big gap between training and test results is the classic sign of overfitting."
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is a model in machine learning?",
+     "options": [
+      "Rules or numbers that turn inputs into a prediction",
+      "A person who poses for photos",
+      "A type of computer case",
+      "A spreadsheet only"
+     ],
+     "a": 0,
+     "why": "Training adjusts the model so its predictions match the examples."
+    },
+    {
+     "q": "How does a decision tree make a decision?",
+     "options": [
+      "It guesses randomly",
+      "It asks a series of yes/no questions until it reaches an answer",
+      "It asks the user to decide",
+      "It looks up a dictionary"
+     ],
+     "a": 1,
+     "why": "Each question splits the examples into smaller groups until each group has one answer."
+    },
+    {
+     "q": "What does accuracy measure?",
+     "options": [
+      "How fast a model runs",
+      "The share of predictions that are correct",
+      "How big the model is",
+      "How many features it uses"
+     ],
+     "a": 1,
+     "why": "90% accuracy means 9 out of every 10 predictions are right."
+    },
+    {
+     "q": "Why must accuracy be measured on test data?",
+     "options": [
+      "Test data is always larger",
+      "To see if the model works on examples it has never seen",
+      "Training data is secret",
+      "It's faster"
+     ],
+     "a": 1,
+     "why": "Scoring well only on familiar examples doesn't prove the model learned the pattern."
+    },
+    {
+     "q": "What is overfitting?",
+     "options": [
+      "A model that is too small",
+      "Memorising the training examples instead of learning the general pattern",
+      "A computer that overheats",
+      "Using too little data"
+     ],
+     "a": 1,
+     "why": "An overfitted model looks perfect in training but fails on new data."
+    },
+    {
+     "q": "How do most models improve during training?",
+     "options": [
+      "They are perfect from the start",
+      "They predict, measure their errors, adjust slightly, and repeat many times",
+      "A programmer edits every rule by hand",
+      "They wait for updates"
+     ],
+     "a": 1,
+     "why": "Many small corrections add up to a model that fits the data."
+    },
+    {
+     "q": "Neural networks learn by...",
+     "options": [
+      "Growing real brain cells",
+      "Adjusting millions of numbers to reduce their errors",
+      "Reading the internet once",
+      "Copying other networks"
+     ],
+     "a": 1,
+     "why": "They're inspired by the brain, but they are maths running on computers."
+    },
+    {
+     "q": "In the explainer, why did the dolphin trip up some trees?",
+     "options": [
+      "Dolphins are fish",
+      "It lives in water and has almost no hair, unlike the mammals in the training data",
+      "The tree was too short",
+      "The computer was broken"
+     ],
+     "a": 1,
+     "why": "The training data had no water-living mammals, so a tree relying on \"fur\" fails on dolphins."
+    },
+    {
+     "q": "A model's accuracy on test data is low. What often helps most?",
+     "options": [
+      "Buying a bigger screen",
+      "More varied, better-labelled data, or better features",
+      "Training on the test data",
+      "Deleting the test data"
+     ],
+     "a": 1,
+     "why": "Better examples usually beat more training time. Training on the test data would just hide the problem."
+    },
+    {
+     "q": "What is the first step in building a model?",
+     "options": [
+      "Collecting and labelling example data",
+      "Measuring accuracy",
+      "Selling the app",
+      "Testing on new data"
+     ],
+     "a": 0,
+     "why": "Without good data there is nothing for the model to learn from."
+    }
+   ],
+   "cbe": "nice",
+   "strandRef": null,
+   "explainer": "decision-tree"
+  },
+  {
+   "track": "ai",
+   "id": "ai-genai",
+   "code": "A4",
+   "name": "Chatbots & Generative AI",
+   "part": "How AI writes text and makes images",
+   "read": [
+    {
+     "icon": "✍️",
+     "title": "Generative AI",
+     "text": "Generative AI creates new content: text, images, music, or computer code. AI chatbots write answers, and image generators turn a short description into a picture. They work by learning patterns from enormous amounts of existing text and images."
+    },
+    {
+     "icon": "🔮",
+     "title": "Predicting the next word",
+     "text": "A chatbot is built on a large language model. It was trained on billions of sentences to predict what word, or piece of a word, comes next. To answer you, it predicts one piece, adds it, and predicts again, over and over. The explainer above does the same thing with just a few sentences."
+    },
+    {
+     "icon": "🤥",
+     "title": "Confident but wrong",
+     "text": "Because a chatbot predicts likely-sounding words rather than looking up facts, it can make things up, such as fake dates, quotes or sources, and say them confidently. This is often called \"hallucination\". Always check important facts against a reliable source, like your textbook, a teacher or an official website."
+    },
+    {
+     "icon": "🌍",
+     "title": "What it knows depends on its data",
+     "text": "A model only knows patterns from its training data, which stops at a certain date. Languages with less text online, like Kiswahili, Sheng and other Kenyan languages, usually get weaker answers than English. Missing or one-sided data shows up in the answers."
+    },
+    {
+     "icon": "💬",
+     "title": "Good prompts, good use",
+     "text": "A prompt is what you type to the chatbot. Clear prompts get better answers: say who you are, what you need, and how you want it (\"Explain photosynthesis to a Grade 7 learner in 5 short points\"). Use it to explain, quiz you, or give feedback, not to do your work for you."
+    }
+   ],
+   "listen": [
+    "Generative AI creates new text, images, music or code.",
+    "A chatbot predicts the next word again and again.",
+    "It can make up facts and sound very sure about them.",
+    "Always check important facts against a reliable source.",
+    "It knows only what was in its training data, which ends at a certain date.",
+    "Kiswahili and Sheng answers are often weaker, because there was less training text.",
+    "Clear prompts get better answers."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Predict like a chatbot",
+    "steps": [
+     "In the explainer, start with \"the\" and keep picking the most likely word. Does the sentence make sense? Then add your own sentence and see how the predictions change.",
+     "If you have permission to use a chatbot, ask it something you already know well, and check every fact it gives."
+    ],
+    "question": "One sentence the predictor made, and why it chose those words.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "How does a chatbot produce an answer?",
+        "options": [
+         "It looks up a ready-made answer in a big list",
+         "It predicts the next word (or piece of a word) again and again",
+         "A person types every answer",
+         "It copies the first website it finds"
+        ],
+        "answer": 1,
+        "why": "Large language models generate text one piece at a time, choosing likely continuations."
+       },
+       {
+        "q": "A chatbot gives you a quote \"from a famous Kenyan leader\" for your essay. What should you do?",
+        "options": [
+         "Use it straight away",
+         "Check it in a reliable source first, because chatbots can invent quotes",
+         "Ask the chatbot if it's sure, and trust the answer",
+         "Change one word and use it"
+        ],
+        "answer": 1,
+        "why": "Chatbots can produce convincing but fake quotes and sources. Asking the same chatbot doesn't prove anything."
+       },
+       {
+        "q": "Which prompt will probably get the most useful answer?",
+        "options": [
+         "photosynthesis",
+         "tell me stuff",
+         "Explain photosynthesis to a Grade 7 learner in 5 short points with one example from a farm",
+         "answer"
+        ],
+        "answer": 2,
+        "why": "Saying who it's for, how long, and what kind of example gives the model clear instructions."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Is each one a good or poor way to use a chatbot for school?",
+      "buckets": [
+       "Good use",
+       "Poor use"
+      ],
+      "items": [
+       {
+        "t": "Asking it to explain a topic you didn't understand",
+        "b": 0
+       },
+       {
+        "t": "Copying its essay and handing it in as your own",
+        "b": 1
+       },
+       {
+        "t": "Asking it to quiz you before a test",
+        "b": 0
+       },
+       {
+        "t": "Trusting its facts without checking",
+        "b": 1
+       },
+       {
+        "t": "Asking for feedback on a paragraph you wrote",
+        "b": 0
+       },
+       {
+        "t": "Pasting your ID number into it",
+        "b": 1
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What does generative AI do?",
+     "options": [
+      "Only sorts files",
+      "Creates new content such as text, images, music or code",
+      "Generates electricity",
+      "Repairs computers"
+     ],
+     "a": 1,
+     "why": "It learns patterns from existing content and produces new examples."
+    },
+    {
+     "q": "A large language model is trained to...",
+     "options": [
+      "Predict the next word or piece of a word",
+      "Understand feelings",
+      "Search the internet for every answer",
+      "Translate only"
+     ],
+     "a": 0,
+     "why": "Repeating that prediction step builds whole answers."
+    },
+    {
+     "q": "What is an AI \"hallucination\"?",
+     "options": [
+      "A dream the computer has",
+      "Made-up information stated confidently, such as a fake fact or source",
+      "A broken screen",
+      "A very fast answer"
+     ],
+     "a": 1,
+     "why": "Predicting likely words doesn't guarantee they are true."
+    },
+    {
+     "q": "Why are chatbot answers in Kiswahili often weaker than in English?",
+     "options": [
+      "Kiswahili is harder for computers to type",
+      "There was much less Kiswahili text in its training data",
+      "Chatbots refuse other languages",
+      "Kiswahili has no grammar"
+     ],
+     "a": 1,
+     "why": "Models learn from the text available; less text means weaker patterns."
+    },
+    {
+     "q": "What is a prompt?",
+     "options": [
+      "A type of virus",
+      "The instruction or question you type to the AI",
+      "The AI's answer",
+      "A keyboard shortcut"
+     ],
+     "a": 1,
+     "why": "Clear, specific prompts usually lead to more useful answers."
+    },
+    {
+     "q": "Why might a chatbot not know about last week's news?",
+     "options": [
+      "It is lazy",
+      "Its training data stops at a certain date",
+      "News is secret",
+      "It only reads books"
+     ],
+     "a": 1,
+     "why": "Unless it can search the web, a model only knows what was in its training data."
+    },
+    {
+     "q": "Which is the best way to check a fact from a chatbot?",
+     "options": [
+      "Ask the same chatbot again",
+      "Compare it with a reliable source, like a textbook, a teacher or an official site",
+      "Assume it's right if it sounds confident",
+      "Ask a friend's chatbot"
+     ],
+     "a": 1,
+     "why": "Independent, trusted sources are how you confirm a fact."
+    },
+    {
+     "q": "How does an image generator make pictures?",
+     "options": [
+      "It photographs real scenes",
+      "It learned patterns from huge numbers of images and creates new ones from a description",
+      "It draws with a robot arm",
+      "It copies one image exactly"
+     ],
+     "a": 1,
+     "why": "It produces new images that match the patterns it learned."
+    },
+    {
+     "q": "In the explainer, why did the predictor sometimes have nothing to say?",
+     "options": [
+      "It ran out of battery",
+      "The last word never appeared in its training sentences with a word after it",
+      "It was switched off",
+      "The word was too long"
+     ],
+     "a": 1,
+     "why": "A model can only continue patterns it has seen. Big models just see far more text."
+    },
+    {
+     "q": "What's an honest way to use a chatbot for homework?",
+     "options": [
+      "Copy its answer and hand it in",
+      "Use it to explain or quiz you, do the work yourself, and say if your teacher allows AI help",
+      "Ask it to pretend to be you",
+      "Never think for yourself"
+     ],
+     "a": 1,
+     "why": "Learning happens when you do the thinking; follow your school's rules on AI."
+    }
+   ],
+   "cbe": "nice",
+   "strandRef": null,
+   "explainer": "next-word"
+  },
+  {
+   "track": "ai",
+   "id": "ai-bias",
+   "code": "A5",
+   "name": "Bias & Fairness",
+   "part": "When AI treats people unfairly",
+   "read": [
+    {
+     "icon": "⚖️",
+     "title": "What AI bias is",
+     "text": "AI bias is when a system treats some groups of people unfairly, for example making more mistakes for women, for darker skin, for older people, or for one region's accent. AI doesn't choose to be unfair: it copies patterns, including unfair ones, from the data it learned from."
+    },
+    {
+     "icon": "🔬",
+     "title": "A real example: faces",
+     "text": "In 2018, researchers Joy Buolamwini and Timnit Gebru tested commercial face-analysis systems. The systems were far less accurate for darker-skinned women than for lighter-skinned men. The training data had mostly lighter-skinned faces, so the systems learned them best."
+    },
+    {
+     "icon": "📄",
+     "title": "Another example: hiring",
+     "text": "A large company built an AI to sort job applications, trained on CVs from people it had hired in the past, who were mostly men. The tool learned to rank women's CVs lower, and the company stopped using it. The AI faithfully copied an unfair history."
+    },
+    {
+     "icon": "🗣️",
+     "title": "Bias close to home",
+     "text": "Voice assistants may understand some accents better than others. A credit-scoring app could learn to give fewer loans to people from certain areas if its data reflects past unfairness. In Kenya, where people speak many languages and live very different lives, data from one group may not represent everyone."
+    },
+    {
+     "icon": "🛠️",
+     "title": "Making AI fairer",
+     "text": "Fairer AI needs varied data that represents everyone it will affect, testing accuracy separately for different groups, people reviewing important decisions, and openness about how a system decides. Asking \"who could this hurt, and who is missing from the data?\" is a skill everyone can practise."
+    }
+   ],
+   "listen": [
+    "AI bias is when a system treats some groups unfairly.",
+    "AI copies patterns, including unfair ones, from its training data.",
+    "Face systems were once far less accurate for darker-skinned women.",
+    "A hiring AI learned to prefer men because its past data did.",
+    "Bias can affect accents, loans and much more.",
+    "Fairer AI needs varied data, testing for every group, and human review.",
+    "Always ask: who could this hurt, and who is missing from the data?"
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Bias detective",
+    "steps": [
+     "Think of an AI that could be used in Kenya, such as a loan app, an exam marker or a voice assistant. Who might be missing from its data, and what could go wrong for them?",
+     "Write one rule you would set to make it fairer."
+    ],
+    "question": "Your example AI, who might be left out, and your fairness rule.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A school uses AI trained only on essays from one large urban school to mark essays nationally. What's the risk?",
+        "options": [
+         "None; essays are all the same",
+         "It may mark learners from other regions or backgrounds unfairly, because they're missing from the data",
+         "It will be too generous to everyone",
+         "It will refuse to mark"
+        ],
+        "answer": 1,
+        "why": "When a group is missing from the training data, the model's patterns may not fit them."
+       },
+       {
+        "q": "Why did the hiring AI rank women's CVs lower?",
+        "options": [
+         "It was programmed to dislike women",
+         "It learned from past hiring data that was mostly men",
+         "Women's CVs were longer",
+         "It was broken"
+        ],
+        "answer": 1,
+        "why": "Nobody wrote an unfair rule; the AI copied the pattern in its history."
+       },
+       {
+        "q": "Which step does most to reduce bias?",
+        "options": [
+         "Making the AI run faster",
+         "Using varied data and testing accuracy separately for different groups",
+         "Hiding how the AI works",
+         "Using fewer examples"
+        ],
+        "answer": 1,
+        "why": "Testing each group reveals unfair gaps, and varied data helps close them."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Is each one likely to make AI fairer or less fair?",
+      "buckets": [
+       "Fairer",
+       "Less fair"
+      ],
+      "items": [
+       {
+        "t": "Collecting voice samples from many Kenyan regions and languages",
+        "b": 0
+       },
+       {
+        "t": "Training only on data from one city",
+        "b": 1
+       },
+       {
+        "t": "Letting a person review loan rejections",
+        "b": 0
+       },
+       {
+        "t": "Keeping the decision rules completely secret",
+        "b": 1
+       },
+       {
+        "t": "Checking accuracy for women and men separately",
+        "b": 0
+       },
+       {
+        "t": "Copying past decisions that were unfair",
+        "b": 1
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is AI bias?",
+     "options": [
+      "AI that prefers some colours",
+      "When an AI system treats some groups of people unfairly",
+      "When AI is slow",
+      "AI that has opinions on football"
+     ],
+     "a": 1,
+     "why": "Bias shows up as more mistakes or worse outcomes for certain groups."
+    },
+    {
+     "q": "Where does AI bias usually come from?",
+     "options": [
+      "Unfair or unrepresentative patterns in the training data",
+      "The computer's colour",
+      "Electricity",
+      "The keyboard"
+     ],
+     "a": 0,
+     "why": "The model learns whatever patterns the data contains, good or bad."
+    },
+    {
+     "q": "What did the 2018 face-analysis study find?",
+     "options": [
+      "All systems were perfect",
+      "Systems were much less accurate for darker-skinned women",
+      "Systems worked best on children",
+      "Faces can't be analysed"
+     ],
+     "a": 1,
+     "why": "The training data had mostly lighter-skinned faces, so accuracy was uneven."
+    },
+    {
+     "q": "Does AI choose to be unfair?",
+     "options": [
+      "Yes, AI has opinions",
+      "No, it copies patterns from its data, including unfair ones",
+      "Only on weekends",
+      "Only chatbots do"
+     ],
+     "a": 1,
+     "why": "Bias is a data and design problem, which people are responsible for fixing."
+    },
+    {
+     "q": "Why test an AI's accuracy separately for different groups?",
+     "options": [
+      "To make the report longer",
+      "An AI can be accurate overall yet much worse for one group",
+      "Groups always score the same",
+      "It makes the AI faster"
+     ],
+     "a": 1,
+     "why": "An overall average can hide unfair gaps."
+    },
+    {
+     "q": "Which data would make a Kenyan voice assistant fairer?",
+     "options": [
+      "Recordings from one Nairobi office",
+      "Recordings from many regions, ages and languages",
+      "Only English news readers",
+      "No recordings at all"
+     ],
+     "a": 1,
+     "why": "Representative data helps the AI understand everyone it will serve."
+    },
+    {
+     "q": "Why should people review important AI decisions, like loans or exam results?",
+     "options": [
+      "To catch unfair or wrong decisions before they harm someone",
+      "Because AI is never right",
+      "To slow things down on purpose",
+      "Because people enjoy paperwork"
+     ],
+     "a": 0,
+     "why": "Human review adds a check for mistakes and unfairness."
+    },
+    {
+     "q": "A model's data comes from past decisions that were unfair. What will it probably do?",
+     "options": [
+      "Fix the unfairness automatically",
+      "Repeat the unfairness",
+      "Refuse to learn",
+      "Become fair over time on its own"
+     ],
+     "a": 1,
+     "why": "Learning from history means learning its mistakes too, unless people correct for them."
+    },
+    {
+     "q": "Which question best helps spot bias?",
+     "options": [
+      "How fast is it?",
+      "Who could this hurt, and who is missing from the data?",
+      "What colour is the logo?",
+      "How much does it cost?"
+     ],
+     "a": 1,
+     "why": "Thinking about missing groups and possible harm is the heart of fairness."
+    },
+    {
+     "q": "Why does openness about how an AI decides help fairness?",
+     "options": [
+      "It makes the AI faster",
+      "People can question and correct unfair decisions",
+      "It hides mistakes",
+      "It removes the need for data"
+     ],
+     "a": 1,
+     "why": "Decisions that can be explained can be challenged and improved."
+    }
+   ],
+   "cbe": "nice",
+   "strandRef": null,
+   "explainer": ""
+  },
+  {
+   "track": "ai",
+   "id": "ai-safety",
+   "code": "A6",
+   "name": "Using AI Safely & Honestly",
+   "part": "Deepfakes, privacy and honest work",
+   "read": [
+    {
+     "icon": "🎭",
+     "title": "Deepfakes",
+     "text": "AI can now make fake videos, photos and voices that look and sound real; these are called deepfakes. They can show a leader saying something they never said, or put someone's face in a photo they were never in. Be extra careful with shocking clips, especially around elections."
+    },
+    {
+     "icon": "📞",
+     "title": "Voice-clone scams",
+     "text": "Scammers can copy a voice from a short recording. A caller who sounds exactly like a relative may say they're in trouble and need M-Pesa urgently. Hang up and call the person back on the number you know, or ask a question only they could answer. Never send money because of a voice alone."
+    },
+    {
+     "icon": "🔍",
+     "title": "Check before you share",
+     "text": "Before believing or forwarding something: Who posted it first? Do trusted news sources report it? Does the image have odd details, like strange hands, blurry text or mismatched shadows? If you can't confirm it, don't share it. Spreading fakes can hurt real people."
+    },
+    {
+     "icon": "🔒",
+     "title": "Protect your privacy",
+     "text": "Anything you type or upload into an AI app may be stored by the company. Never share passwords, PINs, your ID number, your address, or photos of other people without permission. Kenya's Data Protection Act (2019) gives you rights over your personal data, but the safest data is the data you never share."
+    },
+    {
+     "icon": "🧭",
+     "title": "Honest, healthy use",
+     "text": "Use AI to help you learn, not to pretend its work is yours. Follow your school's rules, and say when you used AI. Remember that running AI uses a lot of electricity and water in data centres, so use it when it really helps. And AI is a tool: for worries and feelings, talk to people you trust."
+    }
+   ],
+   "listen": [
+    "Deepfakes are AI-made videos, photos or voices that look real.",
+    "A cloned voice can sound exactly like a relative asking for money.",
+    "Hang up and call back on a number you know.",
+    "Check who posted something, and whether trusted sources report it, before sharing.",
+    "Never give an AI app your passwords, PIN, ID number or address.",
+    "Use AI to learn, follow school rules, and say when you used it.",
+    "For worries and feelings, talk to people you trust."
+   ],
+   "video": {
+    "id": "",
+    "title": "",
+    "channel": ""
+   },
+   "mission": {
+    "title": "Stay safe with AI",
+    "steps": [
+     "Make a short \"AI safety card\" for your family: three warning signs of a voice-clone or deepfake scam, and what to do.",
+     "Find out whether your school has rules about using AI for homework, and write them down."
+    ],
+    "question": "Your three warning signs, and what your family should do.",
+    "tasks": [
+     {
+      "type": "pick",
+      "label": "",
+      "rounds": [
+       {
+        "q": "A caller sounding exactly like your uncle says he is stranded and needs KSh 5,000 on M-Pesa right now. What should you do?",
+        "options": [
+         "Send it immediately, it's his voice",
+         "Hang up and call him back on his usual number, or ask a question only he would know",
+         "Send half the amount",
+         "Share the call on social media"
+        ],
+        "answer": 1,
+        "why": "Voices can be cloned. Checking through a number you already know defeats the scam."
+       },
+       {
+        "q": "A shocking video shows a leader saying something outrageous the day before an election. What's the best first step?",
+        "options": [
+         "Forward it to every group",
+         "Check whether trusted news sources report it before believing or sharing",
+         "Assume it's real because it's a video",
+         "Comment angrily"
+        ],
+        "answer": 1,
+        "why": "Deepfakes are often released at sensitive moments. Confirm before you spread it."
+       },
+       {
+        "q": "Which is safe to type into an AI chatbot?",
+        "options": [
+         "Your M-Pesa PIN",
+         "Your ID number and home address",
+         "A general question about how volcanoes form",
+         "Your school portal password"
+        ],
+        "answer": 2,
+        "why": "General questions are fine; personal and secret information should never go into AI apps."
+       }
+      ]
+     },
+     {
+      "type": "sort",
+      "label": "Is each one a safe or risky way to use AI?",
+      "buckets": [
+       "Safe",
+       "Risky"
+      ],
+      "items": [
+       {
+        "t": "Asking AI to explain a maths method, then solving the problem yourself",
+        "b": 0
+       },
+       {
+        "t": "Uploading a friend's photo to an AI app without asking",
+        "b": 1
+       },
+       {
+        "t": "Telling your teacher you used AI to check your grammar",
+        "b": 0
+       },
+       {
+        "t": "Sharing an unverified AI video during an election",
+        "b": 1
+       },
+       {
+        "t": "Calling back a relative on their known number after a strange voice call",
+        "b": 0
+       },
+       {
+        "t": "Typing your password into a chatbot to \"fix your account\"",
+        "b": 1
+       }
+      ]
+     }
+    ]
+   },
+   "quiz": [
+    {
+     "q": "What is a deepfake?",
+     "options": [
+      "A very deep website",
+      "An AI-made video, photo or voice that looks or sounds real but is fake",
+      "A broken file",
+      "A type of password"
+     ],
+     "a": 1,
+     "why": "Deepfakes copy real people's faces or voices to create things that never happened."
+    },
+    {
+     "q": "How can you check a voice call that might be cloned?",
+     "options": [
+      "Trust it if the voice matches",
+      "Hang up and call back on a number you know, or ask something only they would know",
+      "Send money quickly to be safe",
+      "Give them your PIN to prove it's you"
+     ],
+     "a": 1,
+     "why": "Scammers control the call they made, but not the number you call back."
+    },
+    {
+     "q": "Which is a warning sign of an AI-generated image?",
+     "options": [
+      "Odd hands, blurry text or mismatched shadows",
+      "It is in colour",
+      "It has a caption",
+      "It was posted in the morning"
+     ],
+     "a": 0,
+     "why": "Generators often get small details like fingers and text wrong, though they're improving."
+    },
+    {
+     "q": "What should you never share with an AI app?",
+     "options": [
+      "A question about history",
+      "Passwords, PINs, your ID number or your address",
+      "A maths problem",
+      "A request for a poem"
+     ],
+     "a": 1,
+     "why": "AI companies may store what you type, so keep personal and secret information out."
+    },
+    {
+     "q": "Which Kenyan law gives you rights over your personal data?",
+     "options": [
+      "The Traffic Act",
+      "The Data Protection Act (2019)",
+      "The Tea Act",
+      "There is none"
+     ],
+     "a": 1,
+     "why": "It gives you rights over how your personal data is collected and used."
+    },
+    {
+     "q": "What is honest use of AI for schoolwork?",
+     "options": [
+      "Handing in AI's essay as your own",
+      "Using AI to help you learn, doing the work yourself, and saying when you used it",
+      "Never telling anyone",
+      "Copying a friend's AI answer"
+     ],
+     "a": 1,
+     "why": "Honesty keeps learning real and follows school rules."
+    },
+    {
+     "q": "Why does using AI have an environmental cost?",
+     "options": [
+      "It makes phones heavier",
+      "Data centres running AI use a lot of electricity and water",
+      "It uses paper",
+      "It has no cost at all"
+     ],
+     "a": 1,
+     "why": "Large AI models run on huge computers that need power and cooling."
+    },
+    {
+     "q": "You see a shocking post but can't confirm it's real. What should you do?",
+     "options": [
+      "Not share it",
+      "Share it with a warning",
+      "Share it to ask others",
+      "Change the caption and share it"
+     ],
+     "a": 0,
+     "why": "Sharing unconfirmed content can spread lies and hurt real people."
+    },
+    {
+     "q": "Who should you talk to about worries and feelings?",
+     "options": [
+      "Only an AI chatbot",
+      "People you trust, like family, a teacher or a counsellor",
+      "Nobody",
+      "Strangers online"
+     ],
+     "a": 1,
+     "why": "AI can't replace real care and support from people."
+    },
+    {
+     "q": "Why are deepfakes especially risky around elections?",
+     "options": [
+      "Elections use more electricity",
+      "Fake clips of leaders can mislead voters before the truth comes out",
+      "Voters can't use phones",
+      "Elections ban videos"
+     ],
+     "a": 1,
+     "why": "A convincing fake spread at the right moment can do damage before it's corrected."
+    }
+   ],
+   "cbe": "nice",
+   "strandRef": null,
    "explainer": ""
   }
  ]

@@ -11,7 +11,7 @@ const STEPS = ["read", "listen", "watch", "mission", "quiz"];
 const STEP_LABEL = { read: "READ", listen: "LISTEN", watch: "WATCH", mission: "MISSION", quiz: "QUIZ" };
 const STEP_ICON = { read: "book", listen: "speaker", watch: "play", mission: "flag", quiz: "check" };
 const ICON = (name, size) => (window.ICON ? window.ICON(name, size) : "");
-const TRACK_ICON = { primary: "sprout", junior: "monitor", senior: "cpu", senior11: "server" };
+const TRACK_ICON = { primary: "sprout", junior: "monitor", senior: "cpu", senior11: "server", ai: "spark" };
 const $app = document.getElementById("app"), $hud = document.getElementById("hud"), $modal = document.getElementById("modal-layer");
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const LS_TOKEN = "somasmart.token", LS_USER = "somasmart.user", LS_PROG = "somasmart.progress",

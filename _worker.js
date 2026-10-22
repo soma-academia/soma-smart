@@ -168,7 +168,7 @@ async function checkRateLimit(env, key, maxAttempts, windowSec) {
 }
 
 // Anonymous counters accept only well-formed module ids and known tracks, so junk can't pile up
-const TRACK_IDS = ["primary", "junior", "senior", "senior11"];
+const TRACK_IDS = ["primary", "junior", "senior", "senior11", "ai"];
 const FUNNEL_STEPS = ["start", "read", "mission", "quiz", "pass"];
 const validModule = b => !!b && TRACK_IDS.includes(b.track) && /^[a-z0-9-]{2,40}$/.test(String(b.module || ""));
 

@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parent
 CONTENT = ROOT / "content"
 TASK_TYPES = {"pick", "sort", "text", "typing", "paste", "flags", "order"}
 # Animated explainers available in explainers.js (keep in sync with its SCENES + "bits")
-EXPLAINERS = {"input-process-output", "memory", "network-path", "dns-lookup", "bits", "logic-gates", "logic-circuit"}
+EXPLAINERS = {"input-process-output", "memory", "network-path", "dns-lookup", "bits", "logic-gates", "logic-circuit", "decision-tree", "next-word"}
 errors = []
 
 
@@ -259,7 +259,7 @@ H = lambda x: _html.escape(str(x or ""), quote=True)
 slugify = lambda x: re.sub(r"[^a-z0-9]+", "-", x.lower()).strip("-")
 lesson_slug = lambda m: f"{m['code'].lower()}-{slugify(m['name'])}"
 track_by_id = {t["id"]: t for t in TRACKS}
-GRADE = {"primary": "Grade 4–6", "junior": "Grade 7–9", "senior": "Grade 10", "senior11": "Grade 11"}
+GRADE = {"primary": "Grade 4–6", "junior": "Grade 7–9", "senior": "Grade 10", "senior11": "Grade 11", "ai": "Grade 7–11"}
 
 def jsonld(obj):
     return '<script type="application/ld+json">' + json.dumps(obj, ensure_ascii=False).replace("</", "<\\/") + "</script>"

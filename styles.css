@@ -80,6 +80,7 @@ label.q:first-child{margin-top:0}
 .t-junior{--accent:var(--teal);--accent-bg:#e0f2ef}
 .t-senior{--accent:#3b5ba5;--accent-bg:#e5ebf7}
 .t-senior11{--accent:#6b4fa3;--accent-bg:#efeaf7}
+.t-ai{--accent:#c25a14;--accent-bg:#fbeee3}
 .card-head{display:flex;align-items:center;gap:12px}
 .card-ic{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--accent-bg,#e6f3ea);color:var(--accent,var(--green))}
 .card-t{font-family:Nunito,system-ui,sans-serif;font-weight:900;font-size:22px;line-height:1.2}
@@ -239,6 +240,24 @@ svg.i{flex:none;vertical-align:-.2em}
 .xp-tt th,.xp-tt td{border:1px solid var(--line);padding:5px 14px}
 .xp-tt th{background:#eef3ee}
 .xp-tt tr.now td{background:#fff3cd}
+.dt-tree{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin:8px 0;font-size:15px}
+.dt-node{margin:4px 0}
+.dt-branch{color:var(--muted);font-size:13px;font-weight:700}
+.dt-leaf{margin:2px 0 6px;padding:4px 8px;border-radius:8px;background:#e6f3ea;display:inline-block}
+.dt-leaf.mixed{background:#fff3cd}
+.dt-test{width:100%;min-width:0;table-layout:fixed;font-size:14px}
+.dt-test th:nth-child(1){width:44%}.dt-test th:nth-child(2){width:30%}.dt-test th:nth-child(3){width:26%}
+.dt-test td{text-align:left;vertical-align:top;padding:5px 6px;overflow-wrap:break-word;hyphens:manual}
+.dt-test td .hint{font-size:12px}
+.nw-sentence{font-size:22px;font-weight:700;font-family:Nunito,system-ui,sans-serif;background:#fff;border:2px solid var(--line);border-radius:12px;padding:10px 14px;margin:8px 0;min-height:1.6em}
+.nw-cursor{color:var(--green);animation:nwblink 1s steps(2) infinite}
+@keyframes nwblink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.nw-cursor{animation:none}}
+.nw-bars{display:grid;gap:6px;margin:6px 0 10px}
+.nw-bar{position:relative;display:flex;justify-content:space-between;align-items:center;gap:10px;border:2px solid var(--line);border-radius:10px;background:#fff;padding:8px 12px;overflow:hidden;text-align:left}
+.nw-bar>*{position:relative}
+.nw-fill{position:absolute;left:0;top:0;bottom:0;background:#e6f3ea}
+.nw-add{margin-top:12px}
 .vcard{margin-top:16px;border:2px dashed var(--line);border-radius:14px;padding:14px 16px;display:grid;gap:6px;justify-items:start}
 /* Info pages (About, Privacy, Licences) */
 .infopage{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;max-width:760px}

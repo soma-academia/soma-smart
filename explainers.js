@@ -231,13 +231,145 @@ function renderCircuit(el){
   return () => {};
 }
 
+// ---------- A3: teach a decision tree, then test it on animals it has never seen ----------
+const DT_QUESTIONS = {
+  feathers: "Does it have feathers?",
+  gills: "Does it breathe with gills?",
+  fur: "Does it have fur or hair?",
+  eggs: "Does it lay eggs?",
+};
+const DT_TRAIN = [
+  { n: "Lion", c: "Mammal", feathers: 0, gills: 0, fur: 1, eggs: 0 },
+  { n: "Cow", c: "Mammal", feathers: 0, gills: 0, fur: 1, eggs: 0 },
+  { n: "Goat", c: "Mammal", feathers: 0, gills: 0, fur: 1, eggs: 0 },
+  { n: "Ostrich", c: "Bird", feathers: 1, gills: 0, fur: 0, eggs: 1 },
+  { n: "Chicken", c: "Bird", feathers: 1, gills: 0, fur: 0, eggs: 1 },
+  { n: "Flamingo", c: "Bird", feathers: 1, gills: 0, fur: 0, eggs: 1 },
+  { n: "Tilapia", c: "Fish", feathers: 0, gills: 1, fur: 0, eggs: 1 },
+  { n: "Nile perch", c: "Fish", feathers: 0, gills: 1, fur: 0, eggs: 1 },
+];
+const DT_TEST = [
+  { n: "Eagle", c: "Bird", feathers: 1, gills: 0, fur: 0, eggs: 1 },
+  { n: "Zebra", c: "Mammal", feathers: 0, gills: 0, fur: 1, eggs: 0 },
+  { n: "Catfish", c: "Fish", feathers: 0, gills: 1, fur: 0, eggs: 1 },
+  { n: "Dolphin (lives in water, breathes air, almost no hair)", c: "Mammal", feathers: 0, gills: 0, fur: 0, eggs: 0 },
+  { n: "Penguin (a bird that can't fly)", c: "Bird", feathers: 1, gills: 0, fur: 0, eggs: 1 },
+];
+function renderDecisionTree(el){
+  let root, tested;
+  const reset = () => { root = { items: DT_TRAIN }; tested = false; };
+  const pure = node => new Set(node.items.map(x => x.c)).size <= 1;
+  const majority = items => { const c = {}; items.forEach(x => c[x.c] = (c[x.c] || 0) + 1); return Object.keys(c).sort((a, b) => c[b] - c[a])[0] || "Unknown"; };
+  const leaves = (node, path = []) => node.q ? [...leaves(node.yes, [...path, node.q]), ...leaves(node.no, [...path, node.q])] : [{ node, path }];
+  const classify = (node, x, trail = []) => node.q ? classify(x[node.q] ? node.yes : node.no, x, [...trail, `${DT_QUESTIONS[node.q]} ${x[node.q] ? "yes" : "no"}`]) : { c: majority(node.items), trail };
+  const draw = () => {
+    const open = leaves(root).filter(l => !pure(l.node) && l.path.length < Object.keys(DT_QUESTIONS).length);
+    const next = open[0];
+    const showTree = (node, depth = 0) => node.q
+      ? `<div class="dt-node" style="margin-left:${depth * 14}px">❓ <b>${esc(DT_QUESTIONS[node.q])}</b></div>
+         <div class="dt-branch" style="margin-left:${depth * 14 + 14}px">yes →</div>${showTree(node.yes, depth + 2)}
+         <div class="dt-branch" style="margin-left:${depth * 14 + 14}px">no →</div>${showTree(node.no, depth + 2)}`
+      : `<div class="dt-leaf ${pure(node) ? "" : "mixed"}" style="margin-left:${depth * 14}px">${node.items.length ? `<b>${esc(majority(node.items))}</b>` : "<b>?</b>"} <span class="hint">(${node.items.map(x => esc(x.n)).join(", ") || "no examples"})</span></div>`;
+    let body = `<p class="xp-cap">${next
+      ? `${next.path.length ? "This group is still mixed: " : ""}<b>${next.node.items.map(x => esc(x.n)).join(", ")}</b>. Which question should the computer ask ${next.path.length ? "next" : "first"}?`
+      : tested ? "" : "Your tree sorts every training animal. Now the real test: animals it has never seen."}</p>`;
+    if (next) {
+      const opts = Object.keys(DT_QUESTIONS).filter(q => !next.path.includes(q));
+      body += `<div class="opts one">${opts.map(q => `<button class="opt" data-q="${q}">${esc(DT_QUESTIONS[q])}</button>`).join("")}</div>`;
+    } else if (!tested) {
+      body += `<button class="btn" data-x="test">Test on new animals</button>`;
+    } else {
+      const res = DT_TEST.map(x => ({ x, ...classify(root, x) }));
+      const ok = res.filter(r => r.c === r.x.c).length;
+      body += `<table class="xp-tt dt-test"><thead><tr><th>New animal</th><th>Tree says</th><th></th></tr></thead><tbody>${res.map(r =>
+        `<tr class="${r.c === r.x.c ? "" : "now"}"><td>${esc(r.x.n)}<br><span class="hint">${esc(r.trail.join(" · "))}</span></td><td><b>${esc(r.c)}</b></td><td>${r.c === r.x.c ? "✓" : `✗ really a ${esc(r.x.c)}`}</td></tr>`).join("")}</tbody></table>
+        <p class="xp-cap"><b>${ok} of ${res.length} correct.</b> ${ok === res.length
+          ? "Your tree learned a rule that works on new animals too. That's what a good model does."
+          : "It sorted the training animals perfectly but got some new ones wrong. Real AI faces this all the time: a rule that fits the training examples may not fit the world. Try asking different questions."}</p>`;
+    }
+    el.innerHTML = `
+      <div class="xp">
+        <div class="xp-title">${window.ICON ? window.ICON("film", 22) : ""} Teach the computer: mammal, bird or fish?</div>
+        <p class="hint">Training animals: ${DT_TRAIN.map(x => esc(x.n)).join(", ")}.</p>
+        ${root.q ? `<div class="dt-tree">${showTree(root)}</div>` : ""}
+        ${body}
+        <div class="xp-ctl"><button class="btn ghost small" data-x="reset">↺ Start again</button></div>
+      </div>`;
+    el.querySelectorAll("[data-q]").forEach(b => b.onclick = () => {
+      const node = next.node, q = b.dataset.q;
+      node.q = q;
+      node.yes = { items: node.items.filter(x => x[q]) };
+      node.no = { items: node.items.filter(x => !x[q]) };
+      draw();
+    });
+    const t = el.querySelector('[data-x="test"]'); if (t) t.onclick = () => { tested = true; draw(); };
+    el.querySelector('[data-x="reset"]').onclick = () => { reset(); draw(); };
+  };
+  reset(); draw();
+  return () => {};
+}
+
+// ---------- A4: a tiny next-word predictor (how chatbots generate text, in miniature) ----------
+const NW_CORPUS = [
+  "i go to school every day", "i go to school by matatu", "i go to the market on saturday",
+  "we go to church on sunday", "the matatu is late today", "the matatu is full",
+  "the teacher is kind", "the teacher is in class", "my phone is on the table",
+  "habari ya asubuhi", "habari ya leo", "habari ya shule", "twende shule pamoja",
+];
+function renderNextWord(el){
+  let corpus = NW_CORPUS.slice(), words = ["i"];
+  const model = () => {
+    const m = {};
+    corpus.forEach(sent => { const w = sent.toLowerCase().split(/\s+/).filter(Boolean); for (let i = 0; i < w.length - 1; i++) { (m[w[i]] = m[w[i]] || {})[w[i + 1]] = (m[w[i]]?.[w[i + 1]] || 0) + 1; } });
+    return m;
+  };
+  const draw = () => {
+    const m = model(), last = words[words.length - 1], nexts = m[last] || {};
+    const total = Object.values(nexts).reduce((a, b) => a + b, 0);
+    const ranked = Object.entries(nexts).sort((a, b) => b[1] - a[1]);
+    const starts = [...new Set(corpus.map(s => s.split(/\s+/)[0]))];
+    el.innerHTML = `
+      <div class="xp">
+        <div class="xp-title">${window.ICON ? window.ICON("film", 22) : ""} A tiny next-word predictor</div>
+        <p class="hint">It learned from ${corpus.length} short sentences by counting which word usually comes next. It only looks at the last word, so it can write things that sound fine but make no sense, like “the matatu is kind”. Big chatbots look at far more words, learned from billions of sentences, but they can still sound right and be wrong.</p>
+        <div class="nw-sentence">${words.map(w => esc(w)).join(" ")} <span class="nw-cursor">▌</span></div>
+        ${ranked.length ? `<p class="xp-cap">After “${esc(last)}”, it predicts:</p>
+          <div class="nw-bars">${ranked.map(([w, c]) => `<button class="nw-bar" data-w="${esc(w)}"><span class="nw-fill" style="width:${Math.round(c / total * 100)}%"></span><b>${esc(w)}</b><span>${Math.round(c / total * 100)}%</span></button>`).join("")}</div>`
+          : `<p class="xp-cap">It has never seen anything after “${esc(last)}”, so it has nothing to predict. It only knows what was in its training sentences.</p>`}
+        <div class="xp-ctl">
+          ${ranked.length ? `<button class="btn small" data-x="auto">Pick the most likely</button>` : ""}
+          <button class="btn ghost small" data-x="back" ${words.length > 1 ? "" : "disabled"}>◀ Undo</button>
+          <span class="hint">Start with:</span>${starts.map(w => `<button class="opt small" data-s="${esc(w)}">${esc(w)}</button>`).join("")}
+        </div>
+        <form class="nw-add" data-x="add">
+          <label class="q" for="nw-in">Add your own training sentence</label>
+          <div style="display:flex;gap:8px"><input class="field" id="nw-in" maxlength="80" placeholder="e.g. the matatu is fast" style="flex:1;min-width:0" /><button class="btn ghost small">Add</button></div>
+        </form>
+      </div>`;
+    el.querySelectorAll("[data-w]").forEach(b => b.onclick = () => { words.push(b.dataset.w); draw(); });
+    el.querySelectorAll("[data-s]").forEach(b => b.onclick = () => { words = [b.dataset.s]; draw(); });
+    const auto = el.querySelector('[data-x="auto"]'); if (auto) auto.onclick = () => { words.push(ranked[0][0]); draw(); };
+    el.querySelector('[data-x="back"]').onclick = () => { if (words.length > 1) words.pop(); draw(); };
+    el.querySelector('[data-x="add"]').onsubmit = e => {
+      e.preventDefault();
+      const v = el.querySelector("#nw-in").value.toLowerCase().replace(/[^a-z\s']/g, " ").trim();
+      if (v.split(/\s+/).length >= 2) { corpus.push(v); words = [v.split(/\s+/)[0]]; }
+      draw();
+    };
+  };
+  draw();
+  return () => {};
+}
+
 // Public API: render(id, element) -> cleanup function, or null if the id is unknown
 window.EXPLAINERS = {
-  ids: [...Object.keys(SCENES), "bits", "logic-gates", "logic-circuit"],
+  ids: [...Object.keys(SCENES), "bits", "logic-gates", "logic-circuit", "decision-tree", "next-word"],
   render(id, el){
     if (id === "bits") return renderBits(el);
     if (id === "logic-gates") return renderGates(el);
     if (id === "logic-circuit") return renderCircuit(el);
+    if (id === "decision-tree") return renderDecisionTree(el);
+    if (id === "next-word") return renderNextWord(el);
     return SCENES[id] ? renderScene(SCENES[id], el) : null;
   },
 };

@@ -1,6 +1,6 @@
 # Editing Tech Tayari lessons
 
-Every module is one Markdown file in `content/primary/` (Grade 4–6), `content/junior/` (Grade 7–9) `content/senior/` (Grade 10) or `content/senior11/` (Grade 11).
+Every module is one Markdown file in `content/primary/` (Grade 4–6), `content/junior/` (Grade 7–9) `content/senior/` (Grade 10), `content/senior11/` (Grade 11) or `content/ai/` (AI Basics, Grade 7–11).
 To fix a typo or improve a card, open the file on GitHub, click the ✏️ pencil, edit, and propose the change.
 You don't need to know any programming.
 
@@ -22,7 +22,7 @@ strand: Grade 4–6 · Digital devices & their parts
 video:                      ← YouTube video id, or leave empty
 video_title:
 video_channel:
-explainer:                  ← optional: input-process-output, memory, network-path, dns-lookup, bits, logic-gates, logic-circuit
+explainer:                  ← optional: input-process-output, memory, network-path, dns-lookup, bits, logic-gates, logic-circuit, decision-tree, next-word
 ---
 
 # D1 · Meet the Computer    ← just a title for people, ignored by the build
