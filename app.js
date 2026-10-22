@@ -679,6 +679,10 @@ function renderHome(){
     </button>`;
   }).join("");
 
+  // Unlisted tracks (KCSE) get a button beside the heading instead of a card
+  const kcseBtn = TRACKS.filter(t => t.unlisted).map(t =>
+    `<a class="btn gold small home-kcse" href="/${t.id}" data-t="${t.id}">${ICON(TRACK_ICON[t.id] || "book", 18)} ${isKcse(t) ? "KCSE Form 4 revision" : esc(t.name)}</a>`).join("");
+
   const steps = [["book", "Read", "Short cards with Kenyan examples"], ["speaker", "Listen", "Hear the lesson read aloud"],
                  ["flag", "Mission", "Try it: sort, spot, type, build"], ["check", "Quiz", "5 questions. Mistakes are explained"]];
 
@@ -688,6 +692,7 @@ function renderHome(){
       <p>${countedMods().filter(m => ms(m.id).done).length} of ${countedMods().length} modules done. Keep going!</p>
       ${resume ? `<button class="btn teal resume" id="resume">▶ Continue: ${esc(resume.code)} · ${esc(resume.name)}</button>` : ""}
     </section>
+    <div class="home-head"><h2 class="home-h2">Your tracks</h2>${kcseBtn}</div>
     <div class="grid">${trackCards}</div>
   ` : `
     <section class="hero landing">
@@ -700,7 +705,7 @@ function renderHome(){
         <li>${ICON("book", 18)} Mapped to CBE strands</li>
       </ul>
     </section>
-    <h2 class="home-h2">Choose your track</h2>
+    <div class="home-head"><h2 class="home-h2">Choose your track</h2>${kcseBtn}</div>
     <div class="grid">${trackCards}</div>
     <h2 class="home-h2">How each lesson works</h2>
     <ol class="howto">${steps.map(([ic, t, d]) => `<li><span class="howto-ic">${ICON(ic, 26)}</span><b>${t}</b><span>${d}</span></li>`).join("")}</ol>
@@ -710,7 +715,7 @@ function renderHome(){
       Open it in Chrome and choose <i>Add to Home screen</i> to use it like an app.
     </div>
   `;
-  $app.querySelectorAll("[data-t]").forEach(b => b.onclick = () => go({ name: "track", t: b.dataset.t }));
+  $app.querySelectorAll("[data-t]").forEach(b => b.onclick = e => { e.preventDefault(); go({ name: "track", t: b.dataset.t }); });
   const r = document.getElementById("resume");
   if (r) r.onclick = () => openModule(resume.id);
 }
@@ -920,30 +925,20 @@ function getAvailableVoices(){
   return cachedVoices;
 }
 
-// Narration voice: a Kenyan English voice when the device has one (e.g. Microsoft Asilia or Chilemba on
-// Windows/Edge), else the nearest East African, then other African, then British English. The learner can
-// override it with the voice picker in the Listen step (saved per device).
-const LS_VOICE = "somasmart.voice";
+// Narration voice: always Asilia, Microsoft's Kenyan English voice ("Microsoft Asilia Online (Natural) -
+// English (Kenya)", built into Edge and Windows). Where it isn't installed, any other Kenyan English voice,
+// then the nearest East African, other African, then British English voice.
 const VOICE_ORDER = ["en-KE", "en-TZ", "en-UG", "en-NG", "en-ZA", "en-GB", "en-IE", "en-AU", "en-US"];
 const voiceLang = x => String(x.lang || "").replace("_", "-");
-function englishVoices(){
+function pickVoice(){
+  const v = getAvailableVoices();
+  const asilia = v.find(x => /asilia/i.test(x.name));
+  if (asilia) return asilia;
   const rank = x => { const i = VOICE_ORDER.findIndex(l => voiceLang(x).toLowerCase() === l.toLowerCase()); return i < 0 ? VOICE_ORDER.length : i; };
   const natural = x => /natural|online|enhanced|premium/i.test(x.name) ? 0 : 1;
   const novelty = /^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Good News|Jester|Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Junior|Ralph|Fred|Kathy|Grandma|Grandpa|Rocko)\b/;
-  return getAvailableVoices().filter(x => /^en/i.test(voiceLang(x)) && !novelty.test(x.name)).sort((a, b) => rank(a) - rank(b) || natural(a) - natural(b));
-}
-const isKenyanVoice = x => !!x && /^en-KE$/i.test(voiceLang(x));
-function pickVoice(){
-  const v = englishVoices(), saved = (() => { try { return localStorage.getItem(LS_VOICE) || ""; } catch { return ""; } })();
-  return v.find(x => x.voiceURI === saved) || v[0] || getAvailableVoices()[0] || null;
-}
-function voicePicker(){
-  const v = englishVoices();
-  if (v.length < 2) return "";
-  const cur = pickVoice();
-  const opts = v.map(x => `<option value="${esc(x.voiceURI)}" ${cur && x.voiceURI === cur.voiceURI ? "selected" : ""}>${esc(x.name.replace(/^(Microsoft|Google)\s+/, "").replace(/\s*-\s*English.*$/, ""))} (${esc(voiceLang(x))})</option>`).join("");
-  return `<div class="voice-pick"><label class="hint" for="voice">Voice</label><select class="field" id="voice">${opts}</select>
-    ${v.some(isKenyanVoice) ? "" : `<div class="hint">No Kenyan English voice on this device, so the closest one is used. Microsoft Edge on a computer has Kenyan voices.</div>`}</div>`;
+  const en = v.filter(x => /^en/i.test(voiceLang(x)) && !novelty.test(x.name)).sort((a, b) => rank(a) - rank(b) || natural(a) - natural(b));
+  return en[0] || v[0] || null;
 }
 
 function speak(lines, onLine, onEnd){
@@ -974,7 +969,6 @@ function stepListen(m, s, el){
         <div class="subtitle">${esc(sub || "Press play to listen to the lesson.")}</div>
         <div class="bars">${lines.map((_, i) => `<i class="${i < pos ? "on" : ""}"></i>`).join("")}</div>
         <div class="row" style="justify-content:center"><button class="btn teal" id="pl">${playing ? "⏸ Pause" : "▶ Play"}</button></div>
-        ${voicePicker()}
       </div>
       <div class="stepFoot">
         <span class="hint">Optional: listen, or go straight on.</span>
@@ -984,16 +978,7 @@ function stepListen(m, s, el){
 
     document.getElementById("pl").onclick = toggle;
     document.getElementById("nx").onclick = () => { stop(); advance(m, s, "listen"); };
-    const vs = document.getElementById("voice");
-    if (vs) vs.onchange = () => {
-      try { localStorage.setItem(LS_VOICE, vs.value); } catch {}
-      if (playing) { stop(); draw("Voice changed. Press play to listen again."); } else draw();
-    };
   };
-  // Voices can load after the first draw (Chrome), so redraw once they arrive
-  if ("speechSynthesis" in window && !englishVoices().length) {
-    try { speechSynthesis.addEventListener("voiceschanged", () => { cachedVoices = []; if (!playing && el.isConnected) draw(); }, { once: true }); } catch {}
-  }
 
   const stop = () => { playing = false; try { speechSynthesis.cancel(); } catch {} };
   const toggle = () => {
