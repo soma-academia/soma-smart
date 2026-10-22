@@ -87,7 +87,7 @@ Why: Cheque numbers are printed in magnetic ink, so MICR can read them reliably 
 - [x] To get data into the computer
 - [ ] To show results on paper
 - [ ] To cool the processor
-- [ ] To store files permanently
+- [ ] To show the results of processing on a screen
 Why: Input devices turn actions and the real world (keys, sound, light, touch) into data the computer can process.
 
 ### Which gives a hard copy?
@@ -98,7 +98,7 @@ Why: Input devices turn actions and the real world (keys, sound, light, touch) i
 Why: Hard copy is output you can hold, like a printed page; screens and projectors give soft copy.
 
 ### Which device is both input and output?
-- [ ] Keyboard
+- [ ] Keyboard with a built-in number pad
 - [x] Touch screen
 - [ ] Printer
 - [ ] Scanner
@@ -106,7 +106,7 @@ Why: A touch screen displays information (output) and senses your finger (input)
 
 ### A supermarket till reads product prices using...
 - [x] A barcode reader
-- [ ] MICR
+- [ ] MICR, as used for reading cheques
 - [ ] A plotter
 - [ ] A projector
 Why: Barcodes encode the product number; the reader scans it and the system looks up the price.
@@ -122,7 +122,7 @@ Why: Optical Mark Recognition detects where marks are on a printed form.
 - [ ] Sprayed ink drops
 - [ ] Sound waves
 - [x] Toner fused with heat
-- [ ] Magnetic ink
+- [ ] Tiny pins striking an inked ribbon
 Why: Laser printers attract powdered toner to the paper and melt it in place; inkjets are the ones that spray ink.
 
 ### Which port is most often used to connect a projector or TV screen?
@@ -140,7 +140,7 @@ Why: HDMI carries high-quality video and sound to displays.
 Why: Biometric devices identify people by body features like fingerprints or faces.
 
 ### Which is soft copy output?
-- [ ] A printed report
+- [ ] A report printed on A4 paper for the class
 - [x] A document shown on a monitor
 - [ ] A photocopy
 - [ ] A receipt
@@ -148,7 +148,7 @@ Why: Soft copy is displayed on a screen and disappears when you close it; hard c
 
 ### For a blind learner, which device helps most with output?
 - [ ] A bigger monitor
-- [ ] A colour printer
-- [x] A screen reader with speakers or headphones
 - [ ] A webcam
+- [x] A screen reader with speakers or headphones
+- [ ] A high-resolution colour printer with photo paper
 Why: Screen readers turn on-screen text into speech, so choosing devices means thinking about the user's needs.

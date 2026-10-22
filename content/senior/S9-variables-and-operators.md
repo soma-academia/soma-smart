@@ -97,48 +97,48 @@ Why: With quotes these are text, and + joins text together. Without quotes, 5 + 
 - [ ] my marks
 - [x] my_marks
 - [ ] for
-Why: It uses only letters and an underscore, doesn't start with a digit, and isn't a keyword.
+Why: It uses only letters and an underscore, doesn't start with a digit, has no spaces and isn't a keyword.
 
 ### What type is the value 3.75?
-- [ ] int
-- [x] float
-- [ ] str
-- [ ] bool
-Why: Numbers with a decimal point are floats; whole numbers are ints.
+- [ ] int (whole number)
+- [x] float (decimal)
+- [ ] str (text)
+- [ ] bool (True or False)
+Why: Numbers with a decimal point are floats; whole numbers such as 42 are ints, and text in quotes is a str.
 
 ### What type does input() always return?
-- [ ] int
-- [ ] float
+- [ ] int (whole number)
+- [ ] float (decimal)
 - [x] str (text)
-- [ ] bool
-Why: Whatever the user types arrives as text, so convert it with int() or float() for maths.
+- [ ] bool (True or False)
+Why: Whatever the user types arrives as text, so convert it with int() or float() before doing maths with it.
 
 ### What is the result of 2 ** 3?
 - [ ] 6
 - [ ] 5
 - [x] 8
 - [ ] 23
-Why: ** means "to the power of": 2 × 2 × 2 = 8.
+Why: ** means "to the power of", so 2 ** 3 is 2 × 2 × 2 = 8, not 2 × 3 = 6.
 
 ### What does == do?
-- [ ] Assigns a value
+- [ ] Stores the value on the right in the variable on the left
 - [x] Compares two values and gives True or False
-- [ ] Adds two numbers
-- [ ] Prints text
-Why: A single = stores a value; == asks "are these equal?"
+- [ ] Adds two numbers together and keeps the total
+- [ ] Prints both values on the screen side by side
+Why: A single = stores a value in a variable; == asks "are these equal?" and answers True or False.
 
 ### Which is a bool value?
 - [x] True
 - [ ] "True"
 - [ ] 1.0
 - [ ] true_value
-Why: True and False (capital T and F, no quotes) are Python's two boolean values.
+Why: True and False (capital T and F, no quotes) are Python's two boolean values; "True" in quotes is a str.
 
 ### Are the names Marks and marks the same variable in Python?
-- [ ] Yes, case doesn't matter
+- [ ] Yes, Python ignores the case of letters in names
 - [x] No, Python is case-sensitive
-- [ ] Only for numbers
-- [ ] Only inside functions
+- [ ] Yes, but only when the value stored is a number
+- [ ] Yes, as long as both are used in the same function
 Why: Python treats uppercase and lowercase letters as different, so these are two separate names.
 
 ### What does print(10 > 3 and 2 > 5) show?
@@ -149,15 +149,15 @@ Why: Python treats uppercase and lowercase letters as different, so these are tw
 Why: and needs both sides to be True; 2 > 5 is False, so the whole expression is False.
 
 ### Why write PASS_MARK in capitals?
-- [ ] Python requires it
-- [x] By convention it signals a constant that shouldn't change
-- [ ] It makes the program faster
-- [ ] Capitals use less memory
-Why: Python doesn't enforce constants, so programmers use capital names to show intent.
+- [ ] Python gives an error if a constant is in lowercase
+- [x] By convention it marks a constant that should not change
+- [ ] Names in capitals make the program run much faster
+- [ ] Capital letters take up less memory than lowercase letters do
+Why: Python doesn't enforce constants, so programmers use capital names to show that a value is meant to stay fixed.
 
 ### What does print(17 % 5) show?
 - [ ] 3
 - [x] 2
 - [ ] 3.4
 - [ ] 85
-Why: 17 = 5 × 3 + 2, so the remainder is 2.
+Why: % gives the remainder after division: 5 goes into 17 three times (15), leaving 2 over.

@@ -57,70 +57,70 @@ Question: Your connection type, and whether the site showed a padlock.
 
 ### The internet is...
 - [x] Many computers joined to share information
-- [ ] One big computer in Nairobi
-- [ ] A type of phone
-- [ ] A password
-Why: A global network of computers.
+- [ ] One big computer kept safe in Nairobi
+- [ ] A type of phone that has apps
+- [ ] The Wi-Fi box in your house or school
+Why: The internet is a worldwide network: millions of computers linked together so they can send information.
 
 ### A company that provides internet is called an...
 - [x] ISP
 - [ ] CPU
 - [ ] SSD
 - [ ] APP
-Why: Internet Service Provider, like Safaricom or Airtel.
+Why: An ISP (Internet Service Provider), like Safaricom or Airtel, connects your home or phone to the internet.
 
 ### Your phone can join the internet using...
 - [x] Wi-Fi or mobile data
-- [ ] Only a cable
-- [ ] Only at night
-- [ ] A mirror
-Why: Wi-Fi or mobile data.
+- [ ] Only a radio station signal
+- [ ] The phone's battery alone
+- [ ] A memory card
+Why: Wi-Fi brings internet from a nearby router through the air, and mobile data comes from your network's masts.
 
 ### Messages travel across the internet as...
 - [x] Small pieces called packets
-- [ ] One big block
-- [ ] Paper letters
-- [ ] Sound only
-Why: Packets travel and rejoin.
+- [ ] One big block sent all at once
+- [ ] Printed letters sent by post
+- [ ] Sound waves you can hear
+Why: A message is split into small packets that travel separate ways and are put back together at the end.
 
 ### A website is stored on a...
-- [x] Server (always-on computer)
-- [ ] Keyboard
+- [x] Server
+- [ ] Router
 - [ ] Mouse
 - [ ] Printer
-Why: Servers hold websites.
+Why: A server is a computer that stays on day and night, sending web pages to anyone who asks for them.
 
 ### A padlock and https in the address bar means...
-- [x] Your connection is safe/encrypted
-- [ ] The site is slow
-- [ ] The site is free
-- [ ] You won a prize
-Why: Look for it before passwords/payments.
+- [x] Your connection is encrypted (scrambled)
+- [ ] The website is free to use
+- [ ] The page will load faster
+- [ ] The site has no adverts
+Why: The padlock means what you send is scrambled on the way, so other people can't read it.
 
 ### Before typing a password on a site, check for...
 - [x] The padlock / https
-- [ ] A nice colour
-- [ ] Loud music
-- [ ] A game
-Why: Safety first.
+- [ ] A bright, nice-looking design
+- [ ] Lots of pictures and adverts
+- [ ] A big Login button
+Why: Check for the padlock and https first, so your password is scrambled while it travels to the site.
 
 ### Can you connect to the internet with wireless Wi-Fi without cables plugged into your phone?
 - [x] Yes, Wi-Fi sends signals through the air
-- [ ] No, phones always need cables
-- [ ] Only when connected to a TV
-- [ ] Only in the morning
-Why: Wi-Fi uses radio waves.
+- [ ] No, phones always need a cable to go online
+- [ ] Only when the phone is plugged into a TV
+- [ ] Only if the phone is charging at the time
+Why: Wi-Fi uses radio waves to carry information through the air between the router and your phone.
 
 ### A network of computers connected together allows them to...
 - [x] Share files, messages and resources
-- [ ] Turn into printers
-- [ ] Change into laptops
+- [ ] Run without any power or cables at all
+- [ ] Change into faster computers
 - [ ] Work without electricity
-Why: Networks share information.
+Why: When computers are joined, they can send messages, share files and even share one printer.
 
 ### When a packet gets lost or delayed on the internet, network protocols...
 - [x] Resend the missing packet
+- [ ] Stop the whole message for good
 - [ ] Shut down the whole internet
-- [ ] Break the screen
-- [ ] Delete your account
-Why: Protocols detect and retransmit missing packets.
+- [ ] Leave a gap
+Why: Network rules called protocols notice when a packet is missing and send it again, so the message arrives whole.

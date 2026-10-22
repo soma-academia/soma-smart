@@ -97,71 +97,71 @@ Why: HTTPS protects your data on the way. Scam sites can have a padlock too, so 
 ## Quiz
 
 ### The World Wide Web is...
-- [x] The pages/sites you view in a browser
-- [ ] The same as the whole internet
-- [ ] A type of cable
-- [ ] A password
-Why: The web rides on top of the internet.
+- [x] The pages and sites you view in a browser
+- [ ] The same thing as the whole internet
+- [ ] The cables that carry data between countries
+- [ ] The company that connects your home online
+Why: The internet is the network of connected computers; the web is one service that runs on it, alongside things like email.
 
 ### A domain name (like safaricom.co.ke) is...
-- [x] A friendly label for a website
-- [ ] A password
-- [ ] An IP number
-- [ ] A file type
-Why: Easier to remember than numbers.
+- [x] A friendly name that points to a website
+- [ ] The secret password for a website
+- [ ] The number that identifies the server
+- [ ] The type of file that a web page is saved in
+Why: Computers find servers by IP numbers, which are hard to remember, so we use names like safaricom.co.ke and let DNS look up the number.
 
 ### DNS turns a domain name into...
 - [x] An IP address
-- [ ] A password
-- [ ] A photo
-- [ ] A file
-Why: Like a contact list: name → number.
+- [ ] An encrypted link
+- [ ] A web page
+- [ ] A security certificate
+Why: Like a contact list turning a name into a phone number, DNS looks up the IP address of the server that hosts the site.
 
 ### When you open a page, your browser sends the server an...
 - [x] HTTP request
-- [ ] IP address only
-- [ ] SMS
-- [ ] email
-Why: The server replies with a response.
+- [ ] HTTP response
+- [ ] DNS reply
+- [ ] SMS message
+Why: The request asks for a page; the server answers with an HTTP response that carries the text, images and code to show it.
 
 ### HTTPS is different from HTTP because it...
-- [x] Encrypts the data
-- [ ] Is slower always
-- [ ] Needs no internet
-- [ ] Shows more ads
-Why: TLS encryption keeps data private.
+- [x] Encrypts the data sent
+- [ ] Makes pages load with no internet
+- [ ] Is always slower
+- [ ] Uses a shorter, faster web address
+Why: With HTTPS, TLS scrambles the data so others on the network, such as on public Wi-Fi, can't read or change it.
 
 ### The padlock in the address bar means...
-- [x] The connection is encrypted and the site proved its identity
-- [ ] The site is free
-- [ ] You won a prize
-- [ ] The page is empty
-Why: Private + identity checked.
+- [x] Encrypted connection, and the site proved its identity
+- [ ] The site is trustworthy and cannot be a phishing scam
+- [ ] The page has been checked for viruses by the browser
+- [ ] The website is free to use and has no adverts
+Why: The padlock shows the traffic is encrypted and the certificate matches the domain; it does not prove the owner is honest, so still check the name.
 
 ### A phishing site often uses...
 - [x] A look-alike domain name
-- [ ] The exact official name
-- [ ] No name at all
-- [ ] A padlock only
-Why: Check the address carefully.
+- [ ] The company's exact official domain
+- [ ] A .go.ke government address
+- [ ] A slower connection than real sites
+Why: Scammers can't use the real domain, so they pick names that look close, like kra-itax.co, hoping you won't read carefully.
 
 ### You should NEVER enter a password on...
 - [x] Plain HTTP (no padlock)
-- [ ] HTTPS with a padlock
-- [ ] A trusted site
-- [ ] Your own account
-Why: No encryption = unsafe.
+- [ ] HTTPS on the official domain
+- [ ] A site you reached by typing its address
+- [ ] Your bank's HTTPS app
+Why: Over plain HTTP your password travels unencrypted, so anyone on the same network, such as public Wi-Fi, could read it.
 
 ### In the URL 'https://tech-tayari.pages.dev', which part is the Top-Level Domain (TLD)?
 - [x] .dev
 - [ ] https
 - [ ] tech-tayari
 - [ ] pages
-Why: .dev is the TLD at the end of the domain hierarchy.
+Why: Read a domain from the right: the last part, .dev, is the top-level domain, then comes pages.dev, then tech-tayari.pages.dev.
 
 ### When a DNS cache stores an address lookup locally, it...
-- [x] Speeds up future requests by avoiding a repeat query across the internet
-- [ ] Changes the website password
-- [ ] Slows down your browser
-- [ ] Deletes your history
-Why: DNS caching saves time and network bandwidth.
+- [x] Speeds up later visits by skipping a repeat lookup
+- [ ] Saves a copy of each page's images and text
+- [ ] Makes the website's server respond more slowly
+- [ ] Encrypts the lookup so nobody can see it
+Why: Your device remembers the name-to-IP answer for a while, so the next visit can connect straight away without asking a DNS server again.

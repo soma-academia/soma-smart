@@ -90,71 +90,71 @@ Why: A modem modulates digital data into analogue form and demodulates it back a
 ## Quiz
 
 ### Which of these best defines a computer network?
-- [ ] A single computer with many programs installed
-- [ ] A collection of software used to type documents
-- [x] Computers and devices linked by a transmission medium to communicate and share resources
-- [ ] A room where computers are stored
-Why: A network needs two or more devices, a medium linking them, and the purpose of communicating and sharing resources.
+- [ ] A single powerful computer that many users share by taking turns at one keyboard
+- [ ] A collection of application programs installed on one computer to share its memory
+- [x] Two or more computers linked by a medium so they can communicate and share resources
+- [ ] A group of standalone computers kept in the same room but not connected to each other
+Why: A network needs two or more devices, a transmission medium linking them, and the purpose of communicating and sharing resources such as printers and files.
 
 ### Which of the following is a limitation of networking?
 - [x] Data is exposed to security threats such as hackers and viruses
-- [ ] Users can share one printer
-- [ ] Data can be accessed from remote locations
-- [ ] Work continues if one computer fails
-Why: The other three are advantages; security threats, high cost, moral effects and over-reliance are limitations.
+- [ ] Several users can share one printer, which reduces the cost of buying printers
+- [ ] Users can access shared data and files from remote locations
+- [ ] Work can continue on other computers if one computer breaks down
+Why: Sharing, remote access and reliability are advantages; security threats, high set-up cost, moral effects and over-reliance on the network are limitations.
 
 ### A network linking the branches of a bank in Nairobi, Mombasa and Eldoret is best described as a...
 - [ ] LAN
 - [ ] PAN
 - [ ] MAN
 - [x] WAN
-Why: A WAN covers a large geographical area such as a whole country; a MAN covers a single town or city.
+Why: A WAN covers a large geographical area such as a whole country; a MAN covers a single town or city and a LAN covers a building or campus.
 
 ### What is modulation?
-- [ ] Combining several signals on one channel
+- [ ] Combining several signals so that they share one channel at the same time
 - [x] Converting digital data into an analogue signal for transmission
-- [ ] Loss of signal strength over distance
-- [ ] Sending bits one after another
-Why: Modulation turns digital data into analogue form; demodulation does the reverse. A modem does both.
+- [ ] The gradual loss of signal strength as it travels along the medium
+- [ ] Converting an analogue signal back into digital data at the receiver
+Why: Modulation turns digital data into analogue form so it can travel over lines such as telephone lines; demodulation does the reverse. A modem does both.
 
 ### Multiplexing is...
-- [ ] Boosting a weak signal
-- [ ] Converting analogue signals to digital
-- [ ] Sending data in one direction only
+- [ ] Boosting a weak signal so that it can travel a longer distance
+- [ ] Converting digital data into analogue signals for the telephone line
+- [ ] Sending data in one direction only, from the sender to the receiver
 - [x] Sending several signals at the same time over one medium
-Why: A multiplexer combines many signals on one line, and a demultiplexer separates them at the receiving end.
+Why: A multiplexer combines many signals on one line, and a demultiplexer separates them at the receiving end, so one expensive medium serves many users.
 
 ### Bandwidth is measured in...
-- [x] Bits per second
-- [ ] Metres
-- [ ] Kilograms
-- [ ] Pixels per inch
-Why: Bandwidth is the maximum amount of data a channel can carry per second, given in bps, kbps, Mbps or Gbps.
+- [x] Bits per second (bps)
+- [ ] Dots per inch (dpi)
+- [ ] Metres per second (m/s)
+- [ ] Pages per minute (ppm)
+Why: Bandwidth is the maximum amount of data a channel can carry per second, given in bps, kbps, Mbps or Gbps. Dpi measures print resolution and ppm printer speed.
 
 ### Which statement about baseband transmission is correct?
-- [ ] It carries many signals at once on different frequencies
-- [x] It carries one signal at a time using the whole bandwidth of the medium
-- [ ] It is only used by satellites
-- [ ] It sends data through the air
-Why: Baseband uses the full capacity of the medium for one signal, as in most LANs; broadband splits it into many channels.
+- [ ] It divides the medium into many channels, each on a different frequency
+- [x] It uses the whole bandwidth of the medium for one signal at a time
+- [ ] It is used only for links between earth stations and satellites
+- [ ] It sends signals through the air instead of along a cable
+Why: Baseband uses the full capacity of the medium for one signal, as in most LANs; broadband splits the medium into many channels on different frequencies.
 
 ### A walkie-talkie lets both users speak, but only one at a time. This mode is...
 - [ ] Simplex
 - [ ] Full duplex
 - [x] Half duplex
 - [ ] Parallel
-Why: Half duplex allows two-way communication, but in only one direction at any one time.
+Why: Half duplex allows two-way communication, but in only one direction at any one time; simplex is one way only and full duplex is both ways at once.
 
 ### Why is parallel transmission not used over long distances?
-- [ ] It sends only one bit at a time
-- [ ] It cannot carry digital data
-- [ ] It is slower than serial transmission
+- [ ] It sends only one bit at a time along a single line, so it is too slow
+- [ ] It can carry only analogue signals, not the digital data that computers use
+- [ ] It is slower than serial transmission over every distance and every medium
 - [x] Bits sent together can arrive out of step, and many lines are costly
-Why: Parallel is fast over short distances, but over long cables the bits drift out of step (skew) and the many wires cost more.
+Why: Parallel is fast over short distances, but over long cables the bits drift out of step (skew) and the many wires cost more, so serial is used instead.
 
 ### Which of these uses guided (bounded) media?
-- [ ] A satellite TV link
-- [ ] A radio broadcast
+- [ ] A school's satellite TV link to an orbiting satellite
+- [ ] A radio station broadcasting to its listeners
 - [x] A computer connected by a network cable
-- [ ] A Bluetooth headset
-Why: Guided media carry signals along a physical path such as a cable; the others send signals through air or space.
+- [ ] A Bluetooth headset paired with a phone
+Why: Guided media carry signals along a physical path such as a cable; unguided media such as satellite, radio and Bluetooth send signals through air or space.

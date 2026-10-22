@@ -57,70 +57,70 @@ Question: Number of cores, and the activity that used the CPU most.
 
 ### The CPU's main job is to...
 - [x] Run the instructions of programs
-- [ ] Store files forever
-- [ ] Show pictures only
-- [ ] Connect to Wi-Fi
-Why: It's the processor/decision-maker.
+- [ ] Keep your files when the power is off
+- [ ] Send and receive Wi-Fi signals
+- [ ] Supply steady power to the other parts
+Why: The CPU is the processor: it fetches each instruction from a program, works it out and acts on it, billions of times a second.
 
 ### CPU clock speed is measured in...
 - [x] GHz
 - [ ] GB
 - [ ] Mbps
 - [ ] Watts
-Why: Gigahertz = billions of beats per second.
+Why: Clock speed counts beats per second, and gigahertz (GHz) means billions of beats each second; GB measures data size instead.
 
 ### 3 GHz means about...
 - [x] 3 billion beats per second
-- [ ] 3 beats per second
-- [ ] 3 thousand
-- [ ] 3 GB
-Why: Giga = billion.
+- [ ] 3 thousand beats per second
+- [ ] 3 gigabytes of memory
+- [ ] 300 beats per second
+Why: Giga means billion, so 3 GHz is about 3,000,000,000 clock beats every second, with a little work done on each beat.
 
 ### A core is...
-- [x] A worker inside the CPU
-- [ ] A type of screen
-- [ ] A password
-- [ ] A cable
-Why: More cores = more jobs at once.
+- [x] A worker inside the CPU that runs instructions
+- [ ] A small store of memory beside the CPU
+- [ ] The cooling fan fitted on top of the CPU
+- [ ] The slot on the motherboard that holds the CPU
+Why: Each core can run its own stream of instructions, so a CPU with more cores can work on more jobs at the same time.
 
 ### Cache is...
 - [x] Small, very fast memory on the CPU
-- [ ] A big slow disk
-- [ ] The internet
-- [ ] A fan
-Why: Faster to reach than RAM.
+- [ ] Large, slow storage on the hard disk
+- [ ] The extra RAM sticks you can add later
+- [ ] A cooling layer between CPU and fan
+Why: Cache sits right next to the cores, so data in it can be reached much faster than data in RAM, saving waiting time.
 
 ### Why can a new CPU beat an old one at the same GHz?
 - [x] It does more useful work per beat
-- [ ] It is heavier
-- [ ] It is a nicer colour
-- [ ] It has more cables
-Why: Better design = more work per beat.
+- [ ] It uses a larger fan to stay cool
+- [ ] It is connected to a faster internet line
+- [ ] It runs fewer programs at a time
+Why: Newer designs complete more instructions on each clock beat, so they finish the same work sooner even at the same GHz.
 
 ### Getting data from cache instead of RAM is...
 - [x] Faster
 - [ ] Slower
-- [ ] The same
-- [ ] Impossible
-Why: Cache is closer and quicker.
+- [ ] About the same speed
+- [ ] Only possible when offline
+Why: Cache is on the CPU chip itself, close to the cores, so it answers much more quickly than RAM out on the motherboard.
 
 ### A multi-core processor has multiple...
 - [x] Independent processing units on one chip
-- [ ] Power supplies
-- [ ] Screens
-- [ ] Hard drives
-Why: Each core can execute instructions in parallel.
+- [ ] Power supplies built into one case
+- [ ] Screens connected to one graphics card
+- [ ] Storage drives joined together as one big drive
+Why: Each core is a complete processing unit, so a multi-core chip can run several streams of instructions in parallel instead of one after another.
 
 ### Why is CPU cache divided into levels like L1, L2, and L3?
-- [x] L1 is smallest and fastest; L3 is larger but slightly slower
-- [ ] L3 is faster than L1
-- [ ] Only L1 connects to power
-- [ ] To store music
-Why: Hierarchy balances extreme speed with capacity.
+- [x] L1 is smallest and fastest; L3 is larger but slower
+- [ ] L1, L2 and L3 are all the same size and speed
+- [ ] L1 stores the OS; L3 stores your saved files
+- [ ] L3 is the fastest because it holds the most data
+Why: Very fast memory is costly and takes up space, so the CPU uses a tiny, quick L1 backed by larger, slightly slower L2 and L3.
 
 ### What does IPC stand for in processor performance?
 - [x] Instructions Per Clock
-- [ ] Internet Protocol Core
+- [ ] Internet Protocol Connection
 - [ ] Input Processing Cache
 - [ ] Internal Power Control
-Why: IPC measures how many instructions a CPU completes each clock beat.
+Why: IPC counts how many instructions a CPU completes on each clock beat; higher IPC means more work done at the same GHz.

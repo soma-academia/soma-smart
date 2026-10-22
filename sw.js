@@ -1,12 +1,17 @@
 /* Tech Tayari — Service Worker for offline CBE learning */
-const CACHE_NAME = "tech-tayari-v12";
+const CACHE_NAME = "tech-tayari-v14";
 const STATIC_ASSETS = [
   "./",
   "styles.css",
   "icons.js",
   "fonts/nunito-latin.woff2",
-  "fonts/roboto-latin.woff2",
   "content.js",
+  "lessons/primary.js",
+  "lessons/junior.js",
+  "lessons/ai.js",
+  "lessons/senior.js",
+  "lessons/senior11.js",
+  "lessons/kcse.js",
   "explainers.js",
   "app.js",
   "icon.svg",

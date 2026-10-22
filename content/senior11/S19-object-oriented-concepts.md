@@ -90,16 +90,16 @@ Why: Polymorphism means "many forms": one method name, behaving differently for 
 
 ### What is a class?
 - [x] A blueprint that describes attributes and methods
-- [ ] One specific object
-- [ ] A type of loop
-- [ ] A database table only
+- [ ] One specific object with its own stored values
+- [ ] A loop that repeats a block of code for each object
+- [ ] A table in a database that stores records only
 Why: Objects are created from a class, the way houses are built from one plan.
 
 ### What is an object?
-- [ ] A blueprint
-- [x] One instance created from a class, with its own values
-- [ ] A function
-- [ ] A comment
+- [ ] A blueprint that describes attributes and methods
+- [x] One instance made from a class, with its own values
+- [ ] A function that runs when a class is first defined
+- [ ] A comment that explains what a class is for
 Why: Each object has the class's attributes, but with its own values.
 
 ### Which describes what an object can DO?
@@ -110,10 +110,10 @@ Why: Each object has the class's attributes, but with its own values.
 Why: Methods are functions that belong to the object.
 
 ### Abstraction means...
-- [ ] Copying a class
-- [x] Showing only the essential features and hiding complex details
-- [ ] Making everything public
-- [ ] Deleting objects
+- [ ] Copying a class so each object has its own version
+- [x] Showing only essential features and hiding the details
+- [ ] Making every attribute public so any code can change it
+- [ ] Deleting objects that the program no longer needs
 Why: Users get a simple interface without needing to know how it works inside.
 
 ### In a UML class diagram, what does − before an attribute mean?
@@ -124,10 +124,10 @@ Why: Users get a simple interface without needing to know how it works inside.
 Why: + is public, − is private and # is protected.
 
 ### Which is an advantage of OOP?
-- [ ] Programs need no testing
+- [ ] Programs written in OOP never need to be tested
 - [x] Code is easier to reuse and maintain in large programs
-- [ ] It always runs faster
-- [ ] It needs no classes
+- [ ] OOP programs always run faster than procedural ones
+- [ ] It lets you write large programs without any classes
 Why: Objects group related code, and inheritance lets you reuse what exists.
 
 ### Which language does NOT support object-oriented programming?
@@ -139,9 +139,9 @@ Why: Classes and objects are high-level ideas; machine code is just CPU instruct
 
 ### Inheritance creates a relationship between...
 - [x] A parent class and a child class
-- [ ] Two unrelated variables
-- [ ] A loop and a function
-- [ ] A file and a folder
+- [ ] Two unrelated variables in the same program
+- [ ] A loop and the function that it calls
+- [ ] A file and the folder that it is saved in
 Why: The child class gets the parent's features and can add or change its own.
 
 ### Polymorphism literally means...
@@ -152,8 +152,8 @@ Why: The child class gets the parent's features and can add or change its own.
 Why: From Greek: "poly" means many and "morph" means form.
 
 ### How does procedural programming differ from OOP?
-- [ ] Procedural uses objects; OOP doesn't
-- [x] Procedural organises code as functions acting on data; OOP bundles data and methods into objects
-- [ ] They are exactly the same
-- [ ] OOP has no functions
+- [ ] Procedural bundles data and methods into objects; OOP uses only functions
+- [x] Procedural uses functions on separate data; OOP bundles both into objects
+- [ ] OOP has no functions, so all its code must be written inside loops
+- [ ] They are the same, except that OOP programs must always be shorter
 Why: Both are valid; OOP models real-world things as objects.

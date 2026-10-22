@@ -97,24 +97,24 @@ Label: Put the steps of creating and using an object in order.
 ## Quiz
 
 ### What does self refer to inside a method?
-- [ ] The class name
+- [ ] The name of the class the method belongs to
 - [x] The particular object the method is working on
-- [ ] The programmer
-- [ ] The whole program
-Why: self lets each object reach its own attributes.
+- [ ] The first value you type in the brackets when calling it
+- [ ] The whole program and all of its variables
+Why: When s.greet() runs, Python passes s in as self automatically, so the method can reach s's own attributes, such as self.name.
 
 ### How do you call the greet method of object s?
 - [ ] greet.s()
 - [x] s.greet()
 - [ ] s->greet
 - [ ] call greet(s)
-Why: Python uses a dot: object.method().
+Why: Python puts a dot between the object and the method name, then brackets to run it: s.greet().
 
 ### A class variable is...
-- [ ] Different for every object
-- [x] Shared by all objects of the class
-- [ ] Only used in loops
-- [ ] Always private
+- [ ] A variable with a different value for every object
+- [x] A variable shared by all objects of the class
+- [ ] A variable that can only be used inside a loop
+- [ ] A variable that is always private to one method
 Why: It is declared in the class body, not on self, so every object sees one value.
 
 ### What does class Teacher(Person): mean?
@@ -122,13 +122,13 @@ Why: It is declared in the class body, not on self, so every object sees one val
 - [x] Teacher inherits from Person
 - [ ] Person inherits from Teacher
 - [ ] Teacher and Person are unrelated
-Why: The parent class goes in the brackets.
+Why: The parent class goes in the brackets, so Teacher gets all of Person's attributes and methods.
 
 ### In Python, one leading underscore (_name) signals...
-- [ ] Public
+- [ ] Public, so any code anywhere is expected to use it
 - [x] Protected, for use within the class and its children
-- [ ] A constant
-- [ ] A syntax error
+- [ ] A constant whose value can never be changed by any code
+- [ ] A syntax error, because names cannot begin with _
 Why: It's a convention telling other programmers not to use it from outside.
 
 ### Which keyword do Java and C++ use for attributes anyone may access?
@@ -146,22 +146,22 @@ Why: Public members can be used from anywhere; private ones only inside the clas
 Why: Aggregation is "has-a" where the parts can exist on their own.
 
 ### When does __init__ run?
-- [ ] When the program ends
+- [ ] Once, when the program finishes running
 - [x] Automatically, whenever a new object is created
-- [ ] Only when you call it by name
-- [ ] Never
+- [ ] Only when you type its name, such as s.__init__()
+- [ ] Every time any method of the object is called
 Why: Creating Student("Amani", 1021) calls __init__ with those values.
 
 ### Why keep attributes private and expose methods?
-- [ ] It makes code shorter
+- [ ] It makes the code shorter and quicker to type
 - [x] It protects data from being changed in invalid ways
-- [ ] Python requires it
-- [ ] It uses less memory
+- [ ] Python refuses to run classes with public attributes
+- [ ] Private attributes take up less memory than public ones
 Why: A withdraw() method can refuse a negative balance; direct access can't.
 
 ### Two objects a and b are made from the same class. If a.name changes, what happens to b.name?
-- [ ] It changes too
+- [ ] It changes to the same value, because they share a class
 - [x] Nothing; each object has its own instance variables
-- [ ] It is deleted
-- [ ] It becomes a class variable
+- [ ] It is deleted, because only one object may hold a name
+- [ ] It becomes a class variable that both objects now share
 Why: Instance variables are stored separately in each object.

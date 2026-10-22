@@ -95,71 +95,71 @@ Why: Mesh provides many paths between computers, so a failed link is bypassed.
 ## Quiz
 
 ### What is the function of a repeater?
-- [ ] To connect networks using different protocols
+- [ ] To connect networks that use different protocols
 - [x] To regenerate a weak signal so it can travel further
-- [ ] To block unauthorised access
-- [ ] To give a computer a MAC address
-Why: A repeater overcomes attenuation by receiving a weakened signal and boosting it.
+- [ ] To block unauthorised access from outside the network
+- [ ] To give each computer on the network a MAC address
+Why: A repeater overcomes attenuation by receiving a weakened signal, regenerating it and passing it on, so the cable can be extended.
 
 ### How does a switch differ from a hub?
-- [ ] A switch connects a computer to the internet; a hub prints documents
-- [ ] A switch sends data to all ports; a hub sends data to one port
+- [ ] A switch connects a LAN to the internet; a hub joins networks with different protocols
+- [ ] A switch sends data to all ports; a hub sends it only to the destination port
 - [x] A switch sends data only to the destination port; a hub sends it to all ports
-- [ ] There is no difference
-Why: A switch reads the destination address and forwards data only where it is needed, reducing network traffic.
+- [ ] A switch works only with wireless devices; a hub works only with cables
+Why: A switch reads the destination MAC address and forwards data only where it is needed, reducing network traffic; a hub broadcasts to every port.
 
 ### Which device connects two networks that use different protocols?
 - [ ] Repeater
 - [ ] Hub
 - [ ] Network interface card
 - [x] Gateway
-Why: A gateway translates between different protocols; a router connects networks and chooses paths for packets.
+Why: A gateway translates between different protocols; a router connects networks and chooses paths for packets, and a hub simply joins computers.
 
 ### TCP/IP is an example of a...
 - [x] Protocol
 - [ ] Topology
 - [ ] Transmission medium
 - [ ] Network operating system
-Why: A protocol is a set of rules for communication; TCP/IP is the protocol suite used on the internet.
+Why: A protocol is a set of rules for communication between devices; TCP/IP is the protocol suite used on the internet.
 
 ### Which is an advantage of a client-server network over a peer-to-peer network?
-- [ ] It needs no server
+- [ ] It needs no dedicated server, so it costs less
 - [x] Resources and security are managed centrally
-- [ ] It is cheaper to set up
-- [ ] Every computer is equal
-Why: Servers centralise user accounts, security and backups; peer-to-peer is cheaper but harder to manage.
+- [ ] It is cheaper and simpler to set up than any other network
+- [ ] Every computer has equal status and shares its own resources
+Why: Servers centralise user accounts, security and backups; peer-to-peer is cheaper because every computer is equal, but it is harder to manage.
 
 ### Logical topology describes...
-- [ ] The colour and length of the cables
+- [ ] The type and length of cables used
 - [ ] The physical position of computers in a room
 - [x] How data flows through the network
 - [ ] The number of printers on the network
-Why: Physical topology is the actual layout of cables and devices; logical topology is the path data takes.
+Why: Physical topology is the actual layout of cables and devices; logical topology is the path data takes, which may differ from the physical layout.
 
 ### What is a disadvantage of a star topology?
 - [x] If the central hub or switch fails, the whole network fails
-- [ ] One faulty cable brings down the whole network
-- [ ] It is very hard to add new computers
-- [ ] Data can only travel in one direction around a loop
-Why: All computers connect through the central device, so it is a single point of failure.
+- [ ] A break in any one computer's cable brings down the whole network
+- [ ] It is very hard to add new computers once it is set up
+- [ ] Data can travel only in one direction around a closed loop
+Why: All computers connect through the central device, so it is a single point of failure; a break in one computer's cable affects only that computer.
 
 ### In a bus topology, what are terminators used for?
-- [ ] To connect the network to the internet
-- [ ] To encrypt data
-- [ ] To boost the signal
-- [x] To absorb signals at the ends of the backbone so they do not bounce back
-Why: Without terminators, signals reflect from the cable ends and collide with new data.
+- [ ] To connect the backbone to the internet through a router
+- [ ] To encrypt data before it travels along the backbone
+- [ ] To boost the signal so that it can reach computers at the far end of the backbone
+- [x] To absorb signals at the backbone ends so they do not bounce back
+Why: Without terminators, signals reflect from the cable ends and collide with new data, so the network stops working properly.
 
 ### A tree (hierarchical) topology is best described as...
-- [ ] A single closed loop of computers
+- [ ] Computers connected in a single closed loop, data passing from one to the next
 - [x] Groups of star networks connected to a backbone in levels
-- [ ] Every computer linked to every other computer
-- [ ] Two computers joined by one cable
-Why: A tree links several star networks in levels, which makes it easy to expand, as in a school with several labs.
+- [ ] Every computer linked directly to every other computer on the network
+- [ ] Two computers joined directly by one cable
+Why: A tree links several star networks in levels, which makes it easy to expand, as in a school with several labs joined to one backbone.
 
 ### What does an audit trail provide?
-- [ ] A coded version of the data
-- [ ] A cache of popular web pages
+- [ ] A coded version of the data that only authorised users can read
+- [ ] A copy of popular web pages kept locally to speed up access
 - [x] A record of who accessed the system, when, and what they did
-- [ ] A backup power supply
-Why: Audit trails log user activity so administrators can detect and investigate security breaches.
+- [ ] A backup power supply that keeps the server running during outages
+Why: Audit trails log user activity so administrators can detect and investigate security breaches; encryption, caching and UPS are separate measures.

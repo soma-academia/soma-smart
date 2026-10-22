@@ -96,20 +96,20 @@ Why: break exits the whole loop; continue only skips the rest of the current rou
 - [ ] Selection
 - [x] Iteration
 - [ ] Declaration
-Why: Iteration means looping, using for or while.
+Why: Iteration means looping: a for or while loop runs the same block of steps again and again.
 
 ### What does range(1, 6) produce?
 - [ ] 1, 2, 3, 4, 5, 6
 - [x] 1, 2, 3, 4, 5
 - [ ] 0, 1, 2, 3, 4, 5
-- [ ] 6, 5, 4, 3, 2, 1
-Why: range starts at the first number and stops before the second.
+- [ ] 2, 3, 4, 5
+Why: range starts at the first number and stops just before the second, so range(1, 6) never includes 6.
 
 ### In Python, how do you show which lines belong inside an if?
-- [ ] With curly brackets
-- [x] With a colon and indentation
-- [ ] With semicolons
-- [ ] With capital letters
+- [ ] With curly brackets around the block
+- [x] With a colon after the condition, then indented lines
+- [ ] With a semicolon at the end of each line
+- [ ] With the word end after the last line
 Why: Python uses indentation, not brackets, to group lines into a block.
 
 ### If marks = 65, what does this print: if marks >= 80: A / elif marks >= 50: Pass / else: Try again?
@@ -121,24 +121,24 @@ Why: 65 is not ≥ 80, so the elif is checked, and 65 ≥ 50 is True, so it prin
 
 ### When does a while loop stop?
 - [x] When its condition becomes False
-- [ ] After exactly 10 rounds
-- [ ] Never
-- [ ] When the screen fills up
-Why: A while loop keeps going as long as its condition is True.
+- [ ] After exactly ten rounds, whatever the condition
+- [ ] When its condition becomes True
+- [ ] When the last line of the program has run
+Why: A while loop checks its condition before every round and keeps going as long as it is True.
 
 ### What is an infinite loop?
-- [ ] A very fast loop
-- [x] A loop whose condition never becomes False, so it never ends
-- [ ] A loop with one round
-- [ ] A for loop over a list
+- [ ] A loop that runs so fast it finishes instantly
+- [x] A loop whose condition never becomes False
+- [ ] A loop that runs only once and then stops
+- [ ] A for loop that goes through every item of a list
 Why: If nothing inside the loop changes the condition, it runs forever and the program hangs.
 
 ### What does continue do inside a loop?
-- [ ] Ends the program
-- [ ] Leaves the loop
-- [x] Skips the rest of this round and starts the next one
-- [ ] Repeats the same round
-Why: continue is useful to skip unwanted items, such as negative numbers.
+- [ ] Stops the whole program straight away
+- [ ] Leaves the loop and carries on after it
+- [x] Skips the rest of this round and starts the next
+- [ ] Runs the same round again from its top
+Why: continue skips the rest of the current round only, which is useful for ignoring unwanted items such as negative numbers; break is the one that leaves the loop.
 
 ### How many times does for i in range(5): print("Hi") print Hi?
 - [ ] 4
@@ -157,6 +157,6 @@ Why: elif adds another condition, checked only if the earlier ones were False.
 ### Sequence means...
 - [x] Steps run one after another in order
 - [ ] Steps are chosen by a condition
-- [ ] Steps are repeated
-- [ ] Steps are skipped
+- [ ] Steps are repeated until a condition is met
+- [ ] Steps are skipped when they are not needed
 Why: Sequence is the default: the computer runs each line in order unless told otherwise.

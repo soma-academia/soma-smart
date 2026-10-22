@@ -84,7 +84,7 @@ Why: Real-time systems guarantee a response within strict time limits, which saf
 
 ### What is the main job of an operating system?
 - [x] To manage hardware and run other programs
-- [ ] To browse the internet only
+- [ ] To type and format letters, reports and other documents
 - [ ] To type documents
 - [ ] To play music
 Why: The OS sits between hardware and apps, sharing out the CPU, memory, storage and devices.
@@ -98,22 +98,22 @@ Why: Android and iOS are mobile operating systems; the others are applications.
 
 ### A graphical user interface (GUI) uses...
 - [x] Windows, icons, menus and a pointer
-- [ ] Only typed commands
+- [ ] Only typed commands entered at a text prompt
 - [ ] Only voice
 - [ ] Punched cards
 Why: A GUI lets you point and click instead of typing commands.
 
 ### What do device drivers do?
-- [ ] Drive the computer to school
+- [ ] Protect the computer by finding and removing viruses
 - [x] Let the OS control a specific piece of hardware
 - [ ] Speed up the internet
-- [ ] Delete viruses
+- [ ] Store a backup copy of the operating system
 Why: A driver translates between the OS and a device, such as a printer or graphics card.
 
 ### Multitasking means...
 - [ ] One program at a time only
 - [x] Running several programs at the same time
-- [ ] Using many keyboards
+- [ ] Connecting several keyboards and mice to one computer
 - [ ] Having many users on one account
 Why: The OS switches the CPU between programs so quickly they seem to run together.
 
@@ -121,13 +121,13 @@ Why: The OS switches the CPU between programs so quickly they seem to run togeth
 - [ ] They make the screen bigger
 - [x] They fix security holes and bugs
 - [ ] They delete your files
-- [ ] They are required to switch on
-Why: Attackers target known weaknesses; updates close them.
+- [ ] They are needed before the computer can switch on
+Why: Once a weakness in an OS is known, attackers try to use it; updates patch these holes and fix bugs, so delaying them leaves you exposed.
 
 ### A command-line interface is useful because...
-- [ ] It needs no keyboard
-- [x] Experts can work fast and automate tasks with typed commands
-- [ ] It shows more pictures
+- [ ] It needs no keyboard because you click on menus instead
+- [x] Typed commands let experts work fast and automate tasks
+- [ ] It shows more pictures and icons than a GUI does
 - [ ] It is the only way to use phones
 Why: Typed commands can be combined and repeated in scripts, which is powerful for automation.
 
@@ -135,11 +135,11 @@ Why: Typed commands can be combined and repeated in scripts, which is powerful f
 - [ ] Single-user OS
 - [x] Multi-user OS
 - [ ] Real-time OS only
-- [ ] Calculator OS
+- [ ] Single-tasking OS
 Why: Servers run multi-user systems so many people can use them at once.
 
 ### Why avoid pirated software?
-- [ ] It is always slower
+- [ ] It always runs slower than the version you pay for
 - [x] It is illegal and often hides malware
 - [ ] It cannot be installed
 - [ ] It uses less storage
@@ -147,7 +147,7 @@ Why: Cracked copies are a common way malware spreads, besides breaking copyright
 
 ### Memory management by the OS means...
 - [x] Deciding which program uses which part of RAM
-- [ ] Remembering your passwords
+- [ ] Saving your passwords so you can log in faster each time
 - [ ] Buying more RAM
 - [ ] Backing up to the cloud
 Why: The OS keeps programs from overwriting each other's memory and frees space when they close.

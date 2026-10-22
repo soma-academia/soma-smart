@@ -92,10 +92,10 @@ Buckets: Database administrator | Network administrator | Webmaster | Programmer
 ## Quiz
 
 ### Which of these is a duty of a database administrator?
-- [ ] Repairing faulty monitors
+- [ ] Repairing faulty monitors and replacing worn-out keyboards
 - [x] Making backups of the database and restoring data after a failure
-- [ ] Designing company logos
-- [ ] Selling software to customers
+- [ ] Designing company logos and adverts using graphics software
+- [ ] Selling software packages to customers and training them to use the software
 Why: A DBA designs and maintains databases, controls access, ensures security and integrity, and backs up and restores data.
 
 ### Who studies an existing system, identifies its problems and designs a new system?
@@ -106,10 +106,10 @@ Why: A DBA designs and maintains databases, controls access, ensures security an
 Why: The systems analyst designs the system and writes specifications. The programmer then turns the design into code.
 
 ### What is the main difference between a computer engineer and a software engineer?
-- [ ] There is no difference
-- [ ] A computer engineer only sells computers
+- [ ] They are two titles for the same job of writing and testing programs
+- [ ] A computer engineer only sells computers; a software engineer only installs programs
 - [x] A computer engineer works mainly on hardware; a software engineer works mainly on software
-- [ ] A software engineer repairs printers
+- [ ] A computer engineer writes application programs; a software engineer builds circuit boards
 Why: Computer engineers design and develop hardware and its components. Software engineers design, develop and test system and application software.
 
 ### Who leads a team of programmers, assigns tasks and makes sure the programs meet standards?
@@ -117,46 +117,46 @@ Why: Computer engineers design and develop hardware and its components. Software
 - [ ] A webmaster
 - [ ] A data processing manager
 - [x] A chief programmer
-Why: The chief programmer coordinates the programming team and checks the quality of their work.
+Why: The chief programmer coordinates the programming team and checks the quality of their work; the data processing manager heads the whole ICT department.
 
 ### Which ICT professional is responsible for developing, updating and monitoring an organisation's website?
 - [ ] A network administrator
-- [x] A webmaster (web administrator)
+- [x] A webmaster
 - [ ] A computer technician
 - [ ] A database administrator
-Why: The webmaster keeps the website running and up to date, monitors traffic and responds to users' queries.
+Why: The webmaster (web administrator) keeps the website running and up to date, monitors traffic and responds to users' queries.
 
 ### Which of these is a duty of a computer operator?
 - [x] Entering data and keeping a log of computer activities
-- [ ] Designing a new information system
-- [ ] Writing system specifications
-- [ ] Approving the ICT department's budget
+- [ ] Designing a new information system for the organisation
+- [ ] Writing the specifications that programmers will follow
+- [ ] Approving the ICT department's budget for the coming year
 Why: Computer operators run the computers day to day: entering data, operating peripherals, keeping logs and doing basic troubleshooting.
 
 ### Which body accredits universities in Kenya?
-- [ ] KNEC
-- [ ] KUCCPS
-- [ ] TVETA
+- [ ] The Kenya National Examinations Council (KNEC)
+- [ ] The Kenya Universities and Colleges Central Placement Service (KUCCPS)
+- [ ] The Technical and Vocational Education and Training Authority (TVETA)
 - [x] The Commission for University Education (CUE)
 Why: CUE accredits universities. TVETA accredits TVET institutions, KUCCPS places students, and KNEC runs national examinations like KCSE.
 
 ### Which of these is a professional certification in networking?
-- [ ] KCSE
-- [x] CCNA
-- [ ] A university degree in commerce
-- [ ] A driving licence
-Why: CCNA (Cisco Certified Network Associate) is a vendor certification for networking. ICDL covers basic computer skills.
+- [ ] Kenya Certificate of Secondary Education (KCSE)
+- [x] Cisco Certified Network Associate (CCNA)
+- [ ] International Computer Driving Licence (ICDL)
+- [ ] Certified Public Accountant (CPA)
+Why: CCNA is a vendor certification for networking. ICDL covers basic computer skills, CPA is for accountants and KCSE is a school examination.
 
 ### Which of these is NOT a factor to consider when choosing an institution for ICT training?
-- [ ] Accreditation of the institution
-- [ ] Entry requirements
-- [ ] Cost and duration of the course
+- [ ] Whether the institution and its courses are accredited
+- [ ] The entry requirements for the course
+- [ ] The cost and duration of the course
 - [x] The colour of the institution's buildings
 Why: Accreditation, entry requirements, cost, duration, reputation and mode of study all affect the value and suitability of the course.
 
 ### What does an ICT consultant do?
-- [ ] Repairs computers in a cyber café
-- [ ] Enters data for a bank
+- [ ] Repairs and services computers in a cyber café every day
+- [ ] Enters customer data into a bank's computer system daily
 - [x] Gives expert ICT advice to organisations, usually for a fee
-- [ ] Teaches ICT in a secondary school
+- [ ] Operates and monitors the main computers in a bank's data centre every day
 Why: Consultants use their expertise to advise organisations, for example on which system to buy or how to secure their network.

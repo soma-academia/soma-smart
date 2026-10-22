@@ -108,24 +108,24 @@ Why: It marks up content with tags so browsers know what each part is.
 Why: The title is information about the page, shown in the browser tab.
 
 ### What is CSS used for?
-- [ ] Storing data
+- [ ] Storing the data that a website collects
 - [x] Controlling how a page looks
-- [ ] Sending email
-- [ ] Running the server
-Why: HTML gives structure; CSS adds style.
+- [ ] Sending email from a contact form
+- [ ] Running the web server that hosts the site
+Why: HTML gives a page its structure, while CSS sets its colours, fonts, spacing and layout.
 
 ### What does the alt attribute on an image do?
-- [ ] Makes the image bigger
-- [x] Gives a text description, for screen readers and when the image can't load
-- [ ] Links the image
-- [ ] Changes its colour
-Why: Alt text makes images accessible to blind users and helps search engines.
+- [ ] Makes the image bigger so it fills a phone screen
+- [x] Gives a text description used when the image can't be seen
+- [ ] Turns the whole image into a link that opens another page
+- [ ] Changes the colours of the image to suit dark mode
+Why: Screen readers read the alt text aloud for blind users, and browsers show it if the image fails to load.
 
 ### What is the difference between a static and a dynamic page?
-- [x] A static page is the same for everyone; a dynamic page is built when requested
-- [ ] Static pages have no text
-- [ ] Dynamic pages cannot use HTML
-- [ ] There is no difference
+- [x] Static is the same for everyone; dynamic is built per request
+- [ ] Static pages contain no text; dynamic pages contain only text
+- [ ] Dynamic pages cannot use HTML, so they are written in CSS
+- [ ] Static pages move and animate; dynamic pages never change
 Why: Dynamic pages can show your own data, such as your bookings.
 
 ### Where does PHP run?
@@ -150,15 +150,15 @@ Why: The client asks for resources, and the server responds.
 Why: ul is an unordered (bulleted) list; ol is numbered; li is each item.
 
 ### What is a wireframe?
-- [ ] A network cable
-- [x] A simple sketch of a page's layout, drawn before building it
-- [ ] A type of virus
-- [ ] A CSS file
+- [ ] A network cable made of thin twisted copper wires
+- [x] A simple sketch of a page's layout, drawn before coding
+- [ ] A type of virus that spreads through web pages
+- [ ] A CSS file that sets the frame around each page
 Why: Wireframes let you plan the layout cheaply before writing any code.
 
 ### A learner submits a form, and the data is saved in MySQL. Which order is right?
 - [ ] Database → browser → server
 - [x] Browser → server script → database
-- [ ] CSS → HTML → PHP
-- [ ] Server → keyboard → browser
+- [ ] Server script → browser → database
+- [ ] Browser → database → server script
 Why: The browser sends the form, the server script checks it and saves it to the database.

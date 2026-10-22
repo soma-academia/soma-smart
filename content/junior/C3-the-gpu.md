@@ -58,69 +58,69 @@ Question: Your screen resolution and whether lowering it felt smoother.
 ### 3D scenes are built from many...
 - [x] Triangles
 - [ ] Circles
-- [ ] Letters
-- [ ] Cables
-Why: Triangles make up 3D shapes.
+- [ ] Straight lines only
+- [ ] Letters and numbers
+Why: 3D models are made of many small, flat triangles joined together; the GPU places them and works out how to colour them.
 
 ### The tiny dots on a screen are called...
 - [x] Pixels
 - [ ] Cores
-- [ ] Bits
-- [ ] Bytes
-Why: Pixels form the picture.
+- [ ] Triangles
+- [ ] Frames
+Why: A screen is a grid of pixels; each one shows a single colour, and together they make up the whole picture.
 
 ### A 4K screen has about how many times the pixels of Full HD?
 - [x] 4 times
 - [ ] 2 times
-- [ ] The same
+- [ ] The same number
 - [ ] 10 times
-Why: About four times as many.
+Why: Full HD is 1920 × 1080 and 4K is 3840 × 2160: double the width and double the height gives four times the pixels.
 
 ### A GPU is fast because it...
 - [x] Does many small jobs at the same time
-- [ ] Has one huge worker
-- [ ] Stores files
-- [ ] Cools the CPU
-Why: Massively parallel work.
+- [ ] Has one very powerful worker for each job
+- [ ] Runs at a much higher GHz than the CPU
+- [ ] Stores the whole game inside its own chip
+Why: A GPU has thousands of small cores working in parallel, which suits graphics, where millions of pixels need similar maths.
 
 ### Ray tracing follows...
 - [x] How light really bounces
-- [ ] The mouse
-- [ ] Your password
-- [ ] The Wi-Fi
-Why: For realistic reflections and shadows.
+- [ ] The path of the mouse pointer
+- [ ] How sound moves around a room
+- [ ] The edges of each triangle only
+Why: Ray tracing follows rays of light as they bounce off surfaces, which gives realistic reflections, shadows and lighting.
 
 ### DLSS/FSR give more FPS by...
-- [x] Rendering smaller then enlarging cleverly
-- [ ] Adding RAM
-- [ ] Turning off the GPU
-- [ ] Shrinking the screen
-Why: Less work for similar sharpness.
+- [x] Rendering smaller, then enlarging it cleverly
+- [ ] Adding extra VRAM to the graphics card
+- [ ] Switching off every shadow in the game
+- [ ] Lowering the screen's refresh rate to 30 Hz
+Why: The GPU draws each frame at a lower resolution, which is less work, then upscales it smartly so it still looks sharp.
 
 ### Besides games, GPUs also speed up...
 - [x] Video editing and AI
-- [ ] Boiling water
-- [ ] Charging phones
-- [ ] Printing
-Why: Parallel power is useful widely.
+- [ ] Saving files to the disk
+- [ ] Charging the laptop battery
+- [ ] Connecting to Wi-Fi networks
+Why: Video editing and AI both need huge amounts of similar maths done at once, which is exactly what a GPU's parallel cores do well.
 
 ### Why are GPUs much better than CPUs at training AI models and processing 3D graphics?
-- [x] They have thousands of cores designed for parallel math
-- [ ] They have fewer cores
-- [ ] They don't use electricity
-- [ ] They only process text
-Why: Massive parallelism excels at matrix operations.
+- [x] They have thousands of cores built for parallel maths
+- [ ] They have a few very fast cores for one task at a time
+- [ ] They store all the data on their own hard disk
+- [ ] They run at a higher clock speed than any CPU
+Why: AI and 3D graphics break into millions of small, similar calculations that thousands of GPU cores can work on at once.
 
 ### The dedicated high-speed memory on a graphics card is called...
 - [x] VRAM
 - [ ] SSD
 - [ ] BIOS
-- [ ] ROM
-Why: Video RAM holds textures, frames and geometry.
+- [ ] Flash drive
+Why: VRAM (video RAM) sits on the graphics card next to the GPU and holds textures, frames and models for quick access.
 
 ### Ray tracing simulates graphics by...
-- [x] Calculating the physical path and reflection of light rays
-- [ ] Stretching pixels
-- [ ] Drawing 2D lines only
-- [ ] Using lower resolutions
-Why: Realistic lighting based on physics.
+- [x] Calculating the path of light rays as they bounce
+- [ ] Stretching a smaller image to fill the screen
+- [ ] Drawing the scene with flat 2D lines only
+- [ ] Lowering the resolution to raise the frame rate
+Why: By following rays of light between the scene and the camera, the GPU can show how light reflects and casts shadows, as in real life.

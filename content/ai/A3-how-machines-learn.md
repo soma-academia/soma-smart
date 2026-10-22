@@ -86,70 +86,70 @@ Why: A big gap between training and test results is the classic sign of overfitt
 
 ### What is a model in machine learning?
 - [x] Rules or numbers that turn inputs into a prediction
-- [ ] A person who poses for photos
-- [ ] A type of computer case
-- [ ] A spreadsheet only
-Why: Training adjusts the model so its predictions match the examples.
+- [ ] The example data that a system is trained on
+- [ ] The computer hardware that runs the AI program
+- [ ] A score of correct answers
+Why: Training adjusts the model's rules or numbers so that its predictions match the examples better.
 
 ### How does a decision tree make a decision?
-- [ ] It guesses randomly
-- [x] It asks a series of yes/no questions until it reaches an answer
-- [ ] It asks the user to decide
-- [ ] It looks up a dictionary
-Why: Each question splits the examples into smaller groups until each group has one answer.
+- [ ] It picks an answer at random and hopes it's right
+- [x] It asks yes/no questions until it reaches an answer
+- [ ] It looks the answer up in a stored dictionary of words
+- [ ] It asks the user
+Why: Each question splits the examples into smaller groups until each group points to one answer.
 
 ### What does accuracy measure?
-- [ ] How fast a model runs
+- [ ] How quickly the model makes each prediction
 - [x] The share of predictions that are correct
-- [ ] How big the model is
-- [ ] How many features it uses
-Why: 90% accuracy means 9 out of every 10 predictions are right.
+- [ ] How many examples were used in training
+- [ ] The model's size
+Why: Accuracy is correct predictions divided by all predictions, so 90% means 9 out of every 10 are right.
 
 ### Why must accuracy be measured on test data?
-- [ ] Test data is always larger
-- [x] To see if the model works on examples it has never seen
-- [ ] Training data is secret
+- [ ] Because test data is always larger than training data
+- [x] To see if it works on examples it has never seen
+- [ ] Because training data must be kept secret
 - [ ] It's faster
-Why: Scoring well only on familiar examples doesn't prove the model learned the pattern.
+Why: Scoring well on familiar examples only proves memory; new examples show whether the pattern was really learned.
 
 ### What is overfitting?
-- [ ] A model that is too small
-- [x] Memorising the training examples instead of learning the general pattern
-- [ ] A computer that overheats
-- [ ] Using too little data
-Why: An overfitted model looks perfect in training but fails on new data.
+- [ ] When a model is too simple to learn any pattern at all
+- [x] Memorising training examples instead of the pattern
+- [ ] When a computer overheats from training for too long
+- [ ] Using too little memory
+Why: An overfitted model looks perfect on its training data but fails on new data it hasn't seen.
 
 ### How do most models improve during training?
-- [ ] They are perfect from the start
-- [x] They predict, measure their errors, adjust slightly, and repeat many times
-- [ ] A programmer edits every rule by hand
+- [ ] They start out perfect and never need to change
+- [x] They predict, measure errors, adjust, and repeat
+- [ ] A programmer rewrites every rule by hand after each test
 - [ ] They wait for updates
-Why: Many small corrections add up to a model that fits the data.
+Why: Each round of small corrections reduces the errors a little, until the model fits the data well.
 
 ### Neural networks learn by...
-- [ ] Growing real brain cells
+- [ ] Growing real brain cells inside the computer chip
 - [x] Adjusting millions of numbers to reduce their errors
-- [ ] Reading the internet once
-- [ ] Copying other networks
-Why: They're inspired by the brain, but they are maths running on computers.
+- [ ] Reading the internet once and memorising every page
+- [ ] Asking engineers for answers
+Why: Neural networks are inspired by the brain, but they are maths on computers that tune numbers to cut errors.
 
 ### In the explainer, why did the dolphin trip up some trees?
-- [ ] Dolphins are fish
-- [x] It lives in water and has almost no hair, unlike the mammals in the training data
-- [ ] The tree was too short
-- [ ] The computer was broken
+- [ ] Dolphins are fish, so the trees were correct
+- [x] It's a mammal with almost no hair, unlike the training ones
+- [ ] There were too many dolphins in the training data
+- [ ] The computer ran out of memory
 Why: The training data had no water-living mammals, so a tree relying on "fur" fails on dolphins.
 
 ### A model's accuracy on test data is low. What often helps most?
-- [ ] Buying a bigger screen
+- [ ] Training on the test data until the score goes up
 - [x] More varied, better-labelled data, or better features
-- [ ] Training on the test data
-- [ ] Deleting the test data
-Why: Better examples usually beat more training time. Training on the test data would just hide the problem.
+- [ ] Running the same model again on a faster, bigger computer
+- [ ] A bigger screen
+Why: Better examples or features help the model learn the real pattern; training on test data would only hide the problem.
 
 ### What is the first step in building a model?
 - [x] Collecting and labelling example data
-- [ ] Measuring accuracy
+- [ ] Measuring the model's accuracy on test data
+- [ ] Releasing the app for people to use
 - [ ] Selling the app
-- [ ] Testing on new data
-Why: Without good data there is nothing for the model to learn from.
+Why: Without good example data there is nothing for the model to learn from, so data always comes first.

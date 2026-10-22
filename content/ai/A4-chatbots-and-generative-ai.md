@@ -89,71 +89,71 @@ Buckets: Good use | Poor use
 ## Quiz
 
 ### What does generative AI do?
-- [ ] Only sorts files
-- [x] Creates new content such as text, images, music or code
-- [ ] Generates electricity
+- [ ] Only labels photos with the right category
+- [x] Creates new text, images, music or code
+- [ ] Searches the web and copies the best page
 - [ ] Repairs computers
-Why: It learns patterns from existing content and produces new examples.
+Why: Generative AI learns patterns from huge amounts of existing content, then produces new examples that fit them.
 
 ### A large language model is trained to...
 - [x] Predict the next word or piece of a word
-- [ ] Understand feelings
-- [ ] Search the internet for every answer
+- [ ] Understand feelings the way people do
+- [ ] Look up each answer in a stored list of facts
 - [ ] Translate only
-Why: Repeating that prediction step builds whole answers.
+Why: The model predicts one likely next word at a time; repeating that step many times builds a whole answer.
 
 ### What is an AI "hallucination"?
-- [ ] A dream the computer has
-- [x] Made-up information stated confidently, such as a fake fact or source
-- [ ] A broken screen
+- [ ] When the chatbot refuses to answer a question
+- [x] A confident answer that is made up, like a fake source
+- [ ] When the app freezes and shows strange colours on screen
 - [ ] A very fast answer
-Why: Predicting likely words doesn't guarantee they are true.
+Why: The model predicts likely-sounding words, which is not the same as checking that they are true.
 
 ### Why are chatbot answers in Kiswahili often weaker than in English?
-- [ ] Kiswahili is harder for computers to type
+- [ ] Kiswahili words are harder for computers to type
 - [x] There was much less Kiswahili text in its training data
-- [ ] Chatbots refuse other languages
-- [ ] Kiswahili has no grammar
-Why: Models learn from the text available; less text means weaker patterns.
+- [ ] Chatbots are not allowed to use African languages
+- [ ] It needs a special keyboard
+Why: Models learn from the text available; with less Kiswahili text, the patterns they learned are weaker.
 
 ### What is a prompt?
-- [ ] A type of virus
+- [ ] The answer the AI gives back to you
 - [x] The instruction or question you type to the AI
-- [ ] The AI's answer
-- [ ] A keyboard shortcut
-Why: Clear, specific prompts usually lead to more useful answers.
+- [ ] The data the AI learned from before it was released
+- [ ] A type of virus
+Why: The prompt is what you ask; clear, specific prompts that give context usually lead to more useful answers.
 
 ### Why might a chatbot not know about last week's news?
-- [ ] It is lazy
+- [ ] It deletes news stories to save storage space
 - [x] Its training data stops at a certain date
+- [ ] It only learned from printed books, never websites
 - [ ] News is secret
-- [ ] It only reads books
-Why: Unless it can search the web, a model only knows what was in its training data.
+Why: Unless it can search the web, a model only knows what was in its training data up to its cutoff date.
 
 ### Which is the best way to check a fact from a chatbot?
-- [ ] Ask the same chatbot again
-- [x] Compare it with a reliable source, like a textbook, a teacher or an official site
-- [ ] Assume it's right if it sounds confident
-- [ ] Ask a friend's chatbot
-Why: Independent, trusted sources are how you confirm a fact.
+- [ ] Ask the same chatbot the same question again
+- [x] Compare it with a textbook or official site
+- [ ] Trust it if the answer sounds confident and detailed
+- [ ] Ask a friend
+Why: Independent, trusted sources confirm a fact; a chatbot asked again can simply repeat the same mistake.
 
 ### How does an image generator make pictures?
-- [ ] It photographs real scenes
-- [x] It learned patterns from huge numbers of images and creates new ones from a description
+- [ ] It finds a real photo online that matches your words
+- [x] It creates new images from patterns it learned
+- [ ] It copies one stored picture exactly, pixel by pixel
 - [ ] It draws with a robot arm
-- [ ] It copies one image exactly
-Why: It produces new images that match the patterns it learned.
+Why: Trained on huge numbers of images, it produces new pictures that match the patterns linked to your words.
 
 ### In the explainer, why did the predictor sometimes have nothing to say?
-- [ ] It ran out of battery
-- [x] The last word never appeared in its training sentences with a word after it
+- [ ] It ran out of memory after too many words
+- [x] That word never had a word after it in its training sentences
+- [ ] The internet connection dropped while it was predicting
 - [ ] It was switched off
-- [ ] The word was too long
-Why: A model can only continue patterns it has seen. Big models just see far more text.
+Why: A model can only continue patterns it has seen; big models avoid this by seeing far more text.
 
 ### What's an honest way to use a chatbot for homework?
-- [ ] Copy its answer and hand it in
-- [x] Use it to explain or quiz you, do the work yourself, and say if your teacher allows AI help
-- [ ] Ask it to pretend to be you
-- [ ] Never think for yourself
-Why: Learning happens when you do the thinking; follow your school's rules on AI.
+- [ ] Copy its answer but change a few words first
+- [x] Use it to explain or quiz you, then do the work yourself
+- [ ] Ask it to write the essay in your style so nobody can tell
+- [ ] Hand in its answer
+Why: Learning happens when you do the thinking yourself; also follow your school's rules on AI and say when you used it.

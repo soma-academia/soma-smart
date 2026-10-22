@@ -103,10 +103,10 @@ Why: Integrity means data is accurate and only changed by authorised people.
 Why: Flooding a service with traffic stops genuine users from reaching it.
 
 ### What does an intrusion detection system (IDS) do?
-- [ ] Encrypts files
+- [ ] Encrypts files so stolen data cannot be read
 - [x] Monitors traffic for signs of attack and raises alerts
-- [ ] Assigns IP addresses
-- [ ] Charges batteries
+- [ ] Gives each device on the network its own IP address
+- [ ] Makes a nightly backup copy of every file on the server
 Why: An IDS spots suspicious patterns so administrators can respond quickly.
 
 ### Which Wi-Fi security setting is strongest?
@@ -118,23 +118,23 @@ Why: WPA3 is the newest Wi-Fi encryption standard; WEP is broken, and hiding the
 
 ### What is least privilege?
 - [x] Giving users only the access they need for their job
-- [ ] Giving everyone administrator rights
-- [ ] Using the cheapest equipment
-- [ ] Logging in as little as possible
+- [ ] Giving every staff member administrator rights to save time
+- [ ] Buying the cheapest network equipment that does the job
+- [ ] Logging in as few times a day as possible
 Why: Less access means less damage if an account is misused or stolen.
 
 ### Multi-factor authentication means...
-- [ ] Using a longer password
-- [x] Needing two or more proofs of identity, such as a password and a phone code
-- [ ] Logging in from many devices
-- [ ] Sharing a password with a friend
-Why: A stolen password alone isn't enough to get in.
+- [ ] Using a longer password with numbers and symbols
+- [x] Needing two or more separate proofs of identity
+- [ ] Logging in to the same account from many devices
+- [ ] Changing your password every time you log in
+Why: A password plus a code sent to your phone means a stolen password alone isn't enough to get in.
 
 ### Why install software updates promptly?
-- [ ] They change the wallpaper
+- [ ] They change the look of the desktop and menus
 - [x] They patch known security weaknesses
-- [ ] They delete old files
-- [ ] They are required to switch on
+- [ ] They delete old files to free up storage space
+- [ ] They are needed before the computer will switch on
 Why: Attackers target weaknesses that have already been published; updates close them.
 
 ### Which threat pretends to be a useful program but does harm?
@@ -145,15 +145,15 @@ Why: Attackers target weaknesses that have already been published; updates close
 Why: Like the wooden horse of the story, a trojan hides its harmful purpose inside something that looks useful.
 
 ### What law in Kenya covers unauthorised access to computer systems?
-- [ ] The Traffic Act
+- [ ] The Copyright Act, which protects creative works
 - [x] The Computer Misuse and Cybercrimes Act (2018)
-- [ ] The Copyright Act only
-- [ ] There is no such law
+- [ ] The Employment Act, which covers workers' rights
+- [ ] No law; only each organisation's own rules apply
 Why: The 2018 Act makes offences like unauthorised access and interference with computer systems crimes.
 
 ### Why review and audit logs?
-- [ ] To make the network faster
+- [ ] To make the network run faster by clearing old records
 - [x] To spot unusual activity and investigate incidents
-- [ ] To print reports for fun
-- [ ] To replace the firewall
+- [ ] To replace the firewall so it is no longer needed
+- [ ] To keep a backup copy of every file on the server
 Why: Logs show who did what and when, which reveals attacks and misuse.

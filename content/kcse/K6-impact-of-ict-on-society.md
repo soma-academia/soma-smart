@@ -90,59 +90,59 @@ Buckets: Positive | Negative
 ## Quiz
 
 ### What is job displacement?
-- [ ] Creating new jobs because of ICT
+- [ ] Creating brand new jobs, such as programmer and web designer, that did not exist before ICT
 - [x] Moving a worker to another job or department, usually after retraining
-- [ ] Permanently losing a job to a robot
-- [ ] Working from home using the internet
+- [ ] Permanently losing a job to a machine or to a person with ICT skills
+- [ ] Working from home and sending work to the office over the internet
 Why: In displacement the worker stays employed but in a different role. When jobs disappear and are taken by people with ICT skills or by machines, that is job replacement.
 
 ### Which of these is an example of job creation by ICT?
 - [ ] A typist losing a job to a word processor
-- [ ] A cashier moved to the customer care desk
+- [ ] A bank cashier moved to the customer care desk after retraining
 - [ ] A factory worker replaced by a robot
 - [x] A company hiring a database administrator
 Why: Job creation means new jobs that did not exist before ICT, such as database administrator, programmer and web designer.
 
 ### What causes repetitive strain injury (RSI)?
-- [x] Repeating the same hand and wrist movements, such as typing, for long periods
-- [ ] Staring at a bright screen in a dark room
-- [ ] Radiation from the monitor
-- [ ] Reading too much information online
-Why: RSI affects the wrists, fingers and arms. Wrist rests, good posture and regular breaks help prevent it.
+- [x] Repeating the same hand movements, such as typing, for long periods
+- [ ] Staring at a bright screen in a dark room for hours without blinking enough
+- [ ] Exposure to radiation given off by an old CRT monitor
+- [ ] Reading so much online that the brain suffers information overload
+Why: RSI affects the wrists, fingers and arms. Wrist rests, good posture and regular breaks help prevent it; staring at screens causes eye strain instead.
 
 ### What is ergonomics?
-- [ ] The study of computer viruses
-- [ ] The safe disposal of old computers
-- [x] Designing the working environment and equipment to suit the user's comfort and health
-- [ ] Measuring how fast a computer works
+- [ ] The study of computer viruses and how they spread between computers
+- [ ] The safe collection and recycling of old computers and other e-waste
+- [x] Designing equipment and the workplace to suit the user's comfort and health
+- [ ] The study of how fast computers process data and how to make them run even faster
 Why: Ergonomic features include adjustable chairs, the screen at eye level, anti-glare filters, wrist rests and good lighting.
 
 ### What is flaming?
-- [ ] Overheating of a computer's processor
+- [ ] Overheating of the processor when the cooling fan fails
 - [x] Sending rude, abusive or insulting messages online
-- [ ] Burning e-waste in the open
-- [ ] Copying software without a licence
-Why: Flaming is a moral issue caused by ICT. It usually happens on social media, forums and email.
+- [ ] Burning e-waste in the open to recover the metals
+- [ ] Copying and selling software without the owner's licence
+Why: Flaming is a moral issue caused by ICT. It usually happens on social media, forums and email, and can hurt and intimidate the people targeted.
 
 ### Why is careless disposal of e-waste harmful?
-- [ ] It makes new computers more expensive
-- [ ] It slows down the internet
-- [ ] It deletes data on other computers
-- [x] It contains harmful substances like lead and mercury that pollute soil, water and air
-Why: E-waste should be collected and recycled by licensed handlers, not burned or dumped.
+- [ ] It makes new computers more expensive because fewer parts are recycled
+- [ ] It slows down the internet because old devices stay connected to it
+- [ ] It can delete the data stored on other computers nearby
+- [x] It releases toxic substances such as lead and mercury into soil and water
+Why: Burned or dumped e-waste pollutes soil, water and air, so it should be collected and recycled by licensed handlers.
 
 ### Which branch of artificial intelligence lets a computer understand ordinary human language, such as typed questions in English?
 - [ ] Robotics
 - [x] Natural language processing
-- [ ] Automated production
+- [ ] Automated production and process control
 - [ ] Telemedicine
-Why: Natural language processing helps computers understand and respond to everyday human language, for example in chatbots.
+Why: Natural language processing helps computers understand and respond to everyday human language, for example in chatbots and voice assistants.
 
 ### What is an expert system?
-- [x] A program that stores the knowledge of human experts and uses it to give advice or make decisions
-- [ ] A very fast computer used by experts
-- [ ] A network used by professionals
-- [ ] An expert who repairs computers
+- [x] A program that uses stored human expert knowledge to give advice
+- [ ] A very fast supercomputer used by experts to process large amounts of data
+- [ ] A network that lets professionals such as doctors share files with each other
+- [ ] A trained technician who is an expert at repairing computer hardware
 Why: Expert systems are used, for example, to help doctors diagnose diseases or to advise farmers. They are a branch of artificial intelligence.
 
 ### Which Kenyan law makes unauthorised access to computer systems and cyber harassment offences?
@@ -153,8 +153,8 @@ Why: Expert systems are used, for example, to help doctors diagnose diseases or 
 Why: The Computer Misuse and Cybercrimes Act (2018) deals with computer crime. The Data Protection Act (2019) protects personal data.
 
 ### What are artificial neural networks?
-- [ ] Networks of computers in a hospital
-- [ ] Cables that connect the brain to a computer
-- [ ] The wiring inside a motherboard
+- [ ] Networks of computers linking the departments of a hospital
+- [ ] Cables that connect a patient's brain directly to a computer
+- [ ] Computer networks that doctors use to share patients' brain scans between hospitals
 - [x] Computer systems that learn from examples in a way modelled on the human brain
 Why: Neural networks are used for tasks like recognising faces, handwriting and speech. They are part of artificial intelligence.

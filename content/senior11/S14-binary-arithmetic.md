@@ -112,16 +112,16 @@ Why: That's 3 in decimal, which is 11 in binary: write 1 and carry 1.
 
 ### In sign and magnitude, what does the leftmost bit show?
 - [x] Whether the number is positive or negative
-- [ ] The largest digit
-- [ ] Whether there was a carry
-- [ ] The parity
-Why: 0 means positive and 1 means negative; the other bits hold the size.
+- [ ] Whether the number is odd or even
+- [ ] Whether the last addition produced a carry out
+- [ ] The place value 128, as in ordinary unsigned binary
+Why: 0 means positive and 1 means negative; the other seven bits hold the size, so 1000 0101 is −5.
 
 ### Why do computers prefer two's complement?
-- [ ] It uses fewer bits
-- [x] It has one zero, and normal addition works for negative numbers
-- [ ] It only stores positive numbers
-- [ ] It is easier to read
+- [ ] It stores larger positive numbers than unsigned binary in the same bits
+- [x] It has only one zero, and ordinary addition works with negatives
+- [ ] It stores both +0 and −0, which makes checking for zero simpler
+- [ ] It needs a separate subtracting circuit, which makes it faster
 Why: One adding circuit can handle positive and negative numbers, and subtraction too.
 
 ### What is the range of 8-bit two's complement?
@@ -134,9 +134,9 @@ Why: There is one more negative number than positive, because zero takes one of 
 ### How does a computer usually work out A − B?
 - [ ] With a separate subtracting circuit only
 - [x] By adding A to the two's complement of B
-- [ ] By flipping A
-- [ ] By dividing
-Why: Adding the two's complement of B gives the same result as subtracting B.
+- [ ] By flipping every bit of A and then adding B
+- [ ] By dividing A by B and rounding the answer
+Why: Adding the two's complement of B is the same as adding −B, so one adder circuit can both add and subtract.
 
 ### What problem does sign and magnitude have?
 - [ ] It cannot store positive numbers
@@ -147,9 +147,9 @@ Why: 0000 0000 and 1000 0000 both mean zero, which wastes a pattern and complica
 
 ### What is overflow?
 - [x] A result that is too big to fit in the available bits
-- [ ] A spilled drink on the keyboard
-- [ ] A very small number
-- [ ] Adding zero
+- [ ] A number so small that it rounds down to zero
+- [ ] A spare bit left unused at the end of every byte of memory
+- [ ] An error caused by adding zero to a negative number
 Why: For example, 200 + 100 in unsigned 8 bits needs 9 bits, so the stored answer is wrong.
 
 ### Flip all bits of 0000 1100. What do you get?
@@ -164,4 +164,4 @@ Why: Every 0 becomes 1 and every 1 becomes 0. That is the one's complement of +1
 - [x] 1101
 - [ ] 1111
 - [ ] 1011
-Why: 6 + 7 = 13, which is 1101 in binary.
+Why: 0110 is 6 and 0111 is 7, so the sum is 13, which is 8 + 4 + 1, written 1101 in binary.

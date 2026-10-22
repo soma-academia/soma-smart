@@ -257,13 +257,17 @@ function hud(){
 // Keyboard shortcuts never act while the learner is typing in a field
 const isTyping = e => !!(e.target && e.target.closest && e.target.closest("input, textarea, select, [contenteditable]"));
 
+// Offline support (kept here rather than inline in index.html, so the content security policy can forbid inline scripts)
+if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+
 /* ---------- router ---------- */
 // Info pages and the (unlinked) insights page have their own addresses; everything else lives at "/"
 const PAGE_PATHS = { about: "/about", privacy: "/privacy", licences: "/licences" };
 const unlistedTrackOf = v => v.name === "track" ? TRACKS.find(t => t.id === v.t && t.unlisted)
   : v.name === "mod" ? TRACKS.find(t => t.unlisted && MODS.some(m => m.id === v.id && m.track === t.id)) : null;
+// A lesson keeps its own address (/?lesson=<id>, or /kcse?lesson=<id>), so a refresh stays on it and it can be shared
 const pathFor = v => v.name === "page" ? PAGE_PATHS[v.page] : v.name === "admin" ? "/insights"
-  : unlistedTrackOf(v) ? "/" + unlistedTrackOf(v).id : "/";
+  : (unlistedTrackOf(v) ? "/" + unlistedTrackOf(v).id : "/") + (v.name === "mod" ? "?lesson=" + encodeURIComponent(v.id) : "");
 function viewFromPath(path){
   path = path.replace(/\/+$/, "") || "/";
   if (path === "/insights") return { name: "admin" };
@@ -328,14 +332,14 @@ const PAGES = {
   about: { title: "About Tech Tayari", html: `
     <p class="lead">Tech Tayari is a free, self-guided course that helps Kenyan learners in Grade 4–11 understand
       how computers and the internet work, and how to stay safe online.</p>
-    <h3>What it is</h3>
+    <h2>What it is</h2>
     <ul>
       <li>Short lessons you can read, listen to and try out, followed by a quiz that explains mistakes.</li>
       <li>Free, with no ads. It works offline once opened, and no account is needed.</li>
       <li>Written with practical Kenyan examples. Technical content is reviewed by a network-security engineer.</li>
       <li>Mapped, as our own best effort, to the CBE digital-literacy strands, pending confirmation by teachers.</li>
     </ul>
-    <h3>What it is not</h3>
+    <h2>What it is not</h2>
     <ul>
       <li><b>Not official.</b> Tech Tayari is an independent project. It is not affiliated with, or endorsed by,
         KICD, KNEC or the Ministry of Education.</li>
@@ -346,24 +350,24 @@ const PAGES = {
       <li><b>Not a chat or social service.</b> There is no messaging between users, and nothing is shown publicly.</li>
       <li><b>Not a shop.</b> Nothing is sold, and there are no in-app payments.</li>
     </ul>
-    <h3>Accuracy</h3>
+    <h2>Accuracy</h2>
     <p>We check lessons carefully, but they may contain mistakes or go out of date. Found one? Please tell us.
       Videos inside lessons are made by other organisations (such as Code.org) and are their responsibility.</p>
-    <h3>Help improve the lessons</h3>
+    <h2>Help improve the lessons</h2>
     <p>Tech Tayari is open. Every lesson is a plain text file that anyone can read and suggest changes to on
       <a href="https://github.com/soma-academia/tech-tayari" target="_blank" rel="noopener">GitHub</a> (in the <b>content</b> folder). Teachers' corrections and
       better Kenyan examples are especially welcome.</p>
-    <h3>Contact</h3>
+    <h2>Contact</h2>
     <p>Feedback, corrections and privacy questions: ${mail}. Please remember we cannot recover accounts or passwords.</p>` },
 
   privacy: { title: "Privacy", html: `
     <p class="lead">Tech Tayari is built to collect as little as possible. Most learners never send us anything personal.</p>
-    <h3>Without an account (most learners)</h3>
+    <h2>Without an account (most learners)</h2>
     <ul>
       <li>Your progress and the name you type are saved <b>only in this browser on this device</b>. We never receive them.</li>
       <li>Clearing your browser's data deletes them. Use <b>Backup</b> to keep a copy as a file.</li>
     </ul>
-    <h3>If you create an account (optional)</h3>
+    <h2>If you create an account (optional)</h2>
     <ul>
       <li>We store your <b>username</b>, <b>display name</b>, optional <b>grade band</b>, and your <b>progress</b>
         (steps reached, best quiz score, attempts).</li>
@@ -372,19 +376,19 @@ const PAGES = {
         as your username or display name.</li>
       <li>You can delete your account at any time: <b>Backup → Delete my account</b>. It is removed from our server straight away.</li>
     </ul>
-    <h3>Anonymous lesson statistics</h3>
+    <h2>Anonymous lesson statistics</h2>
     <p>To improve the lessons we keep simple daily totals per module, with no name, account, device ID or IP address
       attached: how many quiz answers were right or wrong, and how many learners started a module, finished reading,
       finished the mission, took the quiz and passed (and whether they passed first time). Each device counts each step only
       once. We also count, once a day, whether a device is opening Tech Tayari for the first time or coming back; the
       device only remembers the date it last did so. These totals show where learners get stuck and whether they return.</p>
-    <h3>Teachers who review lessons</h3>
+    <h2>Teachers who review lessons</h2>
     <p>Reviewers can vote to keep or remove lesson items on our review pages. We store each vote and any note, the name
       they choose to give (optional), and a random code made in their browser so they can change a vote. Nothing else.</p>
-    <h3>Visit counts</h3>
+    <h2>Visit counts</h2>
     <p>We use Cloudflare Web Analytics to count page visits. It uses no cookies, doesn't track you across sites, and
       reports only totals, such as how many people visited and which pages were popular.</p>
-    <h3>Other services</h3>
+    <h2>Other services</h2>
     <ul>
       <li><b>Cloudflare</b> hosts the site and stores account data (in Western Europe). Like any web host, it handles
         your device's IP address to deliver pages. To stop abuse, we keep a short-lived record of IP addresses that try
@@ -393,27 +397,27 @@ const PAGES = {
         After that, YouTube's own privacy policy applies.</li>
     </ul>
     <p>No ads, no tracking or advertising cookies, and we never sell or share data.</p>
-    <h3>Children</h3>
+    <h2>Children</h2>
     <p>Tech Tayari is designed for learners aged 9–17 and works fully without an account. Parents and teachers are
       welcome to decide whether a child should create one.</p>
-    <h3>Questions</h3>
+    <h2>Questions</h2>
     <p>Email ${mail}.</p>` },
 
   licences: { title: "Licences", html: `
     <p class="lead">Tech Tayari is free and open. You are welcome to reuse it under these licences.</p>
-    <h3>Lessons: CC BY-NC-SA 4.0</h3>
+    <h2>Lessons: CC BY-NC-SA 4.0</h2>
     <p>The lesson text, quizzes, missions and explainer captions are © 2026 Tech Tayari and licensed under
       <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener license" target="_blank">Creative Commons
       Attribution-NonCommercial-ShareAlike 4.0</a>. You may share and adapt them, for example for your class or another
       language, if you credit Tech Tayari, don't use them commercially, and share your version under the same licence.</p>
-    <h3>Code: MIT</h3>
+    <h2>Code: MIT</h2>
     <p>The app's code is © 2026 Tech Tayari under the <a href="https://github.com/soma-academia/tech-tayari/blob/main/LICENSE"
       rel="noopener" target="_blank">MIT licence</a>. Source:
       <a href="https://github.com/soma-academia/tech-tayari" rel="noopener" target="_blank">github.com/soma-academia/tech-tayari</a>.</p>
-    <h3>Other parts</h3>
+    <h2>Other parts</h2>
     <ul>
       <li><b>Icons</b> were drawn for Tech Tayari and are covered by the MIT licence with the code.</li>
-      <li><b>Fonts:</b> Nunito and Roboto, under the <a href="https://openfontlicense.org" rel="noopener" target="_blank">SIL Open Font License 1.1</a>, included with the site (licence files in the <code>fonts</code> folder).</li>
+      <li><b>Font:</b> Nunito (headings), under the <a href="https://openfontlicense.org" rel="noopener" target="_blank">SIL Open Font License 1.1</a>, included with the site (licence files in the <code>fonts</code> folder).</li>
       <li><b>Videos</b> belong to their creators (mostly Code.org) and are shown through YouTube under its terms.
         They are not covered by Tech Tayari's licences.</li>
     </ul>` },
@@ -762,6 +766,7 @@ const MASTERY_BADGE = {
 
 function renderTrack(){
   const t = TRACKS.find(x => x.id === view.t) || TRACKS[0];
+  loadTrack(t.id).catch(() => {});   // fetch this track's lessons now, so opening a module is instant
   const list = modsForTrack(t.id);
   const doneCount = list.filter(m => ms(m.id).done).length;
   const allDone = doneCount === list.length;
@@ -870,9 +875,38 @@ function stopPlayback(){
 document.addEventListener("visibilitychange", () => { if (document.hidden) stopSpeech(); });
 addEventListener("pagehide", stopSpeech);
 
-function renderModule(){
+// Lesson bodies (read cards, narration, mission, quiz) load per track from lessons/<track>.js the first time
+// a module in that track is opened; the outline in content.js is enough for every other screen.
+const trackLoads = {};
+function loadTrack(id){
+  if (!trackLoads[id]) trackLoads[id] = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "/lessons/" + encodeURIComponent(id) + ".js";
+    s.onload = () => {
+      const body = (window.COURSE_BODY || {})[id] || {};
+      MODS.forEach(m => { if (body[m.id]) Object.assign(m, body[m.id]); });
+      resolve();
+    };
+    s.onerror = () => { delete trackLoads[id]; s.remove(); reject(new Error("Couldn't load the lessons")); };
+    document.head.appendChild(s);
+  });
+  return trackLoads[id];
+}
+const loadAllTracks = () => Promise.all(TRACKS.map(t => loadTrack(t.id)));
 
+function renderModule(){
   const m = MODS.find(x => x.id === view.id), s = ms(m.id);
+  if (!m.quiz) {
+    const want = view;
+    $app.innerHTML = `<div class="panel" style="text-align:center"><p class="hint" id="ld">Loading the lesson…</p></div>`;
+    loadTrack(m.track).then(() => { if (view === want) render(); }).catch(() => {
+      const ld = document.getElementById("ld");
+      if (view !== want || !ld) return;
+      ld.innerHTML = `Couldn't load this lesson. Check your connection and try again.<br><br><button class="btn small" id="ld-retry">Try again</button>`;
+      document.getElementById("ld-retry").onclick = () => render();
+    });
+    return;
+  }
   const trackObj = TRACKS.find(t => t.id === m.track);
   const rail = stepsFor(m).map(st => {
     const i = STEPS.indexOf(st);
@@ -1227,7 +1261,8 @@ function renderTask(t, v, box, changed){
   if (t.type === "text" || t.type === "typing" || t.type === "paste") {
     const target = t.type === "text" ? "" : `<div class="target">${esc(t.target)}</div>`;
     box.innerHTML = label + target + `
-      <input class="field" maxlength="120" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${t.type === "paste" ? "Paste here" : "Type here"}" />
+      <input class="field" maxlength="120" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${t.type === "paste" ? "Paste here" : "Type here"}"
+        aria-label="${esc(t.type === "text" ? (t.label || "Your answer") : (t.type === "paste" ? "Paste the sentence: " : "Type the sentence: ") + t.target)}" />
       <p class="fb"></p>`;
     const inp = box.querySelector("input"), fb = box.querySelector(".fb");
     inp.value = v.v || "";
@@ -1679,6 +1714,7 @@ async function renderAdmin(){
 }
 
 async function renderAdminDashboard(key){
+  try { await loadAllTracks(); } catch {}   // the Content Review table names cards and questions from every track
   $app.innerHTML = `
     <div class="admin-header">
       <div>
@@ -1905,7 +1941,10 @@ async function renderAdminDashboard(key){
   const requested = new URLSearchParams(location.search).get("lesson");
   const openRequested = () => {
     if (!requested || !MODS.some(m => m.id === requested)) return;
-    history.replaceState(null, "", "/");
+    // Back from the lesson goes to its track
+    const m = MODS.find(x => x.id === requested), t = { name: "track", t: m.track };
+    history.replaceState({ v: t }, "", pathFor(t));
+    view = t;
     openModule(requested);
   };
 

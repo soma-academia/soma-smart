@@ -57,70 +57,70 @@ Question: Your ping time to google.com and one slow moment you diagnosed.
 
 ### FPS stands for...
 - [x] Frames Per Second
-- [ ] Fast Power Speed
-- [ ] File Processing System
-- [ ] Full Page Site
-Why: Frames per second.
+- [ ] Fast Processing Speed
+- [ ] File Packets per Second
+- [ ] Full Power System
+Why: FPS counts how many new pictures (frames) the computer draws each second; more frames make motion look smoother.
 
 ### Low FPS means...
-- [x] The computer is struggling to draw fast enough
-- [ ] The internet is slow
-- [ ] The screen is big
-- [ ] The password is wrong
-Why: A device/graphics problem.
+- [x] The computer can't draw frames fast enough
+- [ ] The internet connection is too slow to load the game
+- [ ] The screen's refresh rate is set too high
+- [ ] The game server is far away from you
+Why: FPS depends on your own CPU and GPU; if they can't keep up with the game, fewer frames are drawn and motion looks choppy.
 
 ### High ping means...
-- [x] The connection to the server is slow
-- [ ] The computer is fast
-- [ ] The screen is bright
-- [ ] RAM is full
-Why: A network/latency problem.
+- [x] Data takes long to reach the server and back
+- [ ] The computer is drawing frames very quickly
+- [ ] The graphics card is too hot to work properly
+- [ ] The download speed is very high
+Why: Ping is the round-trip time to a server; high ping means a delay, so your actions show up late in games and video calls.
 
 ### Ping is measured in...
 - [x] Milliseconds (ms)
-- [ ] Gigabytes
-- [ ] Watts
-- [ ] Pixels
-Why: Time for a round trip.
+- [ ] Megabits per second (Mbps)
+- [ ] Frames per second (FPS)
+- [ ] Gigahertz (GHz)
+Why: Ping is a time, the round trip from you to the server and back, so it is measured in thousandths of a second.
 
 ### Can a faster computer fix slow internet?
-- [x] No
-- [ ] Yes, always
-- [ ] Only at night
-- [ ] Only on Wi-Fi
-Why: Different problems, different fixes.
+- [x] No, slow internet is a network problem
+- [ ] Yes, a faster CPU always speeds up downloads
+- [ ] Yes, but only if it has more RAM
+- [ ] Yes, if the screen has a higher refresh rate
+Why: Internet speed depends on your connection and the path to the server, not on how powerful your computer is.
 
 ### A 60 Hz screen can show up to...
 - [x] 60 frames a second
-- [ ] 600 frames
-- [ ] 6 frames
-- [ ] any number
-Why: Hz = refreshes per second.
+- [ ] 600 frames a second
+- [ ] 6 frames a second
+- [ ] As many frames as the GPU draws
+Why: Hertz means times per second: a 60 Hz screen refreshes 60 times each second, so extra frames from the GPU are never shown.
 
 ### When something lags, a good first question is...
 - [x] Is it the computer or the internet?
-- [ ] What colour is it?
-- [ ] Is the mouse new?
-- [ ] Is it loud?
-Why: Name the real cause first.
+- [ ] How old is the keyboard?
+- [ ] Is the screen bright enough?
+- [ ] How many photos are saved on the disk?
+Why: Low FPS and high ping feel similar but need different fixes, so first work out whether the device or the network is the cause.
 
 ### If your monitor is 144 Hz, what is the maximum number of frames per second it can physically display?
 - [x] 144 FPS
 - [ ] 60 FPS
 - [ ] 240 FPS
 - [ ] 1000 FPS
-Why: 144 Hz refreshes 144 times each second.
+Why: Each refresh shows one frame, so a 144 Hz screen can display at most 144 frames per second, however many the GPU draws.
 
 ### Jitter in network connections refers to...
-- [x] Variation in ping / latency over time
-- [ ] A broken cable
-- [ ] A dirty fan
-- [ ] High monitor brightness
-Why: Inconsistent latency causes stutter in calls and games.
+- [x] Variation in ping (latency) over time
+- [ ] A cable that is loose or broken
+- [ ] Download speed that is always very low
+- [ ] Frames drawn unevenly by the graphics card
+Why: When ping jumps up and down, packets arrive unevenly, so voices break up in calls and games stutter even if average ping is fine.
 
-### If your game has low FPS even with fast 100 Mbps fiber internet, the root issue is...
-- [x] Your computer's GPU or CPU hardware
-- [ ] The fiber cable
-- [ ] The router password
-- [ ] The weather
-Why: FPS depends on local hardware, not your internet bandwidth.
+### If your game has low FPS even with fast 100 Mbps fibre internet, the root issue is...
+- [x] Your computer's GPU or CPU
+- [ ] The fibre cable into your home
+- [ ] The router's Wi-Fi password
+- [ ] The distance to the game server
+Why: Frames are drawn by your own hardware, so a faster internet plan cannot raise FPS; a better GPU or lower settings can.

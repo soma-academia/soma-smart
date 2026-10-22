@@ -90,7 +90,7 @@ Why: WHERE filters the rows; the last option would change data instead of readin
 - [x] Structured Query Language
 - [ ] Simple Question Logic
 - [ ] Server Quick Link
-- [ ] System Quality Level
+- [ ] Standard Question Language
 Why: It's the standard language for querying and managing relational databases.
 
 ### Which statement adds a new row?
@@ -115,11 +115,11 @@ Why: UPDATE ... SET ... WHERE changes matching rows.
 Why: DROP removes the structure too; DELETE only removes rows.
 
 ### What does SELECT * mean?
-- [ ] Select the first row
-- [x] Select all columns
-- [ ] Select nothing
-- [ ] Select the primary key only
-Why: * is shorthand for every column.
+- [ ] Select only the first row of the table
+- [x] Select every column of the table
+- [ ] Select nothing, to test the query
+- [ ] Select the primary key column only
+Why: The * is shorthand for every column, so SELECT * FROM students returns all the fields of each matching row.
 
 ### Which clause sorts the results?
 - [ ] WHERE
@@ -129,29 +129,29 @@ Why: * is shorthand for every column.
 Why: ORDER BY name sorts alphabetically; add DESC for reverse order.
 
 ### What does GROUP BY grade with COUNT(*) produce?
-- [ ] Every student's name
+- [ ] Every student's name, sorted by grade
 - [x] The number of students in each grade
-- [ ] The total of all grades
-- [ ] An error
+- [ ] The total of all the grades added together
+- [ ] An error, because COUNT needs a column name
 Why: GROUP BY puts rows into groups, and COUNT counts each group.
 
 ### What is a JOIN used for?
 - [x] Combining related rows from two or more tables
-- [ ] Deleting tables
-- [ ] Creating users
-- [ ] Encrypting data
+- [ ] Deleting two or more tables in a single statement
+- [ ] Creating new users who can log in to the database
+- [ ] Copying a table so there is a backup of its data
 Why: A JOIN matches rows using keys, such as students.class_id = classes.id.
 
 ### CREATE, ALTER and DROP belong to...
 - [x] DDL (Data Definition Language)
-- [ ] DML
-- [ ] DQL
-- [ ] HTML
+- [ ] DML (Data Manipulation Language)
+- [ ] DQL (Data Query Language)
+- [ ] DCL (Data Control Language)
 Why: They define or change the structure, not the data inside.
 
 ### Why should UPDATE nearly always have a WHERE clause?
-- [ ] It runs faster
+- [ ] It makes the UPDATE run much faster
 - [x] Without it, every row in the table is changed
-- [ ] SQL requires it
-- [ ] To sort the results
+- [ ] SQL refuses to run an UPDATE that has no WHERE
+- [ ] It sorts the rows before they are changed
 Why: A missing WHERE is one of the most common and costly database mistakes.

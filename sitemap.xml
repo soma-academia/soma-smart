@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://tech-tayari.pages.dev/</loc></url>
   <url><loc>https://tech-tayari.pages.dev/learn/</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/kcse</loc></url>
   <url><loc>https://tech-tayari.pages.dev/about</loc></url>
   <url><loc>https://tech-tayari.pages.dev/privacy</loc></url>
   <url><loc>https://tech-tayari.pages.dev/licences</loc></url>
@@ -49,4 +50,11 @@
   <url><loc>https://tech-tayari.pages.dev/learn/s21-relational-databases</loc></url>
   <url><loc>https://tech-tayari.pages.dev/learn/s22-sql</loc></url>
   <url><loc>https://tech-tayari.pages.dev/learn/s23-web-development</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/learn/k1-networking-data-communication</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/learn/k2-transmission-media</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/learn/k3-network-devices-topologies-security</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/learn/k4-ict-in-business-services</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/learn/k5-ict-in-industry-science-society</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/learn/k6-impact-of-ict-on-society</loc></url>
+  <url><loc>https://tech-tayari.pages.dev/learn/k7-careers-in-ict</loc></url>
 </urlset>

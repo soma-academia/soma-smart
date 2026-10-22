@@ -89,71 +89,71 @@ Buckets: Safe | Risky
 ## Quiz
 
 ### What is a deepfake?
-- [ ] A very deep website
-- [x] An AI-made video, photo or voice that looks or sounds real but is fake
+- [ ] A real video that has been trimmed so it loads faster
+- [x] Fake AI-made video, photo or voice that seems real
+- [ ] A virus that deletes photos from your phone
 - [ ] A broken file
-- [ ] A type of password
-Why: Deepfakes copy real people's faces or voices to create things that never happened.
+Why: Deepfakes copy real people's faces or voices to show them doing or saying things that never happened.
 
 ### How can you check a voice call that might be cloned?
-- [ ] Trust it if the voice matches
-- [x] Hang up and call back on a number you know, or ask something only they would know
-- [ ] Send money quickly to be safe
-- [ ] Give them your PIN to prove it's you
-Why: Scammers control the call they made, but not the number you call back.
+- [ ] Trust it if the voice sounds exactly like them
+- [x] Hang up and call back on a number you already know
+- [ ] Ask them to confirm by reading out your M-Pesa PIN
+- [ ] Send money fast
+Why: Scammers control the call they made, but not the number you call back, so calling back reaches the real person.
 
 ### Which is a warning sign of an AI-generated image?
 - [x] Odd hands, blurry text or mismatched shadows
+- [ ] It was posted early in the morning
+- [ ] It has a caption underneath
 - [ ] It is in colour
-- [ ] It has a caption
-- [ ] It was posted in the morning
-Why: Generators often get small details like fingers and text wrong, though they're improving.
+Why: Generators often get small details like fingers and text wrong, though they're improving, so look closely.
 
 ### What should you never share with an AI app?
-- [ ] A question about history
+- [ ] A request to explain photosynthesis in simple words
 - [x] Passwords, PINs, your ID number or your address
-- [ ] A maths problem
-- [ ] A request for a poem
-Why: AI companies may store what you type, so keep personal and secret information out.
+- [ ] A maths problem you are stuck on
+- [ ] A history question
+Why: AI companies may store and review what you type, so keep personal and secret information out of chats.
 
 ### Which Kenyan law gives you rights over your personal data?
-- [ ] The Traffic Act
 - [x] The Data Protection Act (2019)
-- [ ] The Tea Act
-- [ ] There is none
-Why: It gives you rights over how your personal data is collected and used.
+- [ ] The Employment Act (2007)
+- [ ] The Tea Act (2020)
+- [ ] The Traffic Act
+Why: The Data Protection Act (2019) gives you rights over how your personal data is collected, used and stored.
 
 ### What is honest use of AI for schoolwork?
-- [ ] Handing in AI's essay as your own
-- [x] Using AI to help you learn, doing the work yourself, and saying when you used it
+- [ ] Copying a friend's AI answer and changing a few of the words
+- [x] Learning with AI, doing the work yourself, and saying so
+- [ ] Handing in an AI-written essay under your own name
 - [ ] Never telling anyone
-- [ ] Copying a friend's AI answer
-Why: Honesty keeps learning real and follows school rules.
+Why: Honesty keeps your learning real and follows school rules; doing the thinking yourself is how you improve.
 
 ### Why does using AI have an environmental cost?
-- [ ] It makes phones heavier
-- [x] Data centres running AI use a lot of electricity and water
+- [ ] It has no cost because everything is in the cloud
+- [x] AI data centres use lots of electricity and water
+- [ ] Each AI answer is printed out on paper somewhere
 - [ ] It uses paper
-- [ ] It has no cost at all
-Why: Large AI models run on huge computers that need power and cooling.
+Why: Large AI models run on huge computers that need power to run and water to keep them cool.
 
 ### You see a shocking post but can't confirm it's real. What should you do?
-- [x] Not share it
-- [ ] Share it with a warning
-- [ ] Share it to ask others
-- [ ] Change the caption and share it
-Why: Sharing unconfirmed content can spread lies and hurt real people.
+- [ ] Share it with a warning that it might be fake
+- [x] Not share it until it is confirmed
+- [ ] Change the caption and then share it
+- [ ] Share it
+Why: Sharing unconfirmed content, even with a warning, can spread lies and hurt real people.
 
 ### Who should you talk to about worries and feelings?
-- [ ] Only an AI chatbot
-- [x] People you trust, like family, a teacher or a counsellor
+- [ ] Only an AI chatbot, because it is always available
+- [x] People you trust, like family or a counsellor
+- [ ] Strangers online who say they understand you
 - [ ] Nobody
-- [ ] Strangers online
-Why: AI can't replace real care and support from people.
+Why: AI can't replace real care and support; trusted people can listen, help and find you more help if needed.
 
 ### Why are deepfakes especially risky around elections?
-- [ ] Elections use more electricity
-- [x] Fake clips of leaders can mislead voters before the truth comes out
-- [ ] Voters can't use phones
+- [ ] Voters are not allowed to use phones during elections
+- [x] Fake clips of leaders can mislead voters
+- [ ] Election videos use more data than other videos
 - [ ] Elections ban videos
-Why: A convincing fake spread at the right moment can do damage before it's corrected.
+Why: A convincing fake spread at the right moment can change minds before anyone proves it is false.

@@ -91,9 +91,9 @@ Why: Fibre sends pulses of light through glass, so nearby electrical noise canno
 ### Which is NOT one of the five parts of data communication?
 - [ ] Sender
 - [ ] Protocol
-- [x] Printer
-- [ ] Transmission medium
-Why: The five parts are sender, receiver, message, medium and protocol; a printer is just an output device.
+- [x] Keyboard
+- [ ] Message
+Why: The five parts are sender, receiver, message, medium and protocol; a keyboard is just an input device.
 
 ### A radio station broadcasting to listeners is an example of...
 - [x] Simplex
@@ -106,14 +106,14 @@ Why: Data flows one way only: listeners cannot transmit back on the same channel
 - [ ] Simplex
 - [ ] Half-duplex
 - [x] Full-duplex
-- [ ] Not communication
-Why: Both people can speak and hear at the same time.
+- [ ] A transmission medium
+Why: Both people can speak and hear at the same time, so data flows both ways at once.
 
 ### What does TCP do in the TCP/IP suite?
-- [ ] Draws web pages
-- [x] Makes sure packets arrive complete and in order
-- [ ] Charges your phone
-- [ ] Encrypts your screen
+- [ ] Gives every device its address and picks routes
+- [x] Makes sure all packets arrive and in order
+- [ ] Converts digital data into a radio signal
+- [ ] Sets the speed of the link in Mbps
 Why: IP handles addressing and routing; TCP checks for lost packets and puts them back in order.
 
 ### How many layers does the OSI model have?
@@ -121,39 +121,39 @@ Why: IP handles addressing and routing; TCP checks for lost packets and puts the
 - [ ] 5
 - [x] 7
 - [ ] 10
-Why: OSI has seven layers, from physical up to application.
+Why: OSI has seven layers, from the physical cable at the bottom up to the application you use at the top.
 
 ### Fibre-optic cable carries data as...
 - [ ] Electric current
 - [x] Pulses of light
 - [ ] Sound waves
 - [ ] Radio waves
-Why: Light through glass gives fibre its very high speed and long reach.
+Why: Light through glass gives fibre its very high speed and long reach, free from electrical interference.
 
 ### Which is unguided (wireless) media?
 - [ ] Twisted-pair cable
 - [ ] Coaxial cable
 - [x] Wi-Fi
 - [ ] Fibre-optic cable
-Why: Wireless signals travel through the air with no physical path.
+Why: Unguided media send radio waves through the air, so no cable guides the signal as with twisted pair or fibre.
 
 ### Bandwidth describes...
 - [x] How much data a link can carry per second
-- [ ] The width of a cable
-- [ ] The colour of a signal
-- [ ] How many users have accounts
-Why: Higher bandwidth (more Mbps) means more data can flow at once.
+- [ ] How far a signal can travel before it fades
+- [ ] How many devices can share one Wi-Fi network
+- [ ] The physical thickness of the cable in mm
+Why: Bandwidth is measured in bits per second, such as 100 Mbps; higher bandwidth means more data flows at once.
 
 ### What does a modem do?
-- [ ] Prints documents
-- [x] Converts between digital data and a signal for the medium
-- [ ] Stores files
-- [ ] Displays video
-Why: MOdulator-DEModulator: it turns data into a signal and back again.
+- [ ] Joins devices in a LAN and sends data to one
+- [x] Converts digital data to a signal and back
+- [ ] Stores web pages so they load faster later
+- [ ] Sets the rules both devices follow
+Why: MOdulator-DEModulator: it turns digital data into a signal for the medium and back again at the other end.
 
 ### Why are undersea fibre cables important for Kenya?
-- [ ] They power the national grid
-- [x] They connect Kenya's internet to the rest of the world at high speed
-- [ ] They carry water to Mombasa
-- [ ] They are used only for TV
+- [ ] They supply electricity to the national grid
+- [x] They carry Kenya's internet traffic to other countries
+- [ ] They carry TV signals only, not internet data
+- [ ] They send mobile data by radio to phones along the coast
 Why: International internet traffic travels through undersea fibre cables that land at Mombasa.

@@ -176,16 +176,46 @@ const validModule = b => !!b && TRACK_IDS.includes(b.track) && /^[a-z0-9-]{2,40}
 // The info pages are rendered by the app at "/", so search engines would see the home page's title for them.
 // Rewrite the title, description and canonical address on the way out; keep the insights page out of search.
 const SITE_URL = "https://tech-tayari.pages.dev";
+const APP_ROUTES = new Set(["/about", "/privacy", "/licences", "/licenses", "/insights", "/kcse"]);
 const PAGE_META = {
   "/about":    ["About Tech Tayari: what it is and isn't", "Tech Tayari is a free, independent, self-guided course in computers and the internet for Kenyan learners in Grade 4–11. What it offers, and what it doesn't."],
   "/privacy":  ["Privacy · Tech Tayari", "What Tech Tayari stores (very little), what it never collects, and how to delete an account. No ads, no tracking cookies."],
+  "/kcse":     ["KCSE Computer Studies Form 4 revision · Tech Tayari", "Free KCSE Computer Studies (451) Form 4 revision: networking and data communication, transmission media, topologies, ICT applications, impact of ICT and careers. Short lessons and quizzes that explain mistakes."],
   "/licences": ["Licences · Tech Tayari", "Tech Tayari's lessons are CC BY-NC-SA 4.0 and its code is MIT. Fonts are under the SIL Open Font License."],
 };
+// Security headers on every page and file. Scripts, styles and fonts come only from this site (plus Cloudflare
+// Web Analytics); the only frames allowed are YouTube's privacy-enhanced player; nobody may frame Tech Tayari.
+const SECURITY_HEADERS = {
+  "Content-Security-Policy": [
+    "default-src 'self'",
+    "script-src 'self' https://static.cloudflareinsights.com",
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data:",
+    "font-src 'self'",
+    "connect-src 'self' https://cloudflareinsights.com",
+    "frame-src https://www.youtube-nocookie.com",
+    "media-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+  ].join("; "),
+  "X-Frame-Options": "DENY",
+  "Permissions-Policy": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()",
+  "Referrer-Policy": "strict-origin-when-cross-origin",
+  "X-Content-Type-Options": "nosniff",
+};
+function withSecurity(res) {
+  const r = new Response(res.body, res);
+  for (const [k, v] of Object.entries(SECURITY_HEADERS)) r.headers.set(k, v);
+  return r;
+}
+
 function withPageMeta(path, res) {
   path = path.replace(/\/+$/, "") || "/";
   if (path === "/licenses") path = "/licences";
   const isHtml = (res.headers.get("Content-Type") || "").includes("text/html");
-  if (path === "/insights" || path === "/kcse" || path === "/review" || path.startsWith("/review/")) {
+  if (path === "/insights" || path === "/review" || path.startsWith("/review/")) {
     const r = new Response(res.body, res);
     r.headers.set("X-Robots-Tag", "noindex, nofollow");
     return r;
@@ -213,8 +243,13 @@ export default {
     const p = url.pathname;
     if (!p.startsWith("/api/")) {
       if (!env.ASSETS) return new Response("Not found", { status: 404 });
-      const res = await env.ASSETS.fetch(request);
-      return withPageMeta(p, res);
+      // The app's own screens have no file of their own: serve the app shell for them. Anything else that
+      // doesn't exist gets 404.html with a 404 status.
+      const route = p.replace(/\/+$/, "") || "/";
+      const res = APP_ROUTES.has(route)
+        ? await env.ASSETS.fetch(new Request(new URL("/", url), request))
+        : await env.ASSETS.fetch(request);
+      return withSecurity(withPageMeta(p, res));
     }
 
     // Health check endpoint

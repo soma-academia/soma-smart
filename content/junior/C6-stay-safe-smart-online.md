@@ -87,71 +87,71 @@ Why: That code is the second lock on your account. Anyone asking for it is tryin
 ## Quiz
 
 ### A strong password is...
-- [x] Long and unique per account
-- [ ] The same everywhere
-- [ ] Your name
-- [ ] 1234
-Why: Long + unique is safest.
+- [x] Long and different for each account
+- [ ] Short, so you never forget it
+- [ ] Your name followed by your birth year
+- [ ] The same one for every account you use
+Why: Length makes a password hard to guess, and using a different one per account stops one leak from opening all your accounts.
 
 ### Two-step verification (2FA) adds...
 - [x] A code on top of your password
-- [ ] A second password you share
-- [ ] A new screen
-- [ ] More RAM
-Why: Two locks on one door.
+- [ ] A second password you share with a friend
+- [ ] A longer password
+- [ ] A lock that stops the phone being stolen
+Why: Even if someone learns your password, they still need the code from your phone or app, so they cannot get in.
 
 ### Phishing is...
-- [x] A fake message to steal your login/money
-- [ ] A fast CPU
-- [ ] A type of cable
-- [ ] A backup
-Why: Confirm before you click.
+- [x] A fake message trying to steal your login or money
+- [ ] A program that copies your files to the cloud every night
+- [ ] A setting that blocks adverts on websites
+- [ ] A way to make your internet connection faster
+Why: Phishers pretend to be a bank, M-Pesa or a friend so you trust them; checking with the real company before you click stops them.
 
 ### A common phishing clue is...
-- [x] Urgency and a request for your PIN/password
-- [ ] A calm greeting
-- [ ] Correct spelling
-- [ ] No links
-Why: Legit firms don't ask for your PIN.
+- [x] Urgency and a request for your PIN
+- [ ] A message sent from the company's own domain
+- [ ] Correct spelling and a polite greeting
+- [ ] A message with no links or attachments
+Why: Scammers rush you so you act before thinking, and real companies never need your PIN or password to help you.
 
 ### Your digital footprint can...
-- [x] Last forever and be copied
-- [ ] Always be fully deleted
-- [ ] Never be seen
-- [ ] Delete itself daily
-Why: Think before you post.
+- [x] Last forever and be copied by others
+- [ ] Always be deleted completely by you
+- [ ] Only be seen by people you choose
+- [ ] Disappear on its own after a few days
+Why: Once something is posted, others can screenshot or share it, so it may stay online long after you delete your copy.
 
 ### Real banks and M-Pesa will NEVER ask for your...
 - [x] PIN or full password
-- [ ] Name
-- [ ] County
-- [ ] Favourite colour
-Why: Never share your PIN/password.
+- [ ] Name when you call customer care
+- [ ] Phone number when you open an account
+- [ ] Full name
+Why: Your PIN and password are secrets only you should know; staff never need them, so anyone who asks for them is a scammer.
 
 ### Apps are designed to...
 - [x] Keep you scrolling longer
-- [ ] Turn off by themselves
-- [ ] Improve your eyesight
-- [ ] Do your homework
-Why: Set your own limits.
+- [ ] Close themselves after an hour of use
+- [ ] Use less of your time each day
+- [ ] Limit how many posts you can see
+Why: Many apps earn money from your attention, so they are built to keep you hooked; setting your own limits keeps you in control.
 
 ### Why should you avoid using the same password on different websites?
-- [x] If one site is breached, attackers can access your other accounts
-- [ ] It makes your computer run hot
-- [ ] It slows down internet speed
-- [ ] Websites forbid the letter E
-Why: Credential stuffing exploits reused passwords.
+- [x] One leaked password could unlock your other accounts
+- [ ] It makes your computer slower each time you log in
+- [ ] Websites share their password lists and will lock your account
+- [ ] It uses up more of your data bundle
+Why: Attackers take passwords leaked from one site and try them on others, so reusing a password turns one leak into many break-ins.
 
 ### What is an authenticator app (TOTP) compared to SMS for 2FA?
-- [x] More secure because SMS codes can be intercepted via SIM swap
-- [ ] Less secure than email
-- [ ] Only works on desktop computers
-- [ ] Requires paid airtime
-Why: App-based codes resist SIM swapping attacks.
+- [x] Safer, as SMS codes can be stolen through a SIM swap
+- [ ] Less secure, as anyone can read codes in the app
+- [ ] The same, because both send the code by text message
+- [ ] Only usable on a desktop computer, not a phone
+Why: In a SIM swap, a scammer moves your number to their own SIM and receives your SMS codes; an app's codes stay on your phone.
 
 ### A stranger sends a link promising free money or leaked papers. The safest action is...
-- [x] Do not click the link, block sender, and verify independently
-- [ ] Click to see if it's real
-- [ ] Forward it to 10 friends
-- [ ] Type your phone number
-Why: Malicious links often download malware or steal credentials.
+- [x] Don't click; block the sender and check with a trusted source
+- [ ] Click it once to see if it is real, then close it
+- [ ] Forward it to friends so they can check it for you
+- [ ] Reply asking the sender to prove the offer is genuine
+Why: Opening a scam link can install malware or lead to a fake login page, so check the claim through official channels instead.

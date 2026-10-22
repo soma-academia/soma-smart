@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Network Devices, Topologies &amp; Security (K3) · KCSE Computer Studies, Form 4 (KCSE) · Tech Tayari</title>
+<meta name="description" content="Devices, topologies and keeping networks safe. A network interface card (NIC) connects a computer to the network medium and gives it a unique physical…" />
+<link rel="canonical" href="https://tech-tayari.pages.dev/learn/k3-network-devices-topologies-security" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Tech Tayari" />
+<meta property="og:title" content="Network Devices, Topologies &amp; Security (K3) · KCSE Computer Studies, Form 4 (KCSE) · Tech Tayari" />
+<meta property="og:description" content="Devices, topologies and keeping networks safe. A network interface card (NIC) connects a computer to the network medium and gives it a unique physical…" />
+<meta property="og:url" content="https://tech-tayari.pages.dev/learn/k3-network-devices-topologies-security" />
+<meta property="og:image" content="https://tech-tayari.pages.dev/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#2e7d4f" />
+<link rel="icon" type="image/svg+xml" href="/icon.svg" />
+<link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/styles.css" />
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "Network Devices, Topologies & Security", "description": "Devices, topologies and keeping networks safe. A network interface card (NIC) connects a computer to the network medium and gives it a unique physical…", "url": "https://tech-tayari.pages.dev/learn/k3-network-devices-topologies-security", "learningResourceType": "Lesson", "educationalLevel": "Form 4 (KCSE)", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://tech-tayari.pages.dev/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["Network devices", "Network software and network models", "Topologies", "Network security", "In the exam"], "isPartOf": {"@type": "Course", "name": "KCSE Computer Studies (Form 4 · KCSE 451)", "url": "https://tech-tayari.pages.dev/learn/#kcse"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://tech-tayari.pages.dev"}}</script>
+</head>
+<body class="lp">
+<header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
+<main id="app">
+<nav class="lp-crumbs"><a href="/learn/">Lessons</a> › <a href="/learn/#kcse">KCSE Computer Studies</a></nav>
+<article class="lp-main">
+  <p class="lp-kicker">K3 · KCSE Computer Studies · Form 4 · KCSE 451</p>
+  <h1>Network Devices, Topologies &amp; Security</h1>
+  <p class="lp-lead">Devices, topologies and keeping networks safe</p>
+  <p><span class="lp-tag">KCSE 451 · Form 4 · Networking and data communication</span><span class="lp-tag">KCSE 451 syllabus</span><span class="lp-tag">Free · works offline</span></p>
+  <a class="btn lp-start" href="/?lesson=k-topology">▶ Start the interactive lesson</a>
+  <p class="hint">The full lesson adds an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <section class="lp-card"><h2><span aria-hidden="true">🧰</span> Network devices</h2><p>A network interface card (NIC) connects a computer to the network medium and gives it a unique physical (MAC) address. A modem converts digital data to analogue and back so computers can communicate over telephone lines. A hub connects computers in a star network and sends (broadcasts) every packet to all ports. A switch also connects computers, but it forwards each packet only to the port of the destination computer, which reduces traffic. A repeater receives a weak signal and regenerates (boosts) it so it can travel further, overcoming attenuation. A bridge joins two network segments (usually using the same protocol) and filters traffic between them. A router connects different networks and chooses the best path for each packet, such as linking a school LAN to the internet. A gateway connects networks that use different protocols by translating between them. A wireless access point (WAP) lets wireless devices join a wired network.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">💽</span> Network software and network models</h2><p>Networks need software as well as hardware. A network operating system (NOS), such as Windows Server or Linux, manages network resources, user accounts, security and access to shared files and printers. Protocols are the set of rules that govern how data is sent and received on a network; TCP/IP (Transmission Control Protocol/Internet Protocol) is the protocol used on the internet, where TCP breaks data into packets and reassembles them, and IP addresses and routes the packets. In a peer-to-peer network, all computers are equal and each user shares resources from their own computer; it is cheap and simple for a few computers but hard to secure and manage. In a client-server network, one or more powerful servers provide resources and services to client computers; it is centrally managed, more secure and easy to back up, but the server is costly and if it fails users lose access.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🕸️</span> Topologies</h2><p>Topology is the way computers are arranged in a network. Physical topology is the actual layout of devices and cables; logical topology is how data flows through the network. Star: each computer connects to a central hub or switch; a failed cable affects only one computer and it is easy to add devices, but if the central device fails the whole network fails and it uses a lot of cable. Bus: all computers share one backbone cable with terminators at each end; it is cheap and uses little cable, but a break in the backbone brings down the network and faults are hard to find. Ring: computers form a closed loop and data passes in one direction from one to the next; every computer gets equal access, but one failed computer or cable can break the whole ring. Mesh: each computer has links to many or all others; it is very reliable because data can take another route, but it is expensive and complex to cable. Tree (hierarchical): groups of star networks connected to a backbone in levels; it is easy to expand and manage, but if the backbone or a top-level device fails, the networks below it are cut off.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">🔐</span> Network security</h2><p>Share-level security protects each shared resource, such as a folder or printer, with its own password; anyone who knows the password can use it. User-level security gives each user an account with a username and password, and the administrator sets which resources each user can access; it is more secure and is used in client-server networks. A firewall is hardware or software that filters traffic between a private network and the internet, blocking unauthorised access. A proxy server sits between users and the internet, forwarding their requests; it can hide internal addresses, filter websites and cache (store) popular pages to speed up access. Encryption scrambles data into a coded form so that only someone with the right key can read it, protecting data as it travels. An audit trail is a record (log) of who accessed the system, when, and what they did, which helps to detect and investigate security breaches.</p></section>
+<section class="lp-card"><h2><span aria-hidden="true">📝</span> In the exam</h2><p>KCSE often asks: state the function of a given device (hub, switch, repeater, bridge, router, gateway, NIC); differentiate between a hub and a switch, or a bridge and a router; state two advantages and two disadvantages of a given topology, often from a diagram; differentiate between physical and logical topology; differentiate between peer-to-peer and client-server networks; and explain security measures such as firewalls, encryption and audit trails. Remember: a hub broadcasts to all ports while a switch sends only to the destination; a repeater boosts a signal; a router connects different networks; a gateway connects networks using different protocols; in a star the central device is a single point of failure; and in a bus a backbone break stops the whole network.</p></section>
+  <section class="lp-card"><h2>Key points</h2><ul><li>A NIC connects a computer to the network; a repeater boosts weak signals.</li><li>A hub sends data to all ports, but a switch sends it only to the right computer.</li><li>A router connects different networks; a gateway connects networks that use different protocols.</li><li>Protocols are rules for communication; the internet uses TCP/IP.</li><li>In a star topology, if the central hub or switch fails, the whole network fails.</li><li>In a bus topology, a break in the backbone cable brings the network down.</li><li>Firewalls, proxy servers, encryption and audit trails help keep a network secure.</li></ul></section>
+  <section class="lp-card"><h2>Try it for real: Inspect a network</h2><ul><li>In your school computer lab, follow the cables from a few computers: do they all go to one central box? Is it a hub or a switch?</li><li>Ask the lab technician whether the lab is peer-to-peer or client-server, and how users log in.</li><li>Find the router that connects the school or a cybercafé to the internet.</li></ul></section>
+  <a class="btn lp-start" href="/?lesson=k-topology">▶ Start the interactive lesson</a>
+  <nav class="lp-nav"><a href="/learn/k2-transmission-media">← K2 Transmission Media</a> <a href="/learn/k4-ict-in-business-services">K4 ICT in Business &amp; Services →</a></nav>
+</article>
+</main>
+<footer id="foot">
+  <div class="foot-row">
+    <span>Free &amp; open digital literacy for everyone</span>
+    <span class="foot-links"><a href="/learn/">All lessons</a> <a href="/about">About</a> <a href="/privacy">Privacy</a> <a href="/licences">Licences</a></span>
+  </div>
+  <span class="muted">Lessons © 2026 Tech Tayari, licensed CC BY-NC-SA 4.0. An independent project, not affiliated with KICD, KNEC or the Ministry of Education.</span>
+</footer>
+</body>
+</html>

@@ -57,70 +57,70 @@ Question: Your agreed screen time and one safety rule you promise to keep.
 
 ### Online, you should keep private your...
 - [x] Real name, home and school
-- [ ] Nickname
-- [ ] Favourite colour
-- [ ] Favourite game
-Why: Never share real-life details with strangers.
+- [ ] Favourite colour and food
+- [ ] Game nickname and avatar
+- [ ] Favourite song and game
+Why: Your real name, home and school can help a stranger find you in real life, so keep them private.
 
 ### Someone asks for your M-Pesa PIN to 'send you a prize'. You...
 - [x] Refuse — it's a scam
-- [ ] Send the PIN
-- [ ] Share your password too
-- [ ] Give your address
-Why: No real company asks for your PIN.
+- [ ] Send the PIN to get the prize
+- [ ] Send only the first two digits
+- [ ] Give your PIN if they know your name
+Why: No real company or prize ever needs your PIN; anyone who asks for it wants to take your money.
 
 ### A strong password is...
 - [x] Long, secret and hard to guess
-- [ ] 1234
-- [ ] Your name
-- [ ] Shared with friends
-Why: Strong and secret.
+- [ ] Your name and year of birth
+- [ ] Short and easy, like 1234
+- [ ] Shared with your best friend so they can help
+Why: A long password is hard to guess, and keeping it secret means only you can use it.
 
 ### A stranger online asks to meet you. You...
 - [x] Tell a trusted grown-up
-- [ ] Go and meet them
-- [ ] Send your address
-- [ ] Keep it secret
-Why: Always tell a grown-up.
+- [ ] Go, but meet them in a busy place
+- [ ] Send them your home address
+- [ ] Keep it a secret between you
+Why: People online may not be who they say they are; a trusted grown-up can help keep you safe.
 
 ### 'Free data for your password' is...
 - [x] A scam
 - [ ] A real offer
-- [ ] From your teacher
-- [ ] Safe to accept
-Why: If it is too good to be true, it is a lie.
+- [ ] Safe if the message has a logo
+- [ ] Fine if you change the password later
+Why: Real networks never ask for your password; an offer that seems too good to be true is a trick to steal it.
 
 ### Too much screen time can...
 - [x] Tire your eyes and spoil sleep
-- [ ] Make you taller
-- [ ] Charge the phone
-- [ ] Improve your eyes
-Why: Balance keeps you healthy.
+- [ ] Make your eyes stronger
+- [ ] Help you sleep more deeply at night
+- [ ] Make you grow taller and fitter
+Why: Long hours on screens strain your eyes and keep your brain awake, so take breaks and switch off before bed.
 
 ### Who controls your screen time?
 - [x] You, with a grown-up
-- [ ] The phone
-- [ ] Strangers
-- [ ] Nobody
-Why: You are the boss.
+- [ ] The phone or tablet itself
+- [ ] Your friends online
+- [ ] Nobody at all
+Why: You choose when to stop, and a grown-up helps you set fair limits that leave time for sleep and play.
 
 ### Which of these is safe to share with strangers online?
-- [x] A game nickname
+- [x] Your game nickname
 - [ ] Your home address
 - [ ] Your school name
 - [ ] Your parent's phone number
-Why: Keep real-life identity private; use a nickname.
+Why: A nickname doesn't show who you really are, but an address, school or phone number can lead someone to you.
 
 ### What should you do if an online message makes you uncomfortable or scared?
-- [x] Stop, don't reply, and tell a trusted grown-up
-- [ ] Reply angrily
-- [ ] Share your secrets
-- [ ] Delete your computer
-Why: Always tell a trusted parent or teacher.
+- [x] Don't reply; tell a trusted grown-up
+- [ ] Reply angrily so they stop
+- [ ] Keep it secret and hope it goes away by itself
+- [ ] Forward it to all your friends
+Why: Replying can make things worse; a trusted parent or teacher can save the message, block the sender and help.
 
 ### Sharing a password with a friend at school is...
 - [x] Unsafe — keep it secret
-- [ ] A great idea
-- [ ] Required by the computer
-- [ ] Safe if they promise
-Why: Passwords should remain secret to you.
+- [ ] Safe if they promise not to tell
+- [ ] Fine if they are your best friend
+- [ ] A good idea
+Why: A friend could share it or log in as you, even by mistake, so a password should stay yours alone.

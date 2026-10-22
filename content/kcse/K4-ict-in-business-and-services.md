@@ -94,54 +94,54 @@ Buckets: Banking | Retail | Reservation | Education
 ### Which technology do banks use to read the details printed at the bottom of a cheque?
 - [x] Magnetic ink character recognition (MICR)
 - [ ] Optical mark recognition (OMR)
-- [ ] Barcode reader
-- [ ] Point-of-sale terminal
+- [ ] Point-of-sale (POS) terminal and barcode reader
+- [ ] Kimball tag reader
 Why: Cheque details are printed in magnetic ink, which MICR reads quickly and accurately, even if the cheque is stamped or written on.
 
 ### Sending money to a relative through M-Pesa is an example of...
 - [ ] Computer-aided learning
 - [x] Electronic funds transfer
-- [ ] Cheque clearing
+- [ ] Magnetic ink cheque clearing
 - [ ] Telecommuting
-Why: Electronic funds transfer (EFT) moves money from one account to another electronically, without cash or cheques.
+Why: Electronic funds transfer (EFT) moves money from one account to another electronically, without cash or cheques changing hands.
 
 ### Which task is carried out by a payroll system?
-- [ ] Reading barcodes on goods
-- [ ] Booking airline seats
+- [ ] Reading barcodes on goods and updating stock levels at the till
+- [ ] Booking airline seats and printing tickets for passengers
 - [x] Calculating workers' net pay after deductions and printing payslips
-- [ ] Clearing cheques between banks
-Why: Payroll systems work out gross pay, deductions such as PAYE and NSSF, and net pay for each employee.
+- [ ] Clearing cheques between banks using magnetic ink readers on each cheque
+Why: Payroll systems work out gross pay, deductions such as PAYE and NSSF, and net pay for each employee, then produce payslips and reports.
 
 ### How does a point-of-sale terminal help with stock control?
-- [ ] It counts the money in the till at the end of the day
-- [ ] It prints adverts for the shop
-- [ ] It sends emails to customers
-- [x] It reduces the stock level each time an item is scanned and flags items below the reorder level
-Why: Each sale updates the stock file automatically, so the shop knows when to reorder.
+- [ ] It counts the cash in the till at the end of the day and banks it automatically
+- [ ] It prints adverts for items that customers have not bought recently
+- [ ] It emails customers a list of items that are now on special offer
+- [x] It updates the stock file as each item is sold and flags items to reorder
+Why: Each sale reduces the stock level in the stock file automatically, so the shop knows when an item falls below its reorder level.
 
 ### An ATM allows a bank customer to...
 - [x] Withdraw cash and check their balance at any time
-- [ ] Clear cheques for the bank
-- [ ] Calculate staff salaries
-- [ ] Design new bank branches
-Why: ATMs provide 24-hour self-service banking using a card and PIN.
+- [ ] Clear the cheques they deposit at other banks' branches
+- [ ] Calculate the monthly salaries of all the bank's staff
+- [ ] Get their monthly payslip printed by the bank's payroll system
+Why: ATMs provide 24-hour self-service banking using a card and PIN, for withdrawals, balance enquiries and mini statements.
 
 ### What is the main way a reservation system avoids double booking?
-- [ ] It only allows bookings at the airport
-- [x] It updates a central database in real time and locks a seat while it is being booked
-- [ ] It prints tickets in advance
-- [ ] It limits each customer to one booking per year
+- [ ] It allows bookings only at the airport counter on the day of travel
+- [x] It updates a central database in real time and locks a seat during booking
+- [ ] It prints all tickets in advance and posts them to customers by mail
+- [ ] It keeps a separate list of seats at each travel agent, updated once every evening
 Why: Real-time processing and record locking mean a seat or room shown as available really is free, and only one terminal can book it at a time.
 
 ### What is the difference between CAI and CAL?
-- [ ] CAI is used in banks; CAL is used in hospitals
-- [ ] CAI needs the internet; CAL does not
-- [x] In CAI the computer teaches and tests; in CAL the learner uses the computer as a resource to explore
-- [ ] They are two names for exactly the same thing
-Why: Computer-aided instruction takes on a teaching role, while computer-aided learning supports learners who direct their own study.
+- [ ] CAI is used only in banks; CAL is used only in hospitals and clinics
+- [ ] CAI needs an internet connection; CAL works only on offline computers
+- [x] In CAI the computer teaches and tests; in CAL learners use it as a resource
+- [ ] CAI is used to prepare timetables; CAL is used to keep student records and fees
+Why: Computer-aided instruction takes on a teaching role with drills and tests, while computer-aided learning supports learners who direct their own study.
 
 ### Trainee pilots practise landing in bad weather on a computer before flying a real aircraft. This is...
-- [ ] Electronic funds transfer
+- [ ] Electronic funds transfer (EFT)
 - [ ] A payroll system
 - [ ] Telecommuting
 - [x] Computer-based simulation
@@ -152,11 +152,11 @@ Why: Simulation models a real situation so people can practise safely and cheapl
 - [ ] Video conferencing
 - [ ] E-learning
 - [ ] Teletext
-Why: Telecommuting means working away from the office, usually at home, using computers and communication links.
+Why: Telecommuting means working away from the office, usually at home, using computers and communication links such as the internet.
 
 ### Managers in Nairobi, Kisumu and Eldoret hold a live meeting where they see and hear each other on screens. This is...
-- [ ] Fax
+- [ ] Facsimile (fax)
 - [x] Video conferencing
-- [ ] Email
+- [ ] Electronic mail (email)
 - [ ] Radio broadcasting
 Why: Video conferencing uses cameras, microphones, screens and a network so people in different places can meet face to face, saving travel time and cost.

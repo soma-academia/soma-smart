@@ -81,71 +81,71 @@ Why: Each AI system is specialised. There's no all-purpose thinking machine.
 ## Quiz
 
 ### What is artificial intelligence?
-- [x] Computer systems that do tasks we usually think need human intelligence
-- [ ] A robot that is alive
-- [ ] Any computer at all
-- [ ] A type of cable
-Why: AI includes recognising speech, translating and predicting, all done by software learning from data.
+- [x] Computer systems doing tasks that usually need human intelligence
+- [ ] Any computer program, including a simple calculator
+- [ ] Machines that are alive and understand the world as people do
+- [ ] Robots with metal bodies that copy human movements
+Why: AI covers jobs like recognising speech, translating and predicting, done by software that learned from data.
 
 ### How do most modern AI systems get their abilities?
-- [ ] Someone types every possible rule
+- [ ] Programmers type in a rule for every possible case
 - [x] They learn patterns from many examples
-- [ ] They are born with them
-- [ ] From electricity alone
-Why: Machine learning finds patterns in example data instead of following hand-written rules.
+- [ ] They copy the knowledge stored in a human brain
+- [ ] They are switched on already knowing it all
+Why: Machine learning finds patterns in example data, which is far easier than writing a rule for every case.
 
 ### Which is an example of AI?
-- [ ] A light switch
+- [ ] A calculator adding up prices
 - [x] Voice typing on a phone
-- [ ] A ruler
-- [ ] A printed timetable
-Why: Turning speech into text needs a system that learned from many recordings of speech.
+- [ ] A street light on a timer
+- [ ] A printed bus timetable
+Why: Turning speech into text means recognising many voices, which a system learns from thousands of recordings.
 
 ### What does "narrow AI" mean?
-- [ ] AI that is very small
+- [ ] AI that only runs on small, thin devices
 - [x] AI that is good at one kind of task only
-- [ ] AI that works on thin phones
-- [ ] AI that can't use the internet
-Why: All AI today is narrow; a translation AI can't also drive or play chess.
+- [ ] AI that can do any task as well as a person
+- [ ] AI that works offline
+Why: All AI today is narrow: a translation AI can't also drive a car or diagnose an illness.
 
 ### Can AI be wrong?
-- [ ] No, computers are never wrong
-- [x] Yes, it can be confidently wrong, so people should check it
-- [ ] Only when the battery is low
-- [ ] Only in Kiswahili
-Why: AI predicts from patterns; when the patterns don't fit a new situation, it can make mistakes.
+- [ ] No, because computers follow maths and never make mistakes
+- [x] Yes, it can be confidently wrong, so check it
+- [ ] Only when the phone battery is low
+- [ ] Only if someone has hacked into it on purpose
+Why: AI predicts from patterns; when a new situation doesn't fit those patterns, it can be wrong and still sound sure.
 
 ### Why might a bank use AI?
-- [ ] To print money
-- [x] To flag unusual transactions that might be fraud
-- [ ] To open branches
-- [ ] To replace all its staff
-Why: AI can learn what normal spending looks like and spot activity that doesn't fit.
+- [ ] To print new banknotes when cash runs low
+- [x] To spot unusual spending that may be fraud
+- [ ] To set the interest rate for the whole country
+- [ ] To open new branches
+Why: AI learns what a customer's normal spending looks like, so it can flag a payment that doesn't fit the pattern.
 
 ### Which is a fixed rule, not AI?
 - [x] A school bell that rings at the same times every day
-- [ ] A spam filter learning from reported emails
-- [ ] Face unlock on a phone
-- [ ] A translation app
-Why: The bell follows a set timetable; it doesn't learn from data.
+- [ ] A spam filter that learns from emails people report
+- [ ] Face unlock recognising its owner's face
+- [ ] An app translating spoken English into French
+Why: The bell follows a timetable someone set; it never learns from data or changes by itself.
 
 ### Is AI alive or does it have feelings?
-- [ ] Yes, it has feelings
+- [ ] Yes, chatbots feel happy when you thank them
 - [x] No, it is software that processes data
-- [ ] Only chatbots are alive
-- [ ] Only when it talks
-Why: Even when AI writes like a person, it is a program predicting patterns, not a living being.
+- [ ] Yes, but only the most advanced AI systems
+- [ ] Only while it talks
+Why: Even when AI writes like a person, it is a program predicting patterns; it has no feelings or life.
 
 ### Why should people check AI's work on important things like health or exams?
-- [ ] AI is always wrong
-- [x] AI can make mistakes and has no common sense outside its data
-- [ ] AI refuses to help
+- [ ] AI is always wrong about serious topics
+- [x] AI can make mistakes and lacks common sense
+- [ ] AI refuses to answer health or exam questions
 - [ ] AI is too slow
-Why: AI is a helpful tool, but people stay responsible for important decisions.
+Why: AI is a helpful tool, but it can be wrong, so people stay responsible for decisions that really matter.
 
 ### A maps app predicts a traffic jam on Thika Road. What is it most likely using?
-- [ ] Guesswork
-- [x] Patterns learned from lots of past and live traffic data
-- [ ] A fixed timetable
-- [ ] Radio announcements only
-Why: Learning from many phones' movement data lets it predict likely delays.
+- [ ] A fixed timetable of when roads get busy
+- [x] Patterns in past and live traffic data
+- [ ] Radio reports read out by traffic police
+- [ ] Random guesses
+Why: Many phones moving slowly on a road show a jam; the app learns from this data to predict delays.

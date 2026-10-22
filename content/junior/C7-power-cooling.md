@@ -57,70 +57,70 @@ Question: Idle vs busy temperature, and whether the vents need cleaning.
 
 ### The power supply (PSU) does what?
 - [x] Converts mains power to what parts need
-- [ ] Draws the screen
-- [ ] Stores files
-- [ ] Connects Wi-Fi
-Why: It feeds steady power to the parts.
+- [ ] Stores power so the PC runs during blackouts
+- [ ] Controls the fan speed to keep the CPU cool
+- [ ] Checks the hardware before the OS loads
+Why: The PSU turns mains electricity from the wall socket into the steady, low DC voltages that the motherboard and other parts use.
 
 ### Power is measured in...
 - [x] Watts
-- [ ] GHz
+- [ ] Gigahertz
 - [ ] GB
-- [ ] ms
-Why: Watts.
+- [ ] Milliseconds
+Why: Watts measure how much energy something uses each second; a gaming PC may draw several hundred watts under heavy load.
 
 ### When a chip gets too hot it...
 - [x] Slows down to stay safe
-- [ ] Gets faster
-- [ ] Changes colour
-- [ ] Nothing
-Why: That's thermal throttling.
+- [ ] Speeds up to finish sooner
+- [ ] Switches its fan off to save power
+- [ ] Shuts off the screen
+Why: This is thermal throttling: the chip lowers its clock speed to make less heat and avoid damage, so the computer feels slower.
 
 ### Thermal paste helps by...
 - [x] Moving heat from the chip to the cooler
-- [ ] Gluing the PSU
-- [ ] Adding RAM
-- [ ] Cleaning the screen
-Why: Better heat flow.
+- [ ] Gluing the cooler firmly onto the motherboard
+- [ ] Blocking dust from reaching the fan blades
+- [ ] Insulating the chip so heat stays inside
+Why: It fills tiny air gaps between the chip and the cooler; air carries heat badly, so the paste lets heat flow into the metal fins.
 
 ### Good airflow is...
-- [x] Cool air in front, hot air out back/top
-- [ ] All fans off
-- [ ] Hot air in the front
-- [ ] No vents
-Why: Hot air rises and exits.
+- [x] Cool air in at the front, hot air out back or top
+- [ ] Hot air in at the front, cool air out the bottom
+- [ ] Vents covered with tape so that dust cannot get in at all
+- [ ] Every fan switched off to keep the case quiet
+Why: Hot air rises, so fans pull cool air in at the front and push warm air out at the back or top, carrying heat away.
 
 ### The enemy of cooling is...
 - [x] Dust
-- [ ] Music
-- [ ] Light
-- [ ] Stickers
-Why: Dust blocks airflow.
+- [ ] Bright light
+- [ ] Loud music
+- [ ] Cold air
+Why: Dust builds up on fans and heatsink fins, blocking airflow and trapping heat, so chips run hotter and throttle.
 
 ### A reliable PSU matters because it...
 - [x] Feeds and protects every part
-- [ ] Draws graphics
-- [ ] Stores games
-- [ ] Speeds the internet
-Why: It powers the whole computer.
+- [ ] Draws the graphics for games
+- [ ] Makes the internet connection faster
+- [ ] Stores the files you save
+Why: Every part depends on the PSU's power; a good one gives steady voltage and shuts down safely if something goes wrong.
 
 ### What happens when dust clogs a laptop's heatsink fins and fan?
-- [x] Heat is trapped, causing thermal throttling and loud fan noise
-- [ ] The laptop becomes lighter
-- [ ] Battery life increases
-- [ ] The screen becomes dimmer
-Why: Blocked airflow prevents cooling.
+- [x] Heat is trapped, so it throttles and the fan gets loud
+- [ ] The fan spins slower, so the laptop is quieter
+- [ ] The battery lasts longer because the fan does less
+- [ ] The CPU gets faster because it runs at a higher temperature
+Why: Clogged fins can't release heat, so the fan spins harder and the chip slows itself down to avoid overheating.
 
 ### Why should you never cheap out on a generic, unbranded Power Supply (PSU)?
-- [x] A failing cheap PSU can send voltage spikes and destroy other components
-- [ ] It weighs too much
-- [ ] It has too many cables
-- [ ] It changes the CPU clock
-Why: A quality PSU provides clean, regulated power and protections.
+- [x] A bad PSU can send power spikes that damage other parts
+- [ ] Cheap PSUs only work with old processors
+- [ ] It makes the CPU run at a lower clock speed
+- [ ] Unbranded PSUs cannot plug into a modern motherboard at all
+Why: Quality PSUs have protections that cut power during a fault; cheap ones may fail and send unstable voltage into the motherboard and drives.
 
 ### Thermal throttling is a feature that...
-- [x] Protects the chip from permanent heat damage by lowering speed
-- [ ] Speeds up the computer when hot
-- [ ] Turns off the fans
-- [ ] Deletes temporary files
-Why: Lowers clock frequency to prevent hardware damage.
+- [x] Protects the chip by lowering its speed when hot
+- [ ] Raises the clock speed when the chip is cool
+- [ ] Turns the fans off so the PC is quieter
+- [ ] Deletes temporary files to free up space
+Why: By running slower, the chip makes less heat; this prevents permanent damage, though the computer feels slow until it cools.

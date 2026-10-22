@@ -105,28 +105,28 @@ Label: What happens, in order, when a program calls area(3, 4)?
 - [ ] function
 - [x] def
 - [ ] return
-- [ ] call
+- [ ] fn
 Why: def (short for define) starts a function definition.
 
 ### Which is a built-in Python function?
-- [x] len()
-- [ ] area()
-- [ ] fees_due()
-- [ ] greet()
+- [x] len(scores)
+- [ ] area(3, 4)
+- [ ] fees_due(learner)
+- [ ] greet(name)
 Why: len comes with Python; the others are names someone would define themselves.
 
 ### What does return do?
-- [ ] Prints a value
-- [x] Sends a result back to the caller and ends the function
-- [ ] Repeats the function
-- [ ] Deletes the function
-Why: Unlike print, return hands the value back so the program can keep using it.
+- [ ] Prints a value on the screen for the user
+- [x] Sends a result back to the code that called it
+- [ ] Runs the function again from the first line
+- [ ] Deletes the function once it has finished
+Why: Unlike print, return hands the value back and ends the function, so the program can keep using the result.
 
 ### Why use modular programming?
-- [ ] To make programs longer
+- [ ] It makes programs longer, which shows effort
 - [x] Parts are easier to write, test, fix and reuse
-- [ ] It makes the computer louder
-- [ ] It removes the need to test
+- [ ] It means the finished program never needs testing
+- [ ] It guarantees the program will never have errors
 Why: Small functions with one job each are simpler to understand and can be reused.
 
 ### In area(3, 4), what are 3 and 4?
@@ -134,7 +134,7 @@ Why: Small functions with one job each are simpler to understand and can be reus
 - [x] Arguments
 - [ ] Return values
 - [ ] Keywords
-Why: The actual values passed in a call are arguments.
+Why: Parameters are the names in the def line; the actual values passed in a call, like 3 and 4, are arguments.
 
 ### What does a function return if it has no return statement?
 - [ ] 0
@@ -144,24 +144,24 @@ Why: The actual values passed in a call are arguments.
 Why: Python functions without return give back the special value None.
 
 ### A global variable is created...
-- [ ] Inside a function
-- [x] Outside all functions
-- [ ] Only in loops
-- [ ] Only in dictionaries
-Why: Global variables live at the top level of the program.
+- [ ] Inside a function's body
+- [x] Outside all functions, at the top level of the program
+- [ ] Only inside a for or while loop
+- [ ] Only inside a dictionary
+Why: A variable made at the top level, outside every function, is global; one made inside a function is local to it.
 
 ### def double(n): return n * 2. What does double(double(3)) give?
 - [ ] 6
 - [x] 12
+- [ ] 36
 - [ ] 9
-- [ ] 3
 Why: double(3) is 6, then double(6) is 12. The result of one call can be passed to another.
 
 ### Why is it better to pass values as parameters than to rely on global variables?
-- [ ] It is required by law
+- [ ] Python refuses to run any program that has globals
 - [x] It keeps functions independent and easier to test
-- [ ] Globals use no memory
-- [ ] Parameters make code slower
+- [ ] Parameters use no memory, unlike global variables
+- [ ] Globals are deleted when a function ends
 Why: A function that only uses its parameters behaves the same wherever it is called.
 
 ### Which line correctly calls a function named greet with the argument "Amani"?

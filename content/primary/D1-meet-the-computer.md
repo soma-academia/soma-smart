@@ -86,70 +86,70 @@ Buckets: Hardware | Software
 
 ### A computer is a machine that...
 - [x] Follows instructions to do work
-- [ ] Thinks on its own like a person
-- [ ] Only plays music
-- [ ] Is always a desktop
-Why: It follows the instructions you give it.
+- [ ] Thinks and decides on its own
+- [ ] Can only play music and videos
+- [ ] Is always a big desktop
+Why: A computer does nothing by itself; it follows the instructions in its programs to do each job.
 
 ### The 'brain' of the computer is the...
 - [x] CPU (processor)
-- [ ] Screen
-- [ ] Keyboard
-- [ ] Cable
-Why: The CPU does the thinking.
+- [ ] Screen (monitor)
+- [ ] Keyboard and mouse
+- [ ] Power cable
+Why: The CPU (processor) carries out the instructions and does the working out, so we call it the brain.
 
 ### Which is INPUT?
 - [x] A keyboard
-- [ ] The screen
+- [ ] The monitor screen
 - [ ] A speaker
 - [ ] A printer
-Why: Input puts information in; a keyboard does that.
+Why: Input devices put information into the computer; when you type on a keyboard, letters go in.
 
 ### Which is OUTPUT?
 - [x] The screen
 - [ ] The mouse
 - [ ] The keyboard
 - [ ] The touch pad
-Why: Output shows results; the screen does that.
+Why: Output devices give results back to you; the screen shows you the pictures and words.
 
 ### RAM is best described as...
 - [x] Short-term memory for what you use now
-- [ ] A cupboard for keeping files forever
-- [ ] The brain
-- [ ] A cable
-Why: RAM holds what's in use right now.
+- [ ] A cupboard that keeps your files after switch-off
+- [ ] The part that does all the thinking
+- [ ] The cable that brings in the power
+Why: RAM holds the apps and files you are using right now, and it empties when the computer switches off.
 
 ### Which is SOFTWARE?
 - [x] A web browser
 - [ ] The keyboard
-- [ ] The screen
+- [ ] The computer screen
 - [ ] The mouse
-Why: Software is a program you can't touch.
+Why: Software is a program, a set of instructions you cannot touch, like a web browser or a game.
 
 ### Hardware means...
 - [x] Parts you can touch
-- [ ] Programs inside
-- [ ] The internet
-- [ ] A password
-Why: Hardware is the physical parts.
+- [ ] Programs inside the computer
+- [ ] The internet connection
+- [ ] Your secret password
+Why: Hardware is every physical part, like the screen, keyboard and CPU, that you can hold in your hands.
 
 ### Which of these is a computer?
 - [x] A smartphone
 - [ ] A wooden chair
 - [ ] A glass cup
-- [ ] A textbook
-Why: A smartphone has a processor and memory.
+- [ ] A school textbook
+Why: A smartphone has a processor, memory and storage, and it follows instructions, so it is a computer.
 
 ### When the computer saves files even after you switch it off, it uses...
 - [x] Storage (hard disk or flash)
-- [ ] RAM only
+- [ ] RAM, the computer's working memory
 - [ ] The keyboard
 - [ ] The speakers
-Why: Storage keeps files permanently.
+Why: Storage, like a hard disk or flash disk, keeps files even with no power, but RAM is emptied.
 
 ### What are the three main steps a computer performs?
 - [x] Input, process, output
-- [ ] Sleep, eat, run
+- [ ] Charge, switch on, switch off
 - [ ] Download, copy, delete
-- [ ] Turn on, heat up, switch off
-Why: Input goes in, the computer processes it, and output comes out.
+- [ ] Type, print, save
+Why: Information goes in (input), the computer works on it (process), and results come out (output).

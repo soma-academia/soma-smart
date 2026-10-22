@@ -96,69 +96,69 @@ Why: Reusing working parts cuts e-waste; broken parts should go to licensed e-wa
 ### Which port usually connects a modern monitor or projector?
 - [x] HDMI
 - [ ] RJ-45
-- [ ] Audio jack
-- [ ] SIM slot
-Why: HDMI carries high-definition video and sound in one cable.
+- [ ] 3.5 mm audio jack
+- [ ] SIM card slot
+Why: HDMI carries high-definition video and sound together in one cable, so most modern screens and projectors use it.
 
 ### The blue 15-pin port found on older screens is...
 - [ ] USB-C
 - [x] VGA
-- [ ] Ethernet
-- [ ] Bluetooth
-Why: VGA is an older analogue video connection, still found on some school projectors.
+- [ ] RJ-45
+- [ ] HDMI
+Why: VGA is an older analogue video connection, still found on some school projectors and old monitors.
 
 ### Which USB type is small and fits either way up?
 - [ ] USB-A
 - [x] USB-C
-- [ ] VGA
+- [ ] Micro-USB
 - [ ] RJ-45
-Why: USB-C is reversible, so it has no "wrong way up".
+Why: USB-C is small and reversible, so it has no wrong way up; USB-A is the flat rectangle that fits only one way.
 
 ### When should power cables be connected during setup?
-- [ ] First, before anything else
-- [x] Last, after the other cables
-- [ ] Never
-- [ ] Only while the computer is running
+- [ ] First, so the computer is ready to switch on
+- [x] Last, after all the other cables are connected
+- [ ] Halfway, straight after the monitor cable
+- [ ] Any time, as long as the screen is off
 Why: Connecting power last reduces the risk of shocks and damage while you are plugging things in.
 
 ### Why touch bare metal before handling parts inside a computer?
-- [ ] To warm your hands
-- [x] To discharge static electricity that can damage chips
-- [ ] To clean the parts
-- [ ] To speed up the computer
-Why: A static spark you cannot even feel can destroy sensitive components.
+- [ ] To warm your fingers so you can grip small parts
+- [x] To discharge static that can damage chips
+- [ ] To check whether the computer is switched on
+- [ ] To wipe dust and grease off your hands first
+Why: A static spark you cannot even feel can destroy sensitive components, so you release it safely first.
 
 ### What does a surge protector do?
-- [x] Blocks sudden spikes in voltage
-- [ ] Keeps the computer on during a power cut
-- [ ] Speeds up the internet
-- [ ] Cools the processor
-Why: It protects against spikes; only a UPS keeps power flowing during an outage.
+- [x] Blocks sudden spikes in mains voltage
+- [ ] Keeps the computer running during a power cut
+- [ ] Stores spare power in a battery for later
+- [ ] Cools the power supply
+Why: It protects against spikes; only a UPS, with its battery, keeps power flowing during an outage.
 
 ### Which is a safety rule when setting up a computer?
-- [ ] Keep a cup of tea next to the keyboard
+- [ ] Keep drinks close to the keyboard while you work
 - [ ] Open the case while it is plugged in
-- [x] Keep cables tidy so nobody trips
-- [ ] Overload one socket with many plugs
+- [x] Keep cables tidy so nobody trips over them
+- [ ] Plug many devices into one socket to save space
 Why: Loose cables cause falls and pulled equipment; overloaded sockets can overheat.
 
 ### Why is e-waste a problem if dumped or burned?
-- [ ] It is too heavy
-- [x] It contains harmful materials like lead
-- [ ] It makes noise
-- [ ] It has no value at all
-Why: Burning or dumping releases toxic substances; proper collectors recover materials safely.
+- [ ] It is too heavy for rubbish collectors to carry
+- [x] It contains harmful materials such as lead
+- [ ] Burning it is the only way to recover the metals
+- [ ] It has no useful parts left inside it
+Why: Burning or dumping releases toxic substances; licensed collectors recover materials safely.
 
 ### A 3.5 mm jack is used for...
-- [ ] Network cables
-- [ ] Monitors
+- [ ] Ethernet network cables
+- [ ] Monitors and projectors
 - [x] Headphones and speakers
-- [ ] Power
-Why: The small round audio jack carries sound to headphones and speakers.
+- [ ] Charging a laptop battery
+Why: The small round audio jack carries sound to headphones and speakers, not video, data or power.
 
 ### What is the last step of setting up a computer?
-- [ ] Unpacking the box
-- [ ] Connecting the mouse
+- [ ] Unpacking the box and reading the manual
+- [ ] Connecting the keyboard and mouse
 - [x] Switching on and testing it with a real task
-- [ ] Buying a new monitor
+- [ ] Connecting the network cable to the router
 Why: Testing confirms everything is connected and working before people rely on it.

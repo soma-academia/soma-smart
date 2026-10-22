@@ -93,67 +93,67 @@ Why: Mesh gives many paths between devices, so data can take a route around brok
 - [x] LAN
 - [ ] MAN
 - [ ] WAN
-Why: A LAN covers a small area like a building or campus.
+Why: A LAN covers a small area like a home, building or school campus; a MAN covers a whole city.
 
 ### Which is the largest WAN?
 - [x] The internet
-- [ ] A school lab
-- [ ] A Bluetooth headset
-- [ ] A printer cable
-Why: The internet connects networks across the whole world.
+- [ ] A school LAN
+- [ ] A Bluetooth PAN
+- [ ] A city MAN
+Why: The internet connects networks across the whole world, making it the biggest wide area network.
 
 ### What does a switch do?
-- [ ] Connects your network to the internet
-- [x] Joins devices in a LAN and sends data to the right one
-- [ ] Converts light to sound
-- [ ] Stores web pages
+- [ ] Connects your LAN to the internet and picks routes
+- [x] Sends data within a LAN only to the right device
+- [ ] Lets devices join the network over Wi-Fi
+- [ ] Converts data into a signal for the provider's line
 Why: A switch learns which device is on which port and forwards data only there.
 
 ### A NIC is...
-- [ ] A type of cable
+- [ ] A cable that joins two switches together
 - [x] The part that connects a device to a network
-- [ ] A network topology
-- [ ] A web browser
+- [ ] The device that connects a LAN to the internet
+- [ ] A layout describing how devices are cabled
 Why: The network interface card (wired or wireless) gives a device its network connection.
 
 ### In a star topology, what happens if the central switch fails?
-- [ ] Nothing changes
+- [ ] Only the computer nearest the switch stops
 - [x] The whole network stops working
-- [ ] Only one computer stops
-- [ ] Data goes faster
+- [ ] Data automatically takes another route around it
+- [ ] Nothing changes because each device has its own cable
 Why: Every device connects through the centre, so it is a single point of failure.
 
 ### Physical topology describes...
 - [x] How devices are actually cabled together
-- [ ] How fast the internet is
-- [ ] Which apps are installed
-- [ ] The colour of the cables
+- [ ] How data flows between the devices
+- [ ] How fast data travels across the cables
+- [ ] Which programs each computer has installed
 Why: Physical topology is the real layout; logical topology is how data flows across it.
 
 ### What does a wireless access point do?
-- [ ] Prints wirelessly
+- [ ] Connects the school's LAN to the internet
 - [x] Lets devices join a network by Wi-Fi
-- [ ] Charges phones
-- [ ] Replaces the CPU
+- [ ] Connects to the service provider's line
+- [ ] Adds a network port to a single computer
 Why: It is the radio bridge between wireless devices and the wired network.
 
 ### Which is a reason to choose a star topology for a school lab?
-- [ ] It needs no switch
-- [x] A faulty cable affects only one computer, and it is easy to manage
-- [ ] It uses one cable for everyone
-- [ ] It cannot be expanded
+- [x] A faulty cable affects only one computer
+- [ ] All computers share one cable, so it is cheap
+- [ ] It has no central device that could fail
+- [ ] It needs no switch, so it costs much less
 Why: Each device has its own cable to the switch, so faults are isolated and easy to find.
 
 ### A MAN usually covers...
-- [ ] One room
-- [ ] One person
-- [x] A city
-- [ ] The whole world
-Why: Metropolitan area networks link sites across a town or city.
+- [ ] A single building
+- [ ] One person's devices
+- [x] A town or city
+- [ ] Several countries
+Why: Metropolitan area networks link sites across a town or city, between a LAN and a WAN in size.
 
 ### Which is a key consideration when planning a network?
-- [ ] The brand of the desks
-- [x] Cost, number of users, distance, speed and security
-- [ ] The teacher's favourite colour
-- [ ] How many printers are broken
+- [ ] The colour of the network cables
+- [x] Cost, users, distance, speed and security
+- [ ] Which web browser each learner prefers
+- [ ] The size of each computer's screen
 Why: These factors decide which media, devices and topology suit the job.

@@ -106,10 +106,10 @@ Why: The first item is index 0, which is why the last of five items is index 4.
 Why: len counts items; there are three numbers in the list.
 
 ### What does marks.append(65) do?
-- [ ] Deletes 65
+- [ ] Removes the first 65 found in the list
 - [x] Adds 65 to the end of the list
-- [ ] Sorts the list
-- [ ] Finds 65
+- [ ] Sorts the list so 65 is in its place
+- [ ] Returns the position where 65 is stored
 Why: append grows the list by one item at the end.
 
 ### Which container cannot be changed after it is created?
@@ -120,23 +120,23 @@ Why: append grows the list by one item at the end.
 Why: Tuples are immutable, which protects data that should stay fixed, like coordinates.
 
 ### What do you need before you can use binary search?
-- [ ] A dictionary
+- [ ] A dictionary of keys
 - [x] A sorted list
-- [ ] A very small list
+- [ ] A list with fewer than ten items
 - [ ] An internet connection
 Why: Binary search decides which half to throw away, and that only works if the list is in order.
 
 ### Linear search works by...
 - [x] Checking items one by one from the start
-- [ ] Checking only the middle
-- [ ] Sorting the list first
-- [ ] Guessing randomly
+- [ ] Checking only the middle item, then stopping
+- [ ] Sorting the list first, then halving it
+- [ ] Jumping to random positions until it finds a match
 Why: It is simple and works on unsorted lists, but it can be slow for long ones.
 
 ### In a dictionary, you find a value using its...
 - [ ] Position number
 - [x] Key
-- [ ] Colour
+- [ ] Data type
 - [ ] Length
 Why: Dictionaries look values up by key, like finding a number by a person's name.
 
@@ -148,15 +148,15 @@ Why: Dictionaries look values up by key, like finding a number by a person's nam
 Why: table[1] is the second row, [3, 4], and position 0 in that row is 3.
 
 ### What does bubble sort repeatedly do?
-- [ ] Deletes the largest item
+- [ ] Removes the largest item and puts it in a new list
 - [x] Swaps neighbouring items that are in the wrong order
-- [ ] Splits the list in half
-- [ ] Adds new items
+- [ ] Splits the list in half and sorts each half separately
+- [ ] Picks a random item and moves it to the front of the list
 Why: After enough passes of swapping neighbours, every item "bubbles" into place.
 
 ### What happens if you add "Maths" twice to a set?
-- [ ] The set holds it twice
-- [ ] Python shows an error
+- [ ] The set stores "Maths" twice, side by side
+- [ ] Python stops with a duplicate-value error
 - [x] The set keeps only one "Maths"
-- [ ] The set is deleted
-Why: Sets store each value only once.
+- [ ] The set becomes empty
+Why: Sets store each value only once, so adding a duplicate quietly does nothing; this makes them handy for removing repeats.

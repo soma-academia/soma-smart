@@ -92,63 +92,63 @@ Buckets: Industry | Transport | Law enforcement | Virtual reality
 ## Quiz
 
 ### Which of the following is the best example of process control?
-- [ ] An architect drawing a house plan on screen
-- [ ] A librarian searching the catalogue
-- [x] A computer using sensors to keep the temperature in an oil refinery within set limits
-- [ ] A shopper buying shoes online
-Why: Process control uses sensors to monitor a continuous process and automatically adjusts it to keep it within set values.
+- [ ] An architect using a computer to draw and edit the plan of a new house
+- [ ] A librarian using a computer to search the catalogue for a book
+- [x] Sensors and a computer keeping a refinery's temperature within set limits
+- [ ] A clerk using a spreadsheet to calculate monthly sales totals for each branch
+Why: Process control uses sensors to monitor a continuous process and automatically adjusts it to keep it within set values, with little human input.
 
 ### What does CAM stand for, and what does it do?
 - [x] Computer-aided manufacturing: computers control the machines that make products
-- [ ] Computer-aided marketing: computers advertise products
-- [ ] Computer-assisted mail: computers send letters
-- [ ] Computer-aided memory: computers store more data
-Why: CAD is used to design a product, and CAM uses the design to control machine tools that make it.
+- [ ] Computer-aided marketing: computers design adverts and send them to customers
+- [ ] Computer-assisted modelling: computers draw 3D plans of new products on screen
+- [ ] Computer-aided memory: computers add extra storage to factory machines
+Why: CAD is used to design a product on screen, and CAM uses that design to control the machine tools that make it.
 
 ### Why are robots used on car assembly lines?
-- [ ] They need no electricity
-- [ ] They can make their own decisions about car designs
-- [ ] They are cheaper to buy than any human worker's yearly wage
+- [ ] They need no electricity, programming or maintenance once fitted to the line
+- [ ] They make their own decisions about how each new car should be designed
+- [ ] They cost less to buy and set up than one worker's yearly wage
 - [x] They do repetitive, heavy or dangerous tasks accurately and without tiring
-Why: Robots are ideal for welding, painting and lifting, where precision and safety matter.
+Why: Robots are ideal for welding, painting and lifting, where precision and safety matter, though they are costly to buy and must be programmed.
 
 ### Which are the three components of an expert system?
-- [ ] Input, process and output
+- [ ] Input, processing and output units
 - [x] Knowledge base, inference engine and user interface
+- [ ] Sensors, actuators and the robot arm they control in a factory
 - [ ] Monitor, keyboard and mouse
-- [ ] Sensor, actuator and robot
-Why: The knowledge base holds expert facts and rules, the inference engine reasons with them, and the user interface lets the user interact.
+Why: The knowledge base holds expert facts and rules, the inference engine reasons with them, and the user interface lets the user ask questions and get advice.
 
 ### How do computers help in weather forecasting?
-- [ ] They control the rain
-- [ ] They replace weather stations completely
-- [ ] They only print weather maps
-- [x] They process large amounts of data from satellites and weather stations to predict the weather
-Why: Weather forecasting needs fast computers to analyse huge volumes of data and run models of the atmosphere.
+- [ ] They control rainfall by sending signals to the clouds from weather stations
+- [ ] They replace weather stations completely, so no readings need to be taken
+- [ ] They only print the weather maps that meteorologists have drawn by hand
+- [x] They process large amounts of weather data quickly to produce forecasts
+Why: Weather forecasting needs fast computers to analyse huge volumes of data from satellites and weather stations and run models of the atmosphere.
 
 ### Which two devices are commonly used to interact with a virtual reality system?
 - [x] Head-mounted display and data gloves
-- [ ] Barcode reader and POS terminal
-- [ ] MICR reader and printer
-- [ ] Plotter and scanner
-Why: The head-mounted display shows the 3D world and tracks head movement, and data gloves sense hand movement.
+- [ ] Barcode reader and point-of-sale terminal
+- [ ] MICR reader and dot matrix printer
+- [ ] Graph plotter and flatbed scanner
+Why: The head-mounted display shows the 3D world and tracks head movement, and data gloves sense hand movement so the user can touch virtual objects.
 
 ### Which task does a computerised library system perform?
-- [ ] Controlling aircraft landings
+- [ ] Controlling aircraft landings and take-offs at a busy airport
 - [x] Recording which member borrowed a book and when it is due back
-- [ ] Welding metal parts
-- [ ] Forecasting rainfall
-Why: Library systems handle lending, keep an inventory of books and provide a searchable catalogue.
+- [ ] Controlling the robots that weld metal parts in a factory
+- [ ] Analysing satellite data to forecast rainfall for farmers in the region
+Why: Library systems handle lending and returns, keep an inventory of books and provide a searchable catalogue for members.
 
 ### How does ICT help air traffic control?
-- [ ] It sells airline tickets
-- [ ] It designs new aircraft engines
+- [ ] It sells airline tickets and reserves seats for passengers online
+- [ ] It designs new aircraft engines using computer-aided design software
 - [x] It uses radar and computers to track aircraft and keep them safely apart
-- [ ] It prints boarding passes
-Why: Air traffic control systems show controllers each aircraft's position and height so they can prevent collisions.
+- [ ] It flies every aircraft automatically from take-off to landing without a pilot
+Why: Air traffic control systems show controllers each aircraft's position and height so they can guide planes and prevent collisions.
 
 ### The police compare a fingerprint found at a crime scene with millions of stored records in seconds. This is an example of...
-- [ ] Computer-aided design
+- [ ] Computer-aided design (CAD)
 - [ ] E-commerce
 - [ ] Process control
 - [x] Biometric identification

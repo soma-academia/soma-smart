@@ -88,69 +88,69 @@ Why: Each hop is one router passing your packets along. More hops usually means 
 ### Devices on your home network connect through a...
 - [x] Router
 - [ ] Monitor
-- [ ] Printer
-- [ ] Speaker
-Why: The router runs your LAN.
+- [ ] Power supply
+- [ ] Graphics card
+Why: The router links every phone and laptop in the home, by Wi-Fi or cable, and connects that local network to the internet.
 
 ### A home/school network is called a...
 - [x] LAN (Local Area Network)
-- [ ] CPU
-- [ ] GPU
-- [ ] URL
-Why: Local Area Network.
+- [ ] ISP (Internet Service Provider)
+- [ ] URL (Uniform Resource Locator)
+- [ ] DNS (Domain Name System)
+Why: A LAN covers a small area, like one home or school, where nearby devices connect through the same router.
 
 ### Data travels across networks as...
 - [x] Packets
 - [ ] Pixels
-- [ ] Watts
-- [ ] Cores
-Why: Small labelled packets.
+- [ ] One single unbroken file
+- [ ] Clock beats
+Why: Data is cut into small packets, each labelled with where it is going and where it came from, and rejoined at the destination.
 
 ### The company that connects you to the internet is your...
 - [x] ISP
-- [ ] CPU
-- [ ] PSU
-- [ ] GPU
-Why: Internet Service Provider.
+- [ ] CDN
+- [ ] LAN
+- [ ] Web host
+Why: An ISP such as Safaricom, Airtel or Zuku carries your packets from your home or phone out to the wider internet.
 
 ### An IP address is like a...
 - [x] Postal address for a device
-- [ ] Password
-- [ ] Photo
-- [ ] Fan
-Why: It identifies a device on a network.
+- [ ] Password that protects a device
+- [ ] Name a person gives their phone
+- [ ] Serial number printed on the router
+Why: Just as letters need an address, packets carry IP addresses so routers know where to deliver them and where to send replies.
 
 ### 192.168.1.10 is an example of a...
 - [x] Private IP used inside a LAN
-- [ ] Public website
-- [ ] Password
-- [ ] File type
-Why: Private range used at home.
+- [ ] Public IP that anyone online can reach
+- [ ] Website's domain name
+- [ ] Speed test result in Mbps
+Why: 192.168.x.x is a private range kept for local networks; the router lets all the home's devices share a public address to reach the internet.
 
 ### A server far away usually means...
 - [x] Higher ping
 - [ ] Lower ping
-- [ ] More storage
-- [ ] Louder sound
-Why: Packets travel further.
+- [ ] Faster downloads
+- [ ] Higher FPS in games
+Why: Packets take longer to cross long distances and pass through more routers, so the round trip, your ping, gets longer.
 
 ### What is the primary role of a router in a home or school network?
-- [x] To direct traffic and forward packets between different networks
-- [ ] To draw 3D graphics
-- [ ] To generate electricity
-- [ ] To store photos permanently
-Why: Routers route packets between your LAN and the WAN / internet.
+- [x] To forward packets between your LAN and other networks
+- [ ] To store copies of popular websites so that they load faster
+- [ ] To encrypt every website you visit with HTTPS
+- [ ] To give your computer more storage for downloads
+Why: A router reads each packet's destination IP address and sends it the right way, between your home network and your ISP.
 
 ### Which protocol ensures reliable packet delivery by acknowledging received packets?
-- [x] TCP (Transmission Control Protocol)
+- [x] TCP
 - [ ] UDP
+- [ ] DNS
 - [ ] HTML
-- [ ] GPU
-Why: TCP checks for lost packets and retransmits them.
+Why: With TCP the receiver acknowledges the data it gets; anything that is not acknowledged is sent again, so nothing goes missing.
 
-### Subsea fiber-optic cables landing in Mombasa (like SEACOM and TEAMS) carry...
-- [x] Over 95% of international internet data entering Kenya
-- [ ] Only voice phone calls
-- [ ] Electricity for coastal towns
-- [ ] Drinking water
-Why: Undersea fiber cables form the backbone of Kenya's global connectivity.
+### Subsea fibre-optic cables landing in Mombasa (like SEACOM and TEAMS) carry...
+- [x] Most of Kenya's international internet traffic
+- [ ] Only phone calls, not internet data
+- [ ] Electricity for towns along the coast
+- [ ] Internet traffic between Nairobi homes only
+Why: Pulses of light in undersea fibre carry huge amounts of data between continents, and Kenya's main links land at Mombasa.

@@ -100,21 +100,21 @@ Buckets: Binary | Octal | Hexadecimal
 - [ ] 8
 - [ ] 10
 - [x] 16
-Why: Hex has sixteen digits: 0–9 and A–F.
+Why: Hex has sixteen digits, 0–9 and then A–F, so each place is worth 16 times the place to its right.
 
 ### In hexadecimal, what value does the digit C stand for?
 - [ ] 11
 - [x] 12
 - [ ] 13
 - [ ] 14
-Why: A = 10, B = 11, C = 12, up to F = 15.
+Why: After 9, hex uses letters for 10 to 15: A = 10, B = 11, C = 12, D = 13, E = 14 and F = 15.
 
 ### What is binary 1111 in decimal?
 - [ ] 4
 - [ ] 11
 - [x] 15
 - [ ] 16
-Why: 8 + 4 + 2 + 1 = 15.
+Why: The place values are 8, 4, 2 and 1; all four bits are on, so 8 + 4 + 2 + 1 = 15.
 
 ### How many bits does one hexadecimal digit represent?
 - [ ] 2
@@ -128,14 +128,14 @@ Why: Four bits give 16 combinations (0000 to 1111), exactly one hex digit.
 - [x] 15
 - [ ] 7
 - [ ] 23
-Why: Octal places are 8 and 1: 1 × 8 + 7 = 15.
+Why: Octal place values are 8 and 1, so the 1 is worth 8 and the 7 is worth 7: 8 + 7 = 15.
 
 ### Which digits are allowed in octal?
 - [x] 0 to 7
 - [ ] 0 to 8
 - [ ] 0 and 1
 - [ ] 0 to 9 and A to F
-Why: Base 8 needs eight digits, 0 through 7.
+Why: Base 8 needs eight digits, 0 to 7; counting past 7 moves to the next place, so 7 + 1 is written 10.
 
 ### In ASCII, what is the code for capital A?
 - [ ] 1
@@ -159,8 +159,8 @@ Why: Split into 4-bit groups: 1111 = F and 1010 = A, giving FA.
 Why: Binary-coded decimal keeps digits separate, which suits displays and calculators.
 
 ### Why do programmers use hexadecimal?
-- [ ] Computers store data in hex
+- [ ] Computers store all their data in hex, not binary
 - [x] It is a short, readable way to write long binary numbers
-- [ ] It is faster than binary
-- [ ] It only works for colours
+- [ ] Hex calculations run faster than binary ones
+- [ ] It is only used for setting colours on web pages
 Why: Computers still store binary; hex just makes it four times shorter for people to read.

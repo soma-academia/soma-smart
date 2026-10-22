@@ -97,71 +97,71 @@ Why: An interpreter translates and runs each line in turn, so you see errors exa
 ## Quiz
 
 ### What is syntax?
-- [ ] A type of computer virus
-- [x] The grammar rules of a programming language
-- [ ] The speed of a program
-- [ ] A kind of cable
+- [ ] The order in which the CPU runs a program's lines
+- [x] The grammar rules that say how code in a language must be written
+- [ ] The list of mistakes found while testing a program
+- [ ] The binary file a compiler produces from source code
 Why: Code that breaks the syntax rules cannot be translated, just as a sentence with broken grammar is hard to understand.
 
 ### Debugging means...
-- [x] Finding and fixing mistakes in a program
-- [ ] Removing insects from the computer
-- [ ] Deleting a program
-- [ ] Printing the code
-Why: The word comes from early engineers literally finding a moth in a machine; today it means fixing errors.
+- [x] Finding the mistakes in a program and fixing them so it works
+- [ ] Translating a whole program into machine code first
+- [ ] Writing an algorithm in structured plain English
+- [ ] Drawing the steps of a program as a flowchart
+Why: A bug is a mistake in a program; debugging is the work of tracking it down and correcting it, usually while testing.
 
 ### Which language uses short words such as ADD and MOV?
 - [ ] Python
 - [ ] Machine code
 - [x] Assembly language
-- [ ] English
+- [ ] A high-level language like Java
 Why: Assembly gives each machine instruction a short word (mnemonic), which is easier than raw binary.
 
 ### Why must high-level code be translated?
-- [ ] To make it colourful
+- [ ] Because high-level code runs too fast for the CPU to follow
 - [x] Because the CPU only understands machine code
-- [ ] To make it longer
-- [ ] Because of the internet
-Why: Compilers and interpreters turn human-friendly code into the CPU's binary instructions.
+- [ ] Because translation adds colour to the code
+- [ ] Because every program must first be sent over the internet
+Why: Compilers and interpreters turn human-friendly code into the CPU's binary instructions, the only language it can run.
 
 ### What does a compiler do?
 - [x] Translates the whole program into machine code before it runs
-- [ ] Runs one line at a time
-- [ ] Draws flowcharts
-- [ ] Stores files in the cloud
-Why: Compiling first produces a ready-to-run file, which then runs fast.
+- [ ] Translates and runs the program one line at a time, as it goes along
+- [ ] Draws a flowchart of the program from its source code
+- [ ] Finds and fixes every bug in the program automatically
+Why: Compiling first produces a ready-to-run file, which then runs fast; running line by line is what an interpreter does.
 
 ### Which is a characteristic of a good algorithm?
-- [ ] It never ends
+- [ ] It keeps running forever so it never misses any input
 - [x] It is clear and finishes after a finite number of steps
-- [ ] It has no output
-- [ ] It can only run on one computer
-Why: An algorithm that never ends, or whose steps are unclear, cannot reliably solve a problem.
+- [ ] It takes no inputs and gives no outputs, so it stays simple
+- [ ] It can only run on the one computer it was written for
+Why: An algorithm that never ends, or whose steps are unclear, cannot reliably solve a problem; good ones also have inputs and outputs.
 
 ### What is pseudocode?
-- [ ] A secret password
+- [ ] A secret password that protects source code from copying
 - [x] An algorithm written in structured plain language
-- [ ] A type of compiler
-- [ ] Machine code
-Why: Pseudocode lets you plan logic without worrying about a language's exact syntax.
+- [ ] A translator that turns Python into machine code
+- [ ] Binary instructions that the CPU runs directly
+Why: Pseudocode lets you plan logic with words like START, INPUT and OUTPUT without worrying about a language's exact syntax.
 
 ### In a flowchart, a parallelogram represents...
 - [ ] A decision
-- [ ] Start or end
-- [x] Input or output
-- [ ] Processing
-Why: Parallelograms show data coming in (INPUT) or going out (OUTPUT).
+- [ ] The start or end of the algorithm
+- [x] Input or output of data
+- [ ] A processing step such as a calculation
+Why: Parallelograms show data coming in (INPUT) or going out (OUTPUT); diamonds are decisions and rectangles are processing.
 
 ### Which stage comes right after writing the code?
 - [ ] Defining the problem
 - [x] Testing and debugging
-- [ ] Designing the algorithm
-- [ ] Buying a computer
-Why: Code must be tested, and its bugs fixed, before people rely on it.
+- [ ] Designing the algorithm and flowchart
+- [ ] Documenting and maintaining the program
+Why: Code must be tested with normal, unusual and wrong inputs, and its bugs fixed, before people rely on it.
 
 ### An IDE is...
-- [ ] A network cable
-- [ ] A type of algorithm
+- [ ] A network cable that links two computers
+- [ ] A step-by-step algorithm drawn as a flowchart
 - [x] An app for writing, running and debugging code
-- [ ] A storage device
-Why: IDEs combine an editor, a way to run code, and debugging tools in one place.
+- [ ] A storage device that holds a program's source code
+Why: IDEs combine an editor, a way to run code, and debugging tools in one place, so you can write and test without switching apps.

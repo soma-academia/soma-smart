@@ -89,71 +89,71 @@ Buckets: Fairer | Less fair
 ## Quiz
 
 ### What is AI bias?
-- [ ] AI that prefers some colours
-- [x] When an AI system treats some groups of people unfairly
-- [ ] When AI is slow
-- [ ] AI that has opinions on football
-Why: Bias shows up as more mistakes or worse outcomes for certain groups.
+- [ ] When an AI system runs slowly on older phones
+- [x] When AI treats some groups of people unfairly
+- [ ] When an AI system crashes during a busy period
+- [ ] When AI costs money
+Why: Bias shows up as more mistakes or worse outcomes for certain groups, such as by gender, age or region.
 
 ### Where does AI bias usually come from?
-- [x] Unfair or unrepresentative patterns in the training data
-- [ ] The computer's colour
-- [ ] Electricity
+- [x] Unfair or one-sided patterns in the training data
+- [ ] Faults in the electricity supply to data centres
+- [ ] The colour and brand of the computer it runs on
 - [ ] The keyboard
-Why: The model learns whatever patterns the data contains, good or bad.
+Why: The model learns whatever patterns its data contains, so unfair or one-sided data gives unfair results.
 
 ### What did the 2018 face-analysis study find?
-- [ ] All systems were perfect
+- [ ] All the systems were equally accurate for every group
 - [x] Systems were much less accurate for darker-skinned women
-- [ ] Systems worked best on children
+- [ ] Systems were least accurate for lighter-skinned men
 - [ ] Faces can't be analysed
-Why: The training data had mostly lighter-skinned faces, so accuracy was uneven.
+Why: The training data had mostly lighter-skinned faces, so accuracy was much lower for darker-skinned women.
 
 ### Does AI choose to be unfair?
-- [ ] Yes, AI has opinions
-- [x] No, it copies patterns from its data, including unfair ones
-- [ ] Only on weekends
+- [ ] Yes, AI forms its own opinions about different groups of people
+- [x] No, it copies patterns from its data, unfair ones too
+- [ ] Yes, it decides who it likes as it learns
 - [ ] Only chatbots do
-Why: Bias is a data and design problem, which people are responsible for fixing.
+Why: AI has no opinions; bias is a data and design problem, and people are responsible for fixing it.
 
 ### Why test an AI's accuracy separately for different groups?
-- [ ] To make the report longer
+- [ ] To make the testing report longer and more detailed
 - [x] An AI can be accurate overall yet much worse for one group
+- [ ] Because testing in groups makes the AI run faster
 - [ ] Groups always score the same
-- [ ] It makes the AI faster
-Why: An overall average can hide unfair gaps.
+Why: An overall average can hide unfair gaps, so checking each group shows who the AI is failing.
 
 ### Which data would make a Kenyan voice assistant fairer?
-- [ ] Recordings from one Nairobi office
+- [ ] Thousands of hours of recordings from one Nairobi office
 - [x] Recordings from many regions, ages and languages
-- [ ] Only English news readers
+- [ ] Text messages instead of any voice recordings
 - [ ] No recordings at all
-Why: Representative data helps the AI understand everyone it will serve.
+Why: Representative data, covering everyone the assistant will serve, helps it understand all of them.
 
 ### Why should people review important AI decisions, like loans or exam results?
-- [x] To catch unfair or wrong decisions before they harm someone
-- [ ] Because AI is never right
-- [ ] To slow things down on purpose
-- [ ] Because people enjoy paperwork
-Why: Human review adds a check for mistakes and unfairness.
+- [x] To catch unfair or wrong decisions early
+- [ ] Because people enjoy doing extra paperwork
+- [ ] Because AI decisions are always wrong
+- [ ] To slow it down
+Why: Human review adds a check, so a wrong or unfair decision can be caught before it harms a real person.
 
 ### A model's data comes from past decisions that were unfair. What will it probably do?
-- [ ] Fix the unfairness automatically
+- [ ] Slowly become fair on its own over time
 - [x] Repeat the unfairness
+- [ ] Notice and fix the unfairness itself
 - [ ] Refuse to learn
-- [ ] Become fair over time on its own
-Why: Learning from history means learning its mistakes too, unless people correct for them.
+Why: Learning from history means learning its mistakes too, unless people find and correct them.
 
 ### Which question best helps spot bias?
+- [ ] How much does it cost to use each month?
+- [x] Who could this hurt, and who is missing?
+- [ ] Does the app have a modern design?
 - [ ] How fast is it?
-- [x] Who could this hurt, and who is missing from the data?
-- [ ] What colour is the logo?
-- [ ] How much does it cost?
-Why: Thinking about missing groups and possible harm is the heart of fairness.
+Why: Thinking about missing groups and possible harm is the heart of checking an AI for fairness.
 
 ### Why does openness about how an AI decides help fairness?
-- [ ] It makes the AI faster
+- [ ] It means the AI no longer needs any training data at all
 - [x] People can question and correct unfair decisions
-- [ ] It hides mistakes
-- [ ] It removes the need for data
-Why: Decisions that can be explained can be challenged and improved.
+- [ ] It lets the company hide its mistakes
+- [ ] It makes the AI faster
+Why: Decisions that can be explained can be challenged and improved, so mistakes don't stay hidden.

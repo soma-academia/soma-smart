@@ -82,70 +82,70 @@ Why: AI struggles with situations its training data didn't include.
 
 ### What does AI learn from?
 - [x] Data, such as photos, text, sounds and numbers
-- [ ] Only electricity
-- [ ] Dreams
-- [ ] Its own feelings
-Why: Patterns in data are where machine learning gets its abilities.
+- [ ] Rules its programmers type in for every case
+- [ ] The electricity in its chips
+- [ ] Its own feelings and life experiences
+Why: Machine learning finds patterns in data; without examples like photos, text or numbers, there is nothing to learn.
 
 ### What is a label in supervised learning?
-- [ ] A sticker on the computer
+- [ ] A detail the AI measures, like colour
 - [x] The correct answer attached to an example
-- [ ] The name of the programmer
+- [ ] The name of the person who built the model
 - [ ] The file size
-Why: Labels tell the model what each training example is, so it can learn to predict them.
+Why: Labels tell the model what each training example is, such as "ripe", so it can learn to predict them.
 
 ### What are features?
 - [x] The details the AI uses to make a decision
-- [ ] The prices of AI apps
-- [ ] The buttons on a phone
-- [ ] Mistakes in data
-Why: Colour, shape and size can be features for sorting fruit, for example.
+- [ ] The correct answers attached to each example
+- [ ] The extra buttons and settings in an AI app
+- [ ] Mistakes in the data
+Why: For sorting fruit, colour, shape and size could be features; the model uses them to decide.
 
 ### Why use separate test data?
-- [ ] Training data is too small
-- [x] To check the model works on new examples, not just ones it memorised
-- [ ] Test data is cheaper
-- [ ] It makes the model bigger
-Why: Like a fair exam, test data must be new to the learner.
+- [ ] Because test data is cheaper to collect than training data
+- [x] To check it works on examples it hasn't seen
+- [ ] To give the model extra examples to train on
+- [ ] To make the model bigger
+Why: Like a fair exam, test questions must be new; a model that memorised its training data can still fail.
 
 ### What does "garbage in, garbage out" mean?
-- [ ] AI eats rubbish
 - [x] Poor or wrong data produces a poor AI
-- [ ] Old computers should be recycled
+- [ ] AI throws away bad data before it learns
+- [ ] Old computers should be recycled, not dumped
 - [ ] AI deletes bad files
-Why: A model can only be as good as the examples it learned from.
+Why: A model can only be as good as its examples; wrong or messy data teaches it wrong patterns.
 
 ### A label is wrong on many training photos. What happens to the AI?
-- [ ] Nothing
+- [ ] It spots the wrong labels and fixes them
 - [x] It learns those mistakes too
-- [ ] It fixes the labels by itself
-- [ ] It refuses to train
-Why: The model trusts its labels, so wrong labels teach wrong answers.
+- [ ] It ignores the photos with wrong labels
+- [ ] It stops
+Why: The model trusts its labels completely, so wrong labels teach it wrong answers.
 
 ### Why should voice-typing data include many accents?
-- [ ] To make files bigger
-- [x] So it works well for people from different regions, not just one
-- [ ] Accents don't matter to AI
-- [ ] To slow it down
-Why: If the data only has one accent, people with other accents get more mistakes.
+- [ ] Because more accents make the files smaller
+- [x] So it works well for people from every region
+- [ ] So that it speaks back in every accent at once
+- [ ] Accents don't matter
+Why: If the data has only one accent, the AI makes more mistakes for people who speak differently.
 
 ### Which is the best training data for a banana-ripeness AI?
-- [ ] 10 photos from one shop at noon
-- [x] Many photos from different shops, times of day and phones, correctly labelled
-- [ ] One very clear photo
+- [ ] Thousands of photos from one shop, taken at noon
+- [x] Many varied photos, all correctly labelled
+- [ ] One very clear, high-quality close-up photo
 - [ ] Photos of mangoes
-Why: Varied, correctly labelled examples help the model handle real-world situations.
+Why: Varied, correctly labelled examples prepare the model for different light, phones and shops in real life.
 
 ### Who often labels training data?
-- [ ] The AI itself, always
-- [x] People, who look at examples and record the right answer
-- [ ] Nobody; labels appear automatically
-- [ ] Only robots
-Why: Human labellers are a big part of building AI, which is why their accuracy matters.
+- [ ] The AI itself, which always knows the answer
+- [x] People who check examples and record the answer
+- [ ] Nobody; the labels appear in the data automatically
+- [ ] The camera
+Why: Human labellers are a big part of building AI, so their care and accuracy shape how good the model is.
 
 ### More data always fixes AI. True or false?
-- [ ] True, any data helps
-- [x] False; the data must also be relevant, varied and correctly labelled
-- [ ] True, if it is stored in the cloud
+- [ ] True; adding any extra data always makes it more accurate
+- [x] False; it must also be varied and correctly labelled
+- [ ] True, as long as it is stored in the cloud
 - [ ] False; AI doesn't use data
-Why: Lots of bad or one-sided data can make a model worse, not better.
+Why: Lots of bad or one-sided data can make a model worse; quality and variety matter as much as amount.

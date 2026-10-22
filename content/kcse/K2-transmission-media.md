@@ -91,71 +91,71 @@ Why: Fibre is immune to electromagnetic interference, hard to tap and has very h
 ## Quiz
 
 ### What is the main purpose of twisting the wires in a twisted pair cable?
-- [ ] To make the cable look neat
-- [ ] To carry light signals
+- [ ] To carry light signals instead of electrical signals
+- [ ] To make the cable strong enough to lay underground
 - [x] To reduce crosstalk and interference
-- [ ] To make the cable stronger
-Why: Twisting cancels much of the interference between neighbouring wires, known as crosstalk.
+- [ ] To make the cable thinner and lighter to carry
+Why: Twisting cancels much of the electromagnetic interference between neighbouring wires, known as crosstalk, so the signal stays clearer.
 
 ### How does STP differ from UTP?
 - [x] STP has a shield that protects against electromagnetic interference
-- [ ] STP carries light while UTP carries electricity
-- [ ] STP is cheaper than UTP
-- [ ] STP has no copper wires
-Why: Shielded twisted pair adds foil or braiding around the pairs, which reduces interference but raises the cost.
+- [ ] STP carries pulses of light while UTP carries electrical signals
+- [ ] STP is cheaper than UTP, so it is used in most school computer labs
+- [ ] STP has no copper wires and uses glass fibres wrapped in plastic instead
+Why: Shielded twisted pair adds foil or braiding around the pairs, which reduces interference but raises the cost, so cheaper UTP is more common in LANs.
 
 ### Which is the correct order of the layers of a coaxial cable, from the centre outwards?
-- [ ] Jacket, shield, insulator, copper conductor
-- [ ] Shield, copper conductor, jacket, insulator
-- [ ] Insulator, jacket, copper conductor, shield
+- [ ] Jacket, braided shield, insulator, copper conductor
+- [ ] Braided shield, copper conductor, jacket, insulator
+- [ ] Insulator, jacket, copper conductor, braided shield
 - [x] Copper conductor, insulator, braided shield, jacket
-Why: The central copper conductor carries the signal, the insulator separates it from the shield, and the jacket protects everything.
+Why: The central copper conductor carries the signal, the insulator separates it from the braided shield, and the outer jacket protects everything.
 
 ### In a fibre optic cable, data is carried as...
 - [ ] Electrical current
 - [x] Pulses of light
 - [ ] Sound waves
 - [ ] Radio waves
-Why: A light source such as a laser or LED sends pulses of light through the glass core.
+Why: A light source such as a laser or LED sends pulses of light through the glass core, and total internal reflection keeps the light inside the core.
 
 ### Which is an advantage of fibre optic cable over coaxial cable?
-- [ ] It is cheaper to buy and install
-- [ ] It is easier to join and repair
+- [ ] It is cheaper to buy, install and maintain than coaxial cable
+- [ ] It is easier to join and repair when it breaks
 - [x] It is immune to electromagnetic interference
-- [ ] It carries electricity better
-Why: Light is not affected by electromagnetic interference; fibre also has higher bandwidth and lower attenuation.
+- [ ] It can also carry electrical power to devices
+Why: Light is not affected by electromagnetic interference; fibre also has higher bandwidth and lower attenuation, but it is costly and hard to join.
 
 ### Single-mode fibre differs from multimode fibre because it...
 - [x] Has a narrower core carrying one ray of light, suited to long distances
-- [ ] Has a wider core carrying many rays of light
-- [ ] Uses copper instead of glass
-- [ ] Is used only inside a computer
-Why: Single-mode fibre's narrow core keeps light on one path, so signals travel further; multimode suits shorter distances.
+- [ ] Has a wider core carrying many rays of light, suited to long distances
+- [ ] Uses copper wires in the core instead of glass, so it is cheaper to lay
+- [ ] Carries electrical signals instead of light, so it suffers no attenuation
+Why: Single-mode fibre's narrow core keeps light on one path, so signals travel further; multimode's wider core carries many rays and suits shorter distances.
 
 ### Geostationary communication satellites orbit at about...
 - [ ] 360 km above the equator
 - [ ] 3,600 km above the North Pole
 - [ ] 360,000 km above the equator
 - [x] 36,000 km above the equator
-Why: At about 36,000 km above the equator a satellite moves with the earth's rotation, so it appears fixed above one spot.
+Why: At about 36,000 km above the equator a satellite moves with the earth's rotation, so it appears fixed above one spot and dishes need not move.
 
 ### In satellite communication, the transponder...
-- [ ] Sends signals from the earth station up to the satellite
-- [x] Receives, amplifies and changes the frequency of signals before sending them back
-- [ ] Is the dish on the roof of a remote school
-- [ ] Stores all the data that passes through
-Why: The transponder on the satellite receives the uplink signal, boosts it and changes its frequency for the downlink.
+- [ ] Sends signals from the earth station up to the satellite through the uplink dish
+- [x] Receives, amplifies and changes the frequency of signals, then sends them back
+- [ ] Is the receiving dish installed on the roof of a school in a remote area
+- [ ] Stores all the data that passes through so that it can be sent again later
+Why: The transponder on the satellite receives the uplink signal, boosts it and changes its frequency so the downlink does not interfere with the uplink.
 
 ### Which wireless medium needs line of sight and works only over a very short distance, as in a TV remote?
 - [ ] Bluetooth
 - [ ] Satellite
 - [x] Infrared
 - [ ] HF radio
-Why: Infrared light is blocked by walls and objects, so the sender and receiver must face each other at close range.
+Why: Infrared light is blocked by walls and objects, so the sender and receiver must face each other at close range; Bluetooth radio waves pass round obstacles.
 
 ### Which of these is a factor to consider when choosing a transmission medium?
-- [x] Cost, distance, speed, interference and security
-- [ ] The colour of the cable
-- [ ] The brand of the computers
-- [ ] The number of windows in the room
-Why: The right medium depends on cost, bandwidth, distance, ease of installation, interference and how secure it must be.
+- [x] Cost, distance, bandwidth and interference
+- [ ] The screen size of the computers on the network
+- [ ] The word processor that the users prefer
+- [ ] The colour of the cable's outer jacket
+Why: The right medium depends on cost, bandwidth, distance, ease of installation, interference and how secure the data must be.

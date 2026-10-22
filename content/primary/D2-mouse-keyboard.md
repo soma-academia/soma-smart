@@ -78,70 +78,70 @@ Why: Ctrl+V pastes. Ctrl+C copies and Ctrl+X cuts.
 
 ### To OPEN a file with the mouse you usually...
 - [x] Double-click it
-- [ ] Right-click once
-- [ ] Shake the mouse
+- [ ] Right-click
+- [ ] Move the mouse over it
 - [ ] Press Enter twice
-Why: A double-click opens things.
+Why: A quick double-click on a file or icon opens it; a single click only selects it.
 
 ### Right-click is used to...
 - [x] Show a menu of extra choices
-- [ ] Delete the computer
+- [ ] Close the window you are in
 - [ ] Turn off the screen
 - [ ] Type a capital letter
-Why: Right-click opens a context menu.
+Why: Right-click opens a small menu of extra choices, like Copy, Rename or Delete, for the thing you clicked.
 
 ### Which shortcut COPIES?
 - [x] Ctrl + C
 - [ ] Ctrl + V
 - [ ] Ctrl + Z
 - [ ] Ctrl + P
-Why: C for copy.
+Why: Ctrl + C copies what you selected (C for Copy), and then Ctrl + V pastes it somewhere else.
 
 ### Ctrl + V does what?
-- [x] Pastes
+- [x] Pastes what you copied
 - [ ] Copies
-- [ ] Deletes everything
+- [ ] Deletes the selected text
 - [ ] Prints
-Why: V pastes what you copied.
+Why: Ctrl + V pastes the last thing you copied or cut, at the place where your cursor is.
 
 ### To type a CAPITAL letter you hold...
 - [x] Shift
 - [ ] Spacebar
-- [ ] Enter
+- [ ] Tab
 - [ ] Backspace
-Why: Shift gives capitals and top symbols.
+Why: Hold Shift while pressing a letter to get a capital, or a number key to get the symbol at its top.
 
 ### Backspace is used to...
 - [x] Rub out the letter before the cursor
 - [ ] Save the file
 - [ ] Open a menu
-- [ ] Start a game
-Why: It deletes the previous character.
+- [ ] Move to a new line
+Why: Backspace rubs out the letter just before the cursor; the Enter key is the one that starts a new line.
 
 ### On a touch screen, press-and-hold usually...
 - [x] Opens a menu
 - [ ] Turns off the phone
-- [ ] Deletes the app
-- [ ] Calls someone
-Why: Press-and-hold is like a right-click.
+- [ ] Goes back
+- [ ] Zooms in on the screen
+Why: Press-and-hold on a touch screen works like a right-click: it shows a menu of extra choices.
 
 ### The longest key on the keyboard is the...
 - [x] Spacebar
-- [ ] Enter key
+- [ ] Tab key
 - [ ] Shift key
 - [ ] Escape key
-Why: The Spacebar separates words with spaces.
+Why: The Spacebar is the longest key because your thumbs press it all the time to put spaces between words.
 
 ### Which keyboard shortcut UNDOES a mistake?
 - [x] Ctrl + Z
 - [ ] Ctrl + C
 - [ ] Ctrl + V
 - [ ] Ctrl + S
-Why: Ctrl + Z undoes the last action.
+Why: Ctrl + Z undoes your last action, so you can quickly take back a mistake like deleting a word.
 
 ### Holding the mouse button while moving it across the screen is called...
 - [x] Dragging
 - [ ] Clicking
 - [ ] Typing
 - [ ] Scrolling
-Why: Dragging moves items on screen.
+Why: To drag, you hold the button down, move the mouse, then let go to drop the item in its new place.

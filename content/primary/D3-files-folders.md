@@ -88,70 +88,70 @@ Buckets: School | Photos | Music
 
 ### A file is...
 - [x] One saved thing, like a photo or document
-- [ ] A kind of folder
-- [ ] A type of mouse
-- [ ] The internet
-Why: A file is a single saved item.
+- [ ] A box that holds many saved things together
+- [ ] A program that opens photos and documents
+- [ ] A cable that links two computers together
+Why: Each photo, song or document you save is one file, with its own name, kept in storage.
 
 ### A folder is used to...
 - [x] Hold related files together
-- [ ] Delete files
+- [ ] Make files smaller
+- [ ] Print files in order
 - [ ] Type letters
-- [ ] Charge the phone
-Why: Folders group related files.
+Why: A folder is like a box: you put files that belong together inside it so they are easy to find.
 
 ### 'Save As' is useful because it...
 - [x] Makes a new copy with a new name
-- [ ] Deletes the file
-- [ ] Turns off the computer
-- [ ] Prints the file
-Why: Great for trying changes safely.
+- [ ] Saves the file over the old one
+- [ ] Moves the file into the Recycle Bin
+- [ ] Sends the file to the printer
+Why: Save As keeps your original file safe and saves your changes as a new file with a new name.
 
 ### A good file name is...
 - [x] Homework_Science_Term2
 - [ ] New document (3)
+- [ ] My file final final new
 - [ ] asdfgh
-- [ ] aaa
-Why: Clear names are easy to find later.
+Why: A good name says what is inside the file, so you or anyone else can find it quickly later.
 
 ### A backup is...
 - [x] A spare copy kept somewhere safe
-- [ ] A broken file
-- [ ] A game
-- [ ] A password
-Why: So you don't lose your work.
+- [ ] A file that has been damaged and cannot open
+- [ ] A file you have sent to the Recycle Bin
+- [ ] A password that protects your files
+Why: If a phone is lost or a laptop spoils, a backup copy kept in another place still has your work.
 
 ### You should back up...
 - [x] Anything you'd be sad to lose
-- [ ] Nothing ever
-- [ ] Only on holidays
-- [ ] Only games
-Why: Protect important work.
+- [ ] Only files that are very large
+- [ ] Only games and apps you download
+- [ ] Nothing, because files never get lost
+Why: Computers break and phones get lost, so back up any work or photos that matter to you.
 
 ### .pdf and .jpg are examples of...
 - [x] File types
-- [ ] Folders
+- [ ] Folder names
 - [ ] Passwords
-- [ ] Websites
-Why: The type tells you what kind of file it is.
+- [ ] Website addresses
+Why: The letters after the dot show the file type: .jpg is a photo and .pdf is a document.
 
 ### Why do we put files into folders?
-- [x] To organize and find them easily
+- [x] To organise and find them easily
+- [ ] To make the files smaller in size
+- [ ] To stop the files from opening
 - [ ] To delete them faster
-- [ ] To make them smaller
-- [ ] To play music
-Why: Folders keep your work tidy and organized.
+Why: When related files sit together in a named folder, you find what you need without searching everywhere.
 
 ### If you want to keep your original file and make an edited version, you use...
 - [x] Save As
+- [ ] Save
 - [ ] Delete
 - [ ] Print
-- [ ] Close without saving
-Why: Save As creates a new copy under a new name.
+Why: Save would write over the original, but Save As makes a new copy under a new name and keeps the original.
 
 ### Which of these is a safe place for a backup copy?
 - [x] A flash disk or cloud storage
-- [ ] The recycling bin
-- [ ] Nowhere
-- [ ] A sticker
-Why: Flash disks and cloud storage keep extra copies safe.
+- [ ] The Recycle Bin on the same computer
+- [ ] A sticky note on the screen
+- [ ] A file you have just deleted
+Why: A backup must be kept away from the original, so if the computer breaks, the copy on a flash disk or cloud is safe.

@@ -94,25 +94,25 @@ Buckets: AND | OR | NOT | XOR
 - [ ] 6
 - [x] 8
 - [ ] 9
-Why: Each input doubles the rows: 2 × 2 × 2 = 8.
+Why: Each input doubles the number of combinations, so 3 inputs give 2 × 2 × 2 = 8 rows.
 
 ### Which gate has only one input?
 - [ ] AND
 - [ ] XOR
 - [x] NOT
 - [ ] NAND
-Why: NOT simply flips one input.
+Why: NOT simply flips its single input, so 0 becomes 1 and 1 becomes 0; the other gates combine two or more inputs.
 
 ### What is the output of AND when A = 1 and B = 0?
 - [ ] 1
 - [x] 0
-Why: AND needs every input to be 1.
+Why: AND outputs 1 only when every input is 1; here B is 0, so the output is 0.
 
 ### Why are NAND and NOR called universal gates?
-- [ ] They are used in every country
-- [x] Any other gate can be built using only NAND (or only NOR) gates
-- [ ] They have the most inputs
-- [ ] They never output 0
+- [ ] They are the only gates that can be made from transistors
+- [x] Any other gate can be built from only NAND, or only NOR, gates
+- [ ] They work with any number of inputs, from one up to eight
+- [ ] They give the correct output whatever voltage is supplied to them
 Why: Chip makers can build whole circuits from one type of gate, which simplifies manufacturing.
 
 ### In Boolean algebra, A + B means...
@@ -134,12 +134,12 @@ Why: XNOR is NOT XOR, so it is on for matching inputs (00 or 11).
 - [ ] OR
 - [ ] NOT
 - [ ] XOR
-Why: Both conditions must be true at the same time.
+Why: AND outputs 1 only when both conditions are true at the same time; OR would let the lift move with the door open.
 
 ### A = 0. What is NOT A?
 - [ ] 0
 - [x] 1
-Why: NOT flips the input.
+Why: NOT always gives the opposite of its input, so an input of 0 gives an output of 1.
 
 ### Logic gates inside a chip are built from...
 - [ ] Vacuum tubes
@@ -149,8 +149,8 @@ Why: NOT flips the input.
 Why: Modern chips pack billions of tiny transistor switches to make gates.
 
 ### What does a truth table show?
-- [ ] The cost of a circuit
+- [ ] The cost of each gate and the total cost of the circuit
 - [x] The output for every possible combination of inputs
-- [ ] How hot a chip gets
-- [ ] Only the inputs
+- [ ] Only the inputs, listed from the smallest to the largest
+- [ ] The speed at which each gate switches between 0 and 1
 Why: Listing every combination leaves no case undescribed.

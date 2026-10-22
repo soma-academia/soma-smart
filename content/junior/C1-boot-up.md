@@ -52,71 +52,71 @@ Question: Your CPU, RAM amount, and free storage.
 ## Quiz
 
 ### What wakes up FIRST when you press power?
-- [x] The BIOS/UEFI
-- [ ] The browser
-- [ ] A game
-- [ ] The mouse
-Why: It does the roll call of parts.
+- [x] The BIOS/UEFI on the motherboard
+- [ ] The operating system, such as Windows
+- [ ] The web browser you used last time
+- [ ] The drivers for the mouse and keyboard
+Why: The BIOS/UEFI starts before anything else: it checks the main parts are present, then looks for the operating system to load.
 
 ### Every part plugs into the...
 - [x] Motherboard
-- [ ] Monitor
-- [ ] Keyboard
-- [ ] Charger
-Why: The motherboard connects everything.
+- [ ] Processor (CPU)
+- [ ] RAM stick
+- [ ] Hard disk drive
+Why: The motherboard is the main circuit board: the CPU, RAM, storage and cards all connect to it so they can pass signals to each other.
 
 ### A driver is...
-- [x] A translator program for a device
-- [ ] A racing game
-- [ ] A power cable
-- [ ] A type of RAM
-Why: It lets the OS talk to the device.
+- [x] A small program that lets the OS talk to a device
+- [ ] A cable that carries power to a device
+- [ ] A chip on the motherboard that stores your settings and files
+- [ ] The first program that runs when you press power
+Why: Each device works in its own way, so its driver translates between it and the operating system, letting a printer or graphics card work properly.
 
 ### When you open an app, its files move from storage into...
-- [x] RAM
-- [ ] the screen
-- [ ] the mouse
-- [ ] the internet
-Why: RAM holds what's running now.
+- [x] RAM (memory)
+- [ ] the CPU fan
+- [ ] the graphics card
+- [ ] the power supply
+Why: Storage keeps apps safe while they are closed; RAM is much faster, so the app is copied into RAM for the CPU to run it.
 
 ### The BIOS/UEFI hands over to the...
 - [x] Operating system
-- [ ] Printer
-- [ ] Speaker
-- [ ] Wi-Fi
-Why: Windows, Linux or macOS then loads.
+- [ ] Web browser
+- [ ] Graphics card
+- [ ] Antivirus program
+Why: After its checks, the BIOS/UEFI finds the operating system on the storage drive and starts it; the OS then takes charge of the computer.
 
 ### Windows, Linux and macOS are examples of...
 - [x] Operating systems
-- [ ] Browsers
-- [ ] Games
-- [ ] Cables
-Why: The main software that runs the computer.
+- [ ] Web browsers
+- [ ] Device drivers
+- [ ] Computer processors
+Why: An operating system is the main software that manages the hardware and runs every other app, from browsers to games.
 
 ### Updating a driver can...
-- [x] Fix bugs and improve performance
-- [ ] Add more RAM
-- [ ] Make the PC lighter
-- [ ] Change your password
-Why: Drivers keep devices working well.
+- [x] Fix bugs and improve how a device works
+- [ ] Add more RAM to the computer
+- [ ] Upgrade the screen to a higher resolution than it supports
+- [ ] Replace a broken part inside the device
+Why: Drivers are software, so makers release new versions that fix bugs and improve performance; software cannot add or repair hardware.
 
 ### What happens during the BIOS/UEFI POST (Power-On Self-Test)?
-- [x] It tests essential hardware like RAM and CPU before loading the OS
-- [ ] It plays a video
-- [ ] It downloads games
-- [ ] It changes screen brightness
-Why: Checks that hardware is working properly.
+- [x] It checks that key parts like RAM and the CPU work before the OS loads
+- [ ] It downloads the latest updates for Windows from the internet
+- [ ] It installs drivers for every device plugged into the PC
+- [ ] It copies your files from RAM back onto the storage drive
+Why: POST is a quick health check: if a key part such as RAM is missing or faulty, the computer beeps or shows an error instead of starting.
 
 ### The long expansion slot where a graphics card sits on the motherboard is usually...
 - [x] PCIe x16
-- [ ] USB-A
-- [ ] Audio jack
-- [ ] HDMI
-Why: PCI Express provides high bandwidth for GPUs.
+- [ ] USB-A port
+- [ ] SATA
+- [ ] RAM (DIMM) slot
+Why: A PCI Express x16 slot has 16 data lanes, giving the graphics card the high bandwidth it needs; RAM sticks use their own slots.
 
 ### Why does RAM lose its contents when the computer is turned off?
-- [x] RAM is volatile memory
-- [ ] RAM is a magnetic disk
-- [ ] RAM has a battery
-- [ ] RAM only stores pictures
-Why: Volatile memory needs continuous power to retain data.
+- [x] RAM is volatile: it needs power to hold data
+- [ ] RAM is a spinning magnetic disk
+- [ ] RAM is read-only, like a ROM chip
+- [ ] RAM needs the screen to be on
+Why: Volatile memory holds data as tiny electrical charges that need constant power; when the power stops, the data disappears.

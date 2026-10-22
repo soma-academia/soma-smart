@@ -95,7 +95,7 @@ Why: 2 × 1024 = 2048. Each unit is 1024 times the one below it.
 Why: RAM is volatile; ROM and secondary storage are non-volatile and keep their data.
 
 ### What does ROM usually store?
-- [ ] Your music files
+- [ ] Photos and documents you save each day
 - [x] Start-up instructions (firmware)
 - [ ] Web pages you visit
 - [ ] Temporary calculations only
@@ -105,12 +105,12 @@ Why: ROM holds instructions the computer needs to start, and keeps them without 
 - [ ] Control unit
 - [x] Arithmetic Logic Unit (ALU)
 - [ ] Power supply
-- [ ] Hard disk
+- [ ] Main memory (RAM) that holds running programs
 Why: The ALU does arithmetic (add, subtract) and logic (compare, AND, OR).
 
 ### What is the job of the control unit?
 - [x] To direct the fetch–decode–execute cycle
-- [ ] To store files permanently
+- [ ] To store programs and data permanently, even with power off
 - [ ] To display images
 - [ ] To connect to Wi-Fi
 Why: The control unit coordinates the CPU, deciding what happens next at each step.
@@ -119,15 +119,15 @@ Why: The control unit coordinates the CPU, deciding what happens next at each st
 - [ ] It is always larger
 - [x] It has no moving parts
 - [ ] It uses magnetic ink
-- [ ] It runs on solar power
+- [ ] It spins its disk much faster than a hard disk does
 Why: A hard disk must spin and move a read head; an SSD reads its flash chips electronically.
 
 ### Cache memory is used to...
-- [ ] Keep files after power is off
-- [x] Hold data the CPU needs again very soon, very close to it
+- [ ] Keep files safe after the computer is switched off
+- [x] Hold data the CPU will need again soon
 - [ ] Print documents faster
 - [ ] Replace the hard disk
-Why: Cache cuts the time the CPU waits for frequently used data.
+Why: Cache is small, very fast memory beside the CPU; keeping frequently used data there cuts the time the CPU waits for slower RAM.
 
 ### How many bits are in one byte?
 - [ ] 4
@@ -139,12 +139,12 @@ Why: A byte is 8 bits, enough for 256 different values.
 ### Which is the best way to protect important files?
 - [ ] Keep one copy on a flash drive only
 - [x] Keep backups in at least two different places
-- [ ] Store them only in RAM
+- [ ] Store them only in RAM, where the CPU can reach them fastest
 - [ ] Never save them
 Why: Any single device can fail, get lost or get infected; separate backups protect you.
 
 ### What does the clock speed of a CPU (in GHz) measure?
-- [ ] How much it stores
+- [ ] How much data it can store in its own memory
 - [x] How many cycles it can run per second
 - [ ] Its temperature
 - [ ] Its screen size
@@ -152,7 +152,7 @@ Why: 3 GHz means about 3 billion clock cycles per second; more cycles generally 
 
 ### Which is an example of cloud storage?
 - [ ] A DVD in a drawer
-- [ ] RAM inside a laptop
-- [x] Files saved to an online service and kept on its servers
+- [ ] A flash drive plugged into a laptop's USB port
+- [x] Files kept on an online service's servers
 - [ ] A printed photo
 Why: Cloud storage keeps your files on another company's servers, reached over the internet.

@@ -93,17 +93,17 @@ Why: DHCP (Dynamic Host Configuration Protocol) leases addresses so you don't ha
 ## Quiz
 
 ### What does a network standard do?
-- [ ] Makes the internet slower
+- [ ] Makes sure every network runs at the same fixed speed
 - [x] Lets equipment from different makers work together
-- [ ] Charges devices
-- [ ] Blocks all traffic
+- [ ] Stops devices from one maker joining another's network
+- [ ] Decides which websites a network is allowed to visit
 Why: Agreed specifications mean any compliant device can talk to any other.
 
 ### Which IEEE standard is Wi-Fi?
 - [ ] 802.3
 - [x] 802.11
 - [ ] 802.1
-- [ ] 404
+- [ ] 802.15
 Why: The 802.11 family (n, ac, ax and so on) defines wireless LANs; 802.3 is wired Ethernet.
 
 ### Which protocol sends email?
@@ -114,10 +114,10 @@ Why: The 802.11 family (n, ac, ax and so on) defines wireless LANs; 802.3 is wir
 Why: SMTP sends mail between servers; POP3 or IMAP fetch it into your inbox.
 
 ### Why would a video call use UDP instead of TCP?
-- [ ] UDP is more secure
+- [ ] UDP encrypts the video, so the call is more secure
 - [x] Speed matters more than resending a lost packet
-- [ ] TCP cannot carry video
-- [ ] UDP uses no IP address
+- [ ] TCP can only carry text, not sound or pictures
+- [ ] UDP checks every packet arrives, so no frames are lost
 Why: A late, resent frame is useless in a live call, so UDP's speed wins.
 
 ### How many layers does the TCP/IP model have?
@@ -125,7 +125,7 @@ Why: A late, resent frame is useless in a live call, so UDP's speed wins.
 - [x] 4
 - [ ] 5
 - [ ] 7
-Why: Application, transport, internet and network access.
+Why: Its four layers are application, transport, internet and network access; the OSI model splits the same work into seven.
 
 ### Which OSI layer handles IP addresses and routing?
 - [ ] Data link
@@ -135,16 +135,16 @@ Why: Application, transport, internet and network access.
 Why: Layer 3 (network) moves packets between networks using IP addresses.
 
 ### What is encapsulation?
-- [ ] Deleting old data
-- [x] Each layer adding its own header as data goes down the layers
-- [ ] Encrypting a password
-- [ ] Storing data in a capsule
+- [ ] Deleting old data so packets stay small
+- [x] Each layer adding its own header as data moves down
+- [ ] Encrypting a password before it is sent over the network
+- [ ] Removing each header as data moves up the layers
 Why: Headers carry what each layer needs, such as ports, IP addresses and MAC addresses.
 
 ### At the transport layer, what directs data to the right application?
 - [ ] The MAC address
 - [x] A port number
-- [ ] The screen size
+- [ ] The packet size
 - [ ] The IP address only
 Why: Ports (like 443 for HTTPS) tell the computer which app should receive the data.
 
@@ -157,7 +157,7 @@ Why: Layer 6 (presentation) handles formats, compression and encryption.
 
 ### What does the receiving computer do in decapsulation?
 - [x] Removes each layer's header on the way up
-- [ ] Adds more headers
-- [ ] Sends the data back
-- [ ] Turns the data into light
+- [ ] Adds a new header at each layer on the way up
+- [ ] Sends every packet back to check it arrived
+- [ ] Turns the data into light pulses for the cable
 Why: Each layer reads and strips its header, until the app gets the original data.
