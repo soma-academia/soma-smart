@@ -245,10 +245,14 @@ export default {
       if (!env.ASSETS) return new Response("Not found", { status: 404 });
       // The app's own screens have no file of their own: serve the app shell for them. Anything else that
       // doesn't exist gets 404.html with a 404 status.
+      // Search Console verification files must answer at their exact .html address, without the
+      // redirect Pages normally adds to drop ".html".
       const route = p.replace(/\/+$/, "") || "/";
       const res = APP_ROUTES.has(route)
         ? await env.ASSETS.fetch(new Request(new URL("/", url), request))
-        : await env.ASSETS.fetch(request);
+        : /^\/google[0-9a-f]+\.html$/.test(p)
+          ? await env.ASSETS.fetch(new Request(new URL(p.slice(0, -5), url), request))
+          : await env.ASSETS.fetch(request);
       return withSecurity(withPageMeta(p, res));
     }
 
