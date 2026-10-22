@@ -76,4 +76,4 @@ and `primary/D2-mouse-keyboard.md` for full examples.
 
 - English only: no Kiswahili or Sheng words. Practical Kenyan examples. No pop culture.
 - KSh, not other currencies.
-- Technical facts are checked by the owner before release, especially C6, C9 and C10.
+- Technical facts are checked before release, especially C6, C9 and C10.

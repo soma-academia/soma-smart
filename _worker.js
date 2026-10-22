@@ -100,7 +100,7 @@ const normUser = u => String(u || "").trim().toLowerCase();
 
 const BLOCKED_USERNAMES = new Set([
   "admin", "administrator", "root", "system", "support", "help", "helpdesk",
-  "techtayari", "tech_tayari", "somasmart", "soma_smart", "moderator", "mod", "official", "mwalimu", "teacher",
+  "techtayari", "tech_tayari", "moderator", "mod", "official", "mwalimu", "teacher",
   "staff", "security", "null", "undefined", "anonymous", "guest", "test"
 ]);
 

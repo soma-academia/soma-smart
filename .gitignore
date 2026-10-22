@@ -6,8 +6,12 @@ __pycache__/
 # Local Wrangler state
 .wrangler/
 node_modules/
-# Owner's private planning notes (kept local)
+# Private notes and internal docs (kept local, not published)
 SUGGESTIONS.md
+AGENTS.md
+DEPLOY.md
+GEMINI.md
+HANDOVER.md
 # Local secrets for wrangler pages dev (keep this file out of git)
 .dev.vars
 # CI deploy staging folder

@@ -1,7 +1,6 @@
-# Deploys the site to Cloudflare Pages (project "tech-tayari"). MANUAL ONLY for now: day-to-day publishing
-# is ./deploy.sh on the owner's Mac. To use this, save a working CLOUDFLARE_API_TOKEN secret (Account →
-# Cloudflare Pages → Edit, plus Account Settings → Read), then run it from the repo's Actions tab, or
-# restore the `push: branches: [main]` trigger below to deploy on every push. See DEPLOY.md.
+# Deploys the site to Cloudflare Pages (project "tech-tayari"). Manual only: run it from the Actions tab once a
+# CLOUDFLARE_API_TOKEN secret (Account → Cloudflare Pages → Edit, plus Account Settings → Read) is saved, or
+# restore the `push: branches: [main]` trigger below to deploy on every push.
 name: Deploy to Cloudflare Pages
 
 on:

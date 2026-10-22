@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Publish Tech Tayari: push main to GitHub, then deploy the committed code to Cloudflare Pages
-# (project "tech-tayari") with your own Wrangler login. Run from anywhere:  ./deploy.sh
-# Needs: git, python3, and Wrangler logged in (brew install cloudflare-wrangler && wrangler login).
+# (project "tech-tayari"). Run from anywhere:  ./deploy.sh
+# Needs: git, python3, and a logged-in Wrangler (wrangler login).
 set -euo pipefail
 cd "$(dirname "$0")"
 
