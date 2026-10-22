@@ -911,29 +911,23 @@ function stepRead(m, s, el){
 }
 
 /* ---------- LISTEN ---------- */
-let cachedVoices = [];
+// Read the voice list fresh every time: Edge lists its local (robotic) voices first and adds the online
+// natural voices, including Asilia, a moment later, so a list saved at start-up would miss them.
 function getAvailableVoices(){
-  if (cachedVoices.length) return cachedVoices;
-  try {
-    cachedVoices = speechSynthesis.getVoices();
-    if (!cachedVoices.length && "onvoiceschanged" in speechSynthesis) {
-      speechSynthesis.onvoiceschanged = () => {
-        cachedVoices = speechSynthesis.getVoices();
-      };
-    }
-  } catch {}
-  return cachedVoices;
+  try { return speechSynthesis.getVoices() || []; } catch { return []; }
 }
+try { speechSynthesis.getVoices(); } catch {}   // start loading voices early
 
 // Narration voice: always Asilia, Microsoft's Kenyan English voice ("Microsoft Asilia Online (Natural) -
-// English (Kenya)", built into Edge and Windows). Where it isn't installed, any other Kenyan English voice,
-// then the nearest East African, other African, then British English voice.
+// English (Kenya)", built into Edge and Windows). Where it isn't available: any other Kenyan English voice,
+// then Microsoft George, then the nearest East African, other African, then British English voice.
 const VOICE_ORDER = ["en-KE", "en-TZ", "en-UG", "en-NG", "en-ZA", "en-GB", "en-IE", "en-AU", "en-US"];
 const voiceLang = x => String(x.lang || "").replace("_", "-");
-function pickVoice(){
-  const v = getAvailableVoices();
-  const asilia = v.find(x => /asilia/i.test(x.name));
-  if (asilia) return asilia;
+function pickVoice(localOnly){
+  const v = getAvailableVoices().filter(x => !localOnly || x.localService);
+  // Asilia first, then any other Kenyan English voice, then Microsoft George (British, sounds natural)
+  const pref = v.find(x => /asilia/i.test(x.name)) || v.find(x => /^en-KE$/i.test(voiceLang(x))) || v.find(x => /microsoft george/i.test(x.name));
+  if (pref) return pref;
   const rank = x => { const i = VOICE_ORDER.findIndex(l => voiceLang(x).toLowerCase() === l.toLowerCase()); return i < 0 ? VOICE_ORDER.length : i; };
   const natural = x => /natural|online|enhanced|premium/i.test(x.name) ? 0 : 1;
   const novelty = /^(Albert|Bad News|Bahh|Bells|Boing|Bubbles|Cellos|Good News|Jester|Organ|Superstar|Trinoids|Whisper|Wobble|Zarvox|Junior|Ralph|Fred|Kathy|Grandma|Grandpa|Rocko)\b/;
@@ -943,7 +937,7 @@ function pickVoice(){
 
 function speak(lines, onLine, onEnd){
   try { speechSynthesis.cancel(); } catch { return onEnd && onEnd(); }
-  let i = 0; const voice = pickVoice();
+  let i = 0, voice = pickVoice();
   const next = () => {
     if (i >= lines.length) return onEnd && onEnd();
     const u = new SpeechSynthesisUtterance(lines[i]);
@@ -951,7 +945,14 @@ function speak(lines, onLine, onEnd){
     u.rate = 0.93;
     u.onstart = () => onLine && onLine(i);
     u.onend = () => { i++; next(); };
-    u.onerror = () => { i++; next(); };
+    u.onerror = e => {
+      // Online voices such as Asilia fail without internet: retry the line with a voice on the device
+      if (voice && !voice.localService && e.error !== "interrupted" && e.error !== "canceled") {
+        voice = pickVoice(true);
+        if (voice && voice.localService) return next();
+      }
+      i++; next();
+    };
     speechSynthesis.speak(u);
   };
   next();
