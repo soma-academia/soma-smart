@@ -977,8 +977,8 @@ function stepListen(m, s, el){
         ${voicePicker()}
       </div>
       <div class="stepFoot">
-        <span class="hint">Listen to the full audio to continue.</span>
-        <button class="btn" id="nx" ${s.reached > 1 ? "" : "disabled"}>Next</button>
+        <span class="hint">Optional: listen, or go straight on.</span>
+        <button class="btn" id="nx">Next</button>
       </div>
     `;
 
@@ -1037,7 +1037,7 @@ function stepWatch(m, s, el){
         <div class="hint">${esc(v.channel)} · needs internet and uses mobile data</div>
         <button class="btn ghost small" id="vload">▶ Load video</button>
       </div>` : ""}
-    <div class="stepFoot"><span class="hint">${xp ? "Step through the animation, then continue." : "Watch the video, then continue."}</span><button class="btn" id="nx">Next</button></div>
+    <div class="stepFoot"><span class="hint">${xp ? "Optional: step through the animation, or go straight on." : "Optional: watch the video, or go straight on."}</span><button class="btn" id="nx">Next</button></div>
   `;
   if (xp) {
     const stop = window.EXPLAINERS.render(xp, document.getElementById("xp"));
