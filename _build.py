@@ -183,7 +183,10 @@ for f in sorted(CONTENT.glob("*/_track.md")):
 tracks_meta.sort(key=lambda t: int(t.get("order", 99)))
 # unlisted: true keeps a track off the home page, /learn and the sitemap; it opens only at /<track id> (e.g. /kcse)
 TRACKS = [{"id": t["id"], "name": t["name"], "level": t["level"], "blurb": t["blurb"],
-           **({"unlisted": True} if str(t.get("unlisted", "")).lower() == "true" else {})} for t in tracks_meta]
+           **({"unlisted": True} if str(t.get("unlisted", "")).lower() == "true" else {}),
+           # narration: false turns off the Listen step and "Read to me" (older learners)
+           **({"narration": False} if str(t.get("narration", "")).lower() == "false" else {})} for t in tracks_meta]
+NO_NARRATION = {t["id"] for t in TRACKS if t.get("narration") is False}
 PUBLIC_TRACKS = [t for t in TRACKS if not t.get("unlisted")]
 PUBLIC_IDS = {t["id"] for t in PUBLIC_TRACKS}
 track_ids = [t["id"] for t in TRACKS]
@@ -328,7 +331,7 @@ def lesson_page(m, prev_m, next_m):
   <p class="lp-lead">{H(m['part'])}</p>
   <p>{strand}<span class="lp-tag">{"CBE strand" if m["cbe"] == "strand" else "Going further"}</span><span class="lp-tag">Free · works offline</span></p>
   <a class="btn lp-start" href="/?lesson={H(m['id'])}">▶ Start the interactive lesson</a>
-  <p class="hint">The full lesson adds narration, an interactive mission and a {len(m['quiz'])}-question bank, and the quiz explains any mistakes.</p>
+  <p class="hint">The full lesson adds {"" if m["track"] in NO_NARRATION else "narration, "}an interactive mission and a {len(m['quiz'])}-question bank, and the quiz explains any mistakes.</p>
   {cards}
   <section class="lp-card"><h2>Key points</h2><ul>{points}</ul></section>
   <section class="lp-card"><h2>Try it for real: {H(m['mission']['title'])}</h2><ul>{steps}</ul></section>

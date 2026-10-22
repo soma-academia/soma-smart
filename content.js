@@ -37,20 +37,23 @@ window.COURSE = {
    "id": "senior",
    "name": "Computer Studies I",
    "level": "Grade 10 · ages 15–16",
-   "blurb": "Senior School Computer Studies, Grade 10: how computers are built and run, how networks carry data, and your first programs in Python."
+   "blurb": "Senior School Computer Studies, Grade 10: how computers are built and run, how networks carry data, and your first programs in Python.",
+   "narration": false
   },
   {
    "id": "senior11",
    "name": "Computer Studies II",
    "level": "Grade 11 · ages 16–17",
-   "blurb": "Senior School Computer Studies, Grade 11: number systems and logic, network protocols and security, object-oriented programming, databases, SQL and the web."
+   "blurb": "Senior School Computer Studies, Grade 11: number systems and logic, network protocols and security, object-oriented programming, databases, SQL and the web.",
+   "narration": false
   },
   {
    "id": "kcse",
    "name": "KCSE Computer Studies",
    "level": "Form 4 · KCSE 451",
    "blurb": "Revision for KCSE Computer Studies (451), Form 4 topics: networking and data communication, application areas of ICT, the impact of ICT on society, and careers in ICT.",
-   "unlisted": true
+   "unlisted": true,
+   "narration": false
   }
  ],
  "modules": [

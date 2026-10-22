@@ -297,6 +297,9 @@ function go(v, fromHistory){
 window.addEventListener("popstate", e => go((e.state && e.state.v) || viewFromPath(location.pathname), true));
 
 function render(){
+  // Leaving any screen stops whatever it was playing: narration, explainer animations, timers.
+  // (Videos stop because their frame is replaced along with the screen.)
+  stopPlayback();
   hud();
   if (view.name !== "page") document.title = "Tech Tayari · Free Digital Literacy for Kenya";
   if (view.name === "admin") return renderAdmin();
@@ -844,21 +847,30 @@ function renderTrack(){
 // The WATCH step appears only for modules with an explainer animation or a curated video
 const hasVideo = m => !!(m.video && m.video.id);
 const hasWatch = m => hasVideo(m) || !!m.explainer;
-const stepsFor = m => STEPS.filter(st => st !== "watch" || hasWatch(m));
+// Narration (Listen step, "Read to me") is for the younger tracks; a track can turn it off in its _track.md
+const hasListen = m => (TRACKS.find(t => t.id === m.track) || {}).narration !== false;
+const stepsFor = m => STEPS.filter(st => (st !== "watch" || hasWatch(m)) && (st !== "listen" || hasListen(m)));
 
 function openModule(id){
   const m = MODS.find(x => x.id === id), s = ms(id);
   funnel(m, "start");
   let step = s.done ? "read" : STEPS[Math.min(s.reached, 4)];
+  if (step === "listen" && !hasListen(m)) step = "watch";
   if (step === "watch" && !hasWatch(m)) step = "mission";
   go({ name: "mod", id, step });
 }
 
 /* ---------- module shell ---------- */
 let cleanup = [];
-function renderModule(){
+function stopPlayback(){
   cleanup.forEach(f => { try { f(); } catch {} }); cleanup = [];
-  try { speechSynthesis.cancel(); } catch {}
+  stopSpeech();
+}
+// Narration also stops when the learner switches tab or app, or leaves the page
+document.addEventListener("visibilitychange", () => { if (document.hidden) stopSpeech(); });
+addEventListener("pagehide", stopSpeech);
+
+function renderModule(){
 
   const m = MODS.find(x => x.id === view.id), s = ms(m.id);
   const trackObj = TRACKS.find(t => t.id === m.track);
@@ -885,6 +897,7 @@ function renderModule(){
 function advance(m, s, from){
   if (from === "read" || from === "mission") funnel(m, from);
   let i = STEPS.indexOf(from);
+  if (STEPS[i + 1] === "listen" && !hasListen(m)) i++;
   if (STEPS[i + 1] === "watch" && !hasWatch(m)) i++;
   if (s.reached <= i) s.reached = i + 1;
   queueSave();
@@ -905,18 +918,19 @@ function stepRead(m, s, el){
       <div class="stepFoot">
         <div class="dots">${m.read.map((_, i) => `<i class="${i <= idx ? "on" : ""}"></i>`).join("")}</div>
         <div class="row">
-          <button class="btn ghost small" id="say">${ICON("speaker", 18)} Read to me</button>
+          ${hasListen(m) ? `<button class="btn ghost small" id="say">${ICON("speaker", 18)} Read to me</button>` : ""}
           ${idx > 0 ? `<button class="btn ghost small" id="prev">←</button>` : ""}
           <button class="btn" id="nx">${idx < m.read.length - 1 ? "Next" : "Done"}</button>
         </div>
       </div>
     `;
 
-    document.getElementById("say").onclick = () => speak([c.title + ". " + c.text]);
+    const say = document.getElementById("say");
+    if (say) say.onclick = () => speak([c.title + ". " + c.text]);
     const pv = document.getElementById("prev");
-    if (pv) pv.onclick = () => { speechSynthesis.cancel(); idx--; draw(); };
+    if (pv) pv.onclick = () => { stopSpeech(); idx--; draw(); };
     document.getElementById("nx").onclick = () => {
-      speechSynthesis.cancel();
+      stopSpeech();
       if (idx < m.read.length - 1) { idx++; draw(); }
       else advance(m, s, "read");
     };
@@ -926,10 +940,10 @@ function stepRead(m, s, el){
   currentKeyHandler = e => {
     if (isTyping(e)) return;
     if (e.key === "ArrowRight") {
-      speechSynthesis.cancel();
+      stopSpeech();
       if (idx < m.read.length - 1) { idx++; draw(); } else advance(m, s, "read");
     } else if (e.key === "ArrowLeft" && idx > 0) {
-      speechSynthesis.cancel(); idx--; draw();
+      stopSpeech(); idx--; draw();
     }
   };
   window.addEventListener("keydown", currentKeyHandler);
@@ -966,10 +980,20 @@ function pickVoice(localOnly){
   return en[0] || v[0] || null;
 }
 
+// Each read-aloud gets a number; stopSpeech() moves the number on, so a chain that is still running
+// (its lines fire "interrupted" errors when cancelled) knows to stop instead of reading the next line.
+let speechRun = 0;
+function stopSpeech(){
+  speechRun++;
+  try { speechSynthesis.cancel(); } catch {}
+}
 function speak(lines, onLine, onEnd){
-  try { speechSynthesis.cancel(); } catch { return onEnd && onEnd(); }
+  stopSpeech();
+  if (!("speechSynthesis" in window)) return onEnd && onEnd();
+  const run = speechRun;
   let i = 0, voice = pickVoice();
   const next = () => {
+    if (run !== speechRun) return;
     if (i >= lines.length) return onEnd && onEnd();
     const u = new SpeechSynthesisUtterance(lines[i]);
     if (voice) { u.voice = voice; u.lang = voice.lang; } else u.lang = "en-KE";
@@ -1012,7 +1036,7 @@ function stepListen(m, s, el){
     document.getElementById("nx").onclick = () => { stop(); advance(m, s, "listen"); };
   };
 
-  const stop = () => { playing = false; try { speechSynthesis.cancel(); } catch {} };
+  const stop = () => { playing = false; stopSpeech(); };
   const toggle = () => {
     if (!("speechSynthesis" in window)) {
       s.reached = Math.max(s.reached, 2);

@@ -31,7 +31,7 @@
   <p class="lp-lead">Structured Query Language</p>
   <p><span class="lp-tag">Grade 11 · 3.4 Structured Query Language (SQL)</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
   <a class="btn lp-start" href="/?lesson=s11-sql">▶ Start the interactive lesson</a>
-  <p class="hint">The full lesson adds narration, an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
+  <p class="hint">The full lesson adds an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
   <section class="lp-card"><h2><span aria-hidden="true">💬</span> What SQL is</h2><p>SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL defines structure, DML changes data, and DQL asks questions.</p></section>
 <section class="lp-card"><h2><span aria-hidden="true">🏗️</span> DDL: defining structure</h2><p>CREATE TABLE students (adm INT PRIMARY KEY, name VARCHAR(50), grade INT); builds a new table. ALTER TABLE changes it, for example to add a column. DROP TABLE deletes a whole table and all its data. Use DROP with great care: there is no undo.</p></section>
 <section class="lp-card"><h2><span aria-hidden="true">✏️</span> DML: changing data</h2><p>INSERT INTO students VALUES (1021, &#x27;Amani&#x27;, 11); adds a row. UPDATE students SET grade = 12 WHERE adm = 1021; changes matching rows. DELETE FROM students WHERE adm = 1021; removes them. Always include WHERE with UPDATE and DELETE; without it, every row changes or disappears.</p></section>
