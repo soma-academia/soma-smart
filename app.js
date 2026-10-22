@@ -254,6 +254,9 @@ function hud(){
   document.getElementById("hud-backup").onclick = showBackup;
 }
 
+// Keyboard shortcuts never act while the learner is typing in a field
+const isTyping = e => !!(e.target && e.target.closest && e.target.closest("input, textarea, select, [contenteditable]"));
+
 /* ---------- router ---------- */
 // Info pages and the (unlinked) insights page have their own addresses; everything else lives at "/"
 const PAGE_PATHS = { about: "/about", privacy: "/privacy", licences: "/licences" };
@@ -910,7 +913,9 @@ function stepRead(m, s, el){
     };
   };
 
+  if (currentKeyHandler) window.removeEventListener("keydown", currentKeyHandler);
   currentKeyHandler = e => {
+    if (isTyping(e)) return;
     if (e.key === "ArrowRight") {
       speechSynthesis.cancel();
       if (idx < m.read.length - 1) { idx++; draw(); } else advance(m, s, "read");
@@ -1391,8 +1396,11 @@ function stepQuiz(m, s, el){
     el.querySelectorAll(".opt").forEach(b => b.onclick = () => choose(+b.dataset.i));
     document.getElementById("nx").onclick = () => { k++; k < N ? ask() : finish(); };
 
-    // Keyboard support: 1..4 choose option, Enter moves next
+    // Keyboard support: 1..4 choose option, Enter moves next. Replace the previous question's listener:
+    // stacked listeners outlived the quiz and swallowed Space (and Enter) everywhere, e.g. in typing tasks.
+    if (currentKeyHandler) window.removeEventListener("keydown", currentKeyHandler);
     currentKeyHandler = e => {
+      if (isTyping(e)) return;
       if (!answeredCurrent && ["1","2","3","4"].includes(e.key)) {
         const idx = +e.key - 1;
         if (idx < x.options.length) choose(idx);
