@@ -311,7 +311,7 @@ svg.i{flex:none;vertical-align:-.2em}
 .try-real{font-family:Nunito,system-ui,sans-serif;font-size:18px;margin:22px 0 10px}
 
 /* quiz */
-.qhead{display:flex;justify-content:space-between;color:var(--muted);font-weight:800;font-family:Nunito,system-ui,sans-serif;margin-bottom:10px}
+.qhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;color:var(--muted);font-weight:800;font-family:Nunito,system-ui,sans-serif;margin-bottom:10px}
 .qq{font-family:Nunito,system-ui,sans-serif;font-size:24px;font-weight:900;margin:0 0 18px;line-height:1.35}
 .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .opt{background:#fff;border:2px solid var(--line);border-radius:12px;padding:15px;text-align:left;font-size:17px;line-height:1.4}
