@@ -1435,8 +1435,8 @@ function stepQuiz(m, s, el){
     const x = qs[k];
     el.innerHTML = `
       <div class="qhead">
-        <span>QUESTION ${k + 1}/${N}</span>
-        <span>${right} correct · need ${pass} to pass</span>
+        <span>QUESTION ${k + 1} OF ${N}</span>
+        <span>Score: ${right} · pass mark ${pass}</span>
       </div>
       <p class="qq">${esc(x.q)}</p>
       <div class="opts">
