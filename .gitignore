@@ -16,3 +16,6 @@ HANDOVER.md
 .dev.vars
 # CI deploy staging folder
 _site/
+
+# Cloudflare project settings (database binding): kept on the owner's machine only
+wrangler.toml

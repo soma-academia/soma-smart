@@ -226,7 +226,10 @@ function hud(){
   }
   if (linkReport) linkReport.style.display = "inline";
 
-  const cm = countedMods(), total = cm.length, done = cm.filter(m => ms(m.id).done).length;
+  // Progress shows for the track being studied only: an overall "1 of 51" on day one discourages
+  const trackId = view.name === "track" ? view.t : view.name === "mod" ? (MODS.find(m => m.id === view.id) || {}).track : "";
+  const tm = trackId ? MODS.filter(m => m.track === trackId) : [];
+  const done = tm.filter(m => ms(m.id).done).length;
   const isLocal = !!USER.isLocal;
   // [class, icon, text]; on phones only the icon shows (the text stays as a tooltip / screen-reader label)
   const syncLabels = {
@@ -241,7 +244,7 @@ function hud(){
     <span class="who">
       ${esc(USER.display)}
     </span>
-    <span class="prog">${done}/${total}<span class="prog-txt"> done</span></span>
+    ${tm.length ? `<span class="prog">${done}/${tm.length}<span class="prog-txt"> done in this track</span></span>` : ""}
     <span class="sync ${sync[0]}" title="${sync[2] || ""}" aria-label="${sync[2] || ""}">${sync[1]}<span class="sync-txt"> ${sync[2] || ""}</span></span>
     <button class="btn gold small" id="hud-backup" title="Download or restore a backup of your progress">Backup</button>
     <button class="btn ghost small" id="hud-report" title="View your learning progress report">Report</button>
@@ -724,7 +727,7 @@ function renderHome(){
   $app.innerHTML = started.length ? `
     <section class="hero">
       <h1>Welcome back${named ? `, <em>${esc(USER.display)}</em>` : ""}.</h1>
-      <p>${countedMods().filter(m => ms(m.id).done).length} of ${countedMods().length} modules done. Keep going!</p>
+      <p>${resume ? "Pick up where you left off." : "Choose a track to keep learning."}</p>
       ${resume ? `<button class="btn teal resume" id="resume">▶ Continue: ${esc(resume.code)} · ${esc(resume.name)}</button>` : ""}
     </section>
     <div class="home-head"><h2 class="home-h2">Your tracks</h2>${kcseBtn}</div>

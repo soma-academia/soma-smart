@@ -11,6 +11,7 @@ fail() { printf '\n\033[31m✘ %s\033[0m\n' "$*"; exit 1; }
 [ "$(git branch --show-current)" = "main" ] || fail "Switch to the main branch first (git checkout main)."
 git diff --quiet && git diff --cached --quiet || fail "You have uncommitted changes. Commit them first, so the live site matches GitHub."
 wrangler whoami >/dev/null 2>&1 || fail "Wrangler isn't logged in. Run: wrangler login"
+[ -f wrangler.toml ] || fail "wrangler.toml is missing. It is kept out of git: copy it from your backup into this folder."
 
 say "1/4 Checking lessons are built…"
 python3 _build.py >/dev/null
@@ -23,6 +24,7 @@ say "3/4 Deploying to Cloudflare Pages…"
 sha="$(git rev-parse HEAD)"; msg="$(git log -1 --format=%s)"
 site="$(mktemp -d)"; trap 'rm -rf "$site"' EXIT
 git archive HEAD | tar -x -C "$site"          # only committed files, never local ones like .dev.vars
+cp wrangler.toml "$site/"                     # kept out of git; holds the database binding
 (cd "$site" && wrangler pages deploy . --project-name tech-tayari --branch main --commit-hash "$sha" --commit-message "$msg")
 
 say "4/4 Checking the live site…"

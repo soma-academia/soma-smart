@@ -1,5 +1,6 @@
 # Deploys the site to Cloudflare Pages (project "tech-tayari"). Manual only: run it from the Actions tab once a
-# CLOUDFLARE_API_TOKEN secret (Account → Cloudflare Pages → Edit, plus Account Settings → Read) is saved, or
+# CLOUDFLARE_API_TOKEN secret (Account → Cloudflare Pages → Edit, plus Account Settings → Read) is saved, along
+# with CLOUDFLARE_ACCOUNT_ID and D1_DATABASE_ID (wrangler.toml is kept out of git and written here from them), or
 # restore the `push: branches: [main]` trigger below to deploy on every push.
 name: Deploy to Cloudflare Pages
 
@@ -31,6 +32,9 @@ jobs:
         run: |
           mkdir _site
           git archive HEAD | tar -x -C _site
+          printf 'name = "tech-tayari"\npages_build_output_dir = "."\ncompatibility_date = "2026-10-01"\n\n[[d1_databases]]\nbinding = "DB"\ndatabase_name = "soma-smart"\ndatabase_id = "%s"\n' "$D1_DATABASE_ID" > _site/wrangler.toml
+        env:
+          D1_DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
 
       - uses: actions/setup-node@v7.1.0
         with:
