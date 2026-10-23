@@ -18,7 +18,7 @@ explainer:
 
 ### 💼 Effects on employment
 
-ICT affects employment in three ways. Job creation: new jobs appear, such as programmer, network administrator, web designer and computer technician. Job replacement: some jobs disappear and are taken over by people with ICT skills or by computerised machines, so workers who do not retrain may lose their jobs (for example, a manual filing clerk). Job displacement: a worker is moved to a different job or department, usually after retraining, instead of being laid off. Automated production, where computer-controlled machines and robots do repetitive work in factories, raises output and quality and lowers costs, but reduces the need for unskilled labour.
+ICT (Information and Communication Technology) affects employment in three ways. Job creation: new jobs appear, such as programmer, network administrator, web designer and computer technician. Job replacement: some jobs disappear and are taken over by people with ICT skills or by computerised machines, so workers who do not retrain may lose their jobs (for example, a manual filing clerk). Job displacement: a worker is moved to a different job or department, usually after retraining, instead of being laid off. Automated production, where computer-controlled machines and robots do repetitive work in factories, raises output and quality and lowers costs, but reduces the need for unskilled labour.
 
 ### 🩺 Workers' health and ergonomics
 

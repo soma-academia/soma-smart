@@ -18,7 +18,7 @@ explainer:
 
 ### 🏦 Financial systems
 
-Businesses use accounting packages to record sales, purchases, invoices and ledgers, and payroll systems to calculate each worker's gross pay, deductions (such as PAYE and NSSF) and net pay, then print payslips. Banks use ICT everywhere: automated teller machines (ATMs) let customers withdraw cash and check balances at any time using a card and PIN; cheque clearing uses magnetic ink character recognition (MICR) to read the cheque number, bank code and account number printed in magnetic ink quickly and accurately; and internet and mobile banking let customers transfer money and pay bills without visiting a branch. M-Pesa is a form of electronic funds transfer (EFT): money moves from one account to another electronically, with no cash or cheque changing hands.
+Businesses use accounting packages to record sales, purchases, invoices and ledgers, and payroll systems to calculate each worker's gross pay, deductions such as PAYE (Pay As You Earn) and NSSF (National Social Security Fund), and net pay, then print payslips. Banks use ICT (Information and Communication Technology) everywhere: automated teller machines (ATMs) let customers withdraw cash and check balances at any time using a card and PIN (Personal Identification Number); cheque clearing uses magnetic ink character recognition (MICR) to read the cheque number, bank code and account number printed in magnetic ink quickly and accurately; and internet and mobile banking let customers transfer money and pay bills without visiting a branch. M-Pesa is a form of electronic funds transfer (EFT): money moves from one account to another electronically, with no cash or cheque changing hands.
 
 ### 🛒 Retail systems
 
@@ -26,7 +26,7 @@ Supermarkets use point-of-sale (POS) terminals at the till. A barcode reader sca
 
 ### ✈️ Reservation systems
 
-Reservation systems let customers book seats or rooms in advance from a central computer, for airlines (such as Kenya Airways), hotels, long-distance buses and the SGR train. They are real-time, online systems: an agent or a customer on the internet checks availability, books, and pays, and the central database is updated immediately. To avoid double booking, the system locks a seat or room while one transaction is being processed, so no other terminal can book it at the same moment, and once sold it is shown as unavailable to everyone.
+Reservation systems let customers book seats or rooms in advance from a central computer, for airlines (such as Kenya Airways), hotels, long-distance buses and the SGR (Standard Gauge Railway) train. They are real-time, online systems: an agent or a customer on the internet checks availability, books, and pays, and the central database is updated immediately. To avoid double booking, the system locks a seat or room while one transaction is being processed, so no other terminal can book it at the same moment, and once sold it is shown as unavailable to everyone.
 
 ### 🎓 Education
 

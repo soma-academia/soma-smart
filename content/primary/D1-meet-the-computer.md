@@ -22,11 +22,11 @@ A computer is a machine that follows instructions to do work: typing a letter, p
 
 ### 🧠 The brain: CPU
 
-Inside is a chip called the CPU (processor). It is the brain that does the thinking and follows your instructions, step by step, very fast.
+Inside is a chip called the CPU, short for Central Processing Unit (also called the processor). It is the brain that does the thinking and follows your instructions, step by step, very fast.
 
 ### 🏗️ Memory and storage
 
-RAM is the short-term memory — like your hand holding what you use right now. Storage (the disk) is the long-term keeper, like a cupboard that holds your files even after you switch off.
+RAM (Random Access Memory) is the short-term memory — like your hand holding what you use right now. Storage (the disk) is the long-term keeper, like a cupboard that holds your files even after you switch off.
 
 ### ⌨️ Input and output
 

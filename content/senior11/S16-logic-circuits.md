@@ -34,7 +34,7 @@ Evaluate the expression for every input combination. For A · (D + W): with A = 
 
 ### ➕ The half adder
 
-Gates can also do maths. A half adder adds two bits: Sum = A XOR B, and Carry = A AND B. With A = 1 and B = 1: Sum = 0 and Carry = 1, giving 10, which is 2 in binary. Chain these together and you get the adders inside every CPU.
+Gates can also do maths. A half adder adds two bits: Sum = A XOR B, and Carry = A AND B. With A = 1 and B = 1: Sum = 0 and Carry = 1, giving 10, which is 2 in binary. Chain these together and you get the adders inside every CPU (Central Processing Unit).
 
 ## Listen
 

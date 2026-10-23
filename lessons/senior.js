@@ -10,7 +10,7 @@
    {
     "icon": "⚡",
     "title": "Generations of computers",
-    "text": "Electronic computers are often grouped into generations by the technology inside: first, vacuum tubes (1940s–50s); second, transistors; third, integrated circuits (many transistors on one chip); fourth, microprocessors, a whole CPU on one chip (from the 1970s). Some books call today's AI-focused systems the fifth generation."
+    "text": "Electronic computers are often grouped into generations by the technology inside: first, vacuum tubes (1940s–50s); second, transistors; third, integrated circuits (many transistors on one chip); fourth, microprocessors, a whole CPU (Central Processing Unit) on one chip (from the 1970s). Some books call today's AI-focused (Artificial Intelligence) systems the fifth generation."
    },
    {
     "icon": "📉",
@@ -243,7 +243,7 @@
    {
     "icon": "🔌",
     "title": "Connecting devices",
-    "text": "Devices connect through ports and wireless links: USB for most accessories, HDMI for screens and projectors, audio jacks, and wireless such as Bluetooth and Wi-Fi. Pick devices by the job: speed, accuracy, cost, the volume of data, and the needs of the user, for example screen readers for blind users."
+    "text": "Devices connect through ports and wireless links: USB (Universal Serial Bus) for most accessories, HDMI (High-Definition Multimedia Interface) for screens and projectors, audio jacks, and wireless such as Bluetooth and Wi-Fi. Pick devices by the job: speed, accuracy, cost, the volume of data, and the needs of the user, for example screen readers for blind users."
    }
   ],
   "listen": [
@@ -454,12 +454,12 @@
    {
     "icon": "🧠",
     "title": "Primary storage",
-    "text": "Primary storage is memory the CPU uses directly. RAM holds the programs and data in use right now and is volatile: it is wiped when power goes off. ROM is non-volatile and holds start-up instructions (firmware). Cache is a small, very fast memory close to the CPU for data it needs again and again."
+    "text": "Primary storage is memory the CPU (Central Processing Unit) uses directly. RAM (Random Access Memory) holds the programs and data in use right now and is volatile: it is wiped when power goes off. ROM (Read-Only Memory) is non-volatile and holds start-up instructions (firmware). Cache is a small, very fast memory close to the CPU for data it needs again and again."
    },
    {
     "icon": "💾",
     "title": "Secondary storage",
-    "text": "Secondary storage keeps files when the power is off: hard disk drives (HDD) with spinning platters, solid-state drives (SSD) with no moving parts, USB flash drives and memory cards, optical discs (CD, DVD), and cloud storage on someone else's servers over the internet."
+    "text": "Secondary storage keeps files when the power is off: hard disk drives (HDD) with spinning platters, solid-state drives (SSD) with no moving parts, USB (Universal Serial Bus) flash drives and memory cards, optical discs such as CDs (Compact Discs) and DVDs (Digital Versatile Discs), and cloud storage on someone else's servers over the internet."
    },
    {
     "icon": "📏",
@@ -696,7 +696,7 @@
    {
     "icon": "🗂️",
     "title": "What the OS manages",
-    "text": "The OS manages processes (which programs run, and when), memory (which program uses which part of RAM), files and folders on storage, input and output devices through drivers, and security, such as user accounts and permissions."
+    "text": "The OS manages processes (which programs run, and when), memory (which program uses which part of RAM, the Random Access Memory), files and folders on storage, input and output devices through drivers, and security, such as user accounts and permissions."
    },
    {
     "icon": "🖱️",
@@ -917,7 +917,7 @@
    {
     "icon": "🔌",
     "title": "Ports and cables",
-    "text": "Each cable fits a matching port. USB (type A is the flat rectangle, type C is small and reversible) connects most accessories. HDMI and DisplayPort carry video and sound to screens; older screens use the blue VGA port. An RJ-45 port takes an Ethernet network cable. The round 3.5 mm jack is for audio."
+    "text": "Each cable fits a matching port. USB (type A is the flat rectangle, type C is small and reversible) connects most accessories. HDMI (High-Definition Multimedia Interface) and DisplayPort carry video and sound to screens; older screens use the blue VGA (Video Graphics Array) port. An RJ-45 (Registered Jack 45) port takes an Ethernet network cable. The round 3.5 mm jack is for audio."
    },
    {
     "icon": "🔋",
@@ -1156,7 +1156,7 @@
    {
     "icon": "📜",
     "title": "Protocols and layered models",
-    "text": "Protocols are rules for formatting, addressing and checking data. The internet uses the TCP/IP suite: IP addresses and routes packets; TCP makes sure they all arrive in order. The OSI model describes networking in seven layers, from the physical cable up to the application you use."
+    "text": "Protocols are rules for formatting, addressing and checking data. The internet uses the TCP/IP suite: IP (Internet Protocol) addresses and routes packets; TCP (Transmission Control Protocol) makes sure they all arrive in order. The OSI (Open Systems Interconnection) model describes networking in seven layers, from the physical cable up to the application you use."
    },
    {
     "icon": "🧵",
@@ -1618,7 +1618,7 @@
    {
     "icon": "🪜",
     "title": "Levels of programming languages",
-    "text": "Machine code is pure binary that the CPU runs directly. Assembly language uses short words (mnemonics) like ADD and MOV, one per machine instruction. High-level languages such as Python, Java, C++ and Scratch read more like English and work on many computers. These lessons use Python."
+    "text": "Machine code is pure binary that the CPU (Central Processing Unit) runs directly. Assembly language uses short words (mnemonics) like ADD and MOV, one per machine instruction. High-level languages such as Python, Java, C++ and Scratch read more like English and work on many computers. These lessons use Python."
    },
    {
     "icon": "⚙️",
@@ -2118,7 +2118,7 @@
    {
     "icon": "⏳",
     "title": "while loops",
-    "text": "A while loop repeats as long as a condition is True, which suits cases where you don't know how many repeats are needed, like asking for a PIN until it is correct. Make sure something inside the loop changes the condition, or it will loop forever."
+    "text": "A while loop repeats as long as a condition is True, which suits cases where you don't know how many repeats are needed, like asking for a PIN (Personal Identification Number) until it is correct. Make sure something inside the loop changes the condition, or it will loop forever."
    },
    {
     "icon": "⛔",

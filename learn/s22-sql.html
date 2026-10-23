@@ -4,12 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>SQL (S22) · Computer Studies II, Grade 11 · Tech Tayari</title>
-<meta name="description" content="Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with…" />
+<meta name="description" content="Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs (Database Management…" />
 <link rel="canonical" href="https://techtayari.co.ke/learn/s22-sql" />
 <meta property="og:type" content="article" />
 <meta property="og:site_name" content="Tech Tayari" />
 <meta property="og:title" content="SQL (S22) · Computer Studies II, Grade 11 · Tech Tayari" />
-<meta property="og:description" content="Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with…" />
+<meta property="og:description" content="Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs (Database Management…" />
 <meta property="og:url" content="https://techtayari.co.ke/learn/s22-sql" />
 <meta property="og:image" content="https://techtayari.co.ke/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -19,7 +19,7 @@
 <link rel="icon" type="image/svg+xml" href="/icon.svg" />
 <link rel="preload" href="/fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/styles.css" />
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "SQL", "description": "Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with…", "url": "https://techtayari.co.ke/learn/s22-sql", "learningResourceType": "Lesson", "educationalLevel": "Grade 11", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://techtayari.co.ke/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["What SQL is", "DDL: defining structure", "DML: changing data", "DQL: asking questions", "Relationships in SQL"], "isPartOf": {"@type": "Course", "name": "Computer Studies II (Grade 11 · ages 16–17)", "url": "https://techtayari.co.ke/learn/#senior11"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://techtayari.co.ke"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LearningResource", "name": "SQL", "description": "Structured Query Language. SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs (Database Management…", "url": "https://techtayari.co.ke/learn/s22-sql", "learningResourceType": "Lesson", "educationalLevel": "Grade 11", "inLanguage": "en-KE", "isAccessibleForFree": true, "image": "https://techtayari.co.ke/og-image.jpg", "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/", "teaches": ["What SQL is", "DDL: defining structure", "DML: changing data", "DQL: asking questions", "Relationships in SQL"], "isPartOf": {"@type": "Course", "name": "Computer Studies II (Grade 11 · ages 16–17)", "url": "https://techtayari.co.ke/learn/#senior11"}, "provider": {"@type": "Organization", "name": "Tech Tayari", "url": "https://techtayari.co.ke"}}</script>
 </head>
 <body class="lp">
 <header id="top"><a class="brand" href="/">Tech<span>Tayari</span></a></header>
@@ -32,7 +32,7 @@
   <p><span class="lp-tag">Grade 11 · 3.4 Structured Query Language (SQL)</span><span class="lp-tag">CBE strand</span><span class="lp-tag">Free · works offline</span></p>
   <a class="btn lp-start" href="/?lesson=s11-sql">▶ Start the interactive lesson</a>
   <p class="hint">The full lesson adds an interactive mission and a 10-question bank, and the quiz explains any mistakes.</p>
-  <section class="lp-card"><h2><span aria-hidden="true">💬</span> What SQL is</h2><p>SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL defines structure, DML changes data, and DQL asks questions.</p></section>
+  <section class="lp-card"><h2><span aria-hidden="true">💬</span> What SQL is</h2><p>SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs (Database Management Systems) use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL (Data Definition Language) defines structure, DML (Data Manipulation Language) changes data, and DQL (Data Query Language) asks questions.</p></section>
 <section class="lp-card"><h2><span aria-hidden="true">🏗️</span> DDL: defining structure</h2><p>CREATE TABLE students (adm INT PRIMARY KEY, name VARCHAR(50), grade INT); builds a new table. ALTER TABLE changes it, for example to add a column. DROP TABLE deletes a whole table and all its data. Use DROP with great care: there is no undo.</p></section>
 <section class="lp-card"><h2><span aria-hidden="true">✏️</span> DML: changing data</h2><p>INSERT INTO students VALUES (1021, &#x27;Amani&#x27;, 11); adds a row. UPDATE students SET grade = 12 WHERE adm = 1021; changes matching rows. DELETE FROM students WHERE adm = 1021; removes them. Always include WHERE with UPDATE and DELETE; without it, every row changes or disappears.</p></section>
 <section class="lp-card"><h2><span aria-hidden="true">🔍</span> DQL: asking questions</h2><p>SELECT name, grade FROM students; lists those columns for every row. SELECT * picks all columns. WHERE filters rows (WHERE grade = 11), ORDER BY sorts (ORDER BY name), and GROUP BY groups rows for summaries, such as SELECT grade, COUNT(*) FROM students GROUP BY grade; which counts the students in each grade.</p></section>

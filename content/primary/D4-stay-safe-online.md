@@ -25,7 +25,7 @@ A password is the key to your account. Make it long and hard to guess, like a sh
 
 ### 🎣 Spot the tricks
 
-If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN, it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, it is a lie.
+If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN (Personal Identification Number), it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, it is a lie.
 
 ### 🙅 Strangers online
 

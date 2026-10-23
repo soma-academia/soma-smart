@@ -22,7 +22,7 @@ The operating system (OS) is the main software that manages the computer's hardw
 
 ### 🗂️ What the OS manages
 
-The OS manages processes (which programs run, and when), memory (which program uses which part of RAM), files and folders on storage, input and output devices through drivers, and security, such as user accounts and permissions.
+The OS manages processes (which programs run, and when), memory (which program uses which part of RAM, the Random Access Memory), files and folders on storage, input and output devices through drivers, and security, such as user accounts and permissions.
 
 ### 🖱️ How you talk to it
 

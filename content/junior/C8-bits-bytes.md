@@ -30,7 +30,7 @@ About 1000 bytes = 1 kilobyte (KB). About 1000 KB = 1 megabyte (MB). About 1000 
 
 ### 📱 Everyday sizes
 
-A text message is a few bytes. A photo is a few MB. A music track is a few MB. A long HD video or a big app is hundreds of MB to several GB. A phone might store 128 GB.
+A text message is a few bytes. A photo is a few MB. A music track is a few MB. A long HD (high definition) video or a big app is hundreds of MB to several GB. A phone might store 128 GB.
 
 ### 📶 Speed vs size
 

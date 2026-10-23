@@ -18,7 +18,7 @@ explainer: memory
 
 ### 🎒 RAM is the backpack
 
-RAM holds what the computer is using right now: the open app, the page you're reading. It is very fast but it empties when you switch off.
+RAM (Random Access Memory) holds what the computer is using right now: the open app, the page you're reading. It is very fast but it empties when you switch off.
 
 ### 📚 Storage is the shelf
 
@@ -26,7 +26,7 @@ Storage (the disk) keeps everything even with the power off: your apps, document
 
 ### 🚀 SSD vs HDD
 
-An SSD has no moving parts and loads much faster than a spinning hard disk. The fastest type, NVMe, makes programs and files open quickly.
+An SSD (Solid State Drive) has no moving parts and loads much faster than a spinning hard disk. The fastest type, NVMe, makes programs and files open quickly.
 
 ### 🐌 When RAM fills up
 
@@ -34,7 +34,7 @@ If RAM fills, the computer borrows slower space on the disk and everything feels
 
 ### 📏 How big?
 
-RAM is usually a few GB (e.g. 4, 8, 16). Storage is bigger — often hundreds of GB or 1 TB. More RAM helps with many apps open; more storage holds more files.
+RAM is usually a few GB (e.g. 4, 8, 16). Storage is bigger — often hundreds of GB or 1 TB (terabyte). More RAM helps with many apps open; more storage holds more files.
 
 ## Listen
 

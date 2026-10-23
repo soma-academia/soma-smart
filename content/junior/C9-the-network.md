@@ -30,7 +30,7 @@ Your router passes packets to your ISP (e.g. Safaricom, Zuku, JTL). The ISP conn
 
 ### 🔢 IP addresses
 
-Every device on a network has an IP address, a number that identifies it, like a postal address. Packets use IP addresses to find their way. Public IPs are reachable on the internet; private IPs (like 192.168.x.x) are used inside your LAN.
+Every device on a network has an IP (Internet Protocol) address, a number that identifies it, like a postal address. Packets use IP addresses to find their way. Public IPs are reachable on the internet; private IPs (like 192.168.x.x) are used inside your LAN.
 
 ### ⏱️ Why distance matters
 

@@ -1569,6 +1569,7 @@ function stepQuiz(m, s, el){
           ${passed ? `
             ${mistakes.length ? `<button class="btn ghost" id="rvm">Review my mistakes</button>` : ""}
             <button class="btn" id="mp">Back to Track</button>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`I just passed "${m.name}" on Tech Tayari! Free lessons on computers and the internet for Kenyan learners: https://techtayari.co.ke`)}">Share on WhatsApp</a>
           ` : `
             <button class="btn" id="rvm">Review my mistakes</button>
             <button class="btn ghost" id="rv">Re-read the lesson</button>

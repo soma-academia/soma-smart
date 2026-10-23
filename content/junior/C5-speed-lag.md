@@ -33,7 +33,7 @@ A screen refreshes a set number of times each second, measured in Hz. A 60 Hz sc
 
 ### ⚖️ Find the bottleneck
 
-When something is slow, ask: is the computer busy (high CPU/GPU use = upgrade or lower settings) or is the internet slow (high ping = a network problem)? Naming the real cause saves time.
+When something is slow, ask: is the computer busy, with its CPU (Central Processing Unit) or GPU (Graphics Processing Unit) working flat out? Then upgrade or lower the settings. Or is the internet slow, with a high ping? Then it's a network problem. Naming the real cause saves time.
 
 ## Listen
 

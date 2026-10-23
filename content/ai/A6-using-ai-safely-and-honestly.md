@@ -18,7 +18,7 @@ explainer:
 
 ### 🎭 Deepfakes
 
-AI can now make fake videos, photos and voices that look and sound real; these are called deepfakes. They can show a leader saying something they never said, or put someone's face in a photo they were never in. Be extra careful with shocking clips, especially around elections.
+AI (Artificial Intelligence) can now make fake videos, photos and voices that look and sound real; these are called deepfakes. They can show a leader saying something they never said, or put someone's face in a photo they were never in. Be extra careful with shocking clips, especially around elections.
 
 ### 📞 Voice-clone scams
 
@@ -30,7 +30,7 @@ Before believing or forwarding something: Who posted it first? Do trusted news s
 
 ### 🔒 Protect your privacy
 
-Anything you type or upload into an AI app may be stored by the company. Never share passwords, PINs, your ID number, your address, or photos of other people without permission. Kenya's Data Protection Act (2019) gives you rights over your personal data, but the safest data is the data you never share.
+Anything you type or upload into an AI app may be stored by the company. Never share passwords, PINs (Personal Identification Numbers), your ID number, your address, or photos of other people without permission. Kenya's Data Protection Act (2019) gives you rights over your personal data, but the safest data is the data you never share.
 
 ### 🧭 Honest, healthy use
 

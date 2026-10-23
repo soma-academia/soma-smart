@@ -26,7 +26,7 @@ Simplex sends one way only, like a radio broadcast. Half-duplex sends both ways 
 
 ### 📜 Protocols and layered models
 
-Protocols are rules for formatting, addressing and checking data. The internet uses the TCP/IP suite: IP addresses and routes packets; TCP makes sure they all arrive in order. The OSI model describes networking in seven layers, from the physical cable up to the application you use.
+Protocols are rules for formatting, addressing and checking data. The internet uses the TCP/IP suite: IP (Internet Protocol) addresses and routes packets; TCP (Transmission Control Protocol) makes sure they all arrive in order. The OSI (Open Systems Interconnection) model describes networking in seven layers, from the physical cable up to the application you use.
 
 ### 🧵 Guided media: cables
 

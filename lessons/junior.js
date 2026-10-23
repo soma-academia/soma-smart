@@ -5,7 +5,7 @@
    {
     "icon": "🔘",
     "title": "Press power",
-    "text": "When you press power, a small program on the motherboard called the BIOS/UEFI wakes first. It does a roll call: CPU? RAM? Storage? All present? Then it hands over to the operating system (Windows, Linux or macOS)."
+    "text": "When you press power, a small program on the motherboard called the BIOS (Basic Input/Output System), or UEFI on newer computers, wakes first. It does a roll call: is the CPU (Central Processing Unit, the brain) there? The RAM (Random Access Memory, the short-term memory)? The storage? All present? Then it hands over to the operating system, or OS (Windows, Linux or macOS)."
    },
    {
     "icon": "🟩",
@@ -20,7 +20,7 @@
    {
     "icon": "🚀",
     "title": "Opening a program",
-    "text": "When you open an app, its files move from storage (the disk) into RAM. The CPU then runs the instructions and the GPU draws what you see. The whole team starts working together."
+    "text": "When you open an app, its files move from storage (the disk) into RAM. The CPU then runs the instructions and the GPU (Graphics Processing Unit) draws what you see. The whole team starts working together."
    }
   ],
   "listen": [
@@ -159,7 +159,7 @@
    {
     "icon": "🧠",
     "title": "The decision maker",
-    "text": "The CPU runs the instructions of every program: working out sums, moving data, deciding what happens next. In a game it tracks players and rules; in a browser it builds the page."
+    "text": "The CPU (Central Processing Unit) runs the instructions of every program: working out sums, moving data, deciding what happens next. In a game it tracks players and rules; in a browser it builds the page."
    },
    {
     "icon": "⏱️",
@@ -179,7 +179,7 @@
    {
     "icon": "🗄️",
     "title": "Cache: the near shelf",
-    "text": "Cache is a small, very fast memory on the CPU itself. Grabbing data from cache is quicker than going to RAM, like keeping your most-used book on the desk instead of the shelf."
+    "text": "Cache is a small, very fast memory on the CPU itself. Grabbing data from cache is quicker than going to RAM (Random Access Memory), like keeping your most-used book on the desk instead of the shelf."
    }
   ],
   "listen": [
@@ -318,12 +318,12 @@
    {
     "icon": "🔺",
     "title": "Built from triangles",
-    "text": "Everything in a 3D game or 3D map is built from many small triangles. The GPU's job is to place all those triangles and colour them, extremely fast."
+    "text": "Everything in a 3D game or 3D map is built from many small triangles. The job of the GPU (Graphics Processing Unit) is to place all those triangles and colour them, extremely fast."
    },
    {
     "icon": "🎨",
     "title": "Painting pixels",
-    "text": "Your screen is made of tiny dots called pixels. A Full HD screen has about 2 million; a 4K screen has about four times as many — that's why 4K is heavier work."
+    "text": "Your screen is made of tiny dots called pixels. A Full HD (high definition) screen has about 2 million; a 4K screen has about four times as many — that's why 4K is heavier work."
    },
    {
     "icon": "🐜",
@@ -338,7 +338,7 @@
    {
     "icon": "🔍",
     "title": "Upscaling tricks",
-    "text": "Techniques like DLSS/FSR render a smaller image then cleverly enlarge it, giving more frames per second for less work. Beyond games, GPUs also speed up video editing and AI."
+    "text": "Techniques like DLSS (Deep Learning Super Sampling) and FSR (FidelityFX Super Resolution) render a smaller image then cleverly enlarge it, giving more frames per second for less work. Beyond games, GPUs also speed up video editing and AI (Artificial Intelligence)."
    }
   ],
   "listen": [
@@ -477,7 +477,7 @@
    {
     "icon": "🎒",
     "title": "RAM is the backpack",
-    "text": "RAM holds what the computer is using right now: the open app, the page you're reading. It is very fast but it empties when you switch off."
+    "text": "RAM (Random Access Memory) holds what the computer is using right now: the open app, the page you're reading. It is very fast but it empties when you switch off."
    },
    {
     "icon": "📚",
@@ -487,7 +487,7 @@
    {
     "icon": "🚀",
     "title": "SSD vs HDD",
-    "text": "An SSD has no moving parts and loads much faster than a spinning hard disk. The fastest type, NVMe, makes programs and files open quickly."
+    "text": "An SSD (Solid State Drive) has no moving parts and loads much faster than a spinning hard disk. The fastest type, NVMe, makes programs and files open quickly."
    },
    {
     "icon": "🐌",
@@ -497,7 +497,7 @@
    {
     "icon": "📏",
     "title": "How big?",
-    "text": "RAM is usually a few GB (e.g. 4, 8, 16). Storage is bigger — often hundreds of GB or 1 TB. More RAM helps with many apps open; more storage holds more files."
+    "text": "RAM is usually a few GB (e.g. 4, 8, 16). Storage is bigger — often hundreds of GB or 1 TB (terabyte). More RAM helps with many apps open; more storage holds more files."
    }
   ],
   "listen": [
@@ -656,7 +656,7 @@
    {
     "icon": "⚖️",
     "title": "Find the bottleneck",
-    "text": "When something is slow, ask: is the computer busy (high CPU/GPU use = upgrade or lower settings) or is the internet slow (high ping = a network problem)? Naming the real cause saves time."
+    "text": "When something is slow, ask: is the computer busy, with its CPU (Central Processing Unit) or GPU (Graphics Processing Unit) working flat out? Then upgrade or lower the settings. Or is the internet slow, with a high ping? Then it's a network problem. Naming the real cause saves time."
    }
   ],
   "listen": [
@@ -800,12 +800,12 @@
    {
     "icon": "🔑",
     "title": "Two-step verification",
-    "text": "Turn on 2FA (two-step verification) where you can: a password PLUS a code (SMS or an app). Even if someone learns your password, they still can't get in. Like two locks on one door."
+    "text": "Turn on 2FA (two-step verification) where you can: a password PLUS a code (SMS (Short Message Service, a text message) or an app). Even if someone learns your password, they still can't get in. Like two locks on one door."
    },
    {
     "icon": "🎣",
     "title": "Phishing and scams",
-    "text": "Phishing is a fake message pretending to be a bank, M-Pesa or a friend, trying to steal your login or money. Clues: urgency ('act NOW'), odd links, spelling mistakes, requests for a PIN or password. Confirm before you click."
+    "text": "Phishing is a fake message pretending to be a bank, M-Pesa or a friend, trying to steal your login or money. Clues: urgency ('act NOW'), odd links, spelling mistakes, requests for a PIN (Personal Identification Number) or password. Confirm before you click."
    },
    {
     "icon": "👤",
@@ -1024,12 +1024,12 @@
    {
     "icon": "🔌",
     "title": "Watts and demand",
-    "text": "Power is measured in watts. A powerful GPU can draw a lot; the PSU must supply enough for all parts, with some to spare. Phones and laptops use far less than big desktops."
+    "text": "Power is measured in watts. A powerful GPU (Graphics Processing Unit) can draw a lot; the PSU must supply enough for all parts, with some to spare. Phones and laptops use far less than big desktops."
    },
    {
     "icon": "🔥",
     "title": "Work makes heat",
-    "text": "When the CPU and GPU work hard they get hot. If they get too hot they slow themselves down (thermal throttling) to stay safe — so good cooling keeps performance up."
+    "text": "When the CPU (Central Processing Unit) and GPU work hard they get hot. If they get too hot they slow themselves down (thermal throttling) to stay safe — so good cooling keeps performance up."
    },
    {
     "icon": "🧊",
@@ -1193,7 +1193,7 @@
    {
     "icon": "📱",
     "title": "Everyday sizes",
-    "text": "A text message is a few bytes. A photo is a few MB. A music track is a few MB. A long HD video or a big app is hundreds of MB to several GB. A phone might store 128 GB."
+    "text": "A text message is a few bytes. A photo is a few MB. A music track is a few MB. A long HD (high definition) video or a big app is hundreds of MB to several GB. A phone might store 128 GB."
    },
    {
     "icon": "📶",
@@ -1352,7 +1352,7 @@
    {
     "icon": "🔢",
     "title": "IP addresses",
-    "text": "Every device on a network has an IP address, a number that identifies it, like a postal address. Packets use IP addresses to find their way. Public IPs are reachable on the internet; private IPs (like 192.168.x.x) are used inside your LAN."
+    "text": "Every device on a network has an IP (Internet Protocol) address, a number that identifies it, like a postal address. Packets use IP addresses to find their way. Public IPs are reachable on the internet; private IPs (like 192.168.x.x) are used inside your LAN."
    },
    {
     "icon": "⏱️",
@@ -1557,7 +1557,7 @@
    {
     "icon": "🏷️",
     "title": "Domain names",
-    "text": "Computers find each other by IP address (numbers), but numbers are hard to remember. A domain name like safaricom.co.ke is a friendly label for a website. Names end in parts like .com, .org, or Kenya's .ke / .co.ke."
+    "text": "Computers find each other by IP (Internet Protocol) address (numbers), but numbers are hard to remember. A domain name like safaricom.co.ke is a friendly label for a website. Names end in parts like .com, .org, or Kenya's .ke / .co.ke."
    },
    {
     "icon": "📖",
@@ -1567,12 +1567,12 @@
    {
     "icon": "📨",
     "title": "Loading a page: request & response",
-    "text": "Your browser sends an HTTP request to the site's server ('please send me this page'). The server replies with an HTTP response containing the page — text, images and code — which the browser puts together and shows you."
+    "text": "Your browser sends an HTTP (HyperText Transfer Protocol) request to the site's server ('please send me this page'). The server replies with an HTTP response containing the page — text, images and code — which the browser puts together and shows you."
    },
    {
     "icon": "🔒",
     "title": "HTTP vs HTTPS",
-    "text": "HTTPS is HTTP with encryption (TLS): the data is scrambled so others on the network can't read or change it. The padlock means the connection is private and the site proved its identity with a certificate. Never enter a password or pay on plain HTTP."
+    "text": "HTTPS (HyperText Transfer Protocol Secure) is HTTP with encryption (TLS): the data is scrambled so others on the network can't read or change it. The padlock means the connection is private and the site proved its identity with a certificate. Never enter a password or pay on plain HTTP."
    },
    {
     "icon": "🛡️",

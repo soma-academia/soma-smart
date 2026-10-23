@@ -34,7 +34,7 @@ Some devices do both jobs. A touch screen shows information and accepts taps. A 
 
 ### 🔌 Connecting devices
 
-Devices connect through ports and wireless links: USB for most accessories, HDMI for screens and projectors, audio jacks, and wireless such as Bluetooth and Wi-Fi. Pick devices by the job: speed, accuracy, cost, the volume of data, and the needs of the user, for example screen readers for blind users.
+Devices connect through ports and wireless links: USB (Universal Serial Bus) for most accessories, HDMI (High-Definition Multimedia Interface) for screens and projectors, audio jacks, and wireless such as Bluetooth and Wi-Fi. Pick devices by the job: speed, accuracy, cost, the volume of data, and the needs of the user, for example screen readers for blind users.
 
 ## Listen
 

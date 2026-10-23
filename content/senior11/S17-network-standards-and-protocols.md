@@ -18,11 +18,11 @@ explainer: dns-lookup
 
 ### 📏 Why standards exist
 
-Standards are agreed specifications that let equipment from different makers work together. IEEE writes standards such as 802.3 (Ethernet) and 802.11 (Wi-Fi). The IETF publishes the internet's protocols. ISO created the OSI model. Because of standards, any phone can join any Wi-Fi network.
+Standards are agreed specifications that let equipment from different makers work together. IEEE (Institute of Electrical and Electronics Engineers) writes standards such as 802.3 (Ethernet) and 802.11 (Wi-Fi). The IETF (Internet Engineering Task Force) publishes the internet's protocols. ISO (International Organization for Standardization) created the OSI (Open Systems Interconnection) model. Because of standards, any phone can join any Wi-Fi network.
 
 ### 📜 Common protocols
 
-HTTP and HTTPS load web pages (HTTPS is the encrypted version). SMTP sends email; POP3 and IMAP collect it. FTP transfers files. DNS turns names into IP addresses. DHCP gives devices an IP address automatically when they join a network. TCP delivers data reliably and in order; UDP is faster but doesn't guarantee delivery, which suits video calls.
+HTTP (HyperText Transfer Protocol) and HTTPS (HyperText Transfer Protocol Secure) load web pages (HTTPS is the encrypted version). SMTP (Simple Mail Transfer Protocol) sends email; POP3 (Post Office Protocol version 3) and IMAP (Internet Message Access Protocol) collect it. FTP (File Transfer Protocol) transfers files. DNS (Domain Name System) turns names into IP (Internet Protocol) addresses. DHCP (Dynamic Host Configuration Protocol) gives devices an IP address automatically when they join a network. TCP (Transmission Control Protocol) delivers data reliably and in order; UDP (User Datagram Protocol) is faster but doesn't guarantee delivery, which suits video calls.
 
 ### 🧱 The TCP/IP model
 
@@ -30,7 +30,7 @@ The internet follows the four-layer TCP/IP model. Application: the protocols app
 
 ### 🏢 The OSI model
 
-OSI describes networking in seven layers: 7 Application, 6 Presentation (formats and encryption), 5 Session (manages conversations), 4 Transport, 3 Network, 2 Data link (frames and MAC addresses), 1 Physical (bits on the wire). OSI's top three layers map to TCP/IP's Application layer, and its bottom two to Network access.
+OSI describes networking in seven layers: 7 Application, 6 Presentation (formats and encryption), 5 Session (manages conversations), 4 Transport, 3 Network, 2 Data link (frames and MAC (Media Access Control) addresses), 1 Physical (bits on the wire). OSI's top three layers map to TCP/IP's Application layer, and its bottom two to Network access.
 
 ### 📦 Encapsulation and decapsulation
 

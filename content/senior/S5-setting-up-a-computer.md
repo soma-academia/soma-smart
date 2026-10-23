@@ -18,7 +18,7 @@ explainer:
 
 ### 🔌 Ports and cables
 
-Each cable fits a matching port. USB (type A is the flat rectangle, type C is small and reversible) connects most accessories. HDMI and DisplayPort carry video and sound to screens; older screens use the blue VGA port. An RJ-45 port takes an Ethernet network cable. The round 3.5 mm jack is for audio.
+Each cable fits a matching port. USB (type A is the flat rectangle, type C is small and reversible) connects most accessories. HDMI (High-Definition Multimedia Interface) and DisplayPort carry video and sound to screens; older screens use the blue VGA (Video Graphics Array) port. An RJ-45 (Registered Jack 45) port takes an Ethernet network cable. The round 3.5 mm jack is for audio.
 
 ### 🔋 Power
 

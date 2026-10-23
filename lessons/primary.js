@@ -10,12 +10,12 @@
    {
     "icon": "🧠",
     "title": "The brain: CPU",
-    "text": "Inside is a chip called the CPU (processor). It is the brain that does the thinking and follows your instructions, step by step, very fast."
+    "text": "Inside is a chip called the CPU, short for Central Processing Unit (also called the processor). It is the brain that does the thinking and follows your instructions, step by step, very fast."
    },
    {
     "icon": "🏗️",
     "title": "Memory and storage",
-    "text": "RAM is the short-term memory — like your hand holding what you use right now. Storage (the disk) is the long-term keeper, like a cupboard that holds your files even after you switch off."
+    "text": "RAM (Random Access Memory) is the short-term memory — like your hand holding what you use right now. Storage (the disk) is the long-term keeper, like a cupboard that holds your files even after you switch off."
    },
    {
     "icon": "⌨️",
@@ -676,7 +676,7 @@
    {
     "icon": "🎣",
     "title": "Spot the tricks",
-    "text": "If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN, it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, it is a lie."
+    "text": "If someone online offers free airtime, free data, or a prize for your password or an M-Pesa PIN (Personal Identification Number), it is a scam. Real companies never ask for your PIN or password. If it's too good to be true, it is a lie."
    },
    {
     "icon": "🙅",
@@ -830,7 +830,7 @@
    {
     "icon": "📡",
     "title": "How your phone connects",
-    "text": "Your phone or computer joins the internet through Wi-Fi (at home or school) or mobile data from a network like Safaricom or Airtel. That connects you to the ISP — the company that gives internet."
+    "text": "Your phone or computer joins the internet through Wi-Fi (at home or school) or mobile data from a network like Safaricom or Airtel. That connects you to the ISP (Internet Service Provider) — the company that gives internet."
    },
    {
     "icon": "✉️",

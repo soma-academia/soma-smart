@@ -18,7 +18,7 @@ explainer: logic-gates
 
 ### 🚦 What a logic gate is
 
-A logic gate is a tiny electronic circuit that takes one or more inputs, each 0 (off) or 1 (on), and gives one output. Gates are built from transistors, and billions of them inside a CPU make every decision a computer takes.
+A logic gate is a tiny electronic circuit that takes one or more inputs, each 0 (off) or 1 (on), and gives one output. Gates are built from transistors, and billions of them inside a CPU (Central Processing Unit) make every decision a computer takes.
 
 ### ✳️ AND, OR, NOT
 

@@ -22,7 +22,7 @@ Industrial simulation models a system, such as a new production line or a nuclea
 
 ### 🔬 Science, research and libraries
 
-Weather forecasting uses powerful computers to process huge amounts of data from weather stations, satellites and radar, run models and predict the weather. In medical research computers analyse test results, model diseases and help design drugs; in hospitals expert systems help diagnose illness. The military uses ICT for simulating battles, guiding missiles and keeping secure communication. Library systems record the lending of books (who borrowed what and when it is due), keep an inventory of stock, and hold a computerised catalogue so users can search by title, author or subject.
+Weather forecasting uses powerful computers to process huge amounts of data from weather stations, satellites and radar, run models and predict the weather. In medical research computers analyse test results, model diseases and help design drugs; in hospitals expert systems help diagnose illness. The military uses ICT (Information and Communication Technology) for simulating battles, guiding missiles and keeping secure communication. Library systems record the lending of books (who borrowed what and when it is due), keep an inventory of stock, and hold a computerised catalogue so users can search by title, author or subject.
 
 ### 🚆 Transport, entertainment and the home
 
@@ -30,7 +30,7 @@ Air traffic control uses radar and computers to track aircraft and keep them saf
 
 ### 🛡️ Expert systems, marketing, VR and law enforcement
 
-An expert system copies the knowledge of a human expert. It has three parts: a knowledge base (facts and rules from experts), an inference engine (which applies the rules to the user's answers to reach a conclusion) and a user interface (through which the user asks and answers questions). In marketing, ICT supports e-commerce (buying and selling online), electronic presentations to clients, and advertising on websites and social media. Virtual reality (VR) creates a 3D artificial world that the user enters with a head-mounted display (HMD) and data gloves that sense hand movements. Law enforcement uses biometrics such as fingerprint matching to identify suspects, CCTV cameras to monitor public places, and computerised police records to store and search criminal records quickly.
+An expert system copies the knowledge of a human expert. It has three parts: a knowledge base (facts and rules from experts), an inference engine (which applies the rules to the user's answers to reach a conclusion) and a user interface (through which the user asks and answers questions). In marketing, ICT supports e-commerce (buying and selling online), electronic presentations to clients, and advertising on websites and social media. Virtual reality (VR) creates a 3D artificial world that the user enters with a head-mounted display (HMD) and data gloves that sense hand movements. Law enforcement uses biometrics such as fingerprint matching to identify suspects, CCTV (Closed-Circuit Television) cameras to monitor public places, and computerised police records to store and search criminal records quickly.
 
 ### 📝 In the exam
 

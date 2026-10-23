@@ -22,7 +22,7 @@ People built calculating tools long before electricity: the abacus, Napier's bon
 
 ### ⚡ Generations of computers
 
-Electronic computers are often grouped into generations by the technology inside: first, vacuum tubes (1940s–50s); second, transistors; third, integrated circuits (many transistors on one chip); fourth, microprocessors, a whole CPU on one chip (from the 1970s). Some books call today's AI-focused systems the fifth generation.
+Electronic computers are often grouped into generations by the technology inside: first, vacuum tubes (1940s–50s); second, transistors; third, integrated circuits (many transistors on one chip); fourth, microprocessors, a whole CPU (Central Processing Unit) on one chip (from the 1970s). Some books call today's AI-focused (Artificial Intelligence) systems the fifth generation.
 
 ### 📉 Smaller, faster, cheaper
 

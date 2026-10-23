@@ -17,7 +17,7 @@ video_channel: Code.org
 
 ### 🧠 The decision maker
 
-The CPU runs the instructions of every program: working out sums, moving data, deciding what happens next. In a game it tracks players and rules; in a browser it builds the page.
+The CPU (Central Processing Unit) runs the instructions of every program: working out sums, moving data, deciding what happens next. In a game it tracks players and rules; in a browser it builds the page.
 
 ### ⏱️ Clock speed (GHz)
 
@@ -33,7 +33,7 @@ A core is a worker inside the CPU. Many CPUs have several cores, so they can do 
 
 ### 🗄️ Cache: the near shelf
 
-Cache is a small, very fast memory on the CPU itself. Grabbing data from cache is quicker than going to RAM, like keeping your most-used book on the desk instead of the shelf.
+Cache is a small, very fast memory on the CPU itself. Grabbing data from cache is quicker than going to RAM (Random Access Memory), like keeping your most-used book on the desk instead of the shelf.
 
 ## Listen
 

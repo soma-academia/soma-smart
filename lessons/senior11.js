@@ -25,7 +25,7 @@
    {
     "icon": "🔤",
     "title": "Character codes: ASCII, EBCDIC, BCD",
-    "text": "Text is stored as numbers using a coding scheme. ASCII gives each character a code (A = 65, a = 97, 0 = 48). EBCDIC is an older scheme used on IBM mainframes. BCD (binary-coded decimal) stores each decimal digit in its own 4 bits: 59 becomes 0101 1001. Unicode extends ASCII to cover every language, including emoji."
+    "text": "Text is stored as numbers using a coding scheme. ASCII (American Standard Code for Information Interchange) gives each character a code (A = 65, a = 97, 0 = 48). EBCDIC (Extended Binary Coded Decimal Interchange Code) is an older scheme used on IBM mainframes. BCD (binary-coded decimal) stores each decimal digit in its own 4 bits: 59 becomes 0101 1001. Unicode extends ASCII to cover every language, including emoji."
    }
   ],
   "listen": [
@@ -482,7 +482,7 @@
    {
     "icon": "🚦",
     "title": "What a logic gate is",
-    "text": "A logic gate is a tiny electronic circuit that takes one or more inputs, each 0 (off) or 1 (on), and gives one output. Gates are built from transistors, and billions of them inside a CPU make every decision a computer takes."
+    "text": "A logic gate is a tiny electronic circuit that takes one or more inputs, each 0 (off) or 1 (on), and gives one output. Gates are built from transistors, and billions of them inside a CPU (Central Processing Unit) make every decision a computer takes."
    },
    {
     "icon": "✳️",
@@ -738,7 +738,7 @@
    {
     "icon": "➕",
     "title": "The half adder",
-    "text": "Gates can also do maths. A half adder adds two bits: Sum = A XOR B, and Carry = A AND B. With A = 1 and B = 1: Sum = 0 and Carry = 1, giving 10, which is 2 in binary. Chain these together and you get the adders inside every CPU."
+    "text": "Gates can also do maths. A half adder adds two bits: Sum = A XOR B, and Carry = A AND B. With A = 1 and B = 1: Sum = 0 and Carry = 1, giving 10, which is 2 in binary. Chain these together and you get the adders inside every CPU (Central Processing Unit)."
    }
   ],
   "listen": [
@@ -946,12 +946,12 @@
    {
     "icon": "📏",
     "title": "Why standards exist",
-    "text": "Standards are agreed specifications that let equipment from different makers work together. IEEE writes standards such as 802.3 (Ethernet) and 802.11 (Wi-Fi). The IETF publishes the internet's protocols. ISO created the OSI model. Because of standards, any phone can join any Wi-Fi network."
+    "text": "Standards are agreed specifications that let equipment from different makers work together. IEEE (Institute of Electrical and Electronics Engineers) writes standards such as 802.3 (Ethernet) and 802.11 (Wi-Fi). The IETF (Internet Engineering Task Force) publishes the internet's protocols. ISO (International Organization for Standardization) created the OSI (Open Systems Interconnection) model. Because of standards, any phone can join any Wi-Fi network."
    },
    {
     "icon": "📜",
     "title": "Common protocols",
-    "text": "HTTP and HTTPS load web pages (HTTPS is the encrypted version). SMTP sends email; POP3 and IMAP collect it. FTP transfers files. DNS turns names into IP addresses. DHCP gives devices an IP address automatically when they join a network. TCP delivers data reliably and in order; UDP is faster but doesn't guarantee delivery, which suits video calls."
+    "text": "HTTP (HyperText Transfer Protocol) and HTTPS (HyperText Transfer Protocol Secure) load web pages (HTTPS is the encrypted version). SMTP (Simple Mail Transfer Protocol) sends email; POP3 (Post Office Protocol version 3) and IMAP (Internet Message Access Protocol) collect it. FTP (File Transfer Protocol) transfers files. DNS (Domain Name System) turns names into IP (Internet Protocol) addresses. DHCP (Dynamic Host Configuration Protocol) gives devices an IP address automatically when they join a network. TCP (Transmission Control Protocol) delivers data reliably and in order; UDP (User Datagram Protocol) is faster but doesn't guarantee delivery, which suits video calls."
    },
    {
     "icon": "🧱",
@@ -961,7 +961,7 @@
    {
     "icon": "🏢",
     "title": "The OSI model",
-    "text": "OSI describes networking in seven layers: 7 Application, 6 Presentation (formats and encryption), 5 Session (manages conversations), 4 Transport, 3 Network, 2 Data link (frames and MAC addresses), 1 Physical (bits on the wire). OSI's top three layers map to TCP/IP's Application layer, and its bottom two to Network access."
+    "text": "OSI describes networking in seven layers: 7 Application, 6 Presentation (formats and encryption), 5 Session (manages conversations), 4 Transport, 3 Network, 2 Data link (frames and MAC (Media Access Control) addresses), 1 Physical (bits on the wire). OSI's top three layers map to TCP/IP's Application layer, and its bottom two to Network access."
    },
    {
     "icon": "📦",
@@ -1202,12 +1202,12 @@
    {
     "icon": "⚠️",
     "title": "Common threats",
-    "text": "Malware: viruses, worms, trojans and ransomware, which locks files for payment. Phishing tricks people into giving away passwords or PINs. Denial of service (DoS, or DDoS from many machines) floods a service until it stops. Eavesdropping, or man-in-the-middle, intercepts data, often on open Wi-Fi. Weak passwords and careless insiders cause many breaches too."
+    "text": "Malware: viruses, worms, trojans and ransomware, which locks files for payment. Phishing tricks people into giving away passwords or PINs (Personal Identification Numbers). Denial of service (DoS, or DDoS from many machines) floods a service until it stops. Eavesdropping, or man-in-the-middle, intercepts data, often on open Wi-Fi. Weak passwords and careless insiders cause many breaches too."
    },
    {
     "icon": "🛡️",
     "title": "Technical controls",
-    "text": "A firewall filters traffic using rules, blocking what isn't allowed. An intrusion detection system (IDS) watches for attack patterns and raises alerts. Encryption scrambles data so only the right key can read it: HTTPS for websites, WPA2 or WPA3 for Wi-Fi. Antivirus and anti-malware find and remove malicious software."
+    "text": "A firewall filters traffic using rules, blocking what isn't allowed. An intrusion detection system (IDS) watches for attack patterns and raises alerts. Encryption scrambles data so only the right key can read it: HTTPS (HyperText Transfer Protocol Secure) for websites, WPA2 (Wi-Fi Protected Access 2) or WPA3 (Wi-Fi Protected Access 3) for Wi-Fi. Antivirus and anti-malware find and remove malicious software."
    },
    {
     "icon": "🔑",
@@ -1901,7 +1901,7 @@
    {
     "icon": "🌳",
     "title": "Database models",
-    "text": "Hierarchical databases store data as a tree (one parent, many children). Network databases allow many links between records. Relational databases, the most common today, store data in tables that are linked by shared values. Object-oriented databases store data as objects, like OOP programs."
+    "text": "Hierarchical databases store data as a tree (one parent, many children). Network databases allow many links between records. Relational databases, the most common today, store data in tables that are linked by shared values. Object-oriented databases store data as objects, like OOP (object-oriented programming) programs."
    },
    {
     "icon": "📊",
@@ -2134,7 +2134,7 @@
    {
     "icon": "💬",
     "title": "What SQL is",
-    "text": "SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL defines structure, DML changes data, and DQL asks questions."
+    "text": "SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs (Database Management Systems) use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL (Data Definition Language) defines structure, DML (Data Manipulation Language) changes data, and DQL (Data Query Language) asks questions."
    },
    {
     "icon": "🏗️",
@@ -2366,7 +2366,7 @@
    {
     "icon": "🌐",
     "title": "Web words",
-    "text": "A web page is one document; a website is a group of linked pages; a web application does work for the user, like booking a bus ticket. The web follows the client–server model: your browser (the client) asks a web server for a page using HTTP, and the server sends it back."
+    "text": "A web page is one document; a website is a group of linked pages; a web application does work for the user, like booking a bus ticket. The web follows the client–server model: your browser (the client) asks a web server for a page using HTTP (HyperText Transfer Protocol), and the server sends it back."
    },
    {
     "icon": "🧱",
@@ -2381,12 +2381,12 @@
    {
     "icon": "⚙️",
     "title": "Static and dynamic pages",
-    "text": "A static page shows the same content to everyone, straight from a file. A dynamic page is built when you ask for it. Client-side scripts (JavaScript) run in your browser, for example checking a form. Server-side scripts (such as PHP) run on the server, often reading or saving data in a database."
+    "text": "A static page shows the same content to everyone, straight from a file. A dynamic page is built when you ask for it. Client-side scripts (JavaScript) run in your browser, for example checking a form. Server-side scripts (such as PHP, short for PHP: Hypertext Preprocessor) run on the server, often reading or saving data in a database."
    },
    {
     "icon": "🔄",
     "title": "A dynamic web app, end to end",
-    "text": "A learner fills in a registration form and taps Submit. The browser sends the form to the server. A PHP script checks the data and saves it to a MySQL database with SQL. The server then sends back a confirmation page. Design first with a wireframe (a simple sketch of the layout), and add alt text so everyone can use the site."
+    "text": "A learner fills in a registration form and taps Submit. The browser sends the form to the server. A PHP script checks the data and saves it to a MySQL database with SQL (Structured Query Language). The server then sends back a confirmation page. Design first with a wireframe (a simple sketch of the layout), and add alt text so everyone can use the site."
    }
   ],
   "listen": [

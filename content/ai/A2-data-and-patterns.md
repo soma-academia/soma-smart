@@ -18,7 +18,7 @@ explainer:
 
 ### 📊 Data is AI's food
 
-AI learns from data: photos, sounds, text, numbers. The more good, relevant examples it sees, the better it usually gets. A system that recognises maize leaf disease needs many photos of healthy and diseased leaves, taken in different light, on different phones.
+AI (Artificial Intelligence) learns from data: photos, sounds, text, numbers. The more good, relevant examples it sees, the better it usually gets. A system that recognises maize leaf disease needs many photos of healthy and diseased leaves, taken in different light, on different phones.
 
 ### 🏷️ Labels
 

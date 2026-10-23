@@ -17,7 +17,7 @@ video_channel: Code.org
 
 ### 🔘 Press power
 
-When you press power, a small program on the motherboard called the BIOS/UEFI wakes first. It does a roll call: CPU? RAM? Storage? All present? Then it hands over to the operating system (Windows, Linux or macOS).
+When you press power, a small program on the motherboard called the BIOS (Basic Input/Output System), or UEFI on newer computers, wakes first. It does a roll call: is the CPU (Central Processing Unit, the brain) there? The RAM (Random Access Memory, the short-term memory)? The storage? All present? Then it hands over to the operating system, or OS (Windows, Linux or macOS).
 
 ### 🟩 The motherboard
 
@@ -29,7 +29,7 @@ The operating system doesn't automatically know how to talk to each part. A driv
 
 ### 🚀 Opening a program
 
-When you open an app, its files move from storage (the disk) into RAM. The CPU then runs the instructions and the GPU draws what you see. The whole team starts working together.
+When you open an app, its files move from storage (the disk) into RAM. The CPU then runs the instructions and the GPU (Graphics Processing Unit) draws what you see. The whole team starts working together.
 
 ## Listen
 

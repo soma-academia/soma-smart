@@ -22,7 +22,7 @@ A program is a set of instructions for a computer. Source code is the program as
 
 ### 🪜 Levels of programming languages
 
-Machine code is pure binary that the CPU runs directly. Assembly language uses short words (mnemonics) like ADD and MOV, one per machine instruction. High-level languages such as Python, Java, C++ and Scratch read more like English and work on many computers. These lessons use Python.
+Machine code is pure binary that the CPU (Central Processing Unit) runs directly. Assembly language uses short words (mnemonics) like ADD and MOV, one per machine instruction. High-level languages such as Python, Java, C++ and Scratch read more like English and work on many computers. These lessons use Python.
 
 ### ⚙️ Compilers and interpreters
 

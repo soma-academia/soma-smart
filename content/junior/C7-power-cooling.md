@@ -21,11 +21,11 @@ The power supply (PSU) takes mains electricity and converts it to the steady low
 
 ### 🔌 Watts and demand
 
-Power is measured in watts. A powerful GPU can draw a lot; the PSU must supply enough for all parts, with some to spare. Phones and laptops use far less than big desktops.
+Power is measured in watts. A powerful GPU (Graphics Processing Unit) can draw a lot; the PSU must supply enough for all parts, with some to spare. Phones and laptops use far less than big desktops.
 
 ### 🔥 Work makes heat
 
-When the CPU and GPU work hard they get hot. If they get too hot they slow themselves down (thermal throttling) to stay safe — so good cooling keeps performance up.
+When the CPU (Central Processing Unit) and GPU work hard they get hot. If they get too hot they slow themselves down (thermal throttling) to stay safe — so good cooling keeps performance up.
 
 ### 🧊 Thermal paste & coolers
 

@@ -20,7 +20,7 @@
    {
     "icon": "↔️",
     "title": "Transmission modes, serial and parallel",
-    "text": "Simplex: data flows in one direction only, for example radio and television broadcasts such as KBC. Half duplex: data flows in both directions but only one way at a time, for example a walkie-talkie or police radio where users take turns. Full duplex: data flows in both directions at the same time, for example a telephone conversation. Serial transmission sends bits one after another along a single line; it is cheaper and reliable over long distances, so it is used in USB, network cables and telephone lines. Parallel transmission sends several bits at the same time along separate lines; it is faster but only suitable for short distances because bits can arrive out of step (skew), so it was used for old printer cables and inside the computer's buses."
+    "text": "Simplex: data flows in one direction only, for example radio and television broadcasts such as KBC (Kenya Broadcasting Corporation). Half duplex: data flows in both directions but only one way at a time, for example a walkie-talkie or police radio where users take turns. Full duplex: data flows in both directions at the same time, for example a telephone conversation. Serial transmission sends bits one after another along a single line; it is cheaper and reliable over long distances, so it is used in USB (Universal Serial Bus), network cables and telephone lines. Parallel transmission sends several bits at the same time along separate lines; it is faster but only suitable for short distances because bits can arrive out of step (skew), so it was used for old printer cables and inside the computer's buses."
    },
    {
     "icon": "📝",
@@ -240,7 +240,7 @@
    {
     "icon": "🔌",
     "title": "Twisted pair and coaxial cable",
-    "text": "Twisted pair cable is made of pairs of insulated copper wires twisted around each other; the twisting reduces crosstalk (interference where a signal in one wire leaks into a neighbouring wire). Unshielded twisted pair (UTP) has no extra shielding and is the cheap, common LAN cable graded in categories such as Cat 5 (and Cat 5e) and Cat 6, the higher categories supporting faster speeds. Shielded twisted pair (STP) adds a foil or braided shield to protect against electromagnetic interference, but costs more. Twisted pair is cheap and easy to install, but suffers attenuation over long distances and has limited bandwidth. Coaxial cable has a central copper conductor, surrounded by an insulator (dielectric), a braided metal shield, and an outer plastic jacket. Thin coaxial (thinnet) is flexible and used in LANs; thick coaxial (thicknet) is stiffer and carries signals further. Coaxial is more resistant to interference and has higher bandwidth than twisted pair, but is bulkier and more expensive; it is still used for TV aerials and satellite dishes."
+    "text": "Twisted pair cable is made of pairs of insulated copper wires twisted around each other; the twisting reduces crosstalk (interference where a signal in one wire leaks into a neighbouring wire). Unshielded twisted pair (UTP) has no extra shielding and is the cheap, common LAN (Local Area Network) cable graded in categories such as Cat 5 (and Cat 5e) and Cat 6, the higher categories supporting faster speeds. Shielded twisted pair (STP) adds a foil or braided shield to protect against electromagnetic interference, but costs more. Twisted pair is cheap and easy to install, but suffers attenuation over long distances and has limited bandwidth. Coaxial cable has a central copper conductor, surrounded by an insulator (dielectric), a braided metal shield, and an outer plastic jacket. Thin coaxial (thinnet) is flexible and used in LANs; thick coaxial (thicknet) is stiffer and carries signals further. Coaxial is more resistant to interference and has higher bandwidth than twisted pair, but is bulkier and more expensive; it is still used for TV aerials and satellite dishes."
    },
    {
     "icon": "💡",
@@ -255,7 +255,7 @@
    {
     "icon": "📻",
     "title": "Radio, infrared, Bluetooth and cellular",
-    "text": "Radio waves travel in all directions and do not need line of sight. They are grouped by frequency: high frequency (HF) carries far by bouncing off the ionosphere, very high frequency (VHF) is used for FM radio and two-way radios, and ultra high frequency (UHF) is used for television and mobile phones. Infrared uses invisible light over a very short distance with line of sight, as in a TV remote control. Bluetooth uses low-power radio waves to link devices within about 10 metres, such as a phone and a wireless headset. Cellular (mobile) networks, such as Safaricom's, divide an area into cells, each served by a base station (mast); a call or data session is handed from one cell to the next as the user moves. Wireless media allow mobility and reach places where cables are hard to lay, but they are less secure, can suffer interference from weather and other signals, and are often slower than fibre. When choosing a medium, consider cost, data transfer speed (bandwidth), the distance to be covered, ease of installation, resistance to interference (attenuation and noise) and security."
+    "text": "Radio waves travel in all directions and do not need line of sight. They are grouped by frequency: high frequency (HF) carries far by bouncing off the ionosphere, very high frequency (VHF) is used for FM (Frequency Modulation) radio and two-way radios, and ultra high frequency (UHF) is used for television and mobile phones. Infrared uses invisible light over a very short distance with line of sight, as in a TV remote control. Bluetooth uses low-power radio waves to link devices within about 10 metres, such as a phone and a wireless headset. Cellular (mobile) networks, such as Safaricom's, divide an area into cells, each served by a base station (mast); a call or data session is handed from one cell to the next as the user moves. Wireless media allow mobility and reach places where cables are hard to lay, but they are less secure, can suffer interference from weather and other signals, and are often slower than fibre. When choosing a medium, consider cost, data transfer speed (bandwidth), the distance to be covered, ease of installation, resistance to interference (attenuation and noise) and security."
    },
    {
     "icon": "📝",
@@ -478,7 +478,7 @@
    {
     "icon": "🧰",
     "title": "Network devices",
-    "text": "A network interface card (NIC) connects a computer to the network medium and gives it a unique physical (MAC) address. A modem converts digital data to analogue and back so computers can communicate over telephone lines. A hub connects computers in a star network and sends (broadcasts) every packet to all ports. A switch also connects computers, but it forwards each packet only to the port of the destination computer, which reduces traffic. A repeater receives a weak signal and regenerates (boosts) it so it can travel further, overcoming attenuation. A bridge joins two network segments (usually using the same protocol) and filters traffic between them. A router connects different networks and chooses the best path for each packet, such as linking a school LAN to the internet. A gateway connects networks that use different protocols by translating between them. A wireless access point (WAP) lets wireless devices join a wired network."
+    "text": "A network interface card (NIC) connects a computer to the network medium and gives it a unique physical (MAC) address. A modem converts digital data to analogue and back so computers can communicate over telephone lines. A hub connects computers in a star network and sends (broadcasts) every packet to all ports. A switch also connects computers, but it forwards each packet only to the port of the destination computer, which reduces traffic. A repeater receives a weak signal and regenerates (boosts) it so it can travel further, overcoming attenuation. A bridge joins two network segments (usually using the same protocol) and filters traffic between them. A router connects different networks and chooses the best path for each packet, such as linking a school LAN (Local Area Network) to the internet. A gateway connects networks that use different protocols by translating between them. A wireless access point (WAP) lets wireless devices join a wired network."
    },
    {
     "icon": "💽",
@@ -708,7 +708,7 @@
    {
     "icon": "🏦",
     "title": "Financial systems",
-    "text": "Businesses use accounting packages to record sales, purchases, invoices and ledgers, and payroll systems to calculate each worker's gross pay, deductions (such as PAYE and NSSF) and net pay, then print payslips. Banks use ICT everywhere: automated teller machines (ATMs) let customers withdraw cash and check balances at any time using a card and PIN; cheque clearing uses magnetic ink character recognition (MICR) to read the cheque number, bank code and account number printed in magnetic ink quickly and accurately; and internet and mobile banking let customers transfer money and pay bills without visiting a branch. M-Pesa is a form of electronic funds transfer (EFT): money moves from one account to another electronically, with no cash or cheque changing hands."
+    "text": "Businesses use accounting packages to record sales, purchases, invoices and ledgers, and payroll systems to calculate each worker's gross pay, deductions such as PAYE (Pay As You Earn) and NSSF (National Social Security Fund), and net pay, then print payslips. Banks use ICT (Information and Communication Technology) everywhere: automated teller machines (ATMs) let customers withdraw cash and check balances at any time using a card and PIN (Personal Identification Number); cheque clearing uses magnetic ink character recognition (MICR) to read the cheque number, bank code and account number printed in magnetic ink quickly and accurately; and internet and mobile banking let customers transfer money and pay bills without visiting a branch. M-Pesa is a form of electronic funds transfer (EFT): money moves from one account to another electronically, with no cash or cheque changing hands."
    },
    {
     "icon": "🛒",
@@ -718,7 +718,7 @@
    {
     "icon": "✈️",
     "title": "Reservation systems",
-    "text": "Reservation systems let customers book seats or rooms in advance from a central computer, for airlines (such as Kenya Airways), hotels, long-distance buses and the SGR train. They are real-time, online systems: an agent or a customer on the internet checks availability, books, and pays, and the central database is updated immediately. To avoid double booking, the system locks a seat or room while one transaction is being processed, so no other terminal can book it at the same moment, and once sold it is shown as unavailable to everyone."
+    "text": "Reservation systems let customers book seats or rooms in advance from a central computer, for airlines (such as Kenya Airways), hotels, long-distance buses and the SGR (Standard Gauge Railway) train. They are real-time, online systems: an agent or a customer on the internet checks availability, books, and pays, and the central database is updated immediately. To avoid double booking, the system locks a seat or room while one transaction is being processed, so no other terminal can book it at the same moment, and once sold it is shown as unavailable to everyone."
    },
    {
     "icon": "🎓",
@@ -957,7 +957,7 @@
    {
     "icon": "🔬",
     "title": "Science, research and libraries",
-    "text": "Weather forecasting uses powerful computers to process huge amounts of data from weather stations, satellites and radar, run models and predict the weather. In medical research computers analyse test results, model diseases and help design drugs; in hospitals expert systems help diagnose illness. The military uses ICT for simulating battles, guiding missiles and keeping secure communication. Library systems record the lending of books (who borrowed what and when it is due), keep an inventory of stock, and hold a computerised catalogue so users can search by title, author or subject."
+    "text": "Weather forecasting uses powerful computers to process huge amounts of data from weather stations, satellites and radar, run models and predict the weather. In medical research computers analyse test results, model diseases and help design drugs; in hospitals expert systems help diagnose illness. The military uses ICT (Information and Communication Technology) for simulating battles, guiding missiles and keeping secure communication. Library systems record the lending of books (who borrowed what and when it is due), keep an inventory of stock, and hold a computerised catalogue so users can search by title, author or subject."
    },
    {
     "icon": "🚆",
@@ -967,7 +967,7 @@
    {
     "icon": "🛡️",
     "title": "Expert systems, marketing, VR and law enforcement",
-    "text": "An expert system copies the knowledge of a human expert. It has three parts: a knowledge base (facts and rules from experts), an inference engine (which applies the rules to the user's answers to reach a conclusion) and a user interface (through which the user asks and answers questions). In marketing, ICT supports e-commerce (buying and selling online), electronic presentations to clients, and advertising on websites and social media. Virtual reality (VR) creates a 3D artificial world that the user enters with a head-mounted display (HMD) and data gloves that sense hand movements. Law enforcement uses biometrics such as fingerprint matching to identify suspects, CCTV cameras to monitor public places, and computerised police records to store and search criminal records quickly."
+    "text": "An expert system copies the knowledge of a human expert. It has three parts: a knowledge base (facts and rules from experts), an inference engine (which applies the rules to the user's answers to reach a conclusion) and a user interface (through which the user asks and answers questions). In marketing, ICT supports e-commerce (buying and selling online), electronic presentations to clients, and advertising on websites and social media. Virtual reality (VR) creates a 3D artificial world that the user enters with a head-mounted display (HMD) and data gloves that sense hand movements. Law enforcement uses biometrics such as fingerprint matching to identify suspects, CCTV (Closed-Circuit Television) cameras to monitor public places, and computerised police records to store and search criminal records quickly."
    },
    {
     "icon": "📝",
@@ -1196,7 +1196,7 @@
    {
     "icon": "💼",
     "title": "Effects on employment",
-    "text": "ICT affects employment in three ways. Job creation: new jobs appear, such as programmer, network administrator, web designer and computer technician. Job replacement: some jobs disappear and are taken over by people with ICT skills or by computerised machines, so workers who do not retrain may lose their jobs (for example, a manual filing clerk). Job displacement: a worker is moved to a different job or department, usually after retraining, instead of being laid off. Automated production, where computer-controlled machines and robots do repetitive work in factories, raises output and quality and lowers costs, but reduces the need for unskilled labour."
+    "text": "ICT (Information and Communication Technology) affects employment in three ways. Job creation: new jobs appear, such as programmer, network administrator, web designer and computer technician. Job replacement: some jobs disappear and are taken over by people with ICT skills or by computerised machines, so workers who do not retrain may lose their jobs (for example, a manual filing clerk). Job displacement: a worker is moved to a different job or department, usually after retraining, instead of being laid off. Automated production, where computer-controlled machines and robots do repetitive work in factories, raises output and quality and lowers costs, but reduces the need for unskilled labour."
    },
    {
     "icon": "🩺",
@@ -1440,12 +1440,12 @@
    {
     "icon": "🛠️",
     "title": "Support, management and business",
-    "text": "A computer technician assembles, installs, repairs, upgrades and troubleshoots hardware and software. An ICT trainer or teacher teaches ICT skills, prepares learning materials and assesses learners. An information systems manager plans and controls the ICT department and makes sure the organisation's information needs are met. A data processing manager supervises the data processing section and its staff so that data is processed accurately and on time. A computer sales representative sells hardware and software and advises customers on what to buy. An ICT entrepreneur runs an ICT business, such as a cyber café or a software firm, while an ICT consultant gives expert advice to organisations for a fee."
+    "text": "A computer technician assembles, installs, repairs, upgrades and troubleshoots hardware and software. An ICT (Information and Communication Technology) trainer or teacher teaches ICT skills, prepares learning materials and assesses learners. An information systems manager plans and controls the ICT department and makes sure the organisation's information needs are met. A data processing manager supervises the data processing section and its staff so that data is processed accurately and on time. A computer sales representative sells hardware and software and advises customers on what to buy. An ICT entrepreneur runs an ICT business, such as a cyber café or a software firm, while an ICT consultant gives expert advice to organisations for a fee."
    },
    {
     "icon": "🎓",
     "title": "Further education and choosing a course",
-    "text": "After KCSE you can study ICT at public and private universities (degrees), national polytechnics and TVET colleges (certificates and diplomas), or take professional certifications such as ICDL, CCNA or vendor certificates from companies like Microsoft, Cisco and CompTIA. Government-sponsored places are allocated through KUCCPS. When choosing a course or institution, consider: accreditation (universities by the Commission for University Education, CUE, and TVET institutions by the TVET Authority, TVETA), entry requirements (your KCSE grade and subject cluster), cost of fees and upkeep, duration of the course, reputation of the institution, mode of study (full-time, part-time, evening or online), and your own interests and the job market."
+    "text": "After KCSE you can study ICT at public and private universities (degrees), national polytechnics and TVET (Technical and Vocational Education and Training) colleges (certificates and diplomas), or take professional certifications such as ICDL (International Certification of Digital Literacy), CCNA (Cisco Certified Network Associate) or vendor certificates from companies like Microsoft, Cisco and CompTIA. Government-sponsored places are allocated through KUCCPS (Kenya Universities and Colleges Central Placement Service). When choosing a course or institution, consider: accreditation (universities by the Commission for University Education, CUE, and TVET institutions by the TVET Authority, TVETA), entry requirements (your KCSE grade and subject cluster), cost of fees and upkeep, duration of the course, reputation of the institution, mode of study (full-time, part-time, evening or online), and your own interests and the job market."
    },
    {
     "icon": "📝",
@@ -1466,7 +1466,7 @@
    "title": "Plan your ICT path",
    "steps": [
     "Pick one ICT career you like and write down three of its duties.",
-    "Look up two institutions that offer a course leading to that career. Check whether each is accredited by CUE or TVETA, and note the entry requirements and course length.",
+    "Look up two institutions that offer a course leading to that career. Check whether each is accredited by CUE (Commission for University Education) or TVETA (TVET Authority), and note the entry requirements and course length.",
     "If you can, ask someone working in ICT what a normal working day looks like for them."
    ],
    "question": "Your chosen ICT career and three of its duties.",

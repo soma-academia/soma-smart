@@ -34,7 +34,7 @@ One hex digit is exactly 4 bits, and one octal digit is exactly 3 bits. So group
 
 ### 🔤 Character codes: ASCII, EBCDIC, BCD
 
-Text is stored as numbers using a coding scheme. ASCII gives each character a code (A = 65, a = 97, 0 = 48). EBCDIC is an older scheme used on IBM mainframes. BCD (binary-coded decimal) stores each decimal digit in its own 4 bits: 59 becomes 0101 1001. Unicode extends ASCII to cover every language, including emoji.
+Text is stored as numbers using a coding scheme. ASCII (American Standard Code for Information Interchange) gives each character a code (A = 65, a = 97, 0 = 48). EBCDIC (Extended Binary Coded Decimal Interchange Code) is an older scheme used on IBM mainframes. BCD (binary-coded decimal) stores each decimal digit in its own 4 bits: 59 becomes 0101 1001. Unicode extends ASCII to cover every language, including emoji.
 
 ## Listen
 

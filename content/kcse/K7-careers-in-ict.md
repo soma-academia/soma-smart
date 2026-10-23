@@ -26,11 +26,11 @@ A database administrator (DBA) designs and maintains the organisation's database
 
 ### 🛠️ Support, management and business
 
-A computer technician assembles, installs, repairs, upgrades and troubleshoots hardware and software. An ICT trainer or teacher teaches ICT skills, prepares learning materials and assesses learners. An information systems manager plans and controls the ICT department and makes sure the organisation's information needs are met. A data processing manager supervises the data processing section and its staff so that data is processed accurately and on time. A computer sales representative sells hardware and software and advises customers on what to buy. An ICT entrepreneur runs an ICT business, such as a cyber café or a software firm, while an ICT consultant gives expert advice to organisations for a fee.
+A computer technician assembles, installs, repairs, upgrades and troubleshoots hardware and software. An ICT (Information and Communication Technology) trainer or teacher teaches ICT skills, prepares learning materials and assesses learners. An information systems manager plans and controls the ICT department and makes sure the organisation's information needs are met. A data processing manager supervises the data processing section and its staff so that data is processed accurately and on time. A computer sales representative sells hardware and software and advises customers on what to buy. An ICT entrepreneur runs an ICT business, such as a cyber café or a software firm, while an ICT consultant gives expert advice to organisations for a fee.
 
 ### 🎓 Further education and choosing a course
 
-After KCSE you can study ICT at public and private universities (degrees), national polytechnics and TVET colleges (certificates and diplomas), or take professional certifications such as ICDL, CCNA or vendor certificates from companies like Microsoft, Cisco and CompTIA. Government-sponsored places are allocated through KUCCPS. When choosing a course or institution, consider: accreditation (universities by the Commission for University Education, CUE, and TVET institutions by the TVET Authority, TVETA), entry requirements (your KCSE grade and subject cluster), cost of fees and upkeep, duration of the course, reputation of the institution, mode of study (full-time, part-time, evening or online), and your own interests and the job market.
+After KCSE you can study ICT at public and private universities (degrees), national polytechnics and TVET (Technical and Vocational Education and Training) colleges (certificates and diplomas), or take professional certifications such as ICDL (International Certification of Digital Literacy), CCNA (Cisco Certified Network Associate) or vendor certificates from companies like Microsoft, Cisco and CompTIA. Government-sponsored places are allocated through KUCCPS (Kenya Universities and Colleges Central Placement Service). When choosing a course or institution, consider: accreditation (universities by the Commission for University Education, CUE, and TVET institutions by the TVET Authority, TVETA), entry requirements (your KCSE grade and subject cluster), cost of fees and upkeep, duration of the course, reputation of the institution, mode of study (full-time, part-time, evening or online), and your own interests and the job market.
 
 ### 📝 In the exam
 
@@ -49,7 +49,7 @@ KCSE typically asks: "State three duties of a database administrator", "Differen
 ## Mission: Plan your ICT path
 
 - Pick one ICT career you like and write down three of its duties.
-- Look up two institutions that offer a course leading to that career. Check whether each is accredited by CUE or TVETA, and note the entry requirements and course length.
+- Look up two institutions that offer a course leading to that career. Check whether each is accredited by CUE (Commission for University Education) or TVETA (TVET Authority), and note the entry requirements and course length.
 - If you can, ask someone working in ICT what a normal working day looks like for them.
 
 Question: Your chosen ICT career and three of its duties.

@@ -30,7 +30,7 @@ A for loop repeats once for each item. range(5) gives 0, 1, 2, 3, 4 (five number
 
 ### ⏳ while loops
 
-A while loop repeats as long as a condition is True, which suits cases where you don't know how many repeats are needed, like asking for a PIN until it is correct. Make sure something inside the loop changes the condition, or it will loop forever.
+A while loop repeats as long as a condition is True, which suits cases where you don't know how many repeats are needed, like asking for a PIN (Personal Identification Number) until it is correct. Make sure something inside the loop changes the condition, or it will loop forever.
 
 ### ⛔ break and continue
 

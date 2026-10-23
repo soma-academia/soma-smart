@@ -17,11 +17,11 @@ video_channel:
 
 ### 🔺 Built from triangles
 
-Everything in a 3D game or 3D map is built from many small triangles. The GPU's job is to place all those triangles and colour them, extremely fast.
+Everything in a 3D game or 3D map is built from many small triangles. The job of the GPU (Graphics Processing Unit) is to place all those triangles and colour them, extremely fast.
 
 ### 🎨 Painting pixels
 
-Your screen is made of tiny dots called pixels. A Full HD screen has about 2 million; a 4K screen has about four times as many — that's why 4K is heavier work.
+Your screen is made of tiny dots called pixels. A Full HD (high definition) screen has about 2 million; a 4K screen has about four times as many — that's why 4K is heavier work.
 
 ### 🐜 Many small workers
 
@@ -33,7 +33,7 @@ Small programs called shaders add light, shadow and shine. Some GPUs do ray trac
 
 ### 🔍 Upscaling tricks
 
-Techniques like DLSS/FSR render a smaller image then cleverly enlarge it, giving more frames per second for less work. Beyond games, GPUs also speed up video editing and AI.
+Techniques like DLSS (Deep Learning Super Sampling) and FSR (FidelityFX Super Resolution) render a smaller image then cleverly enlarge it, giving more frames per second for less work. Beyond games, GPUs also speed up video editing and AI (Artificial Intelligence).
 
 ## Listen
 

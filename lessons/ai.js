@@ -226,7 +226,7 @@
    {
     "icon": "📊",
     "title": "Data is AI's food",
-    "text": "AI learns from data: photos, sounds, text, numbers. The more good, relevant examples it sees, the better it usually gets. A system that recognises maize leaf disease needs many photos of healthy and diseased leaves, taken in different light, on different phones."
+    "text": "AI (Artificial Intelligence) learns from data: photos, sounds, text, numbers. The more good, relevant examples it sees, the better it usually gets. A system that recognises maize leaf disease needs many photos of healthy and diseased leaves, taken in different light, on different phones."
    },
    {
     "icon": "🏷️",
@@ -447,7 +447,7 @@
    {
     "icon": "🧠",
     "title": "What a model is",
-    "text": "When AI learns, it builds a model: a set of rules or numbers that turns inputs (features) into a prediction. A model for crop prices might take the season and the rainfall, and predict the price of maize next month. The model is the part that is \"trained\"."
+    "text": "When AI (Artificial Intelligence) learns, it builds a model: a set of rules or numbers that turns inputs (features) into a prediction. A model for crop prices might take the season and the rainfall, and predict the price of maize next month. The model is the part that is \"trained\"."
    },
    {
     "icon": "🌳",
@@ -661,7 +661,7 @@
    {
     "icon": "✍️",
     "title": "Generative AI",
-    "text": "Generative AI creates new content: text, images, music, or computer code. AI chatbots write answers, and image generators turn a short description into a picture. They work by learning patterns from enormous amounts of existing text and images."
+    "text": "Generative AI (Artificial Intelligence) creates new content: text, images, music, or computer code. AI chatbots write answers, and image generators turn a short description into a picture. They work by learning patterns from enormous amounts of existing text and images."
    },
    {
     "icon": "🔮",
@@ -894,7 +894,7 @@
    {
     "icon": "⚖️",
     "title": "What AI bias is",
-    "text": "AI bias is when a system treats some groups of people unfairly, for example making more mistakes for women, for darker skin, for older people, or for one region's accent. AI doesn't choose to be unfair: it copies patterns, including unfair ones, from the data it learned from."
+    "text": "AI (Artificial Intelligence) bias is when a system treats some groups of people unfairly, for example making more mistakes for women, for darker skin, for older people, or for one region's accent. AI doesn't choose to be unfair: it copies patterns, including unfair ones, from the data it learned from."
    },
    {
     "icon": "🔬",
@@ -904,7 +904,7 @@
    {
     "icon": "📄",
     "title": "Another example: hiring",
-    "text": "A large company built an AI to sort job applications, trained on CVs from people it had hired in the past, who were mostly men. The tool learned to rank women's CVs lower, and the company stopped using it. The AI faithfully copied an unfair history."
+    "text": "A large company built an AI to sort job applications, trained on CVs (curriculum vitae: summaries of a person's education and work) from people it had hired in the past, who were mostly men. The tool learned to rank women's CVs lower, and the company stopped using it. The AI faithfully copied an unfair history."
    },
    {
     "icon": "🗣️",
@@ -1127,7 +1127,7 @@
    {
     "icon": "🎭",
     "title": "Deepfakes",
-    "text": "AI can now make fake videos, photos and voices that look and sound real; these are called deepfakes. They can show a leader saying something they never said, or put someone's face in a photo they were never in. Be extra careful with shocking clips, especially around elections."
+    "text": "AI (Artificial Intelligence) can now make fake videos, photos and voices that look and sound real; these are called deepfakes. They can show a leader saying something they never said, or put someone's face in a photo they were never in. Be extra careful with shocking clips, especially around elections."
    },
    {
     "icon": "📞",
@@ -1142,7 +1142,7 @@
    {
     "icon": "🔒",
     "title": "Protect your privacy",
-    "text": "Anything you type or upload into an AI app may be stored by the company. Never share passwords, PINs, your ID number, your address, or photos of other people without permission. Kenya's Data Protection Act (2019) gives you rights over your personal data, but the safest data is the data you never share."
+    "text": "Anything you type or upload into an AI app may be stored by the company. Never share passwords, PINs (Personal Identification Numbers), your ID number, your address, or photos of other people without permission. Kenya's Data Protection Act (2019) gives you rights over your personal data, but the safest data is the data you never share."
    },
    {
     "icon": "🧭",

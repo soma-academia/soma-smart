@@ -18,7 +18,7 @@ explainer:
 
 ### ⚖️ What AI bias is
 
-AI bias is when a system treats some groups of people unfairly, for example making more mistakes for women, for darker skin, for older people, or for one region's accent. AI doesn't choose to be unfair: it copies patterns, including unfair ones, from the data it learned from.
+AI (Artificial Intelligence) bias is when a system treats some groups of people unfairly, for example making more mistakes for women, for darker skin, for older people, or for one region's accent. AI doesn't choose to be unfair: it copies patterns, including unfair ones, from the data it learned from.
 
 ### 🔬 A real example: faces
 
@@ -26,7 +26,7 @@ In 2018, researchers Joy Buolamwini and Timnit Gebru tested commercial face-anal
 
 ### 📄 Another example: hiring
 
-A large company built an AI to sort job applications, trained on CVs from people it had hired in the past, who were mostly men. The tool learned to rank women's CVs lower, and the company stopped using it. The AI faithfully copied an unfair history.
+A large company built an AI to sort job applications, trained on CVs (curriculum vitae: summaries of a person's education and work) from people it had hired in the past, who were mostly men. The tool learned to rank women's CVs lower, and the company stopped using it. The AI faithfully copied an unfair history.
 
 ### 🗣️ Bias close to home
 

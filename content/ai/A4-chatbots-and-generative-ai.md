@@ -18,7 +18,7 @@ explainer: next-word
 
 ### ✍️ Generative AI
 
-Generative AI creates new content: text, images, music, or computer code. AI chatbots write answers, and image generators turn a short description into a picture. They work by learning patterns from enormous amounts of existing text and images.
+Generative AI (Artificial Intelligence) creates new content: text, images, music, or computer code. AI chatbots write answers, and image generators turn a short description into a picture. They work by learning patterns from enormous amounts of existing text and images.
 
 ### 🔮 Predicting the next word
 

@@ -30,7 +30,7 @@ Data communication is the transmission of data from one location to another. A d
 
 ### ↔️ Transmission modes, serial and parallel
 
-Simplex: data flows in one direction only, for example radio and television broadcasts such as KBC. Half duplex: data flows in both directions but only one way at a time, for example a walkie-talkie or police radio where users take turns. Full duplex: data flows in both directions at the same time, for example a telephone conversation. Serial transmission sends bits one after another along a single line; it is cheaper and reliable over long distances, so it is used in USB, network cables and telephone lines. Parallel transmission sends several bits at the same time along separate lines; it is faster but only suitable for short distances because bits can arrive out of step (skew), so it was used for old printer cables and inside the computer's buses.
+Simplex: data flows in one direction only, for example radio and television broadcasts such as KBC (Kenya Broadcasting Corporation). Half duplex: data flows in both directions but only one way at a time, for example a walkie-talkie or police radio where users take turns. Full duplex: data flows in both directions at the same time, for example a telephone conversation. Serial transmission sends bits one after another along a single line; it is cheaper and reliable over long distances, so it is used in USB (Universal Serial Bus), network cables and telephone lines. Parallel transmission sends several bits at the same time along separate lines; it is faster but only suitable for short distances because bits can arrive out of step (skew), so it was used for old printer cables and inside the computer's buses.
 
 ### 📝 In the exam
 

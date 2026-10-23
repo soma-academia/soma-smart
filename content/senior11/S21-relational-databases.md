@@ -22,7 +22,7 @@ Data is raw facts (85, "Amani"); information is data with meaning ("Amani scored
 
 ### 🌳 Database models
 
-Hierarchical databases store data as a tree (one parent, many children). Network databases allow many links between records. Relational databases, the most common today, store data in tables that are linked by shared values. Object-oriented databases store data as objects, like OOP programs.
+Hierarchical databases store data as a tree (one parent, many children). Network databases allow many links between records. Relational databases, the most common today, store data in tables that are linked by shared values. Object-oriented databases store data as objects, like OOP (object-oriented programming) programs.
 
 ### 📊 Tables, records and fields
 

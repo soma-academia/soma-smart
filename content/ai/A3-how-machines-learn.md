@@ -18,7 +18,7 @@ explainer: decision-tree
 
 ### 🧠 What a model is
 
-When AI learns, it builds a model: a set of rules or numbers that turns inputs (features) into a prediction. A model for crop prices might take the season and the rainfall, and predict the price of maize next month. The model is the part that is "trained".
+When AI (Artificial Intelligence) learns, it builds a model: a set of rules or numbers that turns inputs (features) into a prediction. A model for crop prices might take the season and the rainfall, and predict the price of maize next month. The model is the part that is "trained".
 
 ### 🌳 Decision trees
 

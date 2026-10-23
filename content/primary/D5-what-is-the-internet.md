@@ -21,7 +21,7 @@ The internet is millions of computers all over the world joined together so they
 
 ### 📡 How your phone connects
 
-Your phone or computer joins the internet through Wi-Fi (at home or school) or mobile data from a network like Safaricom or Airtel. That connects you to the ISP — the company that gives internet.
+Your phone or computer joins the internet through Wi-Fi (at home or school) or mobile data from a network like Safaricom or Airtel. That connects you to the ISP (Internet Service Provider) — the company that gives internet.
 
 ### ✉️ Messages travel in pieces
 

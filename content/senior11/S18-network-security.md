@@ -22,11 +22,11 @@ Network security protects three things. Confidentiality: only authorised people 
 
 ### ⚠️ Common threats
 
-Malware: viruses, worms, trojans and ransomware, which locks files for payment. Phishing tricks people into giving away passwords or PINs. Denial of service (DoS, or DDoS from many machines) floods a service until it stops. Eavesdropping, or man-in-the-middle, intercepts data, often on open Wi-Fi. Weak passwords and careless insiders cause many breaches too.
+Malware: viruses, worms, trojans and ransomware, which locks files for payment. Phishing tricks people into giving away passwords or PINs (Personal Identification Numbers). Denial of service (DoS, or DDoS from many machines) floods a service until it stops. Eavesdropping, or man-in-the-middle, intercepts data, often on open Wi-Fi. Weak passwords and careless insiders cause many breaches too.
 
 ### 🛡️ Technical controls
 
-A firewall filters traffic using rules, blocking what isn't allowed. An intrusion detection system (IDS) watches for attack patterns and raises alerts. Encryption scrambles data so only the right key can read it: HTTPS for websites, WPA2 or WPA3 for Wi-Fi. Antivirus and anti-malware find and remove malicious software.
+A firewall filters traffic using rules, blocking what isn't allowed. An intrusion detection system (IDS) watches for attack patterns and raises alerts. Encryption scrambles data so only the right key can read it: HTTPS (HyperText Transfer Protocol Secure) for websites, WPA2 (Wi-Fi Protected Access 2) or WPA3 (Wi-Fi Protected Access 3) for Wi-Fi. Antivirus and anti-malware find and remove malicious software.
 
 ### 🔑 Access control
 

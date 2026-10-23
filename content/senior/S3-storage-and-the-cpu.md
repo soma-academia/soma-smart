@@ -18,11 +18,11 @@ explainer: memory
 
 ### 🧠 Primary storage
 
-Primary storage is memory the CPU uses directly. RAM holds the programs and data in use right now and is volatile: it is wiped when power goes off. ROM is non-volatile and holds start-up instructions (firmware). Cache is a small, very fast memory close to the CPU for data it needs again and again.
+Primary storage is memory the CPU (Central Processing Unit) uses directly. RAM (Random Access Memory) holds the programs and data in use right now and is volatile: it is wiped when power goes off. ROM (Read-Only Memory) is non-volatile and holds start-up instructions (firmware). Cache is a small, very fast memory close to the CPU for data it needs again and again.
 
 ### 💾 Secondary storage
 
-Secondary storage keeps files when the power is off: hard disk drives (HDD) with spinning platters, solid-state drives (SSD) with no moving parts, USB flash drives and memory cards, optical discs (CD, DVD), and cloud storage on someone else's servers over the internet.
+Secondary storage keeps files when the power is off: hard disk drives (HDD) with spinning platters, solid-state drives (SSD) with no moving parts, USB (Universal Serial Bus) flash drives and memory cards, optical discs such as CDs (Compact Discs) and DVDs (Digital Versatile Discs), and cloud storage on someone else's servers over the internet.
 
 ### 📏 Measuring storage
 

@@ -21,11 +21,11 @@ Use a long password and a different one for each important account. A passphrase
 
 ### 🔑 Two-step verification
 
-Turn on 2FA (two-step verification) where you can: a password PLUS a code (SMS or an app). Even if someone learns your password, they still can't get in. Like two locks on one door.
+Turn on 2FA (two-step verification) where you can: a password PLUS a code (SMS (Short Message Service, a text message) or an app). Even if someone learns your password, they still can't get in. Like two locks on one door.
 
 ### 🎣 Phishing and scams
 
-Phishing is a fake message pretending to be a bank, M-Pesa or a friend, trying to steal your login or money. Clues: urgency ('act NOW'), odd links, spelling mistakes, requests for a PIN or password. Confirm before you click.
+Phishing is a fake message pretending to be a bank, M-Pesa or a friend, trying to steal your login or money. Clues: urgency ('act NOW'), odd links, spelling mistakes, requests for a PIN (Personal Identification Number) or password. Confirm before you click.
 
 ### 👤 Your digital footprint
 

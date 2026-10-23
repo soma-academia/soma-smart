@@ -18,7 +18,7 @@ explainer:
 
 ### 💬 What SQL is
 
-SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL defines structure, DML changes data, and DQL asks questions.
+SQL (Structured Query Language) is the standard language for working with relational databases. Many DBMSs (Database Management Systems) use it, each with small differences: MySQL, PostgreSQL, SQLite, Oracle and Microsoft SQL Server. SQL statements are grouped by job: DDL (Data Definition Language) defines structure, DML (Data Manipulation Language) changes data, and DQL (Data Query Language) asks questions.
 
 ### 🏗️ DDL: defining structure
 

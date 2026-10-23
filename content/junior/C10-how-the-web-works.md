@@ -22,7 +22,7 @@ The internet is the network of connected computers. The World Wide Web (WWW) is 
 
 ### 🏷️ Domain names
 
-Computers find each other by IP address (numbers), but numbers are hard to remember. A domain name like safaricom.co.ke is a friendly label for a website. Names end in parts like .com, .org, or Kenya's .ke / .co.ke.
+Computers find each other by IP (Internet Protocol) address (numbers), but numbers are hard to remember. A domain name like safaricom.co.ke is a friendly label for a website. Names end in parts like .com, .org, or Kenya's .ke / .co.ke.
 
 ### 📖 DNS: the internet's address book
 
@@ -30,11 +30,11 @@ DNS (Domain Name System) turns a domain name into its IP address — like a phon
 
 ### 📨 Loading a page: request & response
 
-Your browser sends an HTTP request to the site's server ('please send me this page'). The server replies with an HTTP response containing the page — text, images and code — which the browser puts together and shows you.
+Your browser sends an HTTP (HyperText Transfer Protocol) request to the site's server ('please send me this page'). The server replies with an HTTP response containing the page — text, images and code — which the browser puts together and shows you.
 
 ### 🔒 HTTP vs HTTPS
 
-HTTPS is HTTP with encryption (TLS): the data is scrambled so others on the network can't read or change it. The padlock means the connection is private and the site proved its identity with a certificate. Never enter a password or pay on plain HTTP.
+HTTPS (HyperText Transfer Protocol Secure) is HTTP with encryption (TLS): the data is scrambled so others on the network can't read or change it. The padlock means the connection is private and the site proved its identity with a certificate. Never enter a password or pay on plain HTTP.
 
 ### 🛡️ Trust and certificates
 

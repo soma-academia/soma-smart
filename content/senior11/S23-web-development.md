@@ -18,7 +18,7 @@ explainer:
 
 ### 🌐 Web words
 
-A web page is one document; a website is a group of linked pages; a web application does work for the user, like booking a bus ticket. The web follows the client–server model: your browser (the client) asks a web server for a page using HTTP, and the server sends it back.
+A web page is one document; a website is a group of linked pages; a web application does work for the user, like booking a bus ticket. The web follows the client–server model: your browser (the client) asks a web server for a page using HTTP (HyperText Transfer Protocol), and the server sends it back.
 
 ### 🧱 HTML: structure
 
@@ -30,11 +30,11 @@ CSS (Cascading Style Sheets) controls how a page looks: colours, fonts, spacing 
 
 ### ⚙️ Static and dynamic pages
 
-A static page shows the same content to everyone, straight from a file. A dynamic page is built when you ask for it. Client-side scripts (JavaScript) run in your browser, for example checking a form. Server-side scripts (such as PHP) run on the server, often reading or saving data in a database.
+A static page shows the same content to everyone, straight from a file. A dynamic page is built when you ask for it. Client-side scripts (JavaScript) run in your browser, for example checking a form. Server-side scripts (such as PHP, short for PHP: Hypertext Preprocessor) run on the server, often reading or saving data in a database.
 
 ### 🔄 A dynamic web app, end to end
 
-A learner fills in a registration form and taps Submit. The browser sends the form to the server. A PHP script checks the data and saves it to a MySQL database with SQL. The server then sends back a confirmation page. Design first with a wireframe (a simple sketch of the layout), and add alt text so everyone can use the site.
+A learner fills in a registration form and taps Submit. The browser sends the form to the server. A PHP script checks the data and saves it to a MySQL database with SQL (Structured Query Language). The server then sends back a confirmation page. Design first with a wireframe (a simple sketch of the layout), and add alt text so everyone can use the site.
 
 ## Listen
 
