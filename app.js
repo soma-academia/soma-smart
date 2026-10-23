@@ -401,9 +401,8 @@ const PAGES = {
     <p>We check lessons carefully, but they may contain mistakes or go out of date. Found one? Please tell us.
       Videos inside lessons are made by other organisations (such as Code.org) and are their responsibility.</p>
     <h2>Help improve the lessons</h2>
-    <p>Tech Tayari is open. Every lesson is a plain text file that anyone can read and suggest changes to on
-      <a href="https://github.com/soma-academia/tech-tayari" target="_blank" rel="noopener">GitHub</a> (in the <b>content</b> folder). Teachers' corrections and
-      better Kenyan examples are especially welcome.</p>
+    <p>Teachers' corrections and better Kenyan examples are especially welcome. Email them to ${mail}, or tap 👎 after a
+      lesson's quiz to tell us what was wrong.</p>
     <h2>Contact</h2>
     <p>Feedback, corrections and privacy questions: ${mail}. Please remember we cannot recover accounts or passwords.</p>` },
 
@@ -462,9 +461,8 @@ const PAGES = {
       Attribution-NonCommercial-ShareAlike 4.0</a>. You may share and adapt them, for example for your class or another
       language, if you credit Tech Tayari, don't use them commercially, and share your version under the same licence.</p>
     <h2>Code: MIT</h2>
-    <p>The app's code is © 2026 Tech Tayari under the <a href="https://github.com/soma-academia/tech-tayari/blob/main/LICENSE"
-      rel="noopener" target="_blank">MIT licence</a>. Source:
-      <a href="https://github.com/soma-academia/tech-tayari" rel="noopener" target="_blank">github.com/soma-academia/tech-tayari</a>.</p>
+    <p>The app's code is © 2026 Tech Tayari under the <a href="https://opensource.org/license/mit"
+      rel="noopener" target="_blank">MIT licence</a>.</p>
     <h2>Other parts</h2>
     <ul>
       <li><b>Icons</b> were drawn for Tech Tayari and are covered by the MIT licence with the code.</li>
