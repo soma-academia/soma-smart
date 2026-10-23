@@ -325,9 +325,8 @@ if (lr) lr.onclick = e => { e.preventDefault(); if (USER) showLearnerReport(); }
 document.querySelectorAll("a[data-page]").forEach(a => a.onclick = e => { e.preventDefault(); go({ name: "page", page: a.dataset.page }); });
 
 /* ---------- info pages: About & disclaimer, Privacy, Licences ---------- */
-// No contact address yet. Set SUPPORT_EMAIL when one exists.
-const SUPPORT_EMAIL = "";
-const mail = SUPPORT_EMAIL ? `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>` : "our new contact address (coming soon; we're setting it up)";
+const SUPPORT_EMAIL = "info@techtayari.co.ke";
+const mail = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
 const PAGES = {
   about: { title: "About Tech Tayari", html: `
     <p class="lead">Tech Tayari is a free, self-guided course that helps Kenyan learners in Grade 4–11 understand

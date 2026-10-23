@@ -11,5 +11,7 @@ In short, you may copy, share and adapt these lessons, for example for your clas
 - **don't use them commercially**, and
 - **share your adaptations under the same licence**.
 
+For other uses, email info@techtayari.co.ke.
+
 The app's code is separately licensed under the MIT licence (see `LICENSE` in the repository root).
 Embedded videos belong to their creators and are not covered by this licence.

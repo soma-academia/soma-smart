@@ -18,6 +18,10 @@ Every module runs through the same steps: **Read → Listen → Watch → Missio
 
 The lessons are Markdown files in [`content/`](content/). To fix something, open a file on GitHub, click ✏️ and propose the change. No programming is needed. The format is explained in [content/README.md](content/README.md).
 
+## Contact
+
+Feedback, corrections and privacy questions: [info@techtayari.co.ke](mailto:info@techtayari.co.ke).
+
 ## Licences
 
 The code is under the [MIT License](LICENSE). The lesson content is under [CC BY-NC-SA 4.0](content/LICENSE.md). The fonts are under the SIL Open Font License.
