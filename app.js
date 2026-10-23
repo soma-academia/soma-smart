@@ -280,10 +280,15 @@ function hud(){
   };
   const sync = syncLabels[syncState] || ["ok", "", ""];
 
+  // A first-time visitor has nothing to back up or report yet: offer only "Log in" (for learners on a new device)
+  if (isLocal && !MODS.some(m => ms(m.id).reached > 0 || ms(m.id).done)) {
+    $hud.innerHTML = `<button class="btn ghost small" id="hud-login">Log in</button>`;
+    document.getElementById("hud-login").onclick = () => go({ name: "auth", mode: "login" });
+    return;
+  }
+
   $hud.innerHTML = `
-    <span class="who">
-      ${esc(USER.display)}
-    </span>
+    ${!isLocal || USER.display !== "Learner" ? `<span class="who">${esc(USER.display)}</span>` : ""}
     ${tm.length ? `<span class="prog">${done}/${tm.length}<span class="prog-txt"> done in this track</span></span>` : ""}
     <span class="sync ${sync[0]}" title="${sync[2] || ""}" aria-label="${sync[2] || ""}">${sync[1]}<span class="sync-txt"> ${sync[2] || ""}</span></span>
     <button class="btn gold small" id="hud-backup" title="Download or restore a backup of your progress">Backup</button>
@@ -744,6 +749,7 @@ function renderHome(){
     const list = modsForTrack(t.id);
     const done = list.filter(m => ms(m.id).done).length;
     const pct = Math.round((done / list.length) * 100);
+    const begun = list.some(m => ms(m.id).reached > 0 || ms(m.id).done);   // no "0%" on tracks nobody has opened
     return `<button class="card t-${t.id}" data-t="${t.id}">
       <div class="card-head">
         <div class="card-ic">${ICON(TRACK_ICON[t.id] || "book", 26)}</div>
@@ -753,11 +759,11 @@ function renderHome(){
         </div>
       </div>
       <p class="card-b">${esc(t.blurb)}</p>
-      <div class="card-m">
+      ${begun ? `<div class="card-m">
         <span>${done}/${list.length} modules completed</span>
         <span>${pct}%</span>
       </div>
-      <div class="meter"><div class="meter-fill" style="width:${pct}%"></div></div>
+      <div class="meter"><div class="meter-fill" style="width:${pct}%"></div></div>` : ""}
     </button>`;
   }).join("");
 
@@ -784,7 +790,7 @@ function renderHome(){
         <li>${ICON("tag", 18)} Free, no ads</li>
         <li>${ICON("wifi", 18)} Works offline</li>
         <li>${ICON("user", 18)} No account needed</li>
-        <li>${ICON("book", 18)} Mapped to CBE strands</li>
+        <li>${ICON("book", 18)} Follows CBE</li>
       </ul>
     </section>
     <div class="home-head"><h2 class="home-h2">Choose your track</h2>${kcseBtn}</div>
@@ -822,12 +828,10 @@ function renderTrack(){
   const enrichList = list.filter(m => m.cbe === "nice");
 
   const renderModRow = (m) => {
-    const lvl = masteryOf(m.id), gated = !quizOpen(m), prev = prevMod(m);
+    const lvl = masteryOf(m.id);
     const cbeBadge = m.cbe === "strand"
       ? `<span class="tag-badge tag-cbe">${isKcse(t) ? "KCSE" : "CBE"}</span>`
       : `<span class="tag-badge tag-nice">Going further</span>`;
-    const strandHint = (m.cbe === "strand" && m.strandRef)
-      ? `<div class="strand-ref">${esc(m.strandRef)}</div>` : "";
     return `<button class="rowitem" data-id="${m.id}">
       <div class="ri-num">${m.code}</div>
       <div class="ri-main">
@@ -836,8 +840,6 @@ function renderTrack(){
           ${cbeBadge}
         </div>
         <div class="ri-s">${esc(m.part)}</div>
-        ${strandHint}
-        ${gated ? `<div class="quiz-gate-hint">Open to read and explore · quiz unlocks after ${esc(prev.code)}</div>` : ""}
       </div>
       <div class="ri-badge ${lvl}">${MASTERY_BADGE[lvl] || ""}</div>
     </button>`;
@@ -854,14 +856,11 @@ function renderTrack(){
 
   $app.innerHTML = `
     <button class="back" id="bk">← All Tracks</button>
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:12px;flex-wrap:wrap;gap:10px">
-      <div>
-        <h2 class="h2 track-h t-${t.id}" style="margin:0">${ICON(TRACK_ICON[t.id] || "book", 26)} ${esc(t.name)}</h2>
-        <div class="track-level">${esc(t.level)}</div>
-      </div>
-      <div style="font-weight:800;color:var(--green)">${doneCount}/${list.length} modules completed (${Math.round(doneCount/list.length*100)}%)</div>
+    <div style="margin-bottom:${doneCount ? 12 : 20}px">
+      <h2 class="h2 track-h t-${t.id}" style="margin:0">${ICON(TRACK_ICON[t.id] || "book", 26)} ${esc(t.name)}</h2>
+      <div class="track-level">${esc(t.level)}</div>
     </div>
-    <div class="meter" style="margin-bottom:20px"><div class="meter-fill" style="width:${(doneCount/list.length)*100}%"></div></div>
+    ${doneCount ? `<div class="meter" style="margin-bottom:20px" role="progressbar" aria-label="${doneCount} of ${list.length} modules done" aria-valuenow="${doneCount}" aria-valuemin="0" aria-valuemax="${list.length}"><div class="meter-fill" style="width:${(doneCount/list.length)*100}%"></div></div>` : ""}
 
     ${isKcse(t) ? renderGroup(coreList, `${ICON("book", 20)} Form 4 syllabus`, "These modules follow the Form 4 topics of the KCSE Computer Studies (451) syllabus.")
       : renderGroup(coreList, `${ICON("book", 20)} Core (CBE)`, "These modules map to official CBE digital-literacy strands.")}
