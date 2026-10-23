@@ -1129,43 +1129,48 @@ function stepWatch(m, s, el){
 }
 
 /* ---------- MISSION ---------- */
-// A mission is either the classic checklist + short answer, or (when it has `tasks`) a set of
-// interactive tasks that can only be finished by engaging with them. The checklist then becomes
-// an optional "try it for real" list.
+// A mission is either the classic list of steps, each with its own answer box, or (when it has `tasks`)
+// a set of interactive tasks that can only be finished by engaging with them. The steps then become
+// an optional "try it for real" checklist.
 function stepMission(m, s, el){
   const mi = m.mission, tasks = mi.tasks || [];
   const st = (s.mission = s.mission || { ticks: [], answer: "" });
   if (tasks.length && !Array.isArray(st.tasks)) st.tasks = tasks.map(() => ({}));
+  if (!tasks.length && !Array.isArray(st.answers)) st.answers = mi.steps.map(() => "");
 
   el.innerHTML = `
     <div class="mission">
       <h3>${ICON("flag", 24)} ${esc(mi.title)}</h3>
       ${tasks.map((t, i) => `<div class="task" data-t="${i}"><div class="task-n">${i + 1}</div><div class="task-body"></div></div>`).join("")}
       ${tasks.length ? `<h4 class="try-real">Try it for real <span class="hint">(optional · ask a grown-up if you need help)</span></h4>` : ""}
-      ${mi.steps.map((t, i) => `
+      ${tasks.length ? mi.steps.map((t, i) => `
         <button class="mstep ${st.ticks.includes(i) ? "on" : ""}" data-i="${i}">
           <span class="box">${st.ticks.includes(i) ? "✓" : ""}</span>
           <span>${esc(t)}</span>
         </button>
+      `).join("") : mi.steps.map((t, i) => `
+        <div class="task" data-s="${i}"><div class="task-n">${i + 1}</div><div class="task-body">
+          <label class="q" for="ans${i}">${esc(t)}</label>
+          <input class="field" id="ans${i}" data-s="${i}" maxlength="240" autocomplete="off" value="${esc(st.answers[i] || "")}" placeholder="What did you find?" />
+        </div></div>
       `).join("")}
-      ${tasks.length ? "" : `
-        <label class="q" for="ans">${esc(mi.question)}</label>
-        <input class="field" id="ans" maxlength="240" value="${esc(st.answer)}" placeholder="Type your answer here" />`}
     </div>
     <div class="stepFoot">
-      <span class="hint" id="mhint">Tick each step and type your answer.</span>
+      <span class="hint" id="mhint"></span>
       <button class="btn" id="nx">Mission Done</button>
     </div>
   `;
 
-  const nx = document.getElementById("nx"), ans = document.getElementById("ans"), mhint = document.getElementById("mhint");
+  const nx = document.getElementById("nx"), mhint = document.getElementById("mhint");
   const ok = () => {
     if (tasks.length) {
       const left = tasks.filter((t, i) => !taskDone(t, st.tasks[i])).length;
       nx.disabled = left > 0;
       mhint.textContent = left ? `${left} task${left === 1 ? "" : "s"} left to finish.` : "All tasks done. Great work!";
     } else {
-      nx.disabled = !(st.ticks.length === mi.steps.length && ans.value.trim().length >= 1);
+      const left = st.answers.filter(a => !cleanText(a)).length;
+      nx.disabled = left > 0;
+      mhint.textContent = left ? `Write what you found for ${left} more step${left === 1 ? "" : "s"}.` : "All steps done. Great work!";
     }
   };
 
@@ -1177,14 +1182,19 @@ function stepMission(m, s, el){
     ok();
   });
 
-  el.querySelectorAll(".task").forEach(box => {
+  el.querySelectorAll(".task[data-t]").forEach(box => {
     const i = +box.dataset.t, t = tasks[i];
     const mark = () => box.classList.toggle("done", taskDone(t, st.tasks[i]));
     renderTask(t, st.tasks[i], box.querySelector(".task-body"), () => { mark(); ok(); queueSave(); });
     mark();
   });
 
-  if (ans) ans.oninput = () => { st.answer = ans.value; ok(); };
+  el.querySelectorAll("input[data-s]").forEach(inp => inp.oninput = () => {
+    st.answers[+inp.dataset.s] = inp.value;
+    inp.closest(".task").classList.toggle("done", !!cleanText(inp.value));
+    ok(); queueSave();
+  });
+  el.querySelectorAll("input[data-s]").forEach(inp => inp.closest(".task").classList.toggle("done", !!cleanText(inp.value)));
   nx.onclick = () => advance(m, s, "mission");
   ok();
 }
