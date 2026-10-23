@@ -20,6 +20,7 @@
  *   POST /api/event    {track, module, correct}                          -> {ok:true}  (anonymous)
  *   POST /api/step     {track, module, step}                             -> {ok:true}  (anonymous funnel)
  *   POST /api/review   {item, vote: 1|-1|0, note?, name?, rk}            -> {ok:true}  (content review keep/remove)
+ *   POST /api/feedback {track, module, rating: 1|-1, reasons?, note?}    -> {ok:true}  (anonymous lesson feedback)
  *   GET  /api/insights            (X-Admin-Key: <ADMIN_KEY>)              -> {overview, topModules, hardest, daily}
  * Everything else -> static assets.
  */
@@ -171,6 +172,9 @@ async function checkRateLimit(env, key, maxAttempts, windowSec) {
 // Anonymous counters accept only well-formed module ids and known tracks, so junk can't pile up
 const TRACK_IDS = ["primary", "junior", "senior", "senior11", "ai", "kcse"];
 const FUNNEL_STEPS = ["start", "read", "mission", "quiz", "pass", "pass1"];   // pass1 = passed on the first try
+const FEEDBACK_REASONS = ["confusing", "hard", "easy", "wrong"];
+// Learners are children: phone numbers and email addresses never get stored, even if typed into a note
+const scrubNote = s => String(s || "").replace(/\S+@\S+/g, "[removed]").replace(/\+?\d[\d\s-]{6,}\d/g, "[removed]").trim().slice(0, 200);
 const validModule = b => !!b && TRACK_IDS.includes(b.track) && /^[a-z0-9-]{2,40}$/.test(String(b.module || ""));
 
 // The info pages are rendered by the app at "/", so search engines would see the home page's title for them.
@@ -470,6 +474,20 @@ export default {
         return json({ ok: true }, 200, request);
       }
 
+      // ---------- lesson feedback from learners: a rating, and for "not good" optional reasons and a note ----------
+      if (p === "/api/feedback" && request.method === "POST") {
+        if (!(await checkRateLimit(env, "feedback:" + clientIP, 60, 3600))) return json({ ok: true }, 200, request);
+        const b = await request.json();
+        const rating = Number(b.rating);
+        if (!validModule(b) || ![1, -1].includes(rating)) return json({ ok: true }, 200, request);
+        const reasons = rating < 0 && Array.isArray(b.reasons) ? FEEDBACK_REASONS.filter(r => b.reasons.includes(r)).join(",") : "";
+        const note = rating < 0 ? scrubNote(b.note) : "";
+        await env.DB.prepare(
+          `INSERT INTO feedback (day, track, module_id, rating, reasons, note, created_at) VALUES (?1,?2,?3,?4,?5,?6,?7)`
+        ).bind(new Date().toISOString().slice(0, 10), b.track, b.module, rating, reasons, note, now()).run();
+        return json({ ok: true }, 200, request);
+      }
+
       // ---------- content review: reviewers vote keep (+1) or remove (-1) per card, task or question ----------
       if (p === "/api/review" && request.method === "POST") {
         const allowed = await checkRateLimit(env, "review:" + clientIP, 600, 3600);
@@ -564,7 +582,24 @@ export default {
           review = { tallies: t.results || [], notes: n.results || [] };
         } catch {}
 
+        // Lesson feedback for the last 90 days (table may not exist on older databases)
+        let feedback = { modules: [], notes: [] };
+        try {
+          const since = new Date(Date.now() - 90 * 86400000).toISOString().slice(0, 10);
+          const m = await env.DB.prepare(
+            `SELECT module_id, SUM(rating=1) up, SUM(rating=-1) down,
+               SUM(instr(reasons,'confusing')>0) confusing, SUM(instr(reasons,'hard')>0) hard,
+               SUM(instr(reasons,'easy')>0) easy, SUM(instr(reasons,'wrong')>0) wrong
+             FROM feedback WHERE day >= ?1 GROUP BY module_id`
+          ).bind(since).all();
+          const n = await env.DB.prepare(
+            `SELECT module_id, reasons, note, day FROM feedback WHERE day >= ?1 AND note != '' ORDER BY created_at DESC LIMIT 200`
+          ).bind(since).all();
+          feedback = { modules: m.results || [], notes: n.results || [] };
+        } catch {}
+
         return json({
+          feedback,
           review,
           funnel,
           engagement,

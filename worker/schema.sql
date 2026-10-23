@@ -71,6 +71,20 @@ CREATE TABLE IF NOT EXISTS review (
 );
 
 -- Simple IP rate limiting to mitigate automated abuse.
+-- Lesson feedback from learners on the quiz result screen. Anonymous: no user, device or IP is stored.
+-- rating: 1 = good, -1 = not good; reasons: comma list of confusing|hard|easy|wrong; note: phone numbers and emails removed.
+CREATE TABLE IF NOT EXISTS feedback (
+  id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  day        TEXT NOT NULL,
+  track      TEXT,
+  module_id  TEXT NOT NULL,
+  rating     INTEGER NOT NULL,
+  reasons    TEXT NOT NULL DEFAULT '',
+  note       TEXT NOT NULL DEFAULT '',
+  created_at INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS feedback_day ON feedback (day);
+
 CREATE TABLE IF NOT EXISTS rate_limits (
   key       TEXT PRIMARY KEY,                 -- salted hash of action + IP, never the raw IP
   count     INTEGER NOT NULL DEFAULT 1,

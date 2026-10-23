@@ -192,6 +192,46 @@ function track(m, correct){
   } catch {}
 }
 
+// Lesson feedback on the quiz result screen: anonymous, and asked once per lesson per device
+const LS_FEEDBACK = "somasmart.feedback_sent";
+const FB_REASONS = [["confusing", "Confusing"], ["hard", "Too hard"], ["easy", "Too easy"], ["wrong", "Something's wrong in it"]];
+const scrubNote = s => String(s || "").replace(/\S+@\S+/g, "[removed]").replace(/\+?\d[\d\s-]{6,}\d/g, "[removed]").trim().slice(0, 200);
+function feedbackSent(m){ try { return !!JSON.parse(localStorage.getItem(LS_FEEDBACK) || "{}")[m.id]; } catch { return false; } }
+function sendFeedback(m, rating, reasons, note){
+  try {
+    const sent = JSON.parse(localStorage.getItem(LS_FEEDBACK) || "{}");
+    sent[m.id] = 1;
+    localStorage.setItem(LS_FEEDBACK, JSON.stringify(sent));
+    if (navigator.sendBeacon) navigator.sendBeacon("api/feedback", JSON.stringify({ track: m.track, module: m.id, rating, reasons, note: scrubNote(note) }));
+  } catch {}
+}
+function lessonFeedback(m, box){
+  if (!box || feedbackSent(m)) return;
+  box.innerHTML = `
+    <p class="lfb-q">How was this lesson?</p>
+    <div class="lfb-row">
+      <button class="btn ghost lfb-rate" data-r="1" aria-label="Good lesson">👍</button>
+      <button class="btn ghost lfb-rate" data-r="-1" aria-label="Not a good lesson">👎</button>
+    </div>`;
+  const thanks = () => { box.innerHTML = `<p class="lfb-q">Thank you! This helps us improve the lessons.</p>`; };
+  box.querySelector('[data-r="1"]').onclick = () => { sendFeedback(m, 1, [], ""); thanks(); };
+  box.querySelector('[data-r="-1"]').onclick = () => {
+    const picked = new Set();
+    box.innerHTML = `
+      <p class="lfb-q">What was the problem? <span class="hint">Pick any.</span></p>
+      <div class="lfb-row">${FB_REASONS.map(([k, t]) => `<button class="btn ghost small lfb-reason" data-k="${k}" aria-pressed="false">${t}</button>`).join("")}</div>
+      <input class="field" id="lfb-note" maxlength="200" autocomplete="off" placeholder="Tell us more (optional)" aria-label="Tell us more (optional)" />
+      <p class="hint">Don't write your name or phone number.</p>
+      <button class="btn small" id="lfb-send">Send</button>`;
+    box.querySelectorAll(".lfb-reason").forEach(b => b.onclick = () => {
+      picked.has(b.dataset.k) ? picked.delete(b.dataset.k) : picked.add(b.dataset.k);
+      b.classList.toggle("on", picked.has(b.dataset.k));
+      b.setAttribute("aria-pressed", picked.has(b.dataset.k));
+    });
+    box.querySelector("#lfb-send").onclick = () => { sendFeedback(m, -1, [...picked], box.querySelector("#lfb-note").value); thanks(); };
+  };
+}
+
 let toastT;
 function toast(msg){
   const t = document.getElementById("toast");
@@ -384,6 +424,10 @@ const PAGES = {
       finished the mission, took the quiz and passed (and whether they passed first time). Each device counts each step only
       once. We also count, once a day, whether a device is opening Tech Tayari for the first time or coming back; the
       device only remembers the date it last did so. These totals show where learners get stuck and whether they return.</p>
+    <h2>Lesson feedback</h2>
+    <p>After a quiz you can rate the lesson 👍 or 👎 and, if you like, say what was wrong. We store only the lesson, the rating,
+      the reasons you tick and your note, with no name, account, device ID or IP address. Phone numbers and email addresses are
+      removed from notes before they are saved. Please don't write anything personal.</p>
     <h2>Teachers who review lessons</h2>
     <p>Reviewers can vote to keep or remove lesson items on our review pages. We store each vote and any note, the name
       they choose to give (optional), and a random code made in their browser so they can change a vote. Nothing else.</p>
@@ -1533,8 +1577,10 @@ function stepQuiz(m, s, el){
             <button class="btn ghost" id="rv">Re-read the lesson</button>
           `}
         </div>
+        <div class="lesson-fb" id="lfb"></div>
       </div>
     `;
+    lessonFeedback(m, document.getElementById("lfb"));
 
     const mp = document.getElementById("mp");
     if (mp) mp.onclick = () => go({ name: "track", t: m.track });
@@ -1758,6 +1804,7 @@ async function renderAdminDashboard(key){
     const funnelRows = res.funnel || [];
     const review = res.review || { tallies: [], notes: [] };
     const eng = res.engagement || {};
+    const fb = res.feedback || { modules: [], notes: [] };
     // "j-network:q3" -> readable label from the course content
     const reviewLabel = item => {
       const [mid, part] = item.split(":"), m = MODS.find(x => x.id === mid);
@@ -1824,6 +1871,31 @@ async function renderAdminDashboard(key){
 
 
       <div style="margin-top:24px">
+        <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">Lesson Feedback (last 90 days)</h3>
+        <p class="hint" style="margin:0 0 12px">Learners' 👍 / 👎 after each quiz, with the reasons they ticked and their notes. Lessons with the most 👎 come first.</p>
+        <div class="table-wrap" style="margin-bottom:28px">
+          <table class="admin-table">
+            <thead><tr><th>Module</th><th>👍</th><th>👎</th><th>Reasons</th><th>Notes</th></tr></thead>
+            <tbody>
+              ${(() => {
+                const names = Object.fromEntries(FB_REASONS);
+                const notesBy = {};
+                (fb.notes || []).forEach(n => (notesBy[n.module_id] = notesBy[n.module_id] || []).push(n));
+                const rows = (fb.modules || []).map(r => ({ ...r, m: MODS.find(x => x.id === r.module_id) }))
+                  .sort((a, b) => (b.down - a.down) || (b.down / (b.up + b.down) - a.down / (a.up + a.down)));
+                if (!rows.length) return `<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:18px">No lesson feedback yet. Learners are asked after each quiz.</td></tr>`;
+                return rows.map(r => `<tr>
+                  <td><b>${esc(r.m ? `${r.m.code} · ${r.m.name}` : r.module_id)}</b></td>
+                  <td>${r.up}</td>
+                  <td>${r.down ? `<b style="color:var(--red)">${r.down}</b>` : 0}</td>
+                  <td>${FB_REASONS.filter(([k]) => r[k]).map(([k]) => `${names[k]} <b>${r[k]}</b>`).join("<br>") || "–"}</td>
+                  <td>${(notesBy[r.module_id] || []).slice(0, 5).map(n => `<div style="margin:2px 0">${esc(n.note)} <span class="hint">${esc(n.day)}</span></div>`).join("")}</td>
+                </tr>`).join("");
+              })()}
+            </tbody>
+          </table>
+        </div>
+
         <h3 style="font-family:Nunito,sans-serif;margin:0 0 4px">Content Review</h3>
         <p class="hint" style="margin:0 0 12px">Votes and notes from reviewers on the <a href="/review/" target="_blank" rel="noopener">review pages</a>. Items with the most "remove" votes come first.</p>
         <div class="table-wrap" style="margin-bottom:28px">
