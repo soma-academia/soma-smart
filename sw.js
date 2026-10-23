@@ -1,5 +1,5 @@
 /* Tech Tayari — Service Worker for offline CBE learning */
-const CACHE_NAME = "tech-tayari-v14";
+const CACHE_NAME = "tech-tayari-v15";
 const STATIC_ASSETS = [
   "./",
   "styles.css",

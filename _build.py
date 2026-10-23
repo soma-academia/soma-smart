@@ -282,7 +282,7 @@ if missing:
 # lesson its own address and readable text, then hand over to the interactive lesson. Output is deterministic,
 # so rebuilding without content changes leaves the files untouched.
 import html as _html
-SITE_URL = "https://tech-tayari.pages.dev"   # change here (and in index.html) when the custom domain is live
+SITE_URL = "https://techtayari.co.ke"   # also in index.html, _worker.js and app.js
 SITE_NAME = "Tech Tayari"
 OG_IMAGE = SITE_URL + "/og-image.jpg"
 LEARN = ROOT / "learn"

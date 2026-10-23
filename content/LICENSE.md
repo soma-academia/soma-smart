@@ -7,7 +7,7 @@ captions and text of the animated explainers in `explainers.js` — are © 2026 
 Full licence: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
 
 In short, you may copy, share and adapt these lessons, for example for your class or in another language, if you:
-- **credit** "Tech Tayari" with a link to https://tech-tayari.pages.dev,
+- **credit** "Tech Tayari" with a link to https://techtayari.co.ke,
 - **don't use them commercially**, and
 - **share your adaptations under the same licence**.
 

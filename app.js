@@ -1562,7 +1562,7 @@ function showCelebration(trackId){
 ` +
     `Mastered (5/5): ${masteredCount}
 ` +
-    `Free digital-literacy learning for Kenya 📱 — tech-tayari.pages.dev`
+    `Free digital-literacy learning for Kenya 📱 — techtayari.co.ke`
   );
   const waLink = `https://wa.me/?text=${shareText}`;
 
@@ -1927,8 +1927,46 @@ async function renderAdminDashboard(key){
   }
 }
 
+/* ---------- move to the new address ---------- */
+// Progress lives in this browser's storage for one web address only. Learners still opening the old
+// pages.dev address are sent to the new one with their progress in the #fragment, which never leaves
+// the phone. Sign-in details are not carried: signed-in learners sign in again and their progress syncs.
+const OLD_HOST = "tech-tayari.pages.dev", HOME = "https://techtayari.co.ke";
+const CARRY = "#carry=";
+function moveToNewHome(){
+  if (location.hostname !== OLD_HOST || !navigator.onLine) return false;
+  let carry = "";
+  try {
+    if (!localStorage.getItem("somasmart.moved")) {
+      const data = {};
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k.startsWith("somasmart.") && k !== LS_TOKEN && k !== LS_USER) data[k] = localStorage.getItem(k);
+      }
+      if (Object.keys(data).length) carry = CARRY + encodeURIComponent(JSON.stringify(data));
+      localStorage.setItem("somasmart.moved", new Date().toISOString().slice(0, 10));
+    }
+  } catch {}
+  location.replace(HOME + location.pathname + location.search + carry);
+  return true;
+}
+function receiveCarried(){
+  if (!location.hash.startsWith(CARRY)) return;
+  try {
+    const data = JSON.parse(decodeURIComponent(location.hash.slice(CARRY.length)));
+    for (const [k, v] of Object.entries(data)) {
+      if (!k.startsWith("somasmart.") || typeof v !== "string") continue;
+      if (k.startsWith(LS_PROG)) localStorage.setItem(k, JSON.stringify(mergeProgress(readLocal(k), JSON.parse(v))));
+      else if (localStorage.getItem(k) == null) localStorage.setItem(k, v);
+    }
+  } catch {}
+  try { history.replaceState(null, "", location.pathname + location.search); } catch {}
+}
+
 /* ---------- boot ---------- */
 (async function boot(){
+  if (moveToNewHome()) return;
+  receiveCarried();
   getAvailableVoices();
 
   migrateOldGuestData();

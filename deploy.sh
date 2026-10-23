@@ -30,4 +30,4 @@ sleep 8
 health="$(curl -fsS https://tech-tayari.pages.dev/api/health)" || fail "Couldn't reach https://tech-tayari.pages.dev/api/health"
 echo "$health"
 echo "$health" | grep -q '"tokenSecretConfigured":true' || fail "Site is up, but its secrets aren't configured."
-say "✅ Live at https://tech-tayari.pages.dev"
+say "✅ Live at https://techtayari.co.ke"

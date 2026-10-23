@@ -2,7 +2,7 @@
 
 A free, offline-first course in computers, the internet, AI and Computer Studies for Kenyan learners in Grade 4–11, aligned to CBE and the KICD curriculum designs.
 
-**Try it:** https://tech-tayari.pages.dev. It works on any phone browser, needs no login, and keeps working offline once loaded.
+**Try it:** https://techtayari.co.ke. It works on any phone browser, needs no login, and keeps working offline once loaded.
 
 | Track | Grades | Modules |
 |---|---|---|

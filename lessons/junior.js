@@ -1755,15 +1755,15 @@
     "why": "Over plain HTTP your password travels unencrypted, so anyone on the same network, such as public Wi-Fi, could read it."
    },
    {
-    "q": "In the URL 'https://tech-tayari.pages.dev', which part is the Top-Level Domain (TLD)?",
+    "q": "In the URL 'https://techtayari.co.ke', which part is the Top-Level Domain (TLD)?",
     "options": [
-     ".dev",
+     ".ke",
      "https",
-     "tech-tayari",
-     "pages"
+     "techtayari",
+     ".co"
     ],
     "a": 0,
-    "why": "Read a domain from the right: the last part, .dev, is the top-level domain, then comes pages.dev, then tech-tayari.pages.dev."
+    "why": "Read a domain from the right: the last part, .ke for Kenya, is the top-level domain, then comes co.ke for companies, then techtayari.co.ke."
    },
    {
     "q": "When a DNS cache stores an address lookup locally, it...",

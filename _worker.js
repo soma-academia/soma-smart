@@ -175,7 +175,8 @@ const validModule = b => !!b && TRACK_IDS.includes(b.track) && /^[a-z0-9-]{2,40}
 
 // The info pages are rendered by the app at "/", so search engines would see the home page's title for them.
 // Rewrite the title, description and canonical address on the way out; keep the insights page out of search.
-const SITE_URL = "https://tech-tayari.pages.dev";
+const SITE_URL = "https://techtayari.co.ke";
+const OLD_HOST = "tech-tayari.pages.dev", WWW_HOST = "www.techtayari.co.ke";
 const APP_ROUTES = new Set(["/about", "/privacy", "/licences", "/licenses", "/insights", "/kcse"]);
 const PAGE_META = {
   "/about":    ["About Tech Tayari: what it is and isn't", "Tech Tayari is a free, independent, self-guided course in computers and the internet for Kenyan learners in Grade 4–11. What it offers, and what it doesn't."],
@@ -242,6 +243,11 @@ export default {
     const url = new URL(request.url);
     const p = url.pathname;
     if (!p.startsWith("/api/")) {
+      // www goes to the bare address. On the old pages.dev address, the plain HTML pages search engines
+      // index move for good; the app itself still loads there so it can carry each learner's progress over.
+      if (url.hostname === WWW_HOST || (url.hostname === OLD_HOST && /^\/(learn|review)(\/|$)|^\/sitemap\.xml$/.test(p))) {
+        return Response.redirect(SITE_URL + p + url.search, 301);
+      }
       if (!env.ASSETS) return new Response("Not found", { status: 404 });
       // The app's own screens have no file of their own: serve the app shell for them. Anything else that
       // doesn't exist gets 404.html with a 404 status.
