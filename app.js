@@ -232,6 +232,15 @@ function lessonFeedback(m, box){
   };
 }
 
+// Share links: WhatsApp and X carry the message; LinkedIn takes only the address and shows the page's preview
+const SITE = "https://techtayari.co.ke";
+function shareLinks(text, cls, withWhatsApp = true){
+  const e = encodeURIComponent;
+  return `${withWhatsApp ? `<a class="${cls}" target="_blank" rel="noopener" href="https://wa.me/?text=${e(text + " " + SITE)}">WhatsApp</a>` : ""}
+    <a class="${cls}" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=${e(text)}&url=${e(SITE)}">X (Twitter)</a>
+    <a class="${cls}" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url=${e(SITE)}">LinkedIn</a>`;
+}
+
 let toastT;
 function toast(msg){
   const t = document.getElementById("toast");
@@ -1577,12 +1586,12 @@ function stepQuiz(m, s, el){
           ${passed ? `
             ${mistakes.length ? `<button class="btn ghost" id="rvm">Review my mistakes</button>` : ""}
             <button class="btn" id="mp">Back to Track</button>
-            <a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(`I just passed "${m.name}" on Tech Tayari! Free lessons on computers and the internet for Kenyan learners: https://techtayari.co.ke`)}">Share on WhatsApp</a>
           ` : `
             <button class="btn" id="rvm">Review my mistakes</button>
             <button class="btn ghost" id="rv">Re-read the lesson</button>
           `}
         </div>
+        ${passed ? `<div class="share-row"><span class="hint">Share:</span> ${shareLinks(`I just passed "${m.name}" on Tech Tayari! Free lessons on computers and the internet for Kenyan learners:`, "btn ghost small")}</div>` : ""}
         <div class="lesson-fb" id="lfb"></div>
       </div>
     `;
@@ -1652,6 +1661,7 @@ function showCelebration(trackId){
       <p class="celeb-msg">${masteryMsg}</p>
       <div class="celeb-actions">
         <a class="btn gold" href="${waLink}" target="_blank" rel="noopener">📱 Share on WhatsApp</a>
+        ${shareLinks(`I just finished ${t.name} on Tech Tayari! Free lessons on computers and the internet for Kenyan learners:`, "btn ghost small", false)}
         <button class="btn small" id="celeb-report">📋 View Progress Report</button>
         <button class="btn ghost small" id="celeb-close">Close</button>
       </div>

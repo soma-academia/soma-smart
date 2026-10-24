@@ -27,6 +27,8 @@ footer{max-width:960px;margin:0 auto;padding:24px 20px 48px;color:var(--muted);f
 .foot-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .foot-links{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
 .foot-links a{font-weight:700;color:var(--green-d)}
+.foot-share{display:inline-flex;flex-wrap:wrap;gap:6px 12px;align-items:center;color:var(--muted)}
+.share-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;margin-top:14px}
 
 /* auth */
 .auth{max-width:520px;margin:10px auto}
