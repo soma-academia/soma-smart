@@ -18,7 +18,7 @@ explainer:
 
 ### 🏭 Industry
 
-Industrial simulation models a system, such as a new production line or a nuclear plant, on a computer so designers can test it before building. Process control uses sensors to monitor a continuous process, such as temperature in a brewery or pressure in an oil refinery; the computer compares readings with set values and adjusts valves or heaters automatically. Computer-aided design (CAD) lets engineers and architects draw and test products and buildings on screen, and computer-aided manufacturing (CAM) uses those designs to control machines that cut and shape parts. Robots do repetitive, heavy or dangerous jobs, such as welding and painting car bodies, accurately and without tiring.
+Industrial simulation models a system, such as a new production line or a nuclear plant, on a computer so designers can test it before building. Process control uses sensors to monitor a continuous process, such as temperature in a brewery or pressure in an oil refinery; the computer compares readings with set values and sends signals to actuators, devices such as motors, valves and switches that act on the process, to open a valve or switch a heater on or off automatically. Sensor in, computer decides, actuator acts: this loop repeats continuously (feedback). Computer-aided design (CAD) lets engineers and architects draw and test products and buildings on screen, and computer-aided manufacturing (CAM) uses those designs to control machines that cut and shape parts. Robots do repetitive, heavy or dangerous jobs, such as welding and painting car bodies, accurately and without tiring.
 
 ### 🔬 Science, research and libraries
 
