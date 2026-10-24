@@ -860,6 +860,13 @@ function renderTrack(){
     </div>
     ${doneCount ? `<div class="meter" style="margin-bottom:20px" role="progressbar" aria-label="${doneCount} of ${list.length} modules done" aria-valuenow="${doneCount}" aria-valuemin="0" aria-valuemax="${list.length}"><div class="meter-fill" style="width:${(doneCount/list.length)*100}%"></div></div>` : ""}
 
+    ${isKcse(t) ? `<div class="kcse-scope">
+      <b>What this covers.</b> These lessons revise the <b>Form 4 topics</b> of Paper 1. Paper 1 also tests Forms 1–3
+      (programming and flowcharts, number systems, systems development, word processing, databases, the internet and
+      operating systems), and Paper 2 is a practical. For programming and number systems, also revise
+      <a href="/?lesson=s-programming" data-lesson="s-programming">S8–S12 (programming)</a> and
+      <a href="/?lesson=s11-datarep" data-lesson="s11-datarep">S13–S14 (number systems)</a>.
+    </div>` : ""}
     ${isKcse(t) ? renderGroup(coreList, `${ICON("book", 20)} Form 4 syllabus`, "These modules follow the Form 4 topics of the KCSE Computer Studies (451) syllabus.")
       : renderGroup(coreList, `${ICON("book", 20)} Core (CBE)`, "These modules map to official CBE digital-literacy strands.")}
     ${renderGroup(enrichList, `${ICON("star", 20)} Going further`, "Enrichment modules — not required by CBE, but great to know.")}
@@ -882,6 +889,7 @@ function renderTrack(){
   `;
 
   document.getElementById("bk").onclick = () => go({ name: "home" });
+  $app.querySelectorAll("[data-lesson]").forEach(a => a.onclick = e => { e.preventDefault(); openModule(a.dataset.lesson); });
   const c = document.getElementById("cont");
   if (c && next) c.onclick = () => openModule(next.id);
   const celebBtn = document.getElementById("btn-cert");

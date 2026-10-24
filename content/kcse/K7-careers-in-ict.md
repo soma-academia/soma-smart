@@ -28,13 +28,17 @@ A database administrator (DBA) designs and maintains the organisation's database
 
 A computer technician assembles, installs, repairs, upgrades and troubleshoots hardware and software. An ICT (Information and Communication Technology) trainer or teacher teaches ICT skills, prepares learning materials and assesses learners. An information systems manager plans and controls the ICT department and makes sure the organisation's information needs are met. A data processing manager supervises the data processing section and its staff so that data is processed accurately and on time. A computer sales representative sells hardware and software and advises customers on what to buy. An ICT entrepreneur runs an ICT business, such as a cyber café or a software firm, while an ICT consultant gives expert advice to organisations for a fee.
 
+### ☁️ Cloud computing jobs
+
+Cloud computing provides storage, software and computing power over the internet, as in Google Drive, Microsoft 365 or Amazon Web Services, instead of on the user's own computers. Cloud jobs include cloud engineer or architect (designs and builds cloud systems), cloud administrator (sets up and manages cloud services and user accounts) and cloud security specialist (protects data held in the cloud). Skills expected of a cloud worker: networking knowledge; data security, such as encryption and access control; operating systems, especially Linux; virtualisation (running many virtual computers on one physical server); database management; programming or scripting to automate tasks; and good problem-solving and communication skills to support customers.
+
 ### 🎓 Further education and choosing a course
 
 After KCSE you can study ICT at public and private universities (degrees), national polytechnics and TVET (Technical and Vocational Education and Training) colleges (certificates and diplomas), or take professional certifications such as ICDL (International Certification of Digital Literacy), CCNA (Cisco Certified Network Associate) or vendor certificates from companies like Microsoft, Cisco and CompTIA. Government-sponsored places are allocated through KUCCPS (Kenya Universities and Colleges Central Placement Service). When choosing a course or institution, consider: accreditation (universities by the Commission for University Education, CUE, and TVET institutions by the TVET Authority, TVETA), entry requirements (your KCSE grade and subject cluster), cost of fees and upkeep, duration of the course, reputation of the institution, mode of study (full-time, part-time, evening or online), and your own interests and the job market.
 
 ### 📝 In the exam
 
-KCSE typically asks: "State three duties of a database administrator", "Differentiate between a programmer and a systems analyst", "Name the ICT career responsible for maintaining a website" or "State three factors to consider when choosing an institution for further training in ICT". Remember the key differences: the systems analyst designs the system, the programmer codes it, the computer operator runs it, the technician repairs it. A computer engineer works on hardware, a software engineer on software. Give duties as action phrases, such as "backing up the database", and give at least as many points as the question asks.
+KCSE typically asks: "State three duties of a database administrator", "Differentiate between a programmer and a systems analyst", "Name the ICT career responsible for maintaining a website" "State three factors to consider when choosing an institution for further training in ICT" or "State three skills expected of a person working for a cloud services company". Remember the key differences: the systems analyst designs the system, the programmer codes it, the computer operator runs it, the technician repairs it. A computer engineer works on hardware, a software engineer on software. Give duties as action phrases, such as "backing up the database", and give at least as many points as the question asks.
 
 ## Listen
 
@@ -117,7 +121,7 @@ Why: Computer engineers design and develop hardware and its components. Software
 - [ ] A webmaster
 - [ ] A data processing manager
 - [x] A chief programmer
-Why: The chief programmer coordinates the programming team and checks the quality of their work; the data processing manager heads the whole ICT department.
+Why: The chief programmer coordinates the programming team and checks the quality of their work; the information systems manager heads the whole ICT department.
 
 ### Which ICT professional is responsible for developing, updating and monitoring an organisation's website?
 - [ ] A network administrator
@@ -143,7 +147,7 @@ Why: CUE accredits universities. TVETA accredits TVET institutions, KUCCPS place
 ### Which of these is a professional certification in networking?
 - [ ] Kenya Certificate of Secondary Education (KCSE)
 - [x] Cisco Certified Network Associate (CCNA)
-- [ ] International Computer Driving Licence (ICDL)
+- [ ] International Certification of Digital Literacy (ICDL)
 - [ ] Certified Public Accountant (CPA)
 Why: CCNA is a vendor certification for networking. ICDL covers basic computer skills, CPA is for accountants and KCSE is a school examination.
 

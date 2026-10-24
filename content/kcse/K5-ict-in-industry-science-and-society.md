@@ -20,6 +20,10 @@ explainer:
 
 Industrial simulation models a system, such as a new production line or a nuclear plant, on a computer so designers can test it before building. Process control uses sensors to monitor a continuous process, such as temperature in a brewery or pressure in an oil refinery; the computer compares readings with set values and sends signals to actuators, devices such as motors, valves and switches that act on the process, to open a valve or switch a heater on or off automatically. Sensor in, computer decides, actuator acts: this loop repeats continuously (feedback). Computer-aided design (CAD) lets engineers and architects draw and test products and buildings on screen, and computer-aided manufacturing (CAM) uses those designs to control machines that cut and shape parts. Robots do repetitive, heavy or dangerous jobs, such as welding and painting car bodies, accurately and without tiring.
 
+### 🏥 Robots in hospitals
+
+In a hospital operating theatre, a surgeon can control a robotic arm from a console. Benefits: the robot makes very precise, steady movements with no hand tremor; it can work through small cuts, so patients lose less blood, have smaller scars and recover faster; it does not tire during long operations; and with a network link an expert surgeon can operate on or guide a patient far away (telesurgery). Robots also deliver medicines and supplies around hospitals and disinfect rooms, reducing staff exposure to infection. Drawbacks: they are very expensive to buy and maintain, staff need special training, and a fault during surgery can be dangerous.
+
 ### 🔬 Science, research and libraries
 
 Weather forecasting uses powerful computers to process huge amounts of data from weather stations, satellites and radar, run models and predict the weather. In medical research computers analyse test results, model diseases and help design drugs; in hospitals expert systems help diagnose illness. The military uses ICT (Information and Communication Technology) for simulating battles, guiding missiles and keeping secure communication. Library systems record the lending of books (who borrowed what and when it is due), keep an inventory of stock, and hold a computerised catalogue so users can search by title, author or subject.
@@ -28,13 +32,17 @@ Weather forecasting uses powerful computers to process huge amounts of data from
 
 Air traffic control uses radar and computers to track aircraft and keep them safely apart during take-off, flight and landing. Shipping and railway control systems track vessels and trains and control signals and points. GPS (global positioning system) uses satellites to find the exact position of a vehicle, so companies can track lorries, buses and parcels. In entertainment, computers are used to play and create games, record and edit music, and edit video and make special effects. At home people use ICT for study, budgeting, communication and entertainment, and to control appliances.
 
+### 🚗 Self-driving and self-parking vehicles
+
+Computerised vehicles use sensors (cameras, radar and ultrasonic sensors), GPS and software to steer, brake and park without a human driver. Benefits to a town: fewer accidents caused by human error, such as speeding or drink-driving; vehicles park closer together and in tighter spaces, so less land is needed for parking; less time and fuel wasted circling to look for parking, which reduces congestion and pollution; and better mobility for elderly and disabled people. Concerns: they are expensive, software faults or hacking could cause crashes, it is unclear who is responsible after an accident, and jobs such as drivers and parking attendants may be lost.
+
 ### 🛡️ Expert systems, marketing, VR and law enforcement
 
 An expert system copies the knowledge of a human expert. It has three parts: a knowledge base (facts and rules from experts), an inference engine (which applies the rules to the user's answers to reach a conclusion) and a user interface (through which the user asks and answers questions). In marketing, ICT supports e-commerce (buying and selling online), electronic presentations to clients, and advertising on websites and social media. Virtual reality (VR) creates a 3D artificial world that the user enters with a head-mounted display (HMD) and data gloves that sense hand movements. Law enforcement uses biometrics such as fingerprint matching to identify suspects, CCTV (Closed-Circuit Television) cameras to monitor public places, and computerised police records to store and search criminal records quickly.
 
 ### 📝 In the exam
 
-KCSE often asks: "Explain three ways computers are used in industry", "Name the three components of an expert system and state the function of each", "Explain how ICT is used in weather forecasting", "State two devices used to interact with a virtual reality system", or "Describe how computers are used in law enforcement". Remember: process control uses sensors and works in real time; CAD is for designing, CAM is for manufacturing; an expert system is knowledge base + inference engine + user interface; VR uses a head-mounted display and data gloves. Always link the device or system to what it does.
+KCSE often asks: "Explain three ways computers are used in industry", "Name the three components of an expert system and state the function of each", "Explain how ICT is used in weather forecasting", "State two devices used to interact with a virtual reality system", "Describe how computers are used in law enforcement", "State benefits of using robots in a hospital theatre" or "Explain benefits a town would gain from self-parking vehicles". Remember: process control uses sensors and works in real time; CAD is for designing, CAM is for manufacturing; an expert system is knowledge base + inference engine + user interface; VR uses a head-mounted display and data gloves. Always link the device or system to what it does.
 
 ## Listen
 

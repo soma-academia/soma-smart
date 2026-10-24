@@ -5,12 +5,12 @@
    {
     "icon": "🌐",
     "title": "What a network is, and why we network",
-    "text": "A computer network is a collection of independent computers and other devices linked together by a transmission medium so that they can communicate and share resources. Purposes of networking: resource sharing (data, programs and hardware such as one printer for a whole lab), remote communication (users far apart exchange messages and files, as when a bank branch in Kisumu updates records held in Nairobi), distributed processing (tasks and data are spread across several computers instead of one central machine), cost effectiveness (shared hardware and software licences cost less than buying for every user) and reliability (if one computer fails, data can be fetched from another and work continues)."
+    "text": "A computer network is a collection of independent computers and other devices linked together by a transmission medium so that they can communicate and share resources. Purposes of networking: resource sharing (data, programs and hardware such as one printer for a whole lab), remote communication (users far apart exchange messages and files, as when a bank branch in Kisumu updates records held in Nairobi), distributed processing (tasks and data are spread across several computers instead of one central machine), cost effectiveness (shared hardware and software licences cost less than buying for every user) and reliability (if one computer fails, data can be fetched from another and work continues). Networks are classified by area as LAN (local area network: one building or campus such as a school), MAN (metropolitan area network: a town or city) and WAN (wide area network: a country or the world, the internet being the largest)."
    },
    {
     "icon": "⚠️",
     "title": "Limitations of networking",
-    "text": "Networks also bring problems. Security threats: data is exposed to hackers, viruses and eavesdropping as it moves across the network. High initial cost: cables, devices, network software and trained staff are expensive to set up. Moral and cultural effects: easy access to the internet can expose users, especially the young, to pornography and other harmful material, and can erode cultural values. Over-reliance: when an organisation depends fully on its network, a breakdown stops all work, as when a bank's system goes down and no transactions can be made. Networks are classified by area as LAN (local area network: one building or campus such as a school), MAN (metropolitan area network: a town or city) and WAN (wide area network: a country or the world, the internet being the largest)."
+    "text": "Networks also bring problems. Security threats: data is exposed to hackers, viruses and eavesdropping as it moves across the network. High initial cost: cables, devices, network software and trained staff are expensive to set up. Moral and cultural effects: easy access to the internet can expose users, especially the young, to pornography and other harmful material, and can erode cultural values. Over-reliance: when an organisation depends fully on its network, a breakdown stops all work, as when a bank's system goes down and no transactions can be made."
    },
    {
     "icon": "📶",
@@ -486,6 +486,11 @@
     "text": "Networks need software as well as hardware. A network operating system (NOS), such as Windows Server or Linux, manages network resources, user accounts, security and access to shared files and printers. Protocols are the set of rules that govern how data is sent and received on a network; TCP/IP (Transmission Control Protocol/Internet Protocol) is the protocol used on the internet, where TCP breaks data into packets and reassembles them, and IP addresses and routes the packets. In a peer-to-peer network, all computers are equal and each user shares resources from their own computer; it is cheap and simple for a few computers but hard to secure and manage. In a client-server network, one or more powerful servers provide resources and services to client computers; it is centrally managed, more secure and easy to back up, but the server is costly and if it fails users lose access."
    },
    {
+    "icon": "⚙️",
+    "title": "Choosing a network operating system",
+    "text": "When choosing a network operating system for a LAN (Local Area Network), consider: the number of users and computers it must support, and whether it can grow (scalability); its security features, such as user accounts, access rights and encryption; the cost of buying and licensing it; compatibility with the hardware and software already in use; ease of installation and administration; and the support and updates offered by its maker. Examples include Windows Server, Linux and UNIX."
+   },
+   {
     "icon": "🕸️",
     "title": "Topologies",
     "text": "Topology is the way computers are arranged in a network. Physical topology is the actual layout of devices and cables; logical topology is how data flows through the network. Star: each computer connects to a central hub or switch; a failed cable affects only one computer and it is easy to add devices, but if the central device fails the whole network fails and it uses a lot of cable. Bus: all computers share one backbone cable with terminators at each end; it is cheap and uses little cable, but a break in the backbone brings down the network and faults are hard to find. Ring: computers form a closed loop and data passes in one direction from one to the next; every computer gets equal access, but one failed computer or cable can break the whole ring. Mesh: each computer has links to many or all others; it is very reliable because data can take another route, but it is expensive and complex to cable. Tree (hierarchical): groups of star networks connected to a backbone in levels; it is easy to expand and manage, but if the backbone or a top-level device fails, the networks below it are cut off."
@@ -496,9 +501,14 @@
     "text": "Share-level security protects each shared resource, such as a folder or printer, with its own password; anyone who knows the password can use it. User-level security gives each user an account with a username and password, and the administrator sets which resources each user can access; it is more secure and is used in client-server networks. A firewall is hardware or software that filters traffic between a private network and the internet, blocking unauthorised access. A proxy server sits between users and the internet, forwarding their requests; it can hide internal addresses, filter websites and cache (store) popular pages to speed up access. Encryption scrambles data into a coded form so that only someone with the right key can read it, protecting data as it travels. An audit trail is a record (log) of who accessed the system, when, and what they did, which helps to detect and investigate security breaches."
    },
    {
+    "icon": "🎣",
+    "title": "Threats and data integrity",
+    "text": "Phishing tricks users, through fake emails or messages that look genuine, into giving away passwords, PINs (Personal Identification Numbers) or card details. Pharming redirects users from a genuine website to a fake one, for example by corrupting DNS (Domain Name System) records, so the victim lands on the fake site even after typing the correct address. Data integrity means data stays accurate, complete and consistent. Measures to protect it: validation and verification when data is entered; passwords and access rights so only authorised users can change data; regular backups kept off-site; antivirus software; audit trails; and a UPS (Uninterruptible Power Supply) so a power cut does not corrupt data being saved."
+   },
+   {
     "icon": "📝",
     "title": "In the exam",
-    "text": "KCSE often asks: state the function of a given device (hub, switch, repeater, bridge, router, gateway, NIC); differentiate between a hub and a switch, or a bridge and a router; state two advantages and two disadvantages of a given topology, often from a diagram; differentiate between physical and logical topology; differentiate between peer-to-peer and client-server networks; and explain security measures such as firewalls, encryption and audit trails. Remember: a hub broadcasts to all ports while a switch sends only to the destination; a repeater boosts a signal; a router connects different networks; a gateway connects networks using different protocols; in a star the central device is a single point of failure; and in a bus a backbone break stops the whole network."
+    "text": "KCSE often asks: state the function of a given device (hub, switch, repeater, bridge, router, gateway, NIC); differentiate between a hub and a switch, or a bridge and a router; state two advantages and two disadvantages of a given topology, often from a diagram; differentiate between physical and logical topology; differentiate between peer-to-peer and client-server networks; explain security measures such as firewalls, encryption and audit trails; distinguish between phishing and pharming; state factors to consider when choosing a network operating system; state measures that ensure data integrity; and answer questions on a labelled topology diagram (name a device and its function, or say what happens if it fails). Remember: a hub broadcasts to all ports while a switch sends only to the destination; a repeater boosts a signal; a router connects different networks; a gateway connects networks using different protocols; in a star the central device is a single point of failure; and in a bus a backbone break stops the whole network."
    }
   ],
   "listen": [
@@ -955,6 +965,11 @@
     "text": "Industrial simulation models a system, such as a new production line or a nuclear plant, on a computer so designers can test it before building. Process control uses sensors to monitor a continuous process, such as temperature in a brewery or pressure in an oil refinery; the computer compares readings with set values and sends signals to actuators, devices such as motors, valves and switches that act on the process, to open a valve or switch a heater on or off automatically. Sensor in, computer decides, actuator acts: this loop repeats continuously (feedback). Computer-aided design (CAD) lets engineers and architects draw and test products and buildings on screen, and computer-aided manufacturing (CAM) uses those designs to control machines that cut and shape parts. Robots do repetitive, heavy or dangerous jobs, such as welding and painting car bodies, accurately and without tiring."
    },
    {
+    "icon": "🏥",
+    "title": "Robots in hospitals",
+    "text": "In a hospital operating theatre, a surgeon can control a robotic arm from a console. Benefits: the robot makes very precise, steady movements with no hand tremor; it can work through small cuts, so patients lose less blood, have smaller scars and recover faster; it does not tire during long operations; and with a network link an expert surgeon can operate on or guide a patient far away (telesurgery). Robots also deliver medicines and supplies around hospitals and disinfect rooms, reducing staff exposure to infection. Drawbacks: they are very expensive to buy and maintain, staff need special training, and a fault during surgery can be dangerous."
+   },
+   {
     "icon": "🔬",
     "title": "Science, research and libraries",
     "text": "Weather forecasting uses powerful computers to process huge amounts of data from weather stations, satellites and radar, run models and predict the weather. In medical research computers analyse test results, model diseases and help design drugs; in hospitals expert systems help diagnose illness. The military uses ICT (Information and Communication Technology) for simulating battles, guiding missiles and keeping secure communication. Library systems record the lending of books (who borrowed what and when it is due), keep an inventory of stock, and hold a computerised catalogue so users can search by title, author or subject."
@@ -965,6 +980,11 @@
     "text": "Air traffic control uses radar and computers to track aircraft and keep them safely apart during take-off, flight and landing. Shipping and railway control systems track vessels and trains and control signals and points. GPS (global positioning system) uses satellites to find the exact position of a vehicle, so companies can track lorries, buses and parcels. In entertainment, computers are used to play and create games, record and edit music, and edit video and make special effects. At home people use ICT for study, budgeting, communication and entertainment, and to control appliances."
    },
    {
+    "icon": "🚗",
+    "title": "Self-driving and self-parking vehicles",
+    "text": "Computerised vehicles use sensors (cameras, radar and ultrasonic sensors), GPS and software to steer, brake and park without a human driver. Benefits to a town: fewer accidents caused by human error, such as speeding or drink-driving; vehicles park closer together and in tighter spaces, so less land is needed for parking; less time and fuel wasted circling to look for parking, which reduces congestion and pollution; and better mobility for elderly and disabled people. Concerns: they are expensive, software faults or hacking could cause crashes, it is unclear who is responsible after an accident, and jobs such as drivers and parking attendants may be lost."
+   },
+   {
     "icon": "🛡️",
     "title": "Expert systems, marketing, VR and law enforcement",
     "text": "An expert system copies the knowledge of a human expert. It has three parts: a knowledge base (facts and rules from experts), an inference engine (which applies the rules to the user's answers to reach a conclusion) and a user interface (through which the user asks and answers questions). In marketing, ICT supports e-commerce (buying and selling online), electronic presentations to clients, and advertising on websites and social media. Virtual reality (VR) creates a 3D artificial world that the user enters with a head-mounted display (HMD) and data gloves that sense hand movements. Law enforcement uses biometrics such as fingerprint matching to identify suspects, CCTV (Closed-Circuit Television) cameras to monitor public places, and computerised police records to store and search criminal records quickly."
@@ -972,7 +992,7 @@
    {
     "icon": "📝",
     "title": "In the exam",
-    "text": "KCSE often asks: \"Explain three ways computers are used in industry\", \"Name the three components of an expert system and state the function of each\", \"Explain how ICT is used in weather forecasting\", \"State two devices used to interact with a virtual reality system\", or \"Describe how computers are used in law enforcement\". Remember: process control uses sensors and works in real time; CAD is for designing, CAM is for manufacturing; an expert system is knowledge base + inference engine + user interface; VR uses a head-mounted display and data gloves. Always link the device or system to what it does."
+    "text": "KCSE often asks: \"Explain three ways computers are used in industry\", \"Name the three components of an expert system and state the function of each\", \"Explain how ICT is used in weather forecasting\", \"State two devices used to interact with a virtual reality system\", \"Describe how computers are used in law enforcement\", \"State benefits of using robots in a hospital theatre\" or \"Explain benefits a town would gain from self-parking vehicles\". Remember: process control uses sensors and works in real time; CAD is for designing, CAM is for manufacturing; an expert system is knowledge base + inference engine + user interface; VR uses a head-mounted display and data gloves. Always link the device or system to what it does."
    }
   ],
   "listen": [
@@ -1443,6 +1463,11 @@
     "text": "A computer technician assembles, installs, repairs, upgrades and troubleshoots hardware and software. An ICT (Information and Communication Technology) trainer or teacher teaches ICT skills, prepares learning materials and assesses learners. An information systems manager plans and controls the ICT department and makes sure the organisation's information needs are met. A data processing manager supervises the data processing section and its staff so that data is processed accurately and on time. A computer sales representative sells hardware and software and advises customers on what to buy. An ICT entrepreneur runs an ICT business, such as a cyber café or a software firm, while an ICT consultant gives expert advice to organisations for a fee."
    },
    {
+    "icon": "☁️",
+    "title": "Cloud computing jobs",
+    "text": "Cloud computing provides storage, software and computing power over the internet, as in Google Drive, Microsoft 365 or Amazon Web Services, instead of on the user's own computers. Cloud jobs include cloud engineer or architect (designs and builds cloud systems), cloud administrator (sets up and manages cloud services and user accounts) and cloud security specialist (protects data held in the cloud). Skills expected of a cloud worker: networking knowledge; data security, such as encryption and access control; operating systems, especially Linux; virtualisation (running many virtual computers on one physical server); database management; programming or scripting to automate tasks; and good problem-solving and communication skills to support customers."
+   },
+   {
     "icon": "🎓",
     "title": "Further education and choosing a course",
     "text": "After KCSE you can study ICT at public and private universities (degrees), national polytechnics and TVET (Technical and Vocational Education and Training) colleges (certificates and diplomas), or take professional certifications such as ICDL (International Certification of Digital Literacy), CCNA (Cisco Certified Network Associate) or vendor certificates from companies like Microsoft, Cisco and CompTIA. Government-sponsored places are allocated through KUCCPS (Kenya Universities and Colleges Central Placement Service). When choosing a course or institution, consider: accreditation (universities by the Commission for University Education, CUE, and TVET institutions by the TVET Authority, TVETA), entry requirements (your KCSE grade and subject cluster), cost of fees and upkeep, duration of the course, reputation of the institution, mode of study (full-time, part-time, evening or online), and your own interests and the job market."
@@ -1450,7 +1475,7 @@
    {
     "icon": "📝",
     "title": "In the exam",
-    "text": "KCSE typically asks: \"State three duties of a database administrator\", \"Differentiate between a programmer and a systems analyst\", \"Name the ICT career responsible for maintaining a website\" or \"State three factors to consider when choosing an institution for further training in ICT\". Remember the key differences: the systems analyst designs the system, the programmer codes it, the computer operator runs it, the technician repairs it. A computer engineer works on hardware, a software engineer on software. Give duties as action phrases, such as \"backing up the database\", and give at least as many points as the question asks."
+    "text": "KCSE typically asks: \"State three duties of a database administrator\", \"Differentiate between a programmer and a systems analyst\", \"Name the ICT career responsible for maintaining a website\" \"State three factors to consider when choosing an institution for further training in ICT\" or \"State three skills expected of a person working for a cloud services company\". Remember the key differences: the systems analyst designs the system, the programmer codes it, the computer operator runs it, the technician repairs it. A computer engineer works on hardware, a software engineer on software. Give duties as action phrases, such as \"backing up the database\", and give at least as many points as the question asks."
    }
   ],
   "listen": [
@@ -1599,7 +1624,7 @@
      "A chief programmer"
     ],
     "a": 3,
-    "why": "The chief programmer coordinates the programming team and checks the quality of their work; the data processing manager heads the whole ICT department."
+    "why": "The chief programmer coordinates the programming team and checks the quality of their work; the information systems manager heads the whole ICT department."
    },
    {
     "q": "Which ICT professional is responsible for developing, updating and monitoring an organisation's website?",
@@ -1639,7 +1664,7 @@
     "options": [
      "Kenya Certificate of Secondary Education (KCSE)",
      "Cisco Certified Network Associate (CCNA)",
-     "International Computer Driving Licence (ICDL)",
+     "International Certification of Digital Literacy (ICDL)",
      "Certified Public Accountant (CPA)"
     ],
     "a": 1,
